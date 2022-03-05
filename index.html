@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>全栈说</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Efficiency 80%">
+<meta property="og:type" content="website">
+<meta property="og:title" content="全栈说">
+<meta property="og:url" content="https://hijerry.cn/index.html">
+<meta property="og:site_name" content="全栈说">
+<meta property="og:description" content="Efficiency 80%">
+<meta property="og:locale">
+<meta property="article:author" content="jerrycheese">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="全栈说" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">全栈说</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Work 20%</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hijerry.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-04/Mac OSX 13.6 安装cuda+cudnn+pytorch" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/p/49582.html" class="article-date">
+  <time class="dt-published" datetime="2019-04-12T08:19:59.000Z" itemprop="datePublished">2019-04-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%A8%8B/">程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/p/49582.html">2019 Mac安装cuda+cudnn+pytorch</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>本次主要记录一些自己遇到的问题的解决方案</p>
+<h2 id="CUDA、cuDNN"><a href="#CUDA、cuDNN" class="headerlink" title="CUDA、cuDNN"></a>CUDA、cuDNN</h2><p>大致流程参照 <a target="_blank" rel="noopener" href="https://blog.csdn.net/ignoreyou/article/details/85132738">2018 MAC安装CUDA、cuDNN（Gaming Box1070）</a></p>
+<p>顺序是：GPU Driver、CUDA Driver、CUDA Toolkit、cuDNN</p>
+<p>安装驱动时要注意：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MacOS与NVIDIA GPU Driver的版本要匹配，才能驱动显卡</span><br><span class="line">CUDA Driver与NVIDIA GPU Driver的版本要一致，CUDA才能找到显卡</span><br></pre></td></tr></table></figure>
+
+<p>关键地址：</p>
+<ul>
+<li>MAC - NVIDIA GPU Driver对照表：<a target="_blank" rel="noopener" href="http://www.macvidcards.com/drivers.html">http://www.macvidcards.com/drivers.html</a></li>
+<li>CUDA Driver：<a target="_blank" rel="noopener" href="http://www.nvidia.com/object/mac-driver-archive.html">http://www.nvidia.com/object/mac-driver-archive.html</a></li>
+<li>CUDA Toolkit：<a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-toolkit-archive">https://developer.nvidia.com/cuda-toolkit-archive</a></li>
+<li>cuDNN：<a target="_blank" rel="noopener" href="https://developer.nvidia.com/rdp/cudnn-archive">https://developer.nvidia.com/rdp/cudnn-archive</a></li>
+</ul>
+<p>我自己安装好后的配置是：</p>
+<ul>
+<li>GPU Driver Version: 387.10.10.10.40.105</li>
+<li>CUDA Driver Version: 418.105</li>
+<li>CUDA：10.1.105</li>
+<li>cuDNN：7.4.2</li>
+</ul>
+<p>版本查看方式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat $CUDA_HOME/version.txt # CUDA</span><br><span class="line">cat $CUDA_HOME/include/cudnn.h | grep CUDNN_MAJOR -A 2 #cuDNN</span><br></pre></td></tr></table></figure>
+
+<h2 id="Pytorch-with-CUDA"><a href="#Pytorch-with-CUDA" class="headerlink" title="Pytorch with CUDA"></a>Pytorch with CUDA</h2><p><a target="_blank" rel="noopener" href="https://pytorch.org/get-started/locally/">Pytorch官方</a> 说的很清楚：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MacOS Binaries dont support CUDA, install from source if CUDA is needed</span><br></pre></td></tr></table></figure>
+
+<p>目前要<code>with CUDA</code>有两个方式：从源码安装、安装第三方pip包</p>
+<h3 id="从源码安装"><a href="#从源码安装" class="headerlink" title="从源码安装"></a>从源码安装</h3><p>参照：<a target="_blank" rel="noopener" href="https://github.com/pytorch/pytorch#from-source">https://github.com/pytorch/pytorch#from-source</a></p>
+<p>这条路我没走通。虽然成功编译了pytorch，但执行<code>import torch</code>时遇到了错误：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ModuleNotFoundError: No module named &#x27;torch._C&#x27;</span><br></pre></td></tr></table></figure>
+<p>按照google结果，我应该在 <code>torch</code> 目录的以下两个文件复制：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp _C.cpython-37m-darwin.so _C.so</span><br><span class="line">cp _dl.cpython-37m-darwin.so _dl.so</span><br></pre></td></tr></table></figure>
+<p>但我的 <code>torch</code> 目录下没有这两个文件</p>
+<h3 id="第三方pip包"><a href="#第三方pip包" class="headerlink" title="第三方pip包"></a>第三方pip包</h3><p>参照：<a target="_blank" rel="noopener" href="https://github.com/TomHeaven/pytorch-osx-build">https://github.com/TomHeaven/pytorch-osx-build</a></p>
+<p>我下载的是：<code>pytorch-1.0-py27-py37-cuda10-cudnn74</code></p>
+<p>这是别人编译好的pip包，下载后用pip安装即可：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install torch-1.0-cp37-cp37m-macosx_10_13_x86_64.whl</span><br></pre></td></tr></table></figure>
+
+<h4 id="No-module-named-‘torch-C’"><a href="#No-module-named-‘torch-C’" class="headerlink" title="No module named ‘torch._C’"></a>No module named ‘torch._C’</h4><h4 id="Library-not-loaded-rpath-x2F-xxxx-10-0-dylib"><a href="#Library-not-loaded-rpath-x2F-xxxx-10-0-dylib" class="headerlink" title="Library not loaded: @rpath&#x2F;xxxx.10.0.dylib"></a>Library not loaded: @rpath&#x2F;xxxx.10.0.dylib</h4><p>在运行 <code>import torch</code> 时报的错，比如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">  File &quot;/Users/jerry/anaconda3/lib/python3.7/site-packages/torch/__init__.py&quot;, line 84, in &lt;module&gt;</span><br><span class="line">    from torch._C import *</span><br><span class="line">ImportError: dlopen(/Users/jerry/anaconda3/lib/python3.7/site-packages/torch/_C.cpython-37m-darwin.so, 9): Library not loaded: @rpath/libcufft.10.0.dylib</span><br><span class="line">  Referenced from: /Users/jerry/anaconda3/lib/python3.7/site-packages/torch/lib/libtorch_python.dylib</span><br><span class="line">  Reason: image not found</span><br></pre></td></tr></table></figure>
+<p><code>libcufft</code>是cuda的库，这里只是文件名没找到而已，而库文件其实是在 <code>$CUDA_HOME/lib</code>下的，所以手动链接一下就行，下面是对同类错误的库进行统一处理：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo ln -s $CUDA_HOME/lib/libcufft.10.dylib $CUDA_HOME/lib/libcufft.10.0.dylib</span><br><span class="line">sudo ln -s $CUDA_HOME/lib/libcurand.10.dylib $CUDA_HOME/lib/libcurand.10.0.dylib</span><br><span class="line">sudo ln -s $CUDA_HOME/lib/libcublas.10.dylib $CUDA_HOME/lib/libcublas.10.0.dylib</span><br><span class="line">sudo ln -s $CUDA_HOME/lib/libcudart.dylib $CUDA_HOME/lib/libcudart.10.0.dylib</span><br><span class="line">sudo ln -s $CUDA_HOME/lib/libnvrtc.dylib $CUDA_HOME/lib/libnvrtc.10.0.dylib</span><br><span class="line">sudo ln -s $CUDA_HOME/lib/libcusparse.10.dylib $CUDA_HOME/lib/libcusparse.10.0.dylib</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考引用"><a href="#参考引用" class="headerlink" title="参考引用"></a>参考引用</h2><p>[1] <a target="_blank" rel="noopener" href="https://blog.csdn.net/ignoreyou/article/details/85132738">2018 MAC安装CUDA、cuDNN（Gaming Box1070）</a>, 2019-04-12. </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hijerry.cn/p/49582.html" data-id="cl0e36fzy002rosct4ii81zwr" data-title="2019 Mac安装cuda+cudnn+pytorch" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/" rel="tag">mac</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-03/复杂度与NP完全性" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/p/48009.html" class="article-date">
+  <time class="dt-published" datetime="2019-03-23T03:34:33.000Z" itemprop="datePublished">2019-03-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/p/48009.html">复杂度与NP完全性</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>无论是处理业务逻辑，还是解决数学问题，程序员的脑海里都必须有对问题的解决方案有准确的、完整的描述，也就是算法。我不讨论算法的各种性质和定义，这次主要是总结算法复杂度几种描述方式以及P、NP和NP完全性。</p>
+<h2 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h2><h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><p>算法的时间复杂度可以定性的描述 <strong>随着输入规模变大，算法耗时增长的快慢</strong>。</p>
+<p>插入排序最坏情况是 $O(n^2)​$ ，归并排序最坏情况是 $O(nlogn)​$ ，这表示插入排序随着输入规模的增大，耗时呈 <em>平方级别</em> 的<strong>增长</strong>；而归并排序的耗时呈 <em>nlogn级别</em> 的<strong>增长</strong>，所以这两个函数<em>增长的阶</em>不在同一个级别上。这样的定性分析，我们可以知道当输入规模n很大时（比如n&#x3D;10,000），在两者之间，应该选择归并排序。这里强调的是耗时的增长，<strong>并不说明插入排序比归并排序慢</strong>，当n很小时(比如n&#x3D;15)，插入排序可能比归并排序耗时短。</p>
+<h3 id="渐进记号"><a href="#渐进记号" class="headerlink" title="渐进记号"></a>渐进记号</h3><p>描述算法时间复杂度有五种记号： $\Theta、O、\Omega, o、\omega$ 。这五种记号又叫做 <em>渐进记号</em>，它们本表示函数集合，以 $\Theta​$ （读作：大Theta）为例：</p>
+<p>$\Theta(g(n)) &#x3D; { f(n): 存在正常数 c_1, c_2 和n_0，使得当n \geq n_0 时，有 0 \leq c_1g(n) \leq f(n) \leq c_2g(n)}​$ </p>
+<p>比如我们通过精密的分析得到了插入排序的耗时为 $f(n) &#x3D; 2n^2-n+17​$ ，我们若能找到合适的 $c_1, c_2, n_0​$ 使得 $使得当n \geq n_0 时，有0 \leq c_1g(n) \leq f(n) \leq c_2g(n) ​$，就能证明插入排序的时间复杂度为 $\Theta(n^2)​$ 。</p>
+<p>下面是其余四个记号的描述：</p>
+<p>$O(g(n)) &#x3D; { f(n): 存在正常数 c和n_0，使得当n \geq n_0 时，有 f(n) \leq cg(n)}$ ，渐进上界</p>
+<p>$\Omega(g(n)) &#x3D; { f(n): 存在正常数 c 和n_0，使得当n \geq n_0 时，有 cg(n) \leq f(n) }$，渐进下界</p>
+<p>$o(g(n)) &#x3D; { f(n): 对于任意正常数 c，存在n_0使得当n \geq n_0 时，有 f(n) \leq cg(n) }$，非渐进紧确上界</p>
+<p>$\omega(g(n)) &#x3D; { f(n): 对于任意正常数 c，存在n_0使得当n \geq n_0 时，有 cg(n) \leq f(n) }$，非渐进紧确下界</p>
+<p>记号 $O$ (读作大O) 和 $o$ (读作小o)的区别是：$O$ 可能不紧，因为只需要存在一个正常数 $c$ 即可，例如函数$2n^2 \in O(n^2)$ 是紧确的 ，但 $2n \in O(n^2)$ 却不是。 $o$ 记号表示 <em>非渐进紧确</em> 的上界，所以 $ 2n^2 \notin o(n^2)$ 而 $2n \in o(n^2)$ 。记号 $\Omega$ 和 $\omega$ 的道理是一样的。</p>
+<p>我们可以说插入排序的最坏情况运行时间是 $O(n^2)$ ，而不能说 $\Theta(n^2)$ 。因为若数组已经有序，则插入排序耗时为 $\Theta(n)$ ，显然 $\Theta(n) \in O(n^2)$ ，但 $\Theta(n) \notin \Theta (n^2)$ 。</p>
+<p>我们不能说插入排序的运行时间是 $O(n^2)$ 。如果一个算法的运行时间是 $O(n^2)$ ，这表明存在一个函数 $f(n)$，对于任意大小为n的数据，算法运行时间为 $f(n)$ ，而与数据无关。</p>
+<h3 id="等式分析"><a href="#等式分析" class="headerlink" title="等式分析"></a>等式分析</h3><p>我们可能见过下面的式子 $T(n) &#x3D; 2T(\frac{n}{2}) + \Theta(n)$，记号 $\Theta$ 本表示集合，却出现在了等式的右边。</p>
+<p>当渐进记号出现在等式(或不等式)的一边，这表示一个 <strong>匿名函数</strong>，我们并不关心函数具体是什么。例如 $2n^2+3n+1 &#x3D; 2n^2 + \Theta(n)$，这里的 $\Theta(n)$ 代替了 $3n+1$ 。这样的作坊有助于我们略去等式中无关紧要的细节。</p>
+<p>当渐进记号出现在等式(或不等式)的两边，这表明 <strong>无论等号左边的匿名函数如何选择，总有办法选取等号右边的匿名函数使等式成立</strong>，例如 $2n^2 + \Theta(n) &#x3D; \Theta(n^2)$ 。</p>
+<p>这样以来，即可将其链起来得到：</p>
+<p>$2n^2+3n+1 &#x3D; 2n^2 + \Theta(n)&#x3D;  \Theta(n^2)​$</p>
+<p>最终得到 $2n^2+3n+1&#x3D;  \Theta(n^2) $，这种分析方式直观、简便又高效。</p>
+<h2 id="NP完全性"><a href="#NP完全性" class="headerlink" title="NP完全性"></a>NP完全性</h2><p>P（Polynomial）类问题：能在多项式时间内<strong>被解决</strong>的问题。</p>
+<p>有些问题是能写出算法解决的，无非是加减乘除、逻辑运算，这些都是按照一定步骤进行就能得到结果的，若算法的时间复杂度是 $O(n^k)​$(k为某个常数)，则该问题就输入P类问题。 例如找到一个数组中最大的数，找到点集中距离最短的两个点。</p>
+<p>NP（Non-Deterministic Polynomial）类问题：能在多项式时间内<strong>被验证</strong>的问题。</p>
+<p>有些问题不能写出算法得到最优解，但可以通过 <em>猜算</em> 得到一个解，在猜出一个解之后，需要判断这个解是否为正解，判断是否为正解的算法若在多项式时间内运行完，则该问题就是NP类问题。比如大质数问题，没有算法能计算得到下一个质数是多少，但我们能在多项式时间内判断一个数是不是质数。</p>
+<p>P类问题也叫做 <strong>易解</strong> 问题，而NP类问题又叫 <strong>难解</strong> 问题。显然 $P \subseteq NP$ 。因为能在多项式时间内解决的问题，它的一个解肯定能在多项式时间内验证（跑一次算法得到一个解即可）。P 是否等于 NP 是目前的一个世界难题。</p>
+<p>假设A是一个NP问题，若A与NP中的任何一个问题是一样难的，则A是NP完全问题。目前发现的NPC问题有21个：<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/NP-completeness#NP-complete_problems">Wiki:NP-completeness</a>，所有的NP问题都能规约到这21个问题中的一个。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>[1] <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/NP%E9%97%AE%E9%A2%98/2860567?fr=aladdin">NP问题</a>, 2019-03-23.</p>
+<p>[2] <a target="_blank" rel="noopener" href="https://www.sohu.com/a/251024879_701814">一文读懂什么是P问题、NP问题和NPC问题</a>, 2019-03-23.</p>
+<p>[3] <a target="_blank" rel="noopener" href="https://blog.csdn.net/k346k346/article/details/51026006">P问题、NP问题、NPC问题（NP完全问题）、NPH问题和多项式时间复杂度</a>, 2019-03-23.</p>
+<p>[4]  Thomas H.Cormen et al., 殷建平等译, 算法导论(原书第三版), 机械工业出版社, 2012.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hijerry.cn/p/48009.html" data-id="cl0e36fzx002ooscteue9e9n8" data-title="复杂度与NP完全性" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NP%E5%AE%8C%E5%85%A8%E6%80%A7/" rel="tag">NP完全性</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-03/2019-CS224n-Assignment4" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/p/55002.html" class="article-date">
+  <time class="dt-published" datetime="2019-03-21T10:24:56.000Z" itemprop="datePublished">2019-03-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%A0%94/">研</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/p/55002.html">2019-CS224n-Assignment4</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>这一次的内容甚至可以作为一个项目了，我最终得到BLEU是22.66。</p>
+<p>点击 <a target="_blank" rel="noopener" href="http://web.stanford.edu/class/cs224n/assignments/a4.pdf">这里</a> 下载实验指导文档，<a target="_blank" rel="noopener" href="http://web.stanford.edu/class/cs224n/assignments/a4.zip">这里</a> 下载实验的预备代码</p>
+<h2 id="RNN和神经机器翻译"><a href="#RNN和神经机器翻译" class="headerlink" title="RNN和神经机器翻译"></a>RNN和神经机器翻译</h2><p>机器翻译是指，给定一个源句子（比如西班牙语），输出一个目标句子（比如英语）。本次作业中要实现的是一个带注意力机制的Seq2Seq神经模型，用于构建神经机器翻译（NMT）系统。首先我们来看NMT系统的训练过程，它用到了双向LSTM作为编码器（encoder）和单向LSTM作为解码器（decoder）。</p>
+<p><img src="http://static.hijerry.cn/blog/20190321/OelfEmBwMu9W.png?imageslim" alt="mark"></p>
+<p>给定长度为m的源语言句子（source），经过嵌入层，得到输入序列 $x_1, x_2, …, x_m \in R^{e \times 1}$，e是词向量大小。经过双向Encoder后，得到前向（→）和反向（←）LSTM的隐藏层和神经元状态，将两个方向的状态连接起来得到时间步 $i$ 的隐藏状态 $h_i^{enc}$ 和 $c_i^{enc}$ ：</p>
+<p><img src="http://static.hijerry.cn/blog/20190321/0WjpJ9iNC6Fs.png?imageslim" alt="mark"></p>
+<p>接着我们使用一个线性层来初始化Decoder的初始隐藏、神经元的状态：</p>
+<p><img src="http://static.hijerry.cn/blog/20190321/UPlu56q7zGFm.png?imageslim" alt="mark"></p>
+<p>Decoder的时间步 $t$ 的输入为 $\bar{y}<em>t$ ，它由目标语言句子 $y_t$ 和上一神经元的输出 $o</em>{t-1}$ 经过连接得到，$o_0$ 是0向量，所以 $ \bar{y}_t \in R^{(e + h) \times 1}​$ </p>
+<p><img src="http://static.hijerry.cn/blog/20190321/1gQ0pECWcPVN.png?imageslim" alt="mark"></p>
+<p>接着我们使用 $h^{dec}_t$ 来计算在 $h^{enc}_0, h^{enc}_1, …, h^{enc}_m$ 的乘积注意力（multiplicative attention）：</p>
+<p><img src="http://static.hijerry.cn/blog/20190321/PNbftQjFG620.png?imageslim" alt="mark"></p>
+<p>然后将注意力 $\alpha_t$ 和解码器的隐藏状态 $h^{dec}_t$ 连接，送入线性层，得到 <em>combined-output</em> 向量 $o_t$ </p>
+<p> <img src="http://static.hijerry.cn/blog/20190321/Wf2mxPFavltq.png?imageslim" alt="mark"></p>
+<p>这样以来，目标词的概率分布则为：</p>
+<p><img src="http://static.hijerry.cn/blog/20190321/qm9QrH0jf22h.png?imageslim" alt="mark"></p>
+<p>使用交叉熵做目标函数即可。</p>
+<p>关键在于每个向量的维度，把维度搞清楚，整个过程就清晰了。</p>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><p>在写完代码后，需要训练很久才能得到结果，这是因为翻译系统比较复杂，所以建议在GPU上跑，可以试试CoLab，而我是在实验室的TeslaP100上跑的，所以比较快。</p>
+<h3 id="问题-b"><a href="#问题-b" class="headerlink" title="问题(b)"></a>问题(b)</h3><p>model_embeddings.py的__init__函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">self.source = nn.Embedding(<span class="built_in">len</span>(vocab.src), embed_size, padding_idx=src_pad_token_idx)</span><br><span class="line">self.target = nn.Embedding(<span class="built_in">len</span>(vocab.tgt), embed_size, padding_idx=tgt_pad_token_idx)</span><br></pre></td></tr></table></figure>
+
+<p>注意一定要把padding_idx参数填进去</p>
+<h3 id="问题-c"><a href="#问题-c" class="headerlink" title="问题(c)"></a>问题(c)</h3><p>nmt_model.py的__init__函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">self.encoder = nn.LSTM(embed_size, hidden_size, bias=<span class="literal">True</span>, bidirectional=<span class="literal">True</span>)</span><br><span class="line">self.decoder = nn.LSTMCell(embed_size + hidden_size, hidden_size, bias=<span class="literal">True</span>)</span><br><span class="line">self.h_projection = nn.Linear(<span class="number">2</span>*hidden_size, hidden_size , bias=<span class="literal">False</span>)</span><br><span class="line">self.c_projection = nn.Linear(<span class="number">2</span>*hidden_size, hidden_size, bias=<span class="literal">False</span>)</span><br><span class="line">self.att_projection = nn.Linear(<span class="number">2</span>*hidden_size, hidden_size, bias=<span class="literal">False</span>)</span><br><span class="line">self.combined_output_projection = nn.Linear(<span class="number">3</span>*hidden_size, hidden_size, bias=<span class="literal">False</span>)</span><br><span class="line">self.target_vocab_projection = nn.Linear(hidden_size, <span class="built_in">len</span>(vocab.tgt), bias=<span class="literal">False</span>)</span><br><span class="line">self.dropout = nn.Dropout(p=dropout_rate)</span><br></pre></td></tr></table></figure>
+
+<p>特别要注意各个维度的变化</p>
+<p>原始的数据是词索引，经过embedding，每个词变成了大小为 <code>embed_size</code> 的向量，所以encoder的输入大小为 <code>embed_size</code> ，隐藏层大小为 <code>hidden_size</code> 。</p>
+<p>decoder的输入是神经元输出和目标语言句子的嵌入向量，所以输入大小为 <code>embed_size + hidden_size</code></p>
+<p>h_projection、c_projection的作用是将encoder的隐藏层状态降维，所以输入大小是 <code>2*hidden_size</code>，输出大小是<code>hidden_size</code></p>
+<p>att_projection的作用也是降维，以便后续与decoder的隐藏层状态做矩阵乘法</p>
+<p>combined_output_projection的作用也将解码输出降维，输入是注意力向量和隐藏层状态连接得到的向量，大小为<code>3*hidden_size</code>，并保持输出大小为 <code>hidden_size</code> </p>
+<p>target_vocab_projection是将输出投影到词库的词中去</p>
+<h3 id="问题-d"><a href="#问题-d" class="headerlink" title="问题(d)"></a>问题(d)</h3><p>nmt_model.py 的encode函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">X = self.model_embeddings.source(source_padded) <span class="comment"># (src_len, b, e)</span></span><br><span class="line">X = pack_padded_sequence(X, source_lengths)</span><br><span class="line">enc_hiddens, (last_hidden, last_cell) = self.encoder(X) <span class="comment"># hidden/cell = (2, b, h)</span></span><br><span class="line">enc_hiddens = pad_packed_sequence(enc_hiddens)[<span class="number">0</span>] <span class="comment"># (src_len, b, 2*h)</span></span><br><span class="line">enc_hiddens = enc_hiddens.permute(<span class="number">1</span>, <span class="number">0</span>, <span class="number">2</span>) <span class="comment"># (b, src_len, 2*h)</span></span><br><span class="line"></span><br><span class="line">init_decoder_hidden = self.h_projection(torch.cat((last_hidden[<span class="number">0</span>], last_hidden[<span class="number">1</span>]), dim=<span class="number">1</span>))</span><br><span class="line">init_decoder_cell = self.c_projection(torch.cat((last_cell[<span class="number">0</span>], last_cell[<span class="number">1</span>]), dim=<span class="number">1</span>))</span><br><span class="line">dec_init_state = (init_decoder_hidden, init_decoder_cell) <span class="comment"># (b, h)</span></span><br></pre></td></tr></table></figure>
+
+<p>再次说明，一定要注意各个向量的维度。维度搞清楚了，过程就明了了。</p>
+<p>这里用到了 <code>pad</code> 和 <code>pack</code> 两个概念。</p>
+<p><code>pad</code> ：填充。将几个大小不一样的Tensor以最长的tensor长度为标准进行填充，一般是填充 <code>0</code>。</p>
+<p><code>pack</code>：打包。将几个 tensor打包成一个，返回一个<code>PackedSequence</code> 对象。</p>
+<p>经过pack后，RNN可以对不同长度的样本数据进行小批量训练，否则就只能一个一个样本进行训练了。</p>
+<p><code>torch.cat</code> 可以将两个tensor拼接成一个</p>
+<p><code>torch.Tensor.permute</code> 可以变换矩阵的维度比如 shape&#x3D;(1,2,3) -&gt; shape&#x3D;(3,2,1)</p>
+<h3 id="问题-e"><a href="#问题-e" class="headerlink" title="问题(e)"></a>问题(e)</h3><p>nmt_model.py的decode函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">enc_hiddens_proj = self.att_projection(enc_hiddens) <span class="comment"># (b, src_len, h)</span></span><br><span class="line">Y = self.model_embeddings.target(target_padded) <span class="comment"># (tgt_len, b, e)</span></span><br><span class="line"><span class="keyword">for</span> Y_t <span class="keyword">in</span> torch.split(Y, <span class="number">1</span>):</span><br><span class="line">    Y_t = torch.squeeze(Y_t, dim=<span class="number">0</span>) <span class="comment"># (b, e)</span></span><br><span class="line">    Ybar_t = torch.cat((Y_t, o_prev), dim=<span class="number">1</span>) <span class="comment"># (b, e + h)</span></span><br><span class="line">    dec_state, o_t, e_t = self.step(Ybar_t, dec_state, enc_hiddens, enc_hiddens_proj, enc_masks)</span><br><span class="line">    o_prev = o_t</span><br><span class="line">    combined_outputs.append(o_t)</span><br><span class="line">combined_outputs = torch.stack(combined_outputs, dim=<span class="number">0</span>) <span class="comment"># (tgt_len, b, h)</span></span><br></pre></td></tr></table></figure>
+
+<p>还是强调一句，一定要注意向量的维度。</p>
+<p><code>torch.stack</code> 可以将一个list里的长度一样的tensor堆叠成一个tensor</p>
+<p><code>torch.squeeze</code> 可以将tensor里大小为1的维度给删掉，比如shape&#x3D;(1,2,3) -&gt; shape&#x3D;(2,3)</p>
+<h3 id="问题-f"><a href="#问题-f" class="headerlink" title="问题(f)"></a>问题(f)</h3><p>nmt_model.py的step函数：</p>
+<p>首先计算注意力系数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dec_state = self.decoder(Ybar_t, dec_state)</span><br><span class="line">dec_hidden, dec_cell = dec_state <span class="comment"># (b, h)</span></span><br><span class="line">e_t = torch.bmm(enc_hiddens_proj, torch.unsqueeze(dec_hidden, dim=<span class="number">2</span>)) <span class="comment"># (b, src_len, 1)</span></span><br><span class="line">e_t = torch.squeeze(e_t, dim=<span class="number">2</span>) <span class="comment"># (b, src_len)</span></span><br></pre></td></tr></table></figure>
+
+<p>接着计算注意力和combined output，并输出</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">alpha_t = torch.unsqueeze(F.softmax(e_t, dim=<span class="number">1</span>), dim=<span class="number">1</span>)</span><br><span class="line">a_t = torch.squeeze(torch.bmm(alpha_t, enc_hiddens), dim=<span class="number">1</span>) <span class="comment"># (b, 2*h)</span></span><br><span class="line">u_t = torch.cat((a_t, dec_hidden), dim=<span class="number">1</span>) <span class="comment"># (b, 3*h)</span></span><br><span class="line">v_t = self.combined_output_projection(u_t) <span class="comment"># (b, h)</span></span><br><span class="line">O_t = self.dropout(torch.tanh(v_t))</span><br></pre></td></tr></table></figure>
+
+<p>一定要使用 <code> torch.bmm</code> 对<em>小批量</em> 数据进行矩阵乘法运算，不能用通常意义上的矩阵乘法</p>
+<p>至此所有代码都写完了，运行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python sanity_check.py 1d</span><br><span class="line">python sanity_check.py 1e</span><br><span class="line">python sanity_check.py 1f</span><br></pre></td></tr></table></figure>
+
+<p>进行初步测试</p>
+<p>完成后运行下述代码进行冒烟测试：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh run.sh train_local</span><br></pre></td></tr></table></figure>
+
+<p>经过10或20次迭代后程序没崩，那就可以正式进行测试了：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh run.sh train</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p>[1] <a target="_blank" rel="noopener" href="http://web.stanford.edu/class/cs224n">CS224n: Natural Language Processing with Deep Learning</a>, 2019-03-21. </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hijerry.cn/p/55002.html" data-id="cl0e36fzw002iosct9ox329br" data-title="2019-CS224n-Assignment4" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NLP/" rel="tag">NLP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91/" rel="tag">机器翻译</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-03/2019-CS224n-Assignment3" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/p/35741.html" class="article-date">
+  <time class="dt-published" datetime="2019-03-19T12:34:24.000Z" itemprop="datePublished">2019-03-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%A0%94/">研</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/p/35741.html">2019-CS224n-Assignment3</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>上个礼拜做完了，今天做个总结，主要方法和2017年差不多。</p>
+<h2 id="机器学习和神经网络-8分"><a href="#机器学习和神经网络-8分" class="headerlink" title="机器学习和神经网络 (8分)"></a>机器学习和神经网络 (8分)</h2><p>这一节没什么难度，认真看 <a target="_blank" rel="noopener" href="http://web.stanford.edu/class/cs224n/assignments/a3.pdf">a3.pdf</a> 就行。</p>
+<p>Adam的论文：<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1412.6980.pdf">ADAM: A METHOD FOR STOCHASTIC OPTIMIZATION</a></p>
+<p>Dropout论文：<a target="_blank" rel="noopener" href="https://www.cs.toronto.edu/~hinton/absps/JMLRdropout.pdf">Dropout: A Simple Way to Prevent Neural Networks from<br>Overfitting</a></p>
+<h2 id="基于神经Transition的依赖解析-42分"><a href="#基于神经Transition的依赖解析-42分" class="headerlink" title="基于神经Transition的依赖解析 (42分)"></a>基于神经Transition的依赖解析 (42分)</h2><p>依赖解析，就是分析句子的句法结构，建立 <em>head</em> 词和修饰这些head的词之间的关系。这次构建的是 <em>transition-based</em> 解析器，它增量的，每一次只进行一步解析动作来生成依赖关系，每一步解析称为 <em>partial parse</em>，可表示为：</p>
+<ul>
+<li><p>一个 <em>stack</em> ，已被处理的词</p>
+</li>
+<li><p>一个 <em>buffer</em> ，待处理的词</p>
+</li>
+<li><p>一个 <em>dependencies</em> ，解析器生成的依赖</p>
+</li>
+</ul>
+<p>初始状态下，stack里有只 ROOT 一个词，在每一次解析中，运行 <em>transition</em> 操作，分为三个类型：</p>
+<ul>
+<li>SHIFT：将buffer的左边（头部）第一个词取出，放到stack的右边（尾部）</li>
+<li>LEFT-ARC：将stack的右第二个词作为依赖项，它依赖于右边第一个词，生成一个依赖关系，并删除右第二个词。</li>
+<li>RIGHT-ARC：将stack的右第一个词作为依赖项，它依赖于右边第二个词，生成一个依赖关系，并删除右第一个词。</li>
+</ul>
+<p>当buffer长度为0，stack长度为1（只有ROOT）时就算解析完毕了。</p>
+<p><img src="http://static.hijerry.cn/blog/20190321/pyAvobSyY3Cj.png?imageslim" alt="mark"></p>
+<p>上图是初始操作+三步解析动作的示意图。</p>
+<p>若A依赖于B，则B为 <em>head</em> ，A为 <em>dependent</em>，记为 $B \rightarrow A​$ </p>
+<p>几个问题：</p>
+<h3 id="问题-b-6分"><a href="#问题-b-6分" class="headerlink" title="问题(b) 6分"></a>问题(b) 6分</h3><p><strong>长度为n的句子，经过多少步后可以被解析完（用n表示）？简要解析为什么</strong></p>
+<p>答：要使buffer长度为0，则需要n步，使stack长度为1，也需要n步，所以经过2n步后解析完毕。</p>
+<h3 id="问题-c-6分"><a href="#问题-c-6分" class="headerlink" title="问题(c) 6分"></a>问题(c) 6分</h3><p>完成parser_trainsitions.py</p>
+<h4 id="init"><a href="#init" class="headerlink" title="init"></a>init</h4><p>初始化函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">self.stack = [<span class="string">&#x27;ROOT&#x27;</span>]</span><br><span class="line">self.buffer = self.sentence.copy()</span><br><span class="line">self.dependencies = []</span><br></pre></td></tr></table></figure>
+
+<h4 id="parse-step"><a href="#parse-step" class="headerlink" title="parse_step"></a>parse_step</h4><p>注意，stack的栈顶是list的右边，buffer队头是list的左边</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> transition == <span class="string">&#x27;S&#x27;</span>:</span><br><span class="line">    self.stack.append(self.buffer[<span class="number">0</span>])</span><br><span class="line">    self.buffer = self.buffer[<span class="number">1</span>:]</span><br><span class="line"><span class="keyword">elif</span> transition == <span class="string">&#x27;LA&#x27;</span>:</span><br><span class="line">    self.dependencies.append((self.stack[-<span class="number">1</span>], self.stack[-<span class="number">2</span>]))</span><br><span class="line">    self.stack[-<span class="number">2</span>:] = self.stack[-<span class="number">1</span>:]</span><br><span class="line"><span class="keyword">elif</span> transition == <span class="string">&#x27;RA&#x27;</span>:</span><br><span class="line">    self.dependencies.append((self.stack[-<span class="number">2</span>], self.stack[-<span class="number">1</span>]))</span><br><span class="line">    self.stack.pop()</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">raise</span> Exception(<span class="string">&#x27;Unknown transition %s&#x27;</span> % transition)</span><br></pre></td></tr></table></figure>
+
+<h4 id="minibatch-parse"><a href="#minibatch-parse" class="headerlink" title="minibatch_parse"></a>minibatch_parse</h4><p>sentences含多个句子，每个句子都有一个partial parse对象。所以每一次取出一个batch的parse来进行一次transition操作，同时要过滤掉已经完成的parse。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">partial_parses = [PartialParse(s) <span class="keyword">for</span> s <span class="keyword">in</span> sentences]</span><br><span class="line"></span><br><span class="line">unfinished_parses = partial_parses.copy()</span><br><span class="line"><span class="keyword">while</span> <span class="built_in">len</span>(unfinished_parses) &gt; <span class="number">0</span>:</span><br><span class="line">    batch_parses = unfinished_parses[:batch_size].copy()</span><br><span class="line">    transition = model.predict(batch_parses)</span><br><span class="line">    <span class="keyword">for</span> i, parse <span class="keyword">in</span> <span class="built_in">enumerate</span>(batch_parses):</span><br><span class="line">        parse.parse_step(transition[i])</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(parse.stack) == <span class="number">1</span> <span class="keyword">and</span> <span class="built_in">len</span>(parse.buffer) == <span class="number">0</span>:</span><br><span class="line">            unfinished_parses.remove(parse)</span><br><span class="line"></span><br><span class="line">dependencies = [parse.dependencies <span class="keyword">for</span> parse <span class="keyword">in</span> partial_parses]</span><br></pre></td></tr></table></figure>
+
+<h3 id="问题-e-10分"><a href="#问题-e-10分" class="headerlink" title="问题(e) 10分"></a>问题(e) 10分</h3><p>完成 parser_model.py </p>
+<p>实质上就是搭建一个三层的前馈神经网络，用ReLU做激活函数，最后一层用softmax输出，交叉熵做损失函数，同时还加了embedding层</p>
+<h4 id="init-1"><a href="#init-1" class="headerlink" title="init"></a>init</h4><p>初始化三个层，<code>n_features</code> 表示每一个词用几个特征来表示，每一个特征都要embed，所以输入层的大小是 <code>n_features * embed_size</code> 。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Input Layer</span></span><br><span class="line">self.embed_to_hidden = nn.Linear(self.n_features*self.embed_size, self.hidden_size)</span><br><span class="line">nn.init.xavier_uniform_(self.embed_to_hidden.weight, gain=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Dropout Layer</span></span><br><span class="line">self.dropout = nn.Dropout(self.dropout_prob)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Output Layer</span></span><br><span class="line">self.hidden_to_logits = nn.Linear(self.hidden_size, self.n_classes)</span><br><span class="line">nn.init.xavier_uniform_(self.hidden_to_logits.weight, gain=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="embedding-lookup"><a href="#embedding-lookup" class="headerlink" title="embedding_lookup"></a>embedding_lookup</h4><p>使用的是预训练的embedding(Collobert at. 2011)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = self.pretrained_embeddings(t)</span><br><span class="line">x = x.view(x.shape[<span class="number">0</span>], x.shape[<span class="number">1</span>]*x.shape[<span class="number">2</span>])</span><br></pre></td></tr></table></figure>
+
+<h4 id="forward"><a href="#forward" class="headerlink" title="forward"></a>forward</h4><p>提取特征、输入网络拿到节点，这里没用加softmax层是因为 <a target="_blank" rel="noopener" href="https://pytorch.org/docs/stable/nn.html#crossentropyloss">torch.nn.CrossEntropyLoss</a> 会内部帮我们加</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a = self.embedding_lookup(t)</span><br><span class="line">h = self.embed_to_hidden(a)</span><br><span class="line">h = F.relu(h)</span><br><span class="line">h = self.dropout(h)</span><br><span class="line">logits = self.hidden_to_logits(h)</span><br></pre></td></tr></table></figure>
+
+<p>接着完成run.py</p>
+<h4 id="train"><a href="#train" class="headerlink" title="train"></a>train</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">optimizer = optim.Adam(parser.model.parameters(), lr=lr)</span><br><span class="line">loss_func = nn.CrossEntropyLoss()</span><br></pre></td></tr></table></figure>
+
+<h4 id="train-for-epoch"><a href="#train-for-epoch" class="headerlink" title="train_for_epoch"></a>train_for_epoch</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">logits = parser.model(train_x)</span><br><span class="line">loss = loss_func(logits, train_y)</span><br><span class="line"></span><br><span class="line">loss.backward()</span><br><span class="line">optimizer.step()</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>[1] <a target="_blank" rel="noopener" href="http://web.stanford.edu/class/cs224n">CS224n: Natural Language Processing with Deep Learning</a>, 2019-03-21. </p>
+<p>[2] <a target="_blank" rel="noopener" href="http://www.hankcs.com/nlp/cs224n-assignment-2.html/2">CS224n Assignment 2</a>, 2019-03-21.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hijerry.cn/p/35741.html" data-id="cl0e36fzv002fosct0hii3pdv" data-title="2019-CS224n-Assignment3" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NLP/" rel="tag">NLP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BE%9D%E8%B5%96%E8%A7%A3%E6%9E%90/" rel="tag">依赖解析</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-03/NLP会议介绍" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/p/13983.html" class="article-date">
+  <time class="dt-published" datetime="2019-03-18T05:02:10.000Z" itemprop="datePublished">2019-03-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%A0%94/">研</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/p/13983.html">NLP会议介绍</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>我以前在博客引用过 <a target="_blank" rel="noopener" href="https://www.hijerry.cn/p/49382.html">初学者如何查阅自然语言处理（NLP）领域学术资料</a> 一文，里面比较详细的说明了NLP的学术会议。</p>
+<p>这次主要是罗列这些会议和CCF等级，把收集的信息汇总起来，以备以后自查，也记录了各个会议的截稿时间、会议时间、投稿数量、录取率等数据信息，以及一些比较有用网站链接。</p>
+<h2 id="国外会议"><a href="#国外会议" class="headerlink" title="国外会议"></a>国外会议</h2><h3 id="主要会议"><a href="#主要会议" class="headerlink" title="主要会议"></a>主要会议</h3><p>NLP领域四大顶会：ACL、EMNLP、NAACL（北美分会）和COLING。前三个会由ACL主办，COLING由ICCL主办。</p>
+<p>ACL、EMNLP、NAACL每年一次，因为是同一个学术组织举办，所以会有一些有意思的潜规则，比如ACL、EMNLP会在各大洲轮流举办，而每当ACL在北美举办时，当年NAACL就停办一年。另外还有EACL（欧洲分会），之前是每三年举办一次，过去存在感不太强，据说从2019年开始改为每年举办一次，相信会逐渐被大家重视起来。</p>
+<p>COLING两年一次，是CL的老牌学术会议（1965年开办）。因为不是每年举行，感觉最近几次会议的质量起伏比较大，认可度上也已经被EMNLP赶超的趋势，可见NLP的 <a target="_blank" rel="noopener" href="https://scholar.google.com/citations?view_op=top_venues&hl=en&vq=eng_computationallinguistics">Google Scholar Metrics</a> 。（[知乎引用](NLP领域国际顶会（ACL&#x2F;EMNLP&#x2F;NAACLl等）的难度如何？ - 知乎用户的回答 - 知乎<br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/266242639/answer/312713059)%EF%BC%89">https://www.zhihu.com/question/266242639/answer/312713059)）</a></p>
+<p>细致一点来说，ACL偏linguistics，EMNLP比较注重方法和empirical results，NAACL因为投稿数量远比前两个少，reviewer负担轻，整体更加open-minded，好的paper因为碰上不负责任的reviewer而被拒的概率也小一些。另外TACL是journal，审稿周期长。（[知乎引用](NLP领域国际顶会（ACL&#x2F;EMNLP&#x2F;NAACLl等）的难度如何？ - 知乎用户的回答 - 知乎<br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/266242639/answer/313409318)%EF%BC%89">https://www.zhihu.com/question/266242639/answer/313409318)）</a></p>
+<p>难度方面：ACL &#x3D; EMNLP &#x3D; NAACL &gt; AAAI &gt; IJCAI</p>
+<h3 id="相关领域"><a href="#相关领域" class="headerlink" title="相关领域"></a>相关领域</h3><ol>
+<li>信息检索和数据挖掘领域。SIGIR、WWW、WSDM</li>
+<li>人工智能领域。AAAI、IJCAI</li>
+<li>机器学习领域。ICML，NIPS，AISTATS，UAI</li>
+</ol>
+<h2 id="国内会议"><a href="#国内会议" class="headerlink" title="国内会议"></a>国内会议</h2><ol>
+<li><strong>全国计算语言学大会（CCL）</strong></li>
+<li><strong>全国知识图谱与语义计算大会（CCKS）</strong></li>
+<li><strong>全国社会媒体处理大会（SMP）</strong></li>
+<li><strong>全国信息检索学术会议（CCIR）</strong></li>
+<li><strong>全国机器翻译研讨会（CWMT）</strong></li>
+<li><strong>自然语言处理青年学者研讨会（YSSNLP）</strong></li>
+<li><strong>CIPS暑期学校（CIPS Summer School）</strong></li>
+<li><strong>CCF国际自然语言处理与中文计算会议（NLPCC）</strong></li>
+</ol>
+<h2 id="补充信息"><a href="#补充信息" class="headerlink" title="补充信息"></a>补充信息</h2><h3 id="投稿数-amp-录取数"><a href="#投稿数-amp-录取数" class="headerlink" title="投稿数&amp;录取数"></a>投稿数&amp;录取数</h3><p>2014~2018年ACL、EMNLP、NAACL、COLING投稿数、接收数和接收率$^{[3]}$。</p>
+<p><img src="http://static.hijerry.cn/blog/20190318/O4dTXE8dOua1.png?imageslim" alt="mark"></p>
+<p>COLING没有短长论文之分，另外ACL2019据说已投稿2800+，有大约81%的增长，比较恐怖，这也说明NLP的大丰收年要来了。</p>
+<h3 id="截稿时间"><a href="#截稿时间" class="headerlink" title="截稿时间"></a>截稿时间</h3><p>（截止2019-03-18）</p>
+<p>尚可投稿的$^{[4]}​$：</p>
+<p><img src="http://static.hijerry.cn/blog/20190318/KKGmbHLT1xgX.png?imageslim" alt="mark"></p>
+<p>更多截稿时间可以参考 <a target="_blank" rel="noopener" href="https://jackietseng.github.io/conference_call_for_paper/conferences-with-ccf.html">2019-2020 International Conferences in Artificial Intelligence, Machine Learning, Computer Vision, Data Mining, Natural Language Processing and Robotics</a></p>
+<h2 id="参考引用"><a href="#参考引用" class="headerlink" title="参考引用"></a>参考引用</h2><p>[1] <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/35380020">刘知远, 如何不出国门走进NLP学术前沿</a>, 2019-03-18. </p>
+<p>[2] <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/266242639">NLP领域国际顶会（ACL&#x2F;EMNLP&#x2F;NAACLl等）的难度如何？</a>, 2019-03-18. </p>
+<p>[3] <a target="_blank" rel="noopener" href="https://aclweb.org/aclwiki/Conference_acceptance_rates">Conference acceptance rates</a>, 2019-03-18. </p>
+<p>[4] <a target="_blank" rel="noopener" href="http://cs.rochester.edu/~omidb/nlpcalendar">NLP Conferences Calendar</a>, 2019-03-18. </p>
+<p>[5] <a target="_blank" rel="noopener" href="https://sq.163yun.com/blog/article/217067991592660992">学界 | 一览 EMNLP 2018 开幕盛况：两千多篇论文投稿，参会人员翻倍</a>, 2019-03-18. </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hijerry.cn/p/13983.html" data-id="cl0e36fzx002losctc4yu24cd" data-title="NLP会议介绍" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NLP/" rel="tag">NLP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BA%E6%96%87/" rel="tag">论文</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-03/2019-CS224n-Assignment2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/p/54362.html" class="article-date">
+  <time class="dt-published" datetime="2019-03-12T12:11:03.000Z" itemprop="datePublished">2019-03-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%A0%94/">研</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/p/54362.html">2019-CS224n-Assignment2</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>这次复习cs224n主要是先熟悉python和pytorch，方便之后进行论文复现等工作，同时也回顾一下模型和数学公式推导，找找感觉。</p>
+<h2 id="解答：理解词向量（23分）"><a href="#解答：理解词向量（23分）" class="headerlink" title="解答：理解词向量（23分）"></a>解答：理解词向量（23分）</h2><p>我们先快速回顾一下word2vec算法，它的核心思想是“一个词的含义取决于它周围的词”。具体来说，我们有一个中心词（center word） <em>c</em>，和这个词 <em>c</em> 周围上下文构成的窗口，这个窗口内的除了 <em>c</em> 之外的词叫做外围词（outside words）。比如下图中，中心词是“banking”，窗口大小为2，所以上下文窗口是：“turning”、”into“、”crises“和”as“。</p>
+<p><img src="http://static.hijerry.cn/blog/20190313/CzDsTbsGrdyR.png?imageslim" alt="mark"></p>
+<p>Skip-gram模型（word2vec的一种实现）目的是习得概率分布 $ P(O|C) ​$。这样一来，就能计算给定的一个词 <em>o</em> 和词 <em>c</em> 的概率 $ P(O&#x3D;o|C&#x3D;c) ​$（意为，在已知词 <em>c</em> 出现的情况下，词 <em>o</em> 出现的概率）， <em>c</em> 是中心词，<em>o</em> 是外围词。</p>
+<p>在word2vec中，这个条件概率分布是通过计算向量点积（dot-products），再应用naive-softmax函数得到的：</p>
+<p><img src="http://static.hijerry.cn/blog/20190313/CL8SqrSXGCme.png?imageslim" alt="mark"></p>
+<p>这里， $u_o​$ 向量代表外围词，$v_c​$ 向量代表中心词。为了包含这些向量，我们有两个矩阵 $\boldsymbol{U}​$ 和 $\boldsymbol{V}​$ 。 $\boldsymbol{U}​$ 的列是外围词， $\boldsymbol{V}​$ 的列是中心词，这两矩阵都有所有词 $w \in Vocabulary ​$ 的表示 。</p>
+<p>对于词 <em>c</em> 和词 <em>o</em>，损失函数为对数几率：</p>
+<p><img src="http://static.hijerry.cn/blog/20190313/Bvhuvr920Pun.png?imageslim" alt="mark"></p>
+<p>可以从交叉熵的角度看这个损失函数。真实值为 $\boldsymbol{y}$ ，是一个独热向量，预测值 $\boldsymbol{\hat{y}}$ 是由公式(1)计算得到。具体来说， $\boldsymbol{y}$ 如果是第k个单词，那么它的第k维为1，其余维都是0，而 $\boldsymbol{\hat{y}}$ 的第k维表示这是第k个词的概率大小。</p>
+<h3 id="问题-a-3分"><a href="#问题-a-3分" class="headerlink" title="问题(a) (3分)"></a>问题(a) (3分)</h3><p>证明公式(2)给出的naive-softmax的损失函数，和 $\boldsymbol{y}$ 与 $\boldsymbol{\hat{y}}$ 的交叉熵损失函数是一样的，均如下所示（答案控制在一行）</p>
+<p><img src="http://static.hijerry.cn/blog/20190313/ly8VARWmQK8X.png?imageslim" alt="mark"></p>
+<p><strong>答：</strong></p>
+<p>因为除了 $o$ 之外的词都不在窗口内，所以只有词 $o​$ 对损失函数有贡献</p>
+<h3 id="问题-b-5分"><a href="#问题-b-5分" class="headerlink" title="问题(b) (5分)"></a>问题(b) (5分)</h3><p>计算损失函数 $\boldsymbol{J}_{naive-softmax}(v_c, o, \boldsymbol{U})$ 对中心词 $v_c$ 的偏导数，用 $\boldsymbol{y}$ ， $\boldsymbol{\hat{y}}$ 和 $\boldsymbol{U}$ 来表示。</p>
+<p><strong>答：</strong></p>
+<p>为了方便表述，对于该外围词 $o$ 我们设：</p>
+<p>$ x_o &#x3D; u_o^T v_c​$，$t_o &#x3D;exp(x_o)​$，$s_o&#x3D;\sum_{w \in Vocab} exp(x_w)​$ ，$\hat{y_o} &#x3D; g _o&#x3D;\frac{t_o}{s_o}​$ ，下面对 $x_o$ 求导</p>
+<p>∴ $J &#x3D; -log(\hat{y_o})&#x3D;-ln(g_o)​$ （这里的log蕴含意思是ln）</p>
+<p>∵ $t_o’&#x3D; t_o &#x3D; e^{x_o}​$，$s’ &#x3D; e^{x_o}​$</p>
+<p>∵ $g_o’ &#x3D;\frac{t_o’s_o -t_os’_o}{s_o^2} &#x3D; g_o (1-g_o)​$ </p>
+<p>∴ $\frac{\partial{J}}{\partial{x_o}} &#x3D; \frac{\partial{J}}{\partial{g_o}} · \frac{\partial{g_o}}{\partial{x_o}} &#x3D; \hat{y_o} - y_o $ </p>
+<p>则对 $v_c​$ 的导数为：</p>
+<p>$\frac{\partial{J}}{\partial{v_c}}&#x3D;\frac{\partial{J}}{\partial{x_o}} · \frac{\partial{x_o}}{\partial{v_c}} &#x3D; (\hat{y_o} - y_o)  · u^T​$，引入矩阵得： </p>
+<p>$\boldsymbol{J}_{native-softmax}&#x3D;(v_c, o, \boldsymbol{U}) &#x3D; (\hat{y} - y) · \boldsymbol{U} ​$</p>
+<h3 id="问题-c-5分"><a href="#问题-c-5分" class="headerlink" title="问题(c) (5分)"></a>问题(c) (5分)</h3><p>计算损失函数 $\boldsymbol{J}_{naive-softmax}(v_c, o, \boldsymbol{U})$ 对上下文窗口内的词 $w$ 的偏导数，考虑两种情况，即 <em>w</em> 是外围词 $o$，和 <em>w</em>  不是 $o$，用 $\boldsymbol{y}$ ， $\boldsymbol{\hat{y}}$ 和 $v_c​$ 来表示。</p>
+<p><strong>答：</strong></p>
+<p>在问题(b)基础上，对 $x_w&#x3D;u_w^Tv_c$ 求导。</p>
+<p>当 $w \not &#x3D;o​$ 时：</p>
+<p>则 $t_o’&#x3D;0​$，$s_o’&#x3D;e^{x_w}​$ </p>
+<p>故 $g_o’ &#x3D; \frac{0-t_os’_o}{s_o^2}&#x3D;- \frac{e^{x_o}}{s_o} · \frac{e^{x_w}}{s_o}&#x3D;-g_o ·g_w​$ </p>
+<p>当 $w &#x3D; o​$ 时，由问题(b)得：</p>
+<p> $g_o’&#x3D;g_o(1-g_o)$</p>
+<p>综合上述两种情况，所以有：</p>
+<p>$\frac{\partial{J}}{\partial{x_w}}&#x3D;-\sum_{i \in Vocab}y_i\frac{\partial log(g_i)}{\partial{x_w}}$</p>
+<p>$ &#x3D;  -y_w(1-g_w) + \sum_{i \not&#x3D;w}y_ig_w$</p>
+<p>$&#x3D; -y_w+g_w\sum_{i \in Vocab}y_i$</p>
+<p>$ &#x3D; g_w-y_w​$ </p>
+<p>∴ $\frac{\partial{J}}{\partial{u_w}} &#x3D; (\hat{y}-y)·v_c $</p>
+<h3 id="问题-d-3分"><a href="#问题-d-3分" class="headerlink" title="问题(d) (3分)"></a>问题(d) (3分)</h3><p>sigmoid函数如公式(4)所示</p>
+<p><img src="http://static.hijerry.cn/blog/20190314/DopKvBCsKtSl.png?imageslim" alt="mark"></p>
+<p>请计算出它对于 $\boldsymbol{x}​$ 的导数， $\boldsymbol{x}​$ 是一个向量</p>
+<p><strong>答：</strong></p>
+<p>$\sigma(x)’&#x3D;\sigma(x)(1-\sigma(x))$</p>
+<h3 id="问题-e-4分"><a href="#问题-e-4分" class="headerlink" title="问题(e) (4分)"></a>问题(e) (4分)</h3><p>现在我们考虑负采样的损失函数。假设有K个负样本，表示为 $w_1, w_2, …, w_K​$，它们对应的向量为 $u_1, u_2, …, u_K​$，外围词 $o \not\in {w_1, w_2, …, w_K}​$，则外围词 $o​$ 在中心词是 $c​$ 时产生的损失函数如公式(5)所示。</p>
+<p><img src="http://static.hijerry.cn/blog/20190314/H6Mepd0WSN8Q.png?imageslim" alt="mark"></p>
+<p>根据该损失函数，重新计算问题(b)、问题(c)的偏导数，用 $\boldsymbol{u}_o$、$\boldsymbol{v}_c$、$\boldsymbol{u}_k$ 来表示。</p>
+<p>完成计算后，简要解释为什么这个损失函数比naive-softmax效率更高。</p>
+<p>注意：你可以用问题(d)的答案来帮助你计算导数</p>
+<p><strong>答：</strong></p>
+<p>（略，详见代码）</p>
+<p>提示：</p>
+<ul>
+<li><p>词库从 $Vocab$ 变成了这K+1个词</p>
+</li>
+<li><p>在求内层导数的时候用了sigmoid函数</p>
+</li>
+</ul>
+<h3 id="问题-f-3分"><a href="#问题-f-3分" class="headerlink" title="问题(f) (3分)"></a>问题(f) (3分)</h3><p>假设中心词是 $c &#x3D; w_t$，上下文窗口是 $[w_{t-m}, …, w_{t-1}, w_t, w_{t+1}, …, w_{t+m}]$ ，$m$ 是窗口大小，回顾skip-gram的word2vec实现，在该窗口下的总损失函数是：</p>
+<p><img src="http://static.hijerry.cn/blog/20190314/s9CUJ1LJjrTg.png?imageslim" alt="mark"></p>
+<p>这里，$\boldsymbol{J}(\boldsymbol{v}<em>c, w</em>{t+j}, \boldsymbol{U})​$ 是外围词 $w_{t+j}​$ 在中心词 $c&#x3D;w_t​$ 下产生的损失，损失函数可以是naive-softmax或者是neg-sample（负采样），这取决于具体实现。</p>
+<p>计算：</p>
+<p>(i) 损失函数对 $\boldsymbol{U}$ 的偏导数</p>
+<p>(ii) 损失函数对 $\boldsymbol{v}_c​$ 的偏导数</p>
+<p>(iii) 损失函数对 $\boldsymbol{u}_w$ （$w \not&#x3D; c$ ）的偏导数</p>
+<p><strong>答：</strong></p>
+<p>（略，详见代码）</p>
+<p>提示：把上下文窗口所有词的损失加起来即可</p>
+<h2 id="代码：实现word2vec（20分）"><a href="#代码：实现word2vec（20分）" class="headerlink" title="代码：实现word2vec（20分）"></a>代码：实现word2vec（20分）</h2><p>点击 <a target="_blank" rel="noopener" href="http://web.stanford.edu/class/cs224n/assignments/a2.zip">此处</a> 下载代码，python版本  &gt;&#x3D; 3.5，需要安装numpy，你利用conda来配置环境：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda env create -f env.yml</span><br><span class="line">conda activate a2</span><br></pre></td></tr></table></figure>
+
+<p>写完代码后，运行：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda deactivate</span><br></pre></td></tr></table></figure>
+
+<h3 id="问题-a-12分"><a href="#问题-a-12分" class="headerlink" title="问题(a) (12分)"></a>问题(a) (12分)</h3><p>首先，实现 word2vec.py 里的 sigmoid函数，要支持向量输入。接着实现同一个文件里的 softmax 、负采样损失和导数。然后实现skip-gram的损失函数和导数。全部做完之后，运行python word2vec.py来检查是否正确。</p>
+<p><strong>答：</strong></p>
+<h4 id="sigmoid"><a href="#sigmoid" class="headerlink" title="sigmoid"></a>sigmoid</h4><p>没什么好讲的，numpy会自己广播，最终得到向量输出</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="number">1</span> / (<span class="number">1</span> + np.exp(-x))</span><br></pre></td></tr></table></figure>
+
+<h4 id="naiveSoftmaxLossAndGradient"><a href="#naiveSoftmaxLossAndGradient" class="headerlink" title="naiveSoftmaxLossAndGradient"></a>naiveSoftmaxLossAndGradient</h4><p>这个模型其实就是一个三层的前馈神经网络(<a href="/p/53364.html">详解</a>)，只需要注意维度即可，注释里已经标记出了维度。</p>
+<p>需要注意的是，单词表示是在行，而不是列。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># forward</span></span><br><span class="line">a, W, target = centerWordVec, outsideVectors, outsideWordIdx</span><br><span class="line">a = a.reshape((a.shape[<span class="number">0</span>], <span class="number">1</span>))</span><br><span class="line"><span class="comment"># assume N words, V dimentions, so</span></span><br><span class="line"><span class="comment"># a.shape == (V, 1) W.shape == (N, V)</span></span><br><span class="line"></span><br><span class="line">z = np.dot(W, a) <span class="comment"># (N, 1)</span></span><br><span class="line">preds = softmax(z.reshape(-<span class="number">1</span>)).reshape(-<span class="number">1</span>, <span class="number">1</span>) <span class="comment"># (N, 1)</span></span><br><span class="line"></span><br><span class="line">loss = -np.log(preds[target])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># backprop</span></span><br><span class="line">delta = preds.copy() <span class="comment"># (N, 1)</span></span><br><span class="line">delta[target] -= <span class="number">1.0</span></span><br><span class="line"></span><br><span class="line">gradCenterVec = np.dot(W.T, delta) <span class="comment"># (V, 1)</span></span><br><span class="line"></span><br><span class="line">gradOutsideVecs = np.dot(delta, a.T) <span class="comment"># (N, V)</span></span><br><span class="line"></span><br><span class="line">gradCenterVec = gradCenterVec.flatten() <span class="comment"># (V, )</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="negSamplingLossAndGradient"><a href="#negSamplingLossAndGradient" class="headerlink" title="negSamplingLossAndGradient"></a>negSamplingLossAndGradient</h4><p>与native-softmax不同的是：</p>
+<ul>
+<li>只选取K个非外围词(负样本，可能有重复词)，外加1个正确的外围词，共K+1个输出</li>
+<li>最后一层使用sigmoid输出，而不是softmax</li>
+</ul>
+<p>注意，反向传播得到的是这K+1个词的梯度，所以需要挨个更新到 <em>梯度矩阵</em> 中去</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### Please use your implementation of sigmoid in here.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># indices might have same index</span></span><br><span class="line"><span class="comment"># extract W</span></span><br><span class="line">W = np.zeros((<span class="built_in">len</span>(indices), outsideVectors.shape[<span class="number">1</span>]))</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(indices)):</span><br><span class="line">    W[i] = outsideVectors[indices[i]]</span><br><span class="line"></span><br><span class="line"><span class="comment"># forward</span></span><br><span class="line">a = centerWordVec</span><br><span class="line">a = a.reshape((a.shape[<span class="number">0</span>], <span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">z = np.dot(W, a) <span class="comment"># (K+1, 1)</span></span><br><span class="line">preds = sigmoid(z)</span><br><span class="line"></span><br><span class="line"><span class="comment"># backprop</span></span><br><span class="line">y = np.zeros((preds.shape[<span class="number">0</span>], <span class="number">1</span>))</span><br><span class="line">y[<span class="number">0</span>] = <span class="number">1</span> <span class="comment"># index 0 is target</span></span><br><span class="line"></span><br><span class="line">loss = -(y*np.log(preds) + (<span class="number">1</span> - y)*np.log(<span class="number">1</span> - preds)).<span class="built_in">sum</span>()</span><br><span class="line"></span><br><span class="line">delta = preds - y</span><br><span class="line">gradCenterVec = np.dot(W.T, delta) <span class="comment"># (V, 1)</span></span><br><span class="line">gradW = np.dot(delta, a.T) <span class="comment"># (K+1, V)</span></span><br><span class="line">gradCenterVec = gradCenterVec.flatten()</span><br><span class="line"></span><br><span class="line"><span class="comment"># apply gradW into gradOutsideVecs</span></span><br><span class="line">gradOutsideVecs = np.zeros_like(outsideVectors)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(indices)):</span><br><span class="line">    oi = indices[i]</span><br><span class="line">    gradOutsideVecs[oi] += gradW[i]</span><br></pre></td></tr></table></figure>
+
+<h4 id="skipgram"><a href="#skipgram" class="headerlink" title="skipgram"></a>skipgram</h4><p>遍历所有的外围词，求和损失函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ci = word2Ind[currentCenterWord]</span><br><span class="line">vc = centerWordVectors[ci]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> o <span class="keyword">in</span> outsideWords:</span><br><span class="line">    oi = word2Ind[o]</span><br><span class="line">    loss_, gradVc, gradUo = word2vecLossAndGradient(vc, oi, outsideVectors, dataset)</span><br><span class="line">    gradCenterVecs[ci] += gradVc</span><br><span class="line">    gradOutsideVectors += gradUo</span><br><span class="line">    loss += loss_</span><br></pre></td></tr></table></figure>
+
+<h3 id="问题-b-4分"><a href="#问题-b-4分" class="headerlink" title="问题(b) (4分)"></a>问题(b) (4分)</h3><p>完成sgd.py文件的SGD优化器，运行python sgd.py来检查是否正确。</p>
+<p><strong>答</strong>：</p>
+<h4 id="sgd"><a href="#sgd" class="headerlink" title="sgd"></a>sgd</h4><p>调用函数得到损失值和梯度，更新即可</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">loss, grad = f(x)</span><br><span class="line">x = x - step*grad</span><br></pre></td></tr></table></figure>
+
+<h3 id="问题-c-4分"><a href="#问题-c-4分" class="headerlink" title="问题(c) (4分)"></a>问题(c) (4分)</h3><p>至此所有的代码都写完了，接下来是下载数据集，这里我们使用Stanform Sentiment Treebank(SST)数据集，它可以用在简单的语义分析任务中去。通过运行 sh get_datasets.sh 可以获得该数据集，下载完成后运行 python run.py 即可。</p>
+<p>注意：训练的时间取决于代码是否高效（即便是高效的实现，也要跑接近一个小时）</p>
+<p>经过40,000次迭代后，最终结果会保存到 word_vectors.png 里。</p>
+<p><strong>答：</strong></p>
+<p><img src="http://static.hijerry.cn/blog/20190314/l2B3BfvAxJUe.png?imageslim" alt="mark"></p>
+<ul>
+<li><p>注意看，male-&gt;famale 和 king -&gt; queen 这两条向量是平行的</p>
+</li>
+<li><p>(women, famale)，(enjoyable,annoying) 这些词距离很近</p>
+</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>[1] CS224n: Natural Language Processing with Deep Learning, 2019-03-14. <a target="_blank" rel="noopener" href="http://web.stanford.edu/class/cs224n">http://web.stanford.edu/class/cs224n</a>.</p>
+<p>[2] CS224n Assignment 1, 2019-03-14. <a target="_blank" rel="noopener" href="http://www.hankcs.com/nlp/cs224n-assignment-1.html">http://www.hankcs.com/nlp/cs224n-assignment-1.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hijerry.cn/p/54362.html" data-id="cl0e36fzv002bosctbnis3b6m" data-title="2019-CS224n-Assignment2" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NLP/" rel="tag">NLP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/word2vec/" rel="tag">word2vec</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-03/2019-CS224-Assignment1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/p/54554.html" class="article-date">
+  <time class="dt-published" datetime="2019-03-12T03:14:07.000Z" itemprop="datePublished">2019-03-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%A0%94/">研</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/p/54554.html">2019-CS224n-Assignment1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>去年冬季学习了cs224n的2017课程，做了三个assignments，用的是TensorFlow。今年cs224n再次放课，一共有5个assignments，使用PyTorch，主讲还是Manning，特别喜欢这个老师，讲课生动有趣还挺可爱的哈哈哈~~</p>
+<p><a target="_blank" rel="noopener" href="http://web.stanford.edu/class/cs224n/assignments/a1.zip">Assignment1</a>(点击下载) 的任务是探索词向量。以基于计数的共现矩阵和基于预测的word2vec两种方式，计算词的相似度，研究近义词、反义词等等性质，从代码层面来理解它们，有更深刻的记忆。</p>
+<p>作业是ipynb文件，所以要用jupyter打开，可以参考chaibubble的<a target="_blank" rel="noopener" href="https://blog.csdn.net/chaipp0607/article/details/72823524">如何打开ipynb文件</a>。</p>
+<p>注意：python版本 &gt;&#x3D; 3.5</p>
+<h2 id="词向量"><a href="#词向量" class="headerlink" title="词向量"></a>词向量</h2><p>词向量是下游NLP任务(如问答、文本生成、翻译等) 的基本组件，词向量的好坏能在很大程度上影响下游任务的性能。这里我们将探索两类词向量：<em>共现矩阵</em> 和 <em>word2vec</em> 。</p>
+<p><strong>术语解释：</strong> “word vectors” 和 “word embeddings” 通常可以互换使用。”embedding” 这个词的内在含义是将词编码到一个底维空间中。”概念上而言，它是指把一个维数为所有词的数量的高维空间嵌入到一个维数低得多的连续向量空间中，每个单词或词组被映射为实数域上的向量。”——<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%AF%8D%E5%B5%8C%E5%85%A5">维基百科</a></p>
+<h2 id="Part-1：基于计数的词向量"><a href="#Part-1：基于计数的词向量" class="headerlink" title="Part 1：基于计数的词向量"></a>Part 1：基于计数的词向量</h2><p>大多数词向量模型都是基于一个观点：</p>
+<p><strong>You shall know a word by the company it keeps (<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/John_Rupert_Firth">Firth, J. R. 1957:11</a>)</strong></p>
+<p>大多数词向量的实现的核心是 <em>相似词</em> ，也就是同义词，因为它们有相似的上下文。这里我们介绍一种策略叫做 <em>共现矩阵</em> (更多信息可以查看 <a target="_blank" rel="noopener" href="http://web.stanford.edu/class/cs124/lec/vectorsemantics.video.pdf">这里</a> 或 <a target="_blank" rel="noopener" href="https://medium.com/data-science-group-iitr/word-embedding-2d05d270b285">这里</a> )</p>
+<p>这部分要实现的是，给定语料库，根据共现矩阵计算词向量，得到语料库中每个词的词向量，流程如下：</p>
+<ul>
+<li>计算语料库的单词集</li>
+<li>计算共现矩阵</li>
+<li>使用SVD降维</li>
+<li>分析词向量</li>
+</ul>
+<h3 id="问题1-1：实现-dicintct-words"><a href="#问题1-1：实现-dicintct-words" class="headerlink" title="问题1.1：实现 dicintct_words"></a>问题1.1：实现 dicintct_words</h3><p>计算语料库的单词数量、单词集</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">distinct_words</span>(<span class="params">corpus</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot; Determine a list of distinct words for the corpus.</span></span><br><span class="line"><span class="string">        Params:</span></span><br><span class="line"><span class="string">            corpus (list of list of strings): corpus of documents</span></span><br><span class="line"><span class="string">        Return:</span></span><br><span class="line"><span class="string">            corpus_words (list of strings): list of distinct words across the corpus, sorted (using python &#x27;sorted&#x27; function)</span></span><br><span class="line"><span class="string">            num_corpus_words (integer): number of distinct words across the corpus</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    corpus_words = []</span><br><span class="line">    num_corpus_words = -<span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># ------------------</span></span><br><span class="line">    <span class="comment"># Write your implementation here.</span></span><br><span class="line">    corpus = [w <span class="keyword">for</span> sent <span class="keyword">in</span> corpus <span class="keyword">for</span> w <span class="keyword">in</span> sent]</span><br><span class="line">    corpus_words = <span class="built_in">list</span>(<span class="built_in">set</span>(corpus))</span><br><span class="line">    corpus_words = <span class="built_in">sorted</span>(corpus_words)</span><br><span class="line">    num_corpus_words = <span class="built_in">len</span>(corpus_words)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># ------------------</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> corpus_words, num_corpus_words</span><br></pre></td></tr></table></figure>
+
+<h3 id="问题1-2：实现compute-co-occurrence-matrix"><a href="#问题1-2：实现compute-co-occurrence-matrix" class="headerlink" title="问题1.2：实现compute_co_occurrence_matrix"></a>问题1.2：实现compute_co_occurrence_matrix</h3><p>计算给定语料库的共现矩阵。具体来说，对于每一个词 <code>w</code>，统计前、后方 <code>window_size</code> 个词的出现次数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">compute_co_occurrence_matrix</span>(<span class="params">corpus, window_size=<span class="number">4</span></span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot; Compute co-occurrence matrix for the given corpus and window_size (default of 4).</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">        Note: Each word in a document should be at the center of a window. Words near edges will have a smaller</span></span><br><span class="line"><span class="string">              number of co-occurring words.</span></span><br><span class="line"><span class="string">              </span></span><br><span class="line"><span class="string">              For example, if we take the document &quot;START All that glitters is not gold END&quot; with window size of 4,</span></span><br><span class="line"><span class="string">              &quot;All&quot; will co-occur with &quot;START&quot;, &quot;that&quot;, &quot;glitters&quot;, &quot;is&quot;, and &quot;not&quot;.</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">        Params:</span></span><br><span class="line"><span class="string">            corpus (list of list of strings): corpus of documents</span></span><br><span class="line"><span class="string">            window_size (int): size of context window</span></span><br><span class="line"><span class="string">        Return:</span></span><br><span class="line"><span class="string">            M (numpy matrix of shape (number of corpus words, number of corpus words)): </span></span><br><span class="line"><span class="string">                Co-occurence matrix of word counts. </span></span><br><span class="line"><span class="string">                The ordering of the words in the rows/columns should be the same as the ordering of the words given by the distinct_words function.</span></span><br><span class="line"><span class="string">            word2Ind (dict): dictionary that maps word to index (i.e. row/column number) for matrix M.</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    words, num_words = distinct_words(corpus)</span><br><span class="line">    M = <span class="literal">None</span></span><br><span class="line">    word2Ind = &#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># ------------------</span></span><br><span class="line">    <span class="comment"># Write your implementation here.</span></span><br><span class="line">    M = np.zeros(shape=(num_words, num_words), dtype=np.int32)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(num_words):</span><br><span class="line">        word2Ind[words[i]] = i</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> sent <span class="keyword">in</span> corpus:</span><br><span class="line">        <span class="keyword">for</span> p <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(sent)):</span><br><span class="line">            ci = word2Ind[sent[p]]</span><br><span class="line">            </span><br><span class="line">            <span class="comment"># preceding</span></span><br><span class="line">            <span class="keyword">for</span> w <span class="keyword">in</span> sent[<span class="built_in">max</span>(<span class="number">0</span>, p - window_size):p]:</span><br><span class="line">                wi = word2Ind[w]</span><br><span class="line">                M[ci][wi] += <span class="number">1</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment"># subsequent</span></span><br><span class="line">            <span class="keyword">for</span> w <span class="keyword">in</span> sent[p + <span class="number">1</span>:p + <span class="number">1</span> + window_size]:</span><br><span class="line">                wi = word2Ind[w]</span><br><span class="line">                M[ci][wi] += <span class="number">1</span></span><br><span class="line">            </span><br><span class="line">    <span class="comment"># ------------------</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> M, word2Ind</span><br></pre></td></tr></table></figure>
+
+<h3 id="问题1-3：实现-reduce-to-k-dim"><a href="#问题1-3：实现-reduce-to-k-dim" class="headerlink" title="问题1.3：实现 reduce_to_k_dim"></a>问题1.3：实现 reduce_to_k_dim</h3><p>这一步是降维。在问题1.2得到的是一个N x N的矩阵（N是单词集的大小），使用scikit-learn实现的SVD（奇异值分解），从这个大矩阵里分解出一个含k个特制的N x k 小矩阵。</p>
+<p><strong>注意</strong>：在numpy、scipy和scikit-learn都提供了一些SVD的实现，但是只有scipy、sklearn有Truncated SVD，并且只有sklearn提供了计算大规模SVD的高效的randomized算法，详情参考<a target="_blank" rel="noopener" href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.TruncatedSVD.html">sklearn.decomposition.TruncatedSVD</a> 。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">reduce_to_k_dim</span>(<span class="params">M, k=<span class="number">2</span></span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot; Reduce a co-occurence count matrix of dimensionality (num_corpus_words, num_corpus_words)</span></span><br><span class="line"><span class="string">        to a matrix of dimensionality (num_corpus_words, k) using the following SVD function from Scikit-Learn:</span></span><br><span class="line"><span class="string">            - http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.TruncatedSVD.html</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">        Params:</span></span><br><span class="line"><span class="string">            M (numpy matrix of shape (number of corpus words, number of corpus words)): co-occurence matrix of word counts</span></span><br><span class="line"><span class="string">            k (int): embedding size of each word after dimension reduction</span></span><br><span class="line"><span class="string">        Return:</span></span><br><span class="line"><span class="string">            M_reduced (numpy matrix of shape (number of corpus words, k)): matrix of k-dimensioal word embeddings.</span></span><br><span class="line"><span class="string">                    In terms of the SVD from math class, this actually returns U * S</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span>    </span><br><span class="line">    n_iters = <span class="number">10</span>     <span class="comment"># Use this parameter in your call to `TruncatedSVD`</span></span><br><span class="line">    M_reduced = <span class="literal">None</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Running Truncated SVD over %i words...&quot;</span> % (M.shape[<span class="number">0</span>]))</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># ------------------</span></span><br><span class="line">    <span class="comment"># Write your implementation here.</span></span><br><span class="line">    svd = TruncatedSVD(n_components=k)</span><br><span class="line">    svd.fit(M.T)</span><br><span class="line">    M_reduced = svd.components_.T</span><br><span class="line"></span><br><span class="line">    <span class="comment"># ------------------</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Done.&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> M_reduced</span><br></pre></td></tr></table></figure>
+
+<h3 id="问题1-4-实现-plot-embeddings"><a href="#问题1-4-实现-plot-embeddings" class="headerlink" title="问题1.4 实现 plot_embeddings"></a>问题1.4 实现 plot_embeddings</h3><p>基于matplotlib，用<code>scatter</code> 画 “×”，用 <code>text</code> 写字</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">plot_embeddings</span>(<span class="params">M_reduced, word2Ind, words</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot; Plot in a scatterplot the embeddings of the words specified in the list &quot;words&quot;.</span></span><br><span class="line"><span class="string">        NOTE: do not plot all the words listed in M_reduced / word2Ind.</span></span><br><span class="line"><span class="string">        Include a label next to each point.</span></span><br><span class="line"><span class="string">        </span></span><br><span class="line"><span class="string">        Params:</span></span><br><span class="line"><span class="string">            M_reduced (numpy matrix of shape (number of unique words in the corpus , k)): matrix of k-dimensioal word embeddings</span></span><br><span class="line"><span class="string">            word2Ind (dict): dictionary that maps word to indices for matrix M</span></span><br><span class="line"><span class="string">            words (list of strings): words whose embeddings we want to visualize</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># ------------------</span></span><br><span class="line">    <span class="comment"># Write your implementation here.</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> w <span class="keyword">in</span> words:</span><br><span class="line">        x = M_reduced[word2Ind[w]][<span class="number">0</span>]</span><br><span class="line">        y = M_reduced[word2Ind[w]][<span class="number">1</span>]</span><br><span class="line">        plt.scatter(x, y, marker=<span class="string">&#x27;x&#x27;</span>)</span><br><span class="line">        plt.text(x, y, w)</span><br><span class="line"></span><br><span class="line">    plt.show()</span><br><span class="line">    <span class="comment"># ------------------</span></span><br></pre></td></tr></table></figure>
+
+<p>效果：</p>
+<p><img src="http://static.hijerry.cn/blog/20190311/ylKtrBd1tvDh.png?imageslim" alt="mark"></p>
+<h3 id="问题1-5：共现打印分析"><a href="#问题1-5：共现打印分析" class="headerlink" title="问题1.5：共现打印分析"></a>问题1.5：共现打印分析</h3><p>将词嵌入到2个维度上，归一化，最终词向量会落到一个单位圆内，在坐标系上寻找相近的词。</p>
+<p><img src="http://static.hijerry.cn/blog/20190312/2SkM4UMa1taV.png?imageslim" alt="mark"></p>
+<h2 id="Part-2：基于预测的词向量"><a href="#Part-2：基于预测的词向量" class="headerlink" title="Part 2：基于预测的词向量"></a>Part 2：基于预测的词向量</h2><p>目前，基于预测的词向量是最流行的，比如word2vec。现在我们来探索word2vec生成的词向量，如果想要深入了解，可以读一读 <a target="_blank" rel="noopener" href="https://papers.nips.cc/paper/5021-distributed-representations-of-words-and-phrases-and-their-compositionality.pdf">原始论文</a> 。</p>
+<p>这一部分主要是使用gensim探索词向量，不是自己实现word2vec，所使用的词向量维度是300，由google发布。</p>
+<p>首先使用SVD降维，将300维降2维，方便打印查看。</p>
+<h3 id="问题2-1：word2vec打印分析"><a href="#问题2-1：word2vec打印分析" class="headerlink" title="问题2.1：word2vec打印分析"></a>问题2.1：word2vec打印分析</h3><p>和问题1.5一样</p>
+<h3 id="问题2-2：一词多义"><a href="#问题2-2：一词多义" class="headerlink" title="问题2.2：一词多义"></a>问题2.2：一词多义</h3><p>找到一个有多个含义的词（比如 “leaves”，”scoop”），这种词的top-10相似词（根据余弦相似度）里有两个词的意思不一样。比如”leaves”（叶子，花瓣）的top-10词里有”vanishes”（消失）和”stalks”（茎秆）。</p>
+<p>这里我找到的词是”column”（列），它的top-10里有”columnist”（专栏作家）和”article”（文章）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ------------------</span></span><br><span class="line"><span class="comment"># Write your polysemous word exploration code here.</span></span><br><span class="line"></span><br><span class="line">wv_from_bin.most_similar(<span class="string">&quot;column&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># ------------------</span></span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[(<span class="string">&#x27;columns&#x27;</span>, <span class="number">0.767943263053894</span>),</span><br><span class="line"> (<span class="string">&#x27;columnist&#x27;</span>, <span class="number">0.6541407108306885</span>),</span><br><span class="line"> (<span class="string">&#x27;article&#x27;</span>, <span class="number">0.651928186416626</span>),</span><br><span class="line"> (<span class="string">&#x27;columnists&#x27;</span>, <span class="number">0.617466926574707</span>),</span><br><span class="line"> (<span class="string">&#x27;syndicated_column&#x27;</span>, <span class="number">0.599014401435852</span>),</span><br><span class="line"> (<span class="string">&#x27;op_ed&#x27;</span>, <span class="number">0.588202714920044</span>),</span><br><span class="line"> (<span class="string">&#x27;Op_Ed&#x27;</span>, <span class="number">0.5801560282707214</span>),</span><br><span class="line"> (<span class="string">&#x27;op_ed_column&#x27;</span>, <span class="number">0.5779396891593933</span>),</span><br><span class="line"> (<span class="string">&#x27;nationally_syndicated_column&#x27;</span>, <span class="number">0.572504997253418</span>),</span><br><span class="line"> (<span class="string">&#x27;colum&#x27;</span>, <span class="number">0.5595961213111877</span>)]</span><br></pre></td></tr></table></figure>
+
+<h3 id="问题2-3：近义词和反义词"><a href="#问题2-3：近义词和反义词" class="headerlink" title="问题2.3：近义词和反义词"></a>问题2.3：近义词和反义词</h3><p>找到三个词(w1, w2, w3)，其中w1和w2是近义词，w1和w3是反义词，但是w1和w3的距离&lt;w1和w2的距离。例如：w1&#x3D;”happy”，w2&#x3D;”cheerful”，w3&#x3D;”sad”</p>
+<p>为什么反义词的相似度反而更大呢（距离越小说明越相似）？因为他们的上下文通常非常一致</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ------------------</span></span><br><span class="line"><span class="comment"># Write your synonym &amp; antonym exploration code here.</span></span><br><span class="line"></span><br><span class="line">w1 = <span class="string">&quot;love&quot;</span></span><br><span class="line">w2 = <span class="string">&quot;like&quot;</span></span><br><span class="line">w3 = <span class="string">&quot;hate&quot;</span></span><br><span class="line">w1_w2_dist = wv_from_bin.distance(w1, w2)</span><br><span class="line">w1_w3_dist = wv_from_bin.distance(w1, w3)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Synonyms &#123;&#125;, &#123;&#125; have cosine distance: &#123;&#125;&quot;</span>.<span class="built_in">format</span>(w1, w2, w1_w2_dist))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Antonyms &#123;&#125;, &#123;&#125; have cosine distance: &#123;&#125;&quot;</span>.<span class="built_in">format</span>(w1, w3, w1_w3_dist))</span><br><span class="line"></span><br><span class="line"><span class="comment"># ------------------</span></span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Synonyms love, like have cosine distance: <span class="number">0.6328612565994263</span></span><br><span class="line">Antonyms love, hate have cosine distance: <span class="number">0.39960432052612305</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="问题2-4：类比"><a href="#问题2-4：类比" class="headerlink" title="问题2.4：类比"></a>问题2.4：类比</h3><p>man 对于 king，相当于woman对于___，这样的问题也可以用word2vec来解决，关于most_similar的详细用法可以参考 <a target="_blank" rel="noopener" href="https://radimrehurek.com/gensim/models/keyedvectors.html#gensim.models.keyedvectors.FastTextKeyedVectors.most_similar">GenSim文档</a>。</p>
+<p>这里我们找另外一组类比</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ------------------</span></span><br><span class="line"><span class="comment"># Write your analogy exploration code here.</span></span><br><span class="line"><span class="comment"># man : him :: woman : her</span></span><br><span class="line">pprint.pprint(wv_from_bin.most_similar(positive=[<span class="string">&#x27;woman&#x27;</span>, <span class="string">&#x27;him&#x27;</span>], negative=[<span class="string">&#x27;man&#x27;</span>]))</span><br><span class="line"></span><br><span class="line"><span class="comment"># ------------------</span></span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[(<span class="string">&#x27;her&#x27;</span>, <span class="number">0.694490909576416</span>),</span><br><span class="line"> (<span class="string">&#x27;she&#x27;</span>, <span class="number">0.6385233402252197</span>),</span><br><span class="line"> (<span class="string">&#x27;me&#x27;</span>, <span class="number">0.628451406955719</span>),</span><br><span class="line"> (<span class="string">&#x27;herself&#x27;</span>, <span class="number">0.6239798665046692</span>),</span><br><span class="line"> (<span class="string">&#x27;them&#x27;</span>, <span class="number">0.5843966007232666</span>),</span><br><span class="line"> (<span class="string">&#x27;She&#x27;</span>, <span class="number">0.5237804651260376</span>),</span><br><span class="line"> (<span class="string">&#x27;myself&#x27;</span>, <span class="number">0.4885627031326294</span>),</span><br><span class="line"> (<span class="string">&#x27;saidshe&#x27;</span>, <span class="number">0.48337966203689575</span>),</span><br><span class="line"> (<span class="string">&#x27;he&#x27;</span>, <span class="number">0.48184287548065186</span>),</span><br><span class="line"> (<span class="string">&#x27;Gail_Quets&#x27;</span>, <span class="number">0.4784894585609436</span>)]</span><br></pre></td></tr></table></figure>
+
+<p>可以看到正确的计算出了”queen”</p>
+<h3 id="问题2-5：错误的类比"><a href="#问题2-5：错误的类比" class="headerlink" title="问题2.5：错误的类比"></a>问题2.5：错误的类比</h3><p>找到一个错误的类比，树：树叶 ：：花：花瓣</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ------------------</span></span><br><span class="line"><span class="comment"># Write your incorrect analogy exploration code here.</span></span><br><span class="line"><span class="comment"># tree : leaf :: flower : petal</span></span><br><span class="line">pprint.pprint(wv_from_bin.most_similar(positive=[<span class="string">&#x27;leaf&#x27;</span>, <span class="string">&#x27;flower&#x27;</span>], negative=[<span class="string">&#x27;tree&#x27;</span>]))</span><br><span class="line"></span><br><span class="line"><span class="comment"># ------------------</span></span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[(<span class="string">&#x27;floral&#x27;</span>, <span class="number">0.5532568693161011</span>),</span><br><span class="line"> (<span class="string">&#x27;marigold&#x27;</span>, <span class="number">0.5291938185691833</span>),</span><br><span class="line"> (<span class="string">&#x27;tulip&#x27;</span>, <span class="number">0.521312952041626</span>),</span><br><span class="line"> (<span class="string">&#x27;rooted_cuttings&#x27;</span>, <span class="number">0.5189826488494873</span>),</span><br><span class="line"> (<span class="string">&#x27;variegation&#x27;</span>, <span class="number">0.5136324763298035</span>),</span><br><span class="line"> (<span class="string">&#x27;Asiatic_lilies&#x27;</span>, <span class="number">0.5132641792297363</span>),</span><br><span class="line"> (<span class="string">&#x27;gerberas&#x27;</span>, <span class="number">0.5106234550476074</span>),</span><br><span class="line"> (<span class="string">&#x27;gerbera_daisies&#x27;</span>, <span class="number">0.5101010203361511</span>),</span><br><span class="line"> (<span class="string">&#x27;Verbena_bonariensis&#x27;</span>, <span class="number">0.5070016980171204</span>),</span><br><span class="line"> (<span class="string">&#x27;violet&#x27;</span>, <span class="number">0.5058108568191528</span>)]</span><br></pre></td></tr></table></figure>
+
+<p>结果输出的里面没有“花瓣”</p>
+<h3 id="问题2-6：偏见分析"><a href="#问题2-6：偏见分析" class="headerlink" title="问题2.6：偏见分析"></a>问题2.6：偏见分析</h3><p>注意偏见是很重要的比如性别歧视、种族歧视等，执行下面代码，分析两个问题：</p>
+<p>(a) 哪个词与“woman”和“boss”最相似，和“man”最不相似?</p>
+<p>(b) 哪个词与“man”和“boss”最相似，和“woman”最不相似?</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Run this cell</span></span><br><span class="line"><span class="comment"># Here `positive` indicates the list of words to be similar to and `negative` indicates the list of words to be</span></span><br><span class="line"><span class="comment"># most dissimilar from.</span></span><br><span class="line">pprint.pprint(wv_from_bin.most_similar(positive=[<span class="string">&#x27;woman&#x27;</span>, <span class="string">&#x27;boss&#x27;</span>], negative=[<span class="string">&#x27;man&#x27;</span>]))</span><br><span class="line"><span class="built_in">print</span>()</span><br><span class="line">pprint.pprint(wv_from_bin.most_similar(positive=[<span class="string">&#x27;man&#x27;</span>, <span class="string">&#x27;boss&#x27;</span>], negative=[<span class="string">&#x27;woman&#x27;</span>]))</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">[(<span class="string">&#x27;bosses&#x27;</span>, <span class="number">0.5522644519805908</span>),</span><br><span class="line"> (<span class="string">&#x27;manageress&#x27;</span>, <span class="number">0.49151360988616943</span>),</span><br><span class="line"> (<span class="string">&#x27;exec&#x27;</span>, <span class="number">0.45940813422203064</span>),</span><br><span class="line"> (<span class="string">&#x27;Manageress&#x27;</span>, <span class="number">0.45598435401916504</span>),</span><br><span class="line"> (<span class="string">&#x27;receptionist&#x27;</span>, <span class="number">0.4474116563796997</span>),</span><br><span class="line"> (<span class="string">&#x27;Jane_Danson&#x27;</span>, <span class="number">0.44480544328689575</span>),</span><br><span class="line"> (<span class="string">&#x27;Fiz_Jennie_McAlpine&#x27;</span>, <span class="number">0.44275766611099243</span>),</span><br><span class="line"> (<span class="string">&#x27;Coronation_Street_actress&#x27;</span>, <span class="number">0.44275566935539246</span>),</span><br><span class="line"> (<span class="string">&#x27;supremo&#x27;</span>, <span class="number">0.4409853219985962</span>),</span><br><span class="line"> (<span class="string">&#x27;coworker&#x27;</span>, <span class="number">0.43986251950263977</span>)]</span><br><span class="line"></span><br><span class="line">[(<span class="string">&#x27;supremo&#x27;</span>, <span class="number">0.6097398400306702</span>),</span><br><span class="line"> (<span class="string">&#x27;MOTHERWELL_boss&#x27;</span>, <span class="number">0.5489562153816223</span>),</span><br><span class="line"> (<span class="string">&#x27;CARETAKER_boss&#x27;</span>, <span class="number">0.5375303626060486</span>),</span><br><span class="line"> (<span class="string">&#x27;Bully_Wee_boss&#x27;</span>, <span class="number">0.5333974361419678</span>),</span><br><span class="line"> (<span class="string">&#x27;YEOVIL_Town_boss&#x27;</span>, <span class="number">0.5321705341339111</span>),</span><br><span class="line"> (<span class="string">&#x27;head_honcho&#x27;</span>, <span class="number">0.5281980037689209</span>),</span><br><span class="line"> (<span class="string">&#x27;manager_Stan_Ternent&#x27;</span>, <span class="number">0.525971531867981</span>),</span><br><span class="line"> (<span class="string">&#x27;Viv_Busby&#x27;</span>, <span class="number">0.5256162881851196</span>),</span><br><span class="line"> (<span class="string">&#x27;striker_Gabby_Agbonlahor&#x27;</span>, <span class="number">0.5250812768936157</span>),</span><br><span class="line"> (<span class="string">&#x27;BARNSLEY_boss&#x27;</span>, <span class="number">0.5238943099975586</span>)]</span><br></pre></td></tr></table></figure>
+
+<p>第一个类比 男人:女人 :: 老板:___，最合适的词应该是”landlady”（老板娘）之类的，但是top-10里只有”manageress”（女经理），”receptionist”（接待员）之类的词。</p>
+<p>第二个类比 女人:男人 :: 老板:___，输出的不知道是些什么东西&#x2F;捂脸</p>
+<h3 id="问题2-7：自行分析偏见"><a href="#问题2-7：自行分析偏见" class="headerlink" title="问题2.7：自行分析偏见"></a>问题2.7：自行分析偏见</h3><p>这里我找的例子是：</p>
+<ul>
+<li>男人:女人 :: 医生:___</li>
+<li>女人:男人 :: 医生:___</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ------------------</span></span><br><span class="line"><span class="comment"># Write your bias exploration code here.</span></span><br><span class="line"></span><br><span class="line">pprint.pprint(wv_from_bin.most_similar(positive=[<span class="string">&#x27;woman&#x27;</span>, <span class="string">&#x27;doctor&#x27;</span>], negative=[<span class="string">&#x27;man&#x27;</span>]))</span><br><span class="line"><span class="built_in">print</span>()</span><br><span class="line">pprint.pprint(wv_from_bin.most_similar(positive=[<span class="string">&#x27;man&#x27;</span>, <span class="string">&#x27;doctor&#x27;</span>], negative=[<span class="string">&#x27;woman&#x27;</span>]))</span><br><span class="line"></span><br><span class="line"><span class="comment"># ------------------</span></span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">[(<span class="string">&#x27;gynecologist&#x27;</span>, <span class="number">0.7093892097473145</span>),</span><br><span class="line"> (<span class="string">&#x27;nurse&#x27;</span>, <span class="number">0.647728681564331</span>),</span><br><span class="line"> (<span class="string">&#x27;doctors&#x27;</span>, <span class="number">0.6471461057662964</span>),</span><br><span class="line"> (<span class="string">&#x27;physician&#x27;</span>, <span class="number">0.64389967918396</span>),</span><br><span class="line"> (<span class="string">&#x27;pediatrician&#x27;</span>, <span class="number">0.6249487996101379</span>),</span><br><span class="line"> (<span class="string">&#x27;nurse_practitioner&#x27;</span>, <span class="number">0.6218312978744507</span>),</span><br><span class="line"> (<span class="string">&#x27;obstetrician&#x27;</span>, <span class="number">0.6072014570236206</span>),</span><br><span class="line"> (<span class="string">&#x27;ob_gyn&#x27;</span>, <span class="number">0.5986712574958801</span>),</span><br><span class="line"> (<span class="string">&#x27;midwife&#x27;</span>, <span class="number">0.5927063226699829</span>),</span><br><span class="line"> (<span class="string">&#x27;dermatologist&#x27;</span>, <span class="number">0.5739566683769226</span>)]</span><br><span class="line"></span><br><span class="line">[(<span class="string">&#x27;physician&#x27;</span>, <span class="number">0.6463665962219238</span>),</span><br><span class="line"> (<span class="string">&#x27;doctors&#x27;</span>, <span class="number">0.5858404040336609</span>),</span><br><span class="line"> (<span class="string">&#x27;surgeon&#x27;</span>, <span class="number">0.5723941326141357</span>),</span><br><span class="line"> (<span class="string">&#x27;dentist&#x27;</span>, <span class="number">0.552364706993103</span>),</span><br><span class="line"> (<span class="string">&#x27;cardiologist&#x27;</span>, <span class="number">0.5413815975189209</span>),</span><br><span class="line"> (<span class="string">&#x27;neurologist&#x27;</span>, <span class="number">0.5271126627922058</span>),</span><br><span class="line"> (<span class="string">&#x27;neurosurgeon&#x27;</span>, <span class="number">0.5249835848808289</span>),</span><br><span class="line"> (<span class="string">&#x27;urologist&#x27;</span>, <span class="number">0.5247740149497986</span>),</span><br><span class="line"> (<span class="string">&#x27;Doctor&#x27;</span>, <span class="number">0.5240625143051147</span>),</span><br><span class="line"> (<span class="string">&#x27;internist&#x27;</span>, <span class="number">0.5183224081993103</span>)]</span><br></pre></td></tr></table></figure>
+
+<p>第一个类比中，我们看到了”nurse”（护士），这是一个有偏见的类比</p>
+<h3 id="问题2-8：思考偏见问题"><a href="#问题2-8：思考偏见问题" class="headerlink" title="问题2.8：思考偏见问题"></a>问题2.8：思考偏见问题</h3><p>什么会导致词向量里的偏见？</p>
+<p>因为数据集中有偏见</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>[1] CS224n: Natural Language Processing with Deep Learning, 2019-03-12. <a target="_blank" rel="noopener" href="http://web.stanford.edu/class/cs224n">http://web.stanford.edu/class/cs224n</a>.</p>
+<p>[2] 计算机系统里的偏见和歧视:除了杀死,还有其他方法, 2019-03-12. <a target="_blank" rel="noopener" href="http://www.sohu.com/a/108071041_114877">http://www.sohu.com/a/108071041_114877</a>.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hijerry.cn/p/54554.html" data-id="cl0e36fzu0028osctg6kh1ce6" data-title="2019-CS224n-Assignment1" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NLP/" rel="tag">NLP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Stanford/" rel="tag">Stanford</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-11/不使用root权限安装zsh和oh-my-zsh" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/p/37831.html" class="article-date">
+  <time class="dt-published" datetime="2018-11-13T10:55:13.000Z" itemprop="datePublished">2018-11-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%BD%AF%E4%BB%B6%E6%8A%80%E6%9C%AF/">软件技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/p/37831.html">不使用root权限安装zsh和oh-my-zsh</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>今天刚申请了一个服务器账号，登上去发现没有zsh。</p>
+<p>因为没有root权限，也就无法使用apt-get命令了。</p>
+<p>解决思路如下：</p>
+<ol>
+<li>编译、安装zsh到家目录 （<code>make</code> 时可能找不到 <code>autoconf</code> ）</li>
+<li>把安装好的zsh所在的目录添加到 <code>PATH</code> 环境变量中</li>
+<li>登录后自动切换到 <code>zsh</code> </li>
+<li>安装oh-my-zsh （不需要root）</li>
+</ol>
+<p>下面是详细过程和遇到的问题及解决方法</p>
+<h2 id="安装zsh"><a href="#安装zsh" class="headerlink" title="安装zsh"></a>安装zsh</h2><p>官方文档：<a target="_blank" rel="noopener" href="http://zsh.sourceforge.net/FAQ/zshfaq01.html">http://zsh.sourceforge.net/FAQ/zshfaq01.html</a></p>
+<p>下载源码：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O zsh.tar.xz https://sourceforge.net/projects/zsh/files/latest/download</span><br></pre></td></tr></table></figure>
+
+<p>解压：（注意，下载下来的文件是xz格式的）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">xz -d zsh.tar.xz # 会把xz文件解压成tar文件</span><br><span class="line">mkdir zsh        # 建立目录用来保存zsh源码</span><br><span class="line">tar -xvf zsh.tar -C zsh --strip-components 1 # 解压tar文件到zsh目录</span><br></pre></td></tr></table></figure>
+
+<p>编译：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=$HOME  #表示安装到家目录</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<p>如果遇到找不到 <code>autoconf</code> 的错误，则需要手动安装。</p>
+<p>编译、安装autoconf到家目录：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">wget http://ftp.gnu.org/gnu/autoconf/autoconf-latest.tar.gz</span><br><span class="line">mkdir autoconf-soruce</span><br><span class="line">tar -zxvf autoconf-latest.tar.gz -C autoconf-soruce/ --strip-components 1</span><br><span class="line">cd autoconf-soruce/</span><br><span class="line">./configure --prefix=$HOME   # 安装到家目录</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<h2 id="更新PATH"><a href="#更新PATH" class="headerlink" title="更新PATH"></a>更新PATH</h2><p>这样以来  <code>zsh</code>  安装到 <code>$HOME/bin</code> 下面，并且会自动添加环境变量，但是重新登陆后就找不到了。</p>
+<p>所以记得手动更新 <code>PATH</code> ，我是选择写入 <code>~/.bash_profile</code> 文件。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &#x27;export PATH=&quot;$HOME/bin:$HOME/.local/bin:$PATH&quot;&#x27; &gt;&gt; ~/.bash_profile</span><br></pre></td></tr></table></figure>
+
+<p>这样操作之后就可以在命令行使用 <code>zsh</code> 了，但是不会默认使用 <code>zsh</code> 作为交互程序。</p>
+<p>两条思路：</p>
+<ol>
+<li>使用chsh （可以尝试，但是我失败了，因为没有权限写入 <code>/etc/shells</code>）</li>
+<li>修改启动脚本，自动切换到 <code>zsh</code> （官方推荐的方式）</li>
+</ol>
+<p>我还是选择写入 <code>~/.bash_profile </code>文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &#x27;[ -f $HOME/bin/zsh ] &amp;&amp; exec $HOME/bin/zsh -l&#x27; &gt;&gt; ~/.bash_profile</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装oh-my-zsh"><a href="#安装oh-my-zsh" class="headerlink" title="安装oh-my-zsh"></a>安装oh-my-zsh</h2><p>一行代码搞定：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh</span><br></pre></td></tr></table></figure>
+
+<p>值得注意的是上述脚本的一段代码：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">TEST_CURRENT_SHELL=$(expr &quot;$SHELL&quot; : &#x27;.*/\(.*\)&#x27;)</span><br><span class="line">if [ &quot;$TEST_CURRENT_SHELL&quot; != &quot;zsh&quot; ]; then</span><br><span class="line">    # If this platform provides a &quot;chsh&quot; command (not Cygwin), do it, man!</span><br><span class="line">    if hash chsh &gt;/dev/null 2&gt;&amp;1; then</span><br><span class="line">        printf &quot;$&#123;BLUE&#125;Time to change your default shell to zsh!$&#123;NORMAL&#125;\n&quot;</span><br><span class="line">        chsh -s $(grep /zsh$ /etc/shells | tail -1)</span><br><span class="line">    # Else, suggest the user do so manually.</span><br><span class="line">    else</span><br><span class="line">        printf &quot;I can&#x27;t change your shell automatically because this system does not have chsh.\n&quot;</span><br><span class="line">        printf &quot;$&#123;BLUE&#125;Please manually change your default shell to zsh!$&#123;NORMAL&#125;\n&quot;</span><br><span class="line">    fi</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<p>干了啥？如果系统默认shell不是zsh的话，会尝试使用 <code>chsh</code> 命令切换到 <code>/etc/shells</code> 列表里的 <code>zsh</code>，如果切换失败就会提示错误。</p>
+<p>有什么影响？如果全局已经有zsh的情况下，这个脚本会主动把默认shell切换成全局的zsh，而不会使用本地的zsh。这对我来说没什么影响。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hijerry.cn/p/37831.html" data-id="cl0e36g0b004aosct8863hixi" data-title="不使用root权限安装zsh和oh-my-zsh" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/zsh/" rel="tag">zsh</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-11/神经网络和BP算法原理详解" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/p/53364.html" class="article-date">
+  <time class="dt-published" datetime="2018-11-06T11:28:05.000Z" itemprop="datePublished">2018-11-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%A0%94/">研</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/p/53364.html">神经网络和BP算法推导</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="感知机"><a href="#感知机" class="headerlink" title="感知机"></a>感知机</h2><p>感知机（perceptron）于1957年由Rosenblatt提出，是一种二分类线性模型。感知机以样本特征向量作为输入，输出为预测类别，取正、负两类。感知机最终学习到的是将输入空间（特征空间）划分为正、负两类的分离超平面，属于判别模型。为此，使用误分类作为损失函数，利用梯度下降优化该函数，可求得感知机模型。感知机是神经网络与支持向量机的基础。</p>
+<h3 id="单层感知机"><a href="#单层感知机" class="headerlink" title="单层感知机"></a>单层感知机</h3><p><img src="http://static.hijerry.cn/18-11-6/92735871.jpg.webp" alt="单层感知机图片"></p>
+<p>第 ${i}$ 个样本的预测值 $\hat{y_i} &#x3D; f(\vec{w} \cdot \vec{x_i} + b)$ ，其中 $f(\cdot)$ 称为激活函数，$ f(\cdot) \in {-1, 1}$ ，损失为 $L_i&#x3D;\frac{1}{2}(\hat{y_i}-y_i)^2$ 。单层感知机的目的就是习得合适的 $\vec{w}$ 与 $b$ ，使得所有样本的损失之和 $\sum_{x_i \in X} L_i$ 最小。</p>
+<p>如果我们令 $z &#x3D;  \vec{w} \cdot \vec{x_i} + b$  即感知机的输入。那么当 $z &lt; 0$ 时，$f(z) &#x3D; -1$；当$ z &gt; 0$ 时，$f(z)&#x3D;1$ 。因为 $z$ 是$x$ 线性组合，所以最终得到的是一个超平面 $\vec{w} \cdot \vec{x}+b&#x3D;0$ ，超平面将输入样本分为了 $y_i&#x3D;1$ 和 $y_i&#x3D;$ -1两类。</p>
+<p>当输入 $x&#x3D;(x_1, x_2)$ 是二维向量时，用红点表示 $+1$ 的数据，黑点表示 $-1$ 的数据，最终习得的是一条直线，将两个数据分离开，如下图所示。</p>
+<p><img src="http://static.hijerry.cn/18-11-6/83978855.jpg.webp" alt="决策超平面"></p>
+<p>因为单层感知机最终习得是超平面，所以只能用于解决线性可分问题。对于下面这样的数据，单层感知机无能为力。</p>
+<p><img src="http://static.hijerry.cn/18-11-6/95076551.jpg.webp" alt="非线性可分"></p>
+<h3 id="多层感知机"><a href="#多层感知机" class="headerlink" title="多层感知机"></a>多层感知机</h3><p>多层感知机也叫MLP，可以看做是一个有向图。MLP由多层节点组成，每一层全连接到下一层，除输入节点外，每个节点都是一个带有非线性激活函数的神经元（unit）。多层感知机可用于解决线性不可分问题。</p>
+<p>因为神经网络的和多层感知器是一个意思，所以下面直接对单层前馈神经网络进行详细说明。</p>
+<p><img src="http://static.hijerry.cn/18-11-6/50958517.jpg.webp" alt="决策线"></p>
+<h2 id="单层前馈神经网络"><a href="#单层前馈神经网络" class="headerlink" title="单层前馈神经网络"></a>单层前馈神经网络</h2><p>下图是一个输入层节点数为3，隐藏层节点数为2，输出层节点数为2的前馈神经网络，该网络可用于解决二分类问题。</p>
+<p><img src="http://static.hijerry.cn/18-11-6/78620696.jpg.webp" alt="3×2×2前馈神经网络结构图"></p>
+<p>单层前馈神经网络本质上是一个多层感知机，有以下几个特点：</p>
+<ol>
+<li>全连接。每一层的节点都与右边层的所有节点通过<code>权重</code>连接。</li>
+<li>隐藏层只有一层。所以称之为<code>单层</code>。</li>
+<li>数据单向流动。每一层节点只作用于其之后的层，所以叫作<code>前馈</code>。</li>
+<li>本质是数学函数。神经网络可以明确的用数学语言表达。</li>
+</ol>
+<h3 id="神经元"><a href="#神经元" class="headerlink" title="神经元"></a>神经元</h3><p>我们拿出隐藏层的一个神经元（unit）放大来看：</p>
+<p><img src="http://static.hijerry.cn/18-11-6/13516945.jpg.webp" alt="单节点详解"></p>
+<p>神经元的任务就是<code>接受输入，产生输出</code>。</p>
+<p><code>z</code> 表示神经元的输入，<code>a</code> 是神经元的输出。</p>
+<p>输入怎么得来？就是上一层的神经元输出与<code>权重</code> 的乘积之和再加上<code>偏置</code>。</p>
+<p>输出怎么得来？把输入值带入<code>激活函数</code> 得到。</p>
+<p>写成数学表达式就是：</p>
+<p>$ z^{(2)}<em>1 &#x3D; w^{(1)}</em>{11}a^{(1)}<em>1+w^{(1)}</em>{21}a^{(1)}<em>2+w^{(1)}</em>{31}a^{(1)}_3+b^{(1)}_1$</p>
+<p>$a^{(2)}_1&#x3D;f(z^{(2)}_1)$</p>
+<p>$f(\cdot)$ 是激活函数，常见的有sigmoid、tanh、ReLU。</p>
+<h3 id="Sigmoid函数"><a href="#Sigmoid函数" class="headerlink" title="Sigmoid函数"></a>Sigmoid函数</h3><p>Sigmoid的表达式为 $S(x)&#x3D;\frac{1}{1+e^{-x}}$，定义域为 $R$ ，值域为 $(0, 1)$ </p>
+<p>在 $x&#x3D;0$ 处，函数值为 $\frac{1}{2}$，其函数图像如下：</p>
+<p><img src="http://static.hijerry.cn/18-11-6/58218713.jpg.webp" alt="sigmoid函数图像"></p>
+<p>sigmoid函数有许多优美的性质，如：</p>
+<ol>
+<li><p>是 $e^x$ 的复合函数，$e$ 又名<code>自然常数</code></p>
+</li>
+<li><p><code>1阶导函数</code>为 $S’(x)&#x3D;S(x)(1-S(x))$ 。即函数在某一点的导数可由函数在这一点的函数值求得</p>
+</li>
+<li><p>曲线光滑，定义域内处处可导，且可以无限次求导</p>
+</li>
+<li><p>可以把任意输入压缩到 $(0, 1)$ 范围内</p>
+</li>
+</ol>
+<p>在反向传播算法（BP算法）中，性质2、3起到了极大的作用，性质4起到了防溢出的作用。</p>
+<h2 id="前向传播原理"><a href="#前向传播原理" class="headerlink" title="前向传播原理"></a>前向传播原理</h2><p>现考虑一个样本$ (x, y)$ ，其中 $x \in R^3$ 是输入数据，$y \in {[0,1],[1,0]}$是实际值。我们现在来手动计算 $x$ 预测值 $\hat{y}$。预测值 $\hat{y}$ 的计算过程是从输入层开始<code>从左往右计算</code>的，所以这个过程也叫作前向传播。</p>
+<p>下图表示，为了得到 $a^{(3)}_1$ ，有哪些神经元被激活了。</p>
+<p><img src="http://static.hijerry.cn/18-11-6/34676153.jpg.webp" alt="前向传播"></p>
+<p>为了方便表述，用 $w^{(l)}_{ij}$ 表示第$l$ 层的第 $i$ 个神经元与第 $l+1$ 层的第 $j$ 个神经元相连的权重，用 $b^{(l)}_j$ 表示第$l+1$ 层第 $j$ 个神经元的偏置值。</p>
+<h3 id="输入层"><a href="#输入层" class="headerlink" title="输入层"></a>输入层</h3><p>注意。输入层没有激活函数，所以：</p>
+<p>$[a^{(1)}_1, a^{(1)}_2,a^{(1)}_3]&#x3D;x$</p>
+<h3 id="隐藏层"><a href="#隐藏层" class="headerlink" title="隐藏层"></a>隐藏层</h3><p>$ z^{(2)}<em>1 &#x3D; w^{(1)}</em>{11}a^{(1)}<em>1+w^{(1)}</em>{21}a^{(1)}<em>2+w^{(1)}</em>{31}a^{(1)}_3+b^{(1)}_1$</p>
+<p>$ z^{(2)}<em>2 &#x3D; w^{(1)}</em>{12}a^{(1)}<em>1+w^{(1)}</em>{22}a^{(1)}<em>2+w^{(1)}</em>{32}a^{(1)}_3+b^{(1)}_2$</p>
+<p>$a^{(2)}_1&#x3D;sigmoid(z^{(2)}_1)$</p>
+<p>$a^{(2)}_2&#x3D;sigmoid(z^{(2)}_2)$</p>
+<h3 id="输出层"><a href="#输出层" class="headerlink" title="输出层"></a>输出层</h3><p>如果我们把  $a^{(3)}_1$ 作为类别为 $0$ 的概率，将 $a^{(3)}_2$ 作为类别为1的概率，则样本 $x_i$ 的预测值可以写成 $\hat{y_i}&#x3D;\max {a^{(3)}_1, a^{(3)}_2}$ ，所以为了让 $a^{(3)}_1 + a^{(3)}_2 &#x3D; 1$ ，选用 $softmax$ 作为输出层的激活函数。</p>
+<p>$z^{(3)}<em>1&#x3D;w^{(2)}</em>{11}a^{(2)}<em>1+w^{(2)}</em>{21}a^{(2)}_2+b^{(2)}_1$</p>
+<p>$z^{(3)}<em>2&#x3D;w^{(2)}</em>{12}a^{(2)}<em>1+w^{(2)}</em>{22}a^{(2)}_2+b^{(2)}_2$</p>
+<p>令 $g(z^{(k)})&#x3D;\sum exp({z^{(k)}_i})$，$exp(x)&#x3D;e^x$ </p>
+<p>$a^{(3)}_1&#x3D;softmax(z^{(3)}_1,z^{(3)})&#x3D;\frac{exp({z^{(3)}_1)}}{g(z^{(3)})}$</p>
+<p>$a^{(3)}_2&#x3D;softmax(z^{(3)}_2,z^{(3)})&#x3D;\frac{exp({z^{(3)}_2})}{g(z^{(3)})}$</p>
+<p>我们令 $\hat{y}_1&#x3D;a^{(3)}_1$ ，$\hat{y}_2&#x3D;a^{(3)}_2$，那么 $\hat{y}&#x3D;[\hat{y}_1, \hat{y}_2]$，同理设 $y&#x3D;[y_1, y_2]$</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">神经网络可以明确的用数学语言表达，它的函数表达式，可以明确的写出来</span><br></pre></td></tr></table></figure>
+
+<p>如果真的将这个数学表达式写出来，那么这个数学函数 $network(\cdot)$ 是一个包含 $(3+1) \times 2 + (2+1) \times 2&#x3D;14$ 个参数的函数，函数输入 $x$ 可得到预测值 $\hat{y}$ ，这个表达式会非常长。</p>
+<h2 id="反向传播原理"><a href="#反向传播原理" class="headerlink" title="反向传播原理"></a>反向传播原理</h2><p>我们现在来优化网络中这10个权重参数和4个偏置参数。</p>
+<p>定义输出层的节点 $i$ 的误差，可用的损失函数有：</p>
+<ol>
+<li>均方误差：$E &#x3D; \sum_{j&#x3D;1}^2\frac{1}{2} (\hat{y}_j-y_j)^2$ </li>
+<li>交叉熵损失： $CE&#x3D;CE(\hat{y},y)&#x3D;-\sum_{j&#x3D;1}^{2}y_{j}ln\hat{y}_j$</li>
+</ol>
+<p>使用梯度下降算法来优化损失函数，则需要求出<code>损失函数对所有参数的导数</code>，这个过程在计算上是从输出层开始<code>从右往左计算</code>的，因为与计算预测值 $\hat{y_i}$ 的过程恰巧相反，所以也叫作反向传播。</p>
+<h3 id="权重的导数"><a href="#权重的导数" class="headerlink" title="权重的导数"></a>权重的导数</h3><p>以计算权重 $w^{(2)}_{21}$ 的偏导数为例，根据链式法则不难得到：</p>
+<p>$\frac{\partial CE}{\partial w^{(2)}_{21}} &#x3D; \frac{\partial CE}{\partial \hat{y_1}} \frac{\partial  \hat{y}_1}{\partial z^{(3)}_1} \frac{\partial z^{(3)}<em>1}{\partial w^{(2)}</em>{21}}$</p>
+<p>∵ $CE&#x3D;-\sum_{j&#x3D;1}^{2}y_jln\hat{y}_j&#x3D;-(y_1ln\hat{y}_1+y_2ln\hat{y}_2)$ ，又 $y_1+y_2&#x3D;1$，$\hat{y}_1+\hat{y}_2&#x3D;1$ </p>
+<p>∴ $CE &#x3D;-(y_1ln\hat{y}_1+(1-y_1)ln(1-\hat{y}_1))$ （注：这是二分类问题特有的交叉熵表示方式）</p>
+<p>∴ $\frac{\partial CE}{\partial  \hat{y}_1}&#x3D;-(\frac{y_1}{\hat{y}_1} - \frac{1-y_1}{1-\hat{y_1}})&#x3D;\frac{\hat{y}_1-y_1}{\hat{y}_1(1-\hat{y}_1)}$</p>
+<p>又 $\frac{\partial  \hat{y}_1}{\partial z^{(3)}_1}&#x3D;\frac{exp(z^{(3)}_1)exp(z^{(3)}_2)}{(exp(z^{(3)}_1)+exp(z^{(3)}_2))^2}&#x3D;\hat{y}_1\hat{y}_2&#x3D;\hat{y_1}(1-\hat{y}_1)$</p>
+<p>且 $\frac{\partial z^{(3)}<em>1}{\partial w^{(2)}</em>{21}}&#x3D;a^{(2)}_2$</p>
+<p>故原偏导数可写成：</p>
+<p>$\frac{\partial CE}{\partial w^{(2)}_{11}}&#x3D;\frac{\hat{y}_1-y_1}{\hat{y}_1(1-\hat{y}_1)} \cdot \hat{y_1}(1-\hat{y}_1) \cdot a^{(2)}_1&#x3D;(\hat{y}_1-y_1) \cdot a^{(2)}_2$</p>
+<p>更通用化的表达，如何计算 $w^{(2)}_{ij}$ ？依葫芦画瓢得：</p>
+<p>$\frac{\partial CE}{\partial w^{(2)}_{ij}} &#x3D; \frac{\partial CE}{\partial \hat{y_i}} \frac{\partial  \hat{y}_i}{\partial z^{(3)}_i} \frac{\partial z^{(3)}<em>i}{\partial w^{(2)}</em>{ij}}&#x3D;(\hat{y}_j-y_j) \cdot a^{(2)}_i$</p>
+<p>令 $\delta^{(3)}_j&#x3D;\hat{y}_j-y_j$ 表示输出层节点 $j$ 的误差值</p>
+<p>则上式可写成：</p>
+<p>$\frac{\partial CE}{\partial w^{(2)}_{ij}} &#x3D;\delta^{(3)}_j \cdot a^{(2)}_i$</p>
+<p>如何理解？用 $i$ 表示为隐藏层节点的位置， $j$ 表示为输出层节点的位置，那么权重 $w^{(2)}_{ij}$ 的导数为<code>该权重前一层第i个节点的激活值与后一层第j个节点的误差值的乘积</code>。</p>
+<p>下图是反向传播的示意图，损失函数产生的误差顺着红线一直往左边传，每经过一条红线就求一次导数，直到要求的权重也覆盖在红线为止。下图有三条红线，也就是损失函数 $CE$ 对 $w^{(2)}_{21}$ 的导数需要用三个偏导数乘积形成的链式求导才能得到，且最后一个偏导数值为 $a^{(2)}_i$ 。</p>
+<p><img src="http://static.hijerry.cn/18-11-6/30164991.jpg.webp" alt="w221导数"></p>
+<p><strong>如何计算 $w^{(1)}_{ij}​$ 呢？继续使用链式法则 + 依葫芦画瓢可得：</strong></p>
+<p>$\frac{\partial CE}{\partial w^{(1)}<em>{ij}} &#x3D;\sum</em>{k&#x3D;1}^2((\hat{y}<em>k-y_k)w^{(2)}</em>{jk}) \cdot a^{(2)}_j(1-a^{(2)}_j) \cdot a^{(1)}_i$ </p>
+<p>令 $\delta^{(2)}<em>j &#x3D; \sum</em>{k&#x3D;1}^2(\hat{y}<em>k-y_k)w^{(2)}</em>{jk} \cdot a^{(2)}_j(1-a^{(2)}_j) $ 为 $a^{(2)}_j$ 的<code>误差值</code> ，那么上式可以写成：</p>
+<p>$\frac{\partial CE}{\partial w^{(1)}_{ij}} &#x3D;\delta^{(2)}_j \cdot a^{(1)}_i$ </p>
+<p>观察可以发现：</p>
+<p>$\delta^{(2)}<em>j&#x3D;\sum</em>{k&#x3D;1}^2(\delta^{(3)}<em>jw^{(2)}</em>{jk}) \cdot a^{(2)}_j(1-a^{(2)}_j)$</p>
+<p>如何理解？如果用 $i$ 表示输入层节点位置， $j$ 表示隐藏层节点位置，那么权重 $w^{(1)}_{ij}$ 的导数为 <code>该权重前一层第i个节点的激活值与后一层第j个节点的误差值的乘积</code> 。<code>每个节点的误差值 等于 连接权重 与 权重另一端所连节点的误差值 的乘积之和 与 本节点激活值的导数 的乘积</code>。</p>
+<p>详细的推导过程读者可以自己琢磨一下，这里有个关键点需要注意：</p>
+<ul>
+<li>因为 $y_1+y_2&#x3D;1$，$\hat{y}_1+\hat{y}_2&#x3D;1$ ，所以 $CE &#x3D;-(y_2ln\hat{y}_2+(1-y_2)ln(1-\hat{y}_2))$</li>
+</ul>
+<h3 id="偏置的导数"><a href="#偏置的导数" class="headerlink" title="偏置的导数"></a>偏置的导数</h3><p>如何求 $b^{(2)}_j$ 的导数？根据之前的逻辑推导即可：</p>
+<p>$\frac{\partial CE}{\partial b^{(2)}_j} &#x3D; \frac{\partial CE}{\partial \hat{y_i}} \frac{\partial  \hat{y}_i}{\partial z^{(3)}_i} \frac{\partial z^{(3)}_i}{\partial b^{(2)}_j}&#x3D;(\hat{y}_j-y_j) \cdot 1$</p>
+<p>如何求 $b^{(1)}_j$ 的导数？链条太长，这里直接给出答案：</p>
+<p>$\frac{\partial CE}{\partial b^{(1)}<em>j}&#x3D;\sum</em>{k&#x3D;1}^2((\hat{y}<em>k-y_k)w^{(2)}</em>{jk}) \cdot a^{(2)}_j(1-a^{(2)}_j) \cdot 1$</p>
+<p>与权重导数不同的地方就是，在求导过程中的最后一项 $\frac{\partial z^{(l + 1)}_i}{\partial b^{(l)}_j} &#x3D;1$。</p>
+<p>如果加入偏置单元，也可以理解为偏置单元 $a^{(l)}_0$ 的值为1，如下图所示：</p>
+<p><img src="http://static.hijerry.cn/18-11-6/5947663.jpg.webp" alt="加入偏置单元"></p>
+<h2 id="正则化项"><a href="#正则化项" class="headerlink" title="正则化项"></a>正则化项</h2><p>正则化（regularation）是防止机器学习过拟合的一种手段。一种常见的手段是通过将权重的平方之和加入到损失函数来实现。那么损失函数变为：</p>
+<p>$CE&#x3D;-\sum_{j&#x3D;1}^{2}y_jln\hat{y}<em>j+\frac{\lambda}{2}\sum_l\sum_i\sum_j(w^{(l)}</em>{ij})^2$</p>
+<p>所有权重、偏置之和称为 <code>正则项</code> ， $\lambda$ 是 <code>正则项系数</code>，也叫 <code>惩罚系数</code> 。</p>
+<p>加入正则化项后，$w$  的导数要多算一个平方项的导数，以 $w^{(2)}_{ij}$ 为例</p>
+<p>$grad(w^{(2)}_{ij})&#x3D;(\hat{y}_j-y_j) \cdot a^{(2)}<em>i+\lambda w^{(2)}</em>{ij}$</p>
+<h2 id="向量化"><a href="#向量化" class="headerlink" title="向量化"></a>向量化</h2><p>我们假设输入值 $x$ 、 实际值 $y$ 都是列向量。</p>
+<p>观察 $ z^{(2)}_1$ 、 $ z^{(2)}_2$ 的表达式，进而发现可以用矩阵形式书写为：</p>
+<p>$  \left[\begin{matrix} w^{(1)}<em>{11} &amp; w^{(1)}</em>{12} \ w^{(1)}<em>{21} &amp; w^{(1)}</em>{22} \ w^{(1)}<em>{31} &amp; w^{(1)}</em>{32} \end{matrix} \right]^T \left[ \begin{matrix} a^{(1)}_1  \ a^{(1)}_2 \ a^{(1)}_3 \end{matrix} \right] + \left[\begin{matrix} b^{(1)}_1 \ b^{(1)}_2 \end{matrix} \right]&#x3D; \left[\begin{matrix} z^{(2)}_1 \ z^{(2)}_2 \end{matrix} \right] $</p>
+<p>不失一般性，设第 $l$ 层的前向传播：$z^{(l+1)}&#x3D;(w^{(l)})^Ta^{(l)}+b^{(l)}$，其中 $a^{(l)}$、$z^{(l+1)}$ 、$b^{(l)}$ 均为列向量， $W^{(l)}$ 为矩阵</p>
+<p>激活值 $a^{(l)}&#x3D;sigmoid(z^{(l)})$，所以激活值也是列向量。</p>
+<p>损失函数向量化为：</p>
+<p>$CE&#x3D;-\left[\begin{matrix} y_1 \ y_2 \end{matrix} \right]^T  ln\left[\begin{matrix} \hat{y}_1 \ \hat{y}<em>2 \end{matrix} \right] + \lambda(\sum_l\sum_i\sum_jw^{(l)}</em>{ij}+\sum_l\sum_ib^{(l)}_i)$</p>
+<p>$&#x3D;-y^Tln\hat{y}+\frac{\lambda}{2}\sum_{l&#x3D;1}^2 sum(w^{(l)}*w^{(l)})$</p>
+<p>$sum(\cdot)$ 表示把矩阵 $\cdot$  的所有元素之和</p>
+<p> <code>*</code> 表示求<code>哈达马积</code>，即两个矩阵对应位置的元素的乘积所形成的一个新矩阵</p>
+<p>输出层误差值向量化：</p>
+<p>$ \delta^{(3)}&#x3D; \left[\begin{matrix} \delta^{(3)}_1 \ \delta^{(3)}_2 \end{matrix} \right]&#x3D;\left[\begin{matrix} \hat{y}_1-y_1 \ \hat{y}_2-y_2\end{matrix} \right] &#x3D;\hat{y}-y$</p>
+<p>隐藏层误差向量化：</p>
+<p>$  \delta^{(2)}&#x3D; \left[\begin{matrix} (\hat{y}<em>1-y_1)w^{(2)}</em>{11}+ (\hat{y}<em>2-y_2)w^{(2)}</em>{12} \ (\hat{y}<em>1-y_1)w^{(2)}</em>{21}+ (\hat{y}<em>2-y_2)w^{(2)}</em>{22} \end{matrix} \right] * a^{(2)}_j(1-a^{(2)}_j)$</p>
+<p>$&#x3D;\left[\begin{matrix} w^{(2)}<em>{11} &amp; w^{(2)}</em>{12} \ w^{(2)}<em>{21} &amp; w^{(2)}</em>{22} \end{matrix} \right] \left[\begin{matrix} \hat{y}_1-y_1 \ \hat{y}_2-y_2\end{matrix} \right] * a^{(2)}_j(1-a^{(2)}_j) $</p>
+<p>$&#x3D;w^{(2)}(\hat{y}-y) * a^{(2)}_j(1-a^{(2)}_j) $ </p>
+<p>参数 $w^{(2)}$ 导数向量化：</p>
+<p>$  grad(w^{(2)})&#x3D; grad(\left[\begin{matrix} w^{(2)}<em>{11} &amp; w^{(2)}</em>{12} \ w^{(2)}<em>{21} &amp; w^{(2)}</em>{22} \end{matrix} \right]) &#x3D; \left[\begin{matrix} \delta^{(3)}_1a^{(2)}_1 &amp; \delta^{(3)}_2a^{(2)}_1 \ \delta^{(3)}_1a^{(2)}_2 &amp; \delta^{(3)}_2a^{(2)}_2 \end{matrix} \right] $</p>
+<p>$&#x3D;\left[\begin{matrix} a^{(2)}_1 \ a^{(2)}_2 \end{matrix} \right] \left[\begin{matrix} \delta^{(3)}_1 \ \delta^{(3)}_2 \end{matrix} \right]^T &#x3D;a^{(2)}(\delta^{(3)})^T $</p>
+<p>不失一般性，有：$grad(w^{(l)})&#x3D;a^{(l)}(\delta^{(l+1)})^T$</p>
+<h2 id="小批量梯度下降"><a href="#小批量梯度下降" class="headerlink" title="小批量梯度下降"></a>小批量梯度下降</h2><p>上述所有过程都是假设只有一个样本。</p>
+<p>当参与计算的样本数量大于1时：</p>
+<ul>
+<li>单个损失函数 &#x3D;&gt; 所有样本损失值求平均</li>
+<li>单个样本的输出层误差 &#x3D;&gt; 所有样本输出层误差求平均</li>
+</ul>
+<p>你不用写一个for循环来计算上述值，使用矩阵乘法会更为方便，这里留给读者思考。</p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>github：<a target="_blank" rel="noopener" href="https://github.com/JerryCheese/machine-learning/tree/master/NN">https://github.com/JerryCheese/machine-learning/tree/master/NN</a></p>
+<p><code>ann.py</code> 是面向过程版本实现，且隐藏层数只能为1。</p>
+<p><code>NN.py</code> 是面向对象版本实现，支持多层隐藏层。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hijerry.cn/p/53364.html" data-id="cl0e36g0b004dosct1ue7h9to" data-title="神经网络和BP算法推导" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BP%E7%AE%97%E6%B3%95/" rel="tag">BP算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%84%9F%E7%9F%A5%E6%9C%BA/" rel="tag">感知机</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" rel="tag">神经网络</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-09/理解线性代数中的矩阵" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/p/1967.html" class="article-date">
+  <time class="dt-published" datetime="2018-09-18T15:21:46.000Z" itemprop="datePublished">2018-09-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%A0%94/">研</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/p/1967.html">理解线性代数中的矩阵</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="向量"><a href="#向量" class="headerlink" title="向量"></a>向量</h2><h3 id="表示"><a href="#表示" class="headerlink" title="表示"></a>表示</h3><h3 id="线性组合"><a href="#线性组合" class="headerlink" title="线性组合"></a>线性组合</h3><h3 id="张成的空间和基向量"><a href="#张成的空间和基向量" class="headerlink" title="张成的空间和基向量"></a>张成的空间和基向量</h3><h2 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h2><h3 id="矩阵乘法与线性变换"><a href="#矩阵乘法与线性变换" class="headerlink" title="矩阵乘法与线性变换"></a>矩阵乘法与线性变换</h3><h3 id="矩阵的秩"><a href="#矩阵的秩" class="headerlink" title="矩阵的秩"></a>矩阵的秩</h3><h3 id="列空间和零空间"><a href="#列空间和零空间" class="headerlink" title="列空间和零空间"></a>列空间和零空间</h3><h3 id="逆矩阵"><a href="#逆矩阵" class="headerlink" title="逆矩阵"></a>逆矩阵</h3><h3 id="行列式"><a href="#行列式" class="headerlink" title="行列式"></a>行列式</h3><h3 id="特征向量与特征值"><a href="#特征向量与特征值" class="headerlink" title="特征向量与特征值"></a>特征向量与特征值</h3><h3 id="抽象向量空间"><a href="#抽象向量空间" class="headerlink" title="抽象向量空间"></a>抽象向量空间</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hijerry.cn/p/1967.html" data-id="cl0e36g0a0046oscteq3fdrxr" data-title="理解线性代数中的矩阵" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" rel="tag">线性代数</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">weiter &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Web%E5%85%A8%E6%A0%88/">Web全栈</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A0%94/">研</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B/">程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E9%A2%98/">编程题</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AC%E8%BD%BD/">转载</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AF%E4%BB%B6%E6%8A%80%E6%9C%AF/">软件技术</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BP%E7%AE%97%E6%B3%95/" rel="tag">BP算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/" rel="tag">Laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/" rel="tag">NLP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NP%E5%AE%8C%E5%85%A8%E6%80%A7/" rel="tag">NP完全性</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stanford/" rel="tag">Stanford</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tensoflow/" rel="tag">Tensoflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web%E6%80%BB%E7%BB%93/" rel="tag">Web总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/devopps/" rel="tag">devopps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/" rel="tag">mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/medium/" rel="tag">medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/word2vec/" rel="tag">word2vec</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/" rel="tag">zsh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BE%9D%E8%B5%96%E8%A7%A3%E6%9E%90/" rel="tag">依赖解析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%91%E6%8C%87Offer/" rel="tag">剑指Offer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%84%9F%E7%9F%A5%E6%9C%BA/" rel="tag">感知机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A0%E6%A0%87%E7%AD%BE/" rel="tag">无标签</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91/" rel="tag">机器翻译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B1%87%E7%BC%96/" rel="tag">汇编</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E4%B9%8E/" rel="tag">知乎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" rel="tag">神经网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" rel="tag">线性代数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/" rel="tag">线性模型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87/" rel="tag">论文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag">运维</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/BP%E7%AE%97%E6%B3%95/" style="font-size: 10px;">BP算法</a> <a href="/tags/Laravel/" style="font-size: 14px;">Laravel</a> <a href="/tags/NLP/" style="font-size: 18px;">NLP</a> <a href="/tags/NP%E5%AE%8C%E5%85%A8%E6%80%A7/" style="font-size: 10px;">NP完全性</a> <a href="/tags/Stanford/" style="font-size: 10px;">Stanford</a> <a href="/tags/Tensoflow/" style="font-size: 10px;">Tensoflow</a> <a href="/tags/Web%E6%80%BB%E7%BB%93/" style="font-size: 16px;">Web总结</a> <a href="/tags/devopps/" style="font-size: 12px;">devopps</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/leetcode/" style="font-size: 16px;">leetcode</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mac/" style="font-size: 12px;">mac</a> <a href="/tags/medium/" style="font-size: 10px;">medium</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a> <a href="/tags/zsh/" style="font-size: 10px;">zsh</a> <a href="/tags/%E4%BE%9D%E8%B5%96%E8%A7%A3%E6%9E%90/" style="font-size: 10px;">依赖解析</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14px;">前端</a> <a href="/tags/%E5%89%91%E6%8C%87Offer/" style="font-size: 10px;">剑指Offer</a> <a href="/tags/%E6%84%9F%E7%9F%A5%E6%9C%BA/" style="font-size: 10px;">感知机</a> <a href="/tags/%E6%97%A0%E6%A0%87%E7%AD%BE/" style="font-size: 12px;">无标签</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">机器学习</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91/" style="font-size: 10px;">机器翻译</a> <a href="/tags/%E6%B1%87%E7%BC%96/" style="font-size: 12px;">汇编</a> <a href="/tags/%E7%9F%A5%E4%B9%8E/" style="font-size: 10px;">知乎</a> <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">神经网络</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" style="font-size: 10px;">线性代数</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/" style="font-size: 10px;">线性模型</a> <a href="/tags/%E8%AE%BA%E6%96%87/" style="font-size: 10px;">论文</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 10px;">运维</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/p/49582.html">2019 Mac安装cuda+cudnn+pytorch</a>
+          </li>
+        
+          <li>
+            <a href="/p/48009.html">复杂度与NP完全性</a>
+          </li>
+        
+          <li>
+            <a href="/p/55002.html">2019-CS224n-Assignment4</a>
+          </li>
+        
+          <li>
+            <a href="/p/35741.html">2019-CS224n-Assignment3</a>
+          </li>
+        
+          <li>
+            <a href="/p/13983.html">NLP会议介绍</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 jerrycheese<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

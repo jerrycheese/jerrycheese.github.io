@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>NLTK之词性标注 | 全栈说</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="词性标注重要性回想学英语的时候，老师就开始讲词性，通过分析句子中某个单词的词性，我们可以推测这个词的意思，猜测这个词在句子中的作用，这对理解句子意思有极大的帮助。小弟也还是初学，以后若发现词性有更多作用时会继续补充~ 标注语料库NLTK(3.2.5)中提供了一些已经标注好词性的文本，通过下面代码可以查看： 12345import nltknltk.corpus.brown.tagged_words">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NLTK之词性标注">
+<meta property="og:url" content="https://hijerry.cn/p/63432.html">
+<meta property="og:site_name" content="全栈说">
+<meta property="og:description" content="词性标注重要性回想学英语的时候，老师就开始讲词性，通过分析句子中某个单词的词性，我们可以推测这个词的意思，猜测这个词在句子中的作用，这对理解句子意思有极大的帮助。小弟也还是初学，以后若发现词性有更多作用时会继续补充~ 标注语料库NLTK(3.2.5)中提供了一些已经标注好词性的文本，通过下面代码可以查看： 12345import nltknltk.corpus.brown.tagged_words">
+<meta property="og:locale">
+<meta property="article:published_time" content="2018-01-16T12:56:26.000Z">
+<meta property="article:modified_time" content="2018-01-16T15:49:24.000Z">
+<meta property="article:author" content="jerrycheese">
+<meta property="article:tag" content="NLP">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="全栈说" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">全栈说</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Work 20%</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hijerry.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-01/NLTK之词性标注" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/p/63432.html" class="article-date">
+  <time class="dt-published" datetime="2018-01-16T12:56:26.000Z" itemprop="datePublished">2018-01-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%A0%94/">研</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      NLTK之词性标注
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="词性标注重要性"><a href="#词性标注重要性" class="headerlink" title="词性标注重要性"></a>词性标注重要性</h2><p>回想学英语的时候，老师就开始讲<code>词性</code>，通过分析句子中某个单词的词性，我们可以推测这个词的意思，猜测这个词在句子中的作用，这对理解句子意思有极大的帮助。小弟也还是初学，以后若发现词性有更多作用时会继续补充~</p>
+<h2 id="标注语料库"><a href="#标注语料库" class="headerlink" title="标注语料库"></a>标注语料库</h2><p>NLTK(3.2.5)中提供了一些已经标注好词性的文本，通过下面代码可以查看：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> nltk</span><br><span class="line">nltk.corpus.brown.tagged_words()</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">[(<span class="string">u&#x27;The&#x27;</span>, <span class="string">u&#x27;AT&#x27;</span>), (<span class="string">u&#x27;Fulton&#x27;</span>, <span class="string">u&#x27;NP-TL&#x27;</span>), ...]</span><br></pre></td></tr></table></figure>
+
+<p>这表示<code>The</code> 被标注为<code>AT</code>词性，<code>Fulton</code> 被标注为<code>NP-TL</code> 词性，似乎看不太懂？</p>
+<p>下面可以把它们转成<code>统一词性名称</code>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nltk.corpus.brown.tagged_words(tagset=<span class="string">&#x27;universal&#x27;</span>)</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">[(<span class="string">u&#x27;The&#x27;</span>, <span class="string">u&#x27;DET&#x27;</span>), (<span class="string">u&#x27;Fulton&#x27;</span>, <span class="string">u&#x27;NOUN&#x27;</span>), ...]</span><br></pre></td></tr></table></figure>
+
+<p><code>DET</code> 是限定词，<code>NOUN</code> 是名词。</p>
+<p>这是因为标注器本身所使用的<code>符号</code>与<code>统一符号</code> 不一样的原因，通过制定<code>tagset</code> 可以转化为统一符号，而<code>标注转换</code>可以在<code>~/nltk_data/taggers/universal_tagset</code> 中找到对应的文件。</p>
+<p>我调查源代码发现，上述代码所使用的是<code>en-brown.map</code>文件，打开查看可以发现：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">....</span><br><span class="line">36 AT  DET</span><br><span class="line">....</span><br><span class="line">294 NP-TL   NOUN</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<h3 id="其他标注语料库"><a href="#其他标注语料库" class="headerlink" title="其他标注语料库"></a>其他标注语料库</h3><p>如</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nltk.corpus.sinica_treebank.tagged_words()</span><br><span class="line">nltk.corpus.indian.tagged_words()</span><br><span class="line">nltk.corpus.mac_morpho.tagged_words()</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>拿<code>indian</code>为例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nltk.corpus.indian.tagged_words()</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">[(<span class="string">u&#x27;\u09ae\u09b9\u09bf\u09b7\u09c7\u09b0&#x27;</span>, <span class="string">u&#x27;NN&#x27;</span>), (<span class="string">u&#x27;\u09b8\u09a8\u09cd\u09a4\u09be\u09a8&#x27;</span>, <span class="string">u&#x27;NN&#x27;</span>), ...]</span><br></pre></td></tr></table></figure>
+
+<p>似乎输出了<code>unicode_escape</code>编码，怎么办呢？下面可以解决：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span> <span class="string">&#x27;, &#x27;</span>.join([word + <span class="string">&#x27;/ + tag for (word, tag) in nltk.corpus.indian.tagged_words()][:100])</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">outputs:</span></span><br><span class="line"><span class="string">মহিষের/NN, সন্তান/NN, :/SYM, তোড়া/NNP, উপজাতি/NN, ৷/SYM, বাসস্থান-ঘরগৃহস্থালি/NN, তোড়া/NNP, ভাষায়/NN, গ্রামকেও/NN, বলে/VM, `/SYM, মোদ/NN, &#x27;</span>/SYM, ৷/SYM, মোদের/NN, আয়তন/NN, খুব/INTF, বড়ো/JJ, নয়/VM, ৷/SYM, প্রতি/QF, মোদে/NN, আছে/VM, কিছু/QF, কুঁড়েঘর/NN, ,/SYM, সাধারণ/JJ, মহিষশালা/NN, ৷/SYM, আর/CC, গ্রামের/NN, বাইরে/NST, থাকে/VM, ডেয়ারি-মন্দির/NN, ৷/SYM, আয়তনের/NN, তারতম্য/NN, অনুসারে/PSP, গ্রামগুলি/NN, দু/QC, রকমের/NN, :/SYM, এতূডমোদ/NNP, (/SYM, বড়ো/JJ, গ্রাম/NN, )/SYM, ওকিনমোদ/NNP, (/SYM, ছোট/JJ, গ্রাম/NN, )/SYM, ৷/SYM, কোন/DEM, কোন/RDP, গ্রামের/NN, আবার/CC, ধর্মীয়/JJ, বা_Cমহিষের/NN, সন্তান/NN, :/SYM, তোড়া/NNP, উপজাতি/NN, ৷/SYM, িকে/PRP, বলে/VM, `/SYM, সোতি-মোদ/NNP, <span class="string">&#x27;/SYM, ৷/SYM, কুঁড়েঘরগুলির/NN, আকার/NN, বাংলার/NNP, বা/CC, ভারতের/NNP, অন্য/JJ, অঞ্চলের/NN, প্রচলিত/JJ, কুঁড়ে/NN, ঘর/NN, নয়/VM, ৷/SYM, এগুলি/PRP, দেখতে/NN, শোয়ানো/JJ, পিপের/NN, মতো/PSP, ৷/SYM, এক/QC, দিকের/PSP, বাঁশের/NN, কাঠামো/NN, খিলানের/NN, মতো/PSP, বেঁকে/JJ, গিয়ে/VM, অন্যদিকের/NN, মাটিতে/NN, মিশেছে/VM</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="标注器"><a href="#标注器" class="headerlink" title="标注器"></a>标注器</h2><h3 id="使用标注器"><a href="#使用标注器" class="headerlink" title="使用标注器"></a>使用标注器</h3><p>NLTK提供了现成的标注器，你可以直接使用：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">text = nltk.word_tokenize(<span class="string">&#x27;This beautiful future is just his imagination so far&#x27;</span>)</span><br><span class="line">nltk.pos_tag(text, tagset=<span class="string">&#x27;universal&#x27;</span>)</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">[(<span class="string">&#x27;This&#x27;</span>, <span class="string">u&#x27;DET&#x27;</span>), (<span class="string">&#x27;beautiful&#x27;</span>, <span class="string">u&#x27;ADJ&#x27;</span>), (<span class="string">&#x27;future&#x27;</span>, <span class="string">u&#x27;NOUN&#x27;</span>), (<span class="string">&#x27;is&#x27;</span>, <span class="string">u&#x27;VERB&#x27;</span>), (<span class="string">&#x27;just&#x27;</span>, <span class="string">u&#x27;ADV&#x27;</span>), (<span class="string">&#x27;his&#x27;</span>, <span class="string">u&#x27;PRON&#x27;</span>), (<span class="string">&#x27;imagination&#x27;</span>, <span class="string">u&#x27;NOUN&#x27;</span>), (<span class="string">&#x27;so&#x27;</span>, <span class="string">u&#x27;ADV&#x27;</span>), (<span class="string">&#x27;far&#x27;</span>, <span class="string">u&#x27;ADV&#x27;</span>)]</span><br></pre></td></tr></table></figure>
+
+<p>你觉得这个标注器的准确率怎么样呢？</p>
+<p>似乎完成的还不错，那么我们试试另外一个句子：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">text = nltk.word_tokenize(<span class="string">&#x27;They refuse to permit us to obtain the refuse permit&#x27;</span>)</span><br><span class="line">nltk.pos_tag(text, tagset=<span class="string">&#x27;universal&#x27;</span>)</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">[(<span class="string">&#x27;They&#x27;</span>, <span class="string">u&#x27;PRON&#x27;</span>), (<span class="string">&#x27;refuse&#x27;</span>, <span class="string">u&#x27;VERB&#x27;</span>), (<span class="string">&#x27;to&#x27;</span>, <span class="string">u&#x27;PRT&#x27;</span>), (<span class="string">&#x27;permit&#x27;</span>, <span class="string">u&#x27;VERB&#x27;</span>), (<span class="string">&#x27;us&#x27;</span>, <span class="string">u&#x27;PRON&#x27;</span>), (<span class="string">&#x27;to&#x27;</span>, <span class="string">u&#x27;PRT&#x27;</span>), (<span class="string">&#x27;obtain&#x27;</span>, <span class="string">u&#x27;VERB&#x27;</span>), (<span class="string">&#x27;the&#x27;</span>, <span class="string">u&#x27;DET&#x27;</span>), (<span class="string">&#x27;refuse&#x27;</span>, <span class="string">u&#x27;NOUN&#x27;</span>), (<span class="string">&#x27;permit&#x27;</span>, <span class="string">u&#x27;NOUN&#x27;</span>)]</span><br></pre></td></tr></table></figure>
+
+<p>对于文中的两个<code>refuse</code>，前者被标为<code>动词</code>，后者被标为<code>名词</code>，完成的还不错。</p>
+<p>这有什么意义呢？拿第二个句子来说，其实两个<code>refuse</code>的读音不一样，第一个读作<code>refUSE</code>，第二个读作<code>REFuse</code>，所以语音系统为了正确的发音，需要先做词性标注才行。</p>
+<h3 id="自动标注器"><a href="#自动标注器" class="headerlink" title="自动标注器"></a>自动标注器</h3><p>为了更好的理解标注器的原理，我们慢慢来自建构建一个词性标注器，先载入数据：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> nltk.corpus <span class="keyword">import</span> brown</span><br><span class="line">brown_tagged_sents = brown.tagged_sents(categories=<span class="string">&#x27;news&#x27;</span>)</span><br><span class="line">brown_sents = brown.sents(categories=<span class="string">&#x27;news&#x27;</span>)</span><br><span class="line">brown_tagged_words = brown.tagged_words(categories=<span class="string">&#x27;news&#x27;</span>)</span><br><span class="line">brown_words = brown.words(categories=<span class="string">&#x27;news&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="默认标注器"><a href="#默认标注器" class="headerlink" title="默认标注器"></a>默认标注器</h4><p>这是最简单的标注器了，它给所有的标识符都分配同样的词性标记，我们先看来来哪个标记是最有可能的：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tags = [tag <span class="keyword">for</span> (word, tag) <span class="keyword">in</span> brown_tagged_words]</span><br><span class="line">nltk.FreqDist(tags).<span class="built_in">max</span>()</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line"><span class="string">u&#x27;NN&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>说明名词是最多的，那么我们就生成一个标注器，它将所有词都标注为名词：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">default_tagger = nltk.DefaultTagger(<span class="string">&#x27;NN&#x27;</span>)</span><br><span class="line">default_tagger.tag(nltk.word_tokenize(<span class="string">&#x27;This beautiful future is just his imagination so far&#x27;</span>))</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">[(<span class="string">&#x27;This&#x27;</span>, <span class="string">&#x27;NN&#x27;</span>), (<span class="string">&#x27;beautiful&#x27;</span>, <span class="string">&#x27;NN&#x27;</span>), (<span class="string">&#x27;future&#x27;</span>, <span class="string">&#x27;NN&#x27;</span>), (<span class="string">&#x27;is&#x27;</span>, <span class="string">&#x27;NN&#x27;</span>), (<span class="string">&#x27;just&#x27;</span>, <span class="string">&#x27;NN&#x27;</span>), (<span class="string">&#x27;his&#x27;</span>, <span class="string">&#x27;NN&#x27;</span>), (<span class="string">&#x27;imagination&#x27;</span>, <span class="string">&#x27;NN&#x27;</span>), (<span class="string">&#x27;so&#x27;</span>, <span class="string">&#x27;NN&#x27;</span>), (<span class="string">&#x27;far&#x27;</span>, <span class="string">&#x27;NN&#x27;</span>)]</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，已经全部标注为<code>NN</code>了，下面<code>评估</code>一下我们这个标注器：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">default_tagger.evaluate(brown_tagged_sents)</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line"><span class="number">0.13089484257215028</span></span><br></pre></td></tr></table></figure>
+
+<p>哈哈，说明这个标注器太差了，它的标注正确率只有13.1%。</p>
+<p>虽然如此，但碰巧的是在处理大量文本的时候，大部分新词都是名词，这意味着默认标注器可以帮助我们提高语言处理系统的稳定性。</p>
+<h4 id="正则表达式标注器"><a href="#正则表达式标注器" class="headerlink" title="正则表达式标注器"></a>正则表达式标注器</h4><p>在英语单词中，我们可以通过后缀<code>ness</code>、<code>ing</code>、<code>ed</code>等来推测一个单词的词性，那么这样做是否也有效呢？试试就知道啦~</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">patterns = [</span><br><span class="line">  (<span class="string">r&#x27;.*ing$&#x27;</span>, <span class="string">&#x27;VBG&#x27;</span>),</span><br><span class="line">  (<span class="string">r&#x27;.*ed$&#x27;</span>, <span class="string">&#x27;VBD&#x27;</span>),</span><br><span class="line">  (<span class="string">r&#x27;.*es$&#x27;</span>, <span class="string">&#x27;VBZ&#x27;</span>),</span><br><span class="line">  (<span class="string">r&#x27;.*ould$&#x27;</span>, <span class="string">&#x27;MD&#x27;</span>),</span><br><span class="line">  (<span class="string">r&#x27;.*\&#x27;s$&#x27;</span>, <span class="string">&#x27;NN$&#x27;</span>),</span><br><span class="line">  (<span class="string">r&#x27;.*s$&#x27;</span>, <span class="string">&#x27;NNS&#x27;</span>),</span><br><span class="line">  (<span class="string">r&#x27;^-?[0-9]+(.[0-9]+)?$&#x27;</span>, <span class="string">&#x27;CD&#x27;</span>),</span><br><span class="line">  (<span class="string">r&#x27;.*&#x27;</span>, <span class="string">&#x27;NN&#x27;</span>)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>按照顺序匹配，当全部都不匹配时，最后会被标注为<code>NN</code>词性。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">regexp_tagger = nltk.RegexpTagger(patterns)</span><br><span class="line">regexp_tagger.tag(brown_sents[<span class="number">3</span>])</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">[(<span class="string">u&#x27;``&#x27;</span>, <span class="string">&#x27;NN&#x27;</span>), (<span class="string">u&#x27;Only&#x27;</span>, <span class="string">&#x27;NN&#x27;</span>), (<span class="string">u&#x27;a&#x27;</span>, <span class="string">&#x27;NN&#x27;</span>), (<span class="string">u&#x27;relative&#x27;</span>, <span class="string">&#x27;NN&#x27;</span>), (<span class="string">u&#x27;handful&#x27;</span>, <span class="string">&#x27;NN&#x27;</span>), (<span class="string">u&#x27;of&#x27;</span>, <span class="string">&#x27;NN&#x27;</span>), (<span class="string">u&#x27;such&#x27;</span>, <span class="string">&#x27;NN&#x27;</span>), (<span class="string">u&#x27;reports&#x27;</span>, <span class="string">&#x27;NNS&#x27;</span>), (<span class="string">u&#x27;was&#x27;</span>, <span class="string">&#x27;NNS&#x27;</span>), (<span class="string">u&#x27;received&#x27;</span>, <span class="string">&#x27;VBD&#x27;</span>), (<span class="string">u&quot;&#x27;&#x27;&quot;</span>, <span class="string">&#x27;NN&#x27;</span>), (<span class="string">u&#x27;,&#x27;</span>, <span class="string">&#x27;NN&#x27;</span>), (<span class="string">u&#x27;the&#x27;</span>, <span class="string">&#x27;NN&#x27;</span>), (<span class="string">u&#x27;jury&#x27;</span>, <span class="string">&#x27;NN&#x27;</span>), (<span class="string">u&#x27;said&#x27;</span>, <span class="string">&#x27;NN&#x27;</span>), (<span class="string">u&#x27;,&#x27;</span>, <span class="string">&#x27;NN&#x27;</span>), (<span class="string">u&#x27;``&#x27;</span>, <span class="string">&#x27;NN&#x27;</span>), (<span class="string">u&#x27;considering&#x27;</span>, <span class="string">&#x27;VBG&#x27;</span>), (<span class="string">u&#x27;the&#x27;</span>, <span class="string">&#x27;NN&#x27;</span>), (<span class="string">u&#x27;widespread&#x27;</span>, <span class="string">&#x27;NN&#x27;</span>), (<span class="string">u&#x27;interest&#x27;</span>, <span class="string">&#x27;NN&#x27;</span>), (<span class="string">u&#x27;in&#x27;</span>, <span class="string">&#x27;NN&#x27;</span>), (<span class="string">u&#x27;the&#x27;</span>, <span class="string">&#x27;NN&#x27;</span>), (<span class="string">u&#x27;election&#x27;</span>, <span class="string">&#x27;NN&#x27;</span>), (<span class="string">u&#x27;,&#x27;</span>, <span class="string">&#x27;NN&#x27;</span>), (<span class="string">u&#x27;the&#x27;</span>, <span class="string">&#x27;NN&#x27;</span>), (<span class="string">u&#x27;number&#x27;</span>, <span class="string">&#x27;NN&#x27;</span>), (<span class="string">u&#x27;of&#x27;</span>, <span class="string">&#x27;NN&#x27;</span>), (<span class="string">u&#x27;voters&#x27;</span>, <span class="string">&#x27;NNS&#x27;</span>), (<span class="string">u&#x27;and&#x27;</span>, <span class="string">&#x27;NN&#x27;</span>), (<span class="string">u&#x27;the&#x27;</span>, <span class="string">&#x27;NN&#x27;</span>), (<span class="string">u&#x27;size&#x27;</span>, <span class="string">&#x27;NN&#x27;</span>), (<span class="string">u&#x27;of&#x27;</span>, <span class="string">&#x27;NN&#x27;</span>), (<span class="string">u&#x27;this&#x27;</span>, <span class="string">&#x27;NNS&#x27;</span>), (<span class="string">u&#x27;city&#x27;</span>, <span class="string">&#x27;NN&#x27;</span>), (<span class="string">u&quot;&#x27;&#x27;&quot;</span>, <span class="string">&#x27;NN&#x27;</span>), (<span class="string">u&#x27;.&#x27;</span>, <span class="string">&#x27;NN&#x27;</span>)]</span><br></pre></td></tr></table></figure>
+
+<p>评估一下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">regexp_tagger.evaluate(brown_tagged_sents)</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line"><span class="number">0.20326391789486245</span></span><br></pre></td></tr></table></figure>
+
+<p>比默认标注器要好点，哈哈</p>
+<h4 id="查询标注器"><a href="#查询标注器" class="headerlink" title="查询标注器"></a>查询标注器</h4><p>可以发现，名词虽然出现的频率最高，但出现频率最高的词未必都是名词，所以我们可以试试取频率最大的前100个词，用他们最有可能的词性来进行标注。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">fd = nltk.FreqDist(brown_words)</span><br><span class="line">cfd = nltk.ConditionalFreqDist(brown_tagged_words)</span><br><span class="line">most_freq_words = fd.most_common()[:<span class="number">100</span>]</span><br><span class="line">likely_tags = <span class="built_in">dict</span>((word, cfd[word].<span class="built_in">max</span>()) <span class="keyword">for</span> (word, freq) <span class="keyword">in</span> most_freq_words)</span><br><span class="line">baseline_tagger = nltk.UnigramTagger(model=likely_tags)</span><br><span class="line">baseline_tagger.evaluate(brown_tagged_sents)</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line"><span class="number">0.45578495136941344</span></span><br></pre></td></tr></table></figure>
+
+<p>可见，就算只取前100个词，效率也已经比之前高很多了。</p>
+<p>我们实地看看它的工作结果：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">baseline_tagger.tag(brown_sents[<span class="number">3</span>])</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">[(<span class="string">u&#x27;``&#x27;</span>, <span class="string">u&#x27;``&#x27;</span>), (<span class="string">u&#x27;Only&#x27;</span>, <span class="literal">None</span>), (<span class="string">u&#x27;a&#x27;</span>, <span class="string">u&#x27;AT&#x27;</span>), (<span class="string">u&#x27;relative&#x27;</span>, <span class="literal">None</span>), (<span class="string">u&#x27;handful&#x27;</span>, <span class="literal">None</span>), (<span class="string">u&#x27;of&#x27;</span>, <span class="string">u&#x27;IN&#x27;</span>), (<span class="string">u&#x27;such&#x27;</span>, <span class="literal">None</span>), (<span class="string">u&#x27;reports&#x27;</span>, <span class="literal">None</span>), (<span class="string">u&#x27;was&#x27;</span>, <span class="string">u&#x27;BEDZ&#x27;</span>), (<span class="string">u&#x27;received&#x27;</span>, <span class="literal">None</span>), (<span class="string">u&quot;&#x27;&#x27;&quot;</span>, <span class="string">u&quot;&#x27;&#x27;&quot;</span>), (<span class="string">u&#x27;,&#x27;</span>, <span class="string">u&#x27;,&#x27;</span>), (<span class="string">u&#x27;the&#x27;</span>, <span class="string">u&#x27;AT&#x27;</span>), (<span class="string">u&#x27;jury&#x27;</span>, <span class="literal">None</span>), (<span class="string">u&#x27;said&#x27;</span>, <span class="string">u&#x27;VBD&#x27;</span>), (<span class="string">u&#x27;,&#x27;</span>, <span class="string">u&#x27;,&#x27;</span>), (<span class="string">u&#x27;``&#x27;</span>, <span class="string">u&#x27;``&#x27;</span>), (<span class="string">u&#x27;considering&#x27;</span>, <span class="literal">None</span>), (<span class="string">u&#x27;the&#x27;</span>, <span class="string">u&#x27;AT&#x27;</span>), (<span class="string">u&#x27;widespread&#x27;</span>, <span class="literal">None</span>), (<span class="string">u&#x27;interest&#x27;</span>, <span class="literal">None</span>), (<span class="string">u&#x27;in&#x27;</span>, <span class="string">u&#x27;IN&#x27;</span>), (<span class="string">u&#x27;the&#x27;</span>, <span class="string">u&#x27;AT&#x27;</span>), (<span class="string">u&#x27;election&#x27;</span>, <span class="literal">None</span>), (<span class="string">u&#x27;,&#x27;</span>, <span class="string">u&#x27;,&#x27;</span>), (<span class="string">u&#x27;the&#x27;</span>, <span class="string">u&#x27;AT&#x27;</span>), (<span class="string">u&#x27;number&#x27;</span>, <span class="literal">None</span>), (<span class="string">u&#x27;of&#x27;</span>, <span class="string">u&#x27;IN&#x27;</span>), (<span class="string">u&#x27;voters&#x27;</span>, <span class="literal">None</span>), (<span class="string">u&#x27;and&#x27;</span>, <span class="string">u&#x27;CC&#x27;</span>), (<span class="string">u&#x27;the&#x27;</span>, <span class="string">u&#x27;AT&#x27;</span>), (<span class="string">u&#x27;size&#x27;</span>, <span class="literal">None</span>), (<span class="string">u&#x27;of&#x27;</span>, <span class="string">u&#x27;IN&#x27;</span>), (<span class="string">u&#x27;this&#x27;</span>, <span class="string">u&#x27;DT&#x27;</span>), (<span class="string">u&#x27;city&#x27;</span>, <span class="literal">None</span>), (<span class="string">u&quot;&#x27;&#x27;&quot;</span>, <span class="string">u&quot;&#x27;&#x27;&quot;</span>), (<span class="string">u&#x27;.&#x27;</span>, <span class="string">u&#x27;.&#x27;</span>)]</span><br></pre></td></tr></table></figure>
+
+<p>可以看到有很多是<code>None</code>，说明它没有出现在<code>前100</code>个词中，这时候我们可以把它们交给<code>默认标注器</code>处理，也就是标记为<code>NN</code>，这个转移工作叫做<code>回退</code>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">baseline_tagger = nltk.UnigramTagger(model=likely_tags, backoff=nltk.DefaultTagger(<span class="string">&#x27;NN&#x27;</span>))</span><br><span class="line">baseline_tagger.evaluate(brown_tagged_sents)</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line"><span class="number">0.5817769556656125</span></span><br></pre></td></tr></table></figure>
+
+<p>准确率瞬间提高了10%+ 有木有！！</p>
+<p>如果取更多的词呢？下面给出数据：</p>
+<table>
+<thead>
+<tr>
+<th>高频词数量</th>
+<th>准确率</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>200</td>
+<td>0.5060962269029576</td>
+</tr>
+<tr>
+<td>800</td>
+<td>0.6335401873620145</td>
+</tr>
+<tr>
+<td>1600</td>
+<td>0.7067247449131809</td>
+</tr>
+<tr>
+<td>3200</td>
+<td>0.7813513137219802</td>
+</tr>
+</tbody></table>
+<p>说明随着数量增加，准确率还会提升~</p>
+<h2 id="N-gram标注"><a href="#N-gram标注" class="headerlink" title="N-gram标注"></a>N-gram标注</h2><h3 id="一元标注"><a href="#一元标注" class="headerlink" title="一元标注"></a>一元标注</h3><p>它使用简单的统计算法，给每一个词分配一个最可能的标记，不会关联上下文。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">unigram_tagger = nltk.UnigramTagger(brown_tagged_sents)</span><br><span class="line">unigram_tagger.evaluate(brown_tagged_sents)</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line"><span class="number">0.9349006503968017</span></span><br></pre></td></tr></table></figure>
+
+<p>准确率还蛮高的，学过的同学知道，这其实是过拟合啦，不信？我们试试其他十个语料库：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span> <span class="string">&quot;\n&quot;</span>.join([cate + <span class="string">&quot;\t&quot;</span> + <span class="built_in">str</span>(unigram_tagger.evaluate(brown.tagged_sents(categories=cate))) <span class="keyword">for</span> cate <span class="keyword">in</span> brown.categories()[:<span class="number">10</span>]])</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">adventure		<span class="number">0.787891898128</span></span><br><span class="line">belles_lettres	<span class="number">0.798707075842</span></span><br><span class="line">editorial		<span class="number">0.813940653204</span></span><br><span class="line">fiction			<span class="number">0.799147295877</span></span><br><span class="line">government		<span class="number">0.807778427485</span></span><br><span class="line">hobbies			<span class="number">0.771327949481</span></span><br><span class="line">humor			<span class="number">0.793178151648</span></span><br><span class="line">learned			<span class="number">0.772942690007</span></span><br><span class="line">lore			<span class="number">0.798085204762</span></span><br><span class="line">mystery			<span class="number">0.80790288443</span></span><br></pre></td></tr></table></figure>
+
+<p>准确率表现在80%左右，下降了10%多，影响还是蛮大的啦。</p>
+<h3 id="一般的N-gram的标注"><a href="#一般的N-gram的标注" class="headerlink" title="一般的N-gram的标注"></a>一般的N-gram的标注</h3><p>它是根据上下文来推断词性的。比如一段句子是 $w_{n-2} w_{n-1} w_{n} w_{n+1}$，对应的词性是$t_{n-2} t_{n-1} t_{n} t_{n+1}$，三元标准器（n&#x3D;3）就是考虑当前词$w_{n}$ 的<code>前两个词</code>的标记$t_{n-2} t_{n-1}$ ，我们来推断$t_{n}$ 的词性。</p>
+<p>下面是一个二元标注器（即只考虑前一个词）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bigram_tagger = nltk.BigramTagger(brown_tagged_sents)</span><br><span class="line">bigram_tagger.evaluate(brown_tagged_sents)</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line"><span class="number">0.7860751437038805</span></span><br></pre></td></tr></table></figure>
+
+<p>三元标注器：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">trigram_tagger = nltk.TrigramTagger(brown_tagged_sents)</span><br><span class="line">trigram_tagger.evaluate(brown_tagged_sents)</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line"><span class="number">0.8223641028700996</span></span><br></pre></td></tr></table></figure>
+
+<p>准确率要高点。我们来试试它对其他文本的准确率怎么样</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span> <span class="string">&quot;\n&quot;</span>.join([cate + <span class="string">&quot;\t&quot;</span> + <span class="built_in">str</span>(trigram_tagger.evaluate(brown.tagged_sents(categories=cate))) <span class="keyword">for</span> cate <span class="keyword">in</span> brown.categories()[:<span class="number">10</span>]])</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">adventure		<span class="number">0.0947189293646</span></span><br><span class="line">belles_lettres	<span class="number">0.0632885797477</span></span><br><span class="line">editorial		<span class="number">0.0675930134407</span></span><br><span class="line">fiction			<span class="number">0.0889498890317</span></span><br><span class="line">government		<span class="number">0.0531682758817</span></span><br><span class="line">hobbies			<span class="number">0.0558503855729</span></span><br><span class="line">humor			<span class="number">0.0754551740032</span></span><br><span class="line">learned			<span class="number">0.0566172589726</span></span><br><span class="line">lore			<span class="number">0.0623759054933</span></span><br><span class="line">mystery			<span class="number">0.096993125645</span></span><br></pre></td></tr></table></figure>
+
+<p>好吧，我怀疑我用了假标注器！</p>
+<p>我们组合一下所建的标注器：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">t0 = nltk.DefaultTagger(<span class="string">&#x27;NN&#x27;</span>)</span><br><span class="line">t1 = nltk.UnigramTagger(brown_tagged_sents, backoff=t0)</span><br><span class="line">t2 = nltk.BigramTagger(brown_tagged_sents, backoff=t1)</span><br><span class="line">t2.evaluate(brown_tagged_sents)</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line"><span class="number">0.9730592517453309</span></span><br></pre></td></tr></table></figure>
+
+<p>嗯。。。准确率还不错，下面试试：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span> <span class="string">&quot;\n&quot;</span>.join([cate + <span class="string">&quot;\t&quot;</span> + <span class="built_in">str</span>(t2.evaluate(brown.tagged_sents(categories=cate))) <span class="keyword">for</span> cate <span class="keyword">in</span> brown.categories()[:<span class="number">10</span>]])</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">adventure		<span class="number">0.835626315941</span></span><br><span class="line">belles_lettres	<span class="number">0.840522022462</span></span><br><span class="line">editorial		<span class="number">0.849977274203</span></span><br><span class="line">fiction			<span class="number">0.84151968228</span></span><br><span class="line">government		<span class="number">0.844089165252</span></span><br><span class="line">hobbies			<span class="number">0.825283866659</span></span><br><span class="line">humor			<span class="number">0.839041253745</span></span><br><span class="line">learned			<span class="number">0.836756685433</span></span><br><span class="line">lore			<span class="number">0.844033037471</span></span><br><span class="line">mystery			<span class="number">0.85128303801</span></span><br></pre></td></tr></table></figure>
+
+<p>em………还不错吧，下降也有10%，但准确率还有85%左右</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hijerry.cn/p/63432.html" data-id="cl0e36g010032osctbjqu6lts" data-title="NLTK之词性标注" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NLP/" rel="tag">NLP</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/p/18313.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          快速幂（取模）算法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/p/64326.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">CentOS使用ss</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Web%E5%85%A8%E6%A0%88/">Web全栈</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A0%94/">研</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B/">程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E9%A2%98/">编程题</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AC%E8%BD%BD/">转载</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AF%E4%BB%B6%E6%8A%80%E6%9C%AF/">软件技术</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BP%E7%AE%97%E6%B3%95/" rel="tag">BP算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/" rel="tag">Laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/" rel="tag">NLP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NP%E5%AE%8C%E5%85%A8%E6%80%A7/" rel="tag">NP完全性</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stanford/" rel="tag">Stanford</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tensoflow/" rel="tag">Tensoflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web%E6%80%BB%E7%BB%93/" rel="tag">Web总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/devopps/" rel="tag">devopps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/" rel="tag">mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/medium/" rel="tag">medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/word2vec/" rel="tag">word2vec</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/" rel="tag">zsh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BE%9D%E8%B5%96%E8%A7%A3%E6%9E%90/" rel="tag">依赖解析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%91%E6%8C%87Offer/" rel="tag">剑指Offer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%84%9F%E7%9F%A5%E6%9C%BA/" rel="tag">感知机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A0%E6%A0%87%E7%AD%BE/" rel="tag">无标签</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91/" rel="tag">机器翻译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B1%87%E7%BC%96/" rel="tag">汇编</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E4%B9%8E/" rel="tag">知乎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" rel="tag">神经网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" rel="tag">线性代数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/" rel="tag">线性模型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87/" rel="tag">论文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag">运维</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/BP%E7%AE%97%E6%B3%95/" style="font-size: 10px;">BP算法</a> <a href="/tags/Laravel/" style="font-size: 14px;">Laravel</a> <a href="/tags/NLP/" style="font-size: 18px;">NLP</a> <a href="/tags/NP%E5%AE%8C%E5%85%A8%E6%80%A7/" style="font-size: 10px;">NP完全性</a> <a href="/tags/Stanford/" style="font-size: 10px;">Stanford</a> <a href="/tags/Tensoflow/" style="font-size: 10px;">Tensoflow</a> <a href="/tags/Web%E6%80%BB%E7%BB%93/" style="font-size: 16px;">Web总结</a> <a href="/tags/devopps/" style="font-size: 12px;">devopps</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/leetcode/" style="font-size: 16px;">leetcode</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mac/" style="font-size: 12px;">mac</a> <a href="/tags/medium/" style="font-size: 10px;">medium</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a> <a href="/tags/zsh/" style="font-size: 10px;">zsh</a> <a href="/tags/%E4%BE%9D%E8%B5%96%E8%A7%A3%E6%9E%90/" style="font-size: 10px;">依赖解析</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14px;">前端</a> <a href="/tags/%E5%89%91%E6%8C%87Offer/" style="font-size: 10px;">剑指Offer</a> <a href="/tags/%E6%84%9F%E7%9F%A5%E6%9C%BA/" style="font-size: 10px;">感知机</a> <a href="/tags/%E6%97%A0%E6%A0%87%E7%AD%BE/" style="font-size: 12px;">无标签</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">机器学习</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91/" style="font-size: 10px;">机器翻译</a> <a href="/tags/%E6%B1%87%E7%BC%96/" style="font-size: 12px;">汇编</a> <a href="/tags/%E7%9F%A5%E4%B9%8E/" style="font-size: 10px;">知乎</a> <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">神经网络</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" style="font-size: 10px;">线性代数</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/" style="font-size: 10px;">线性模型</a> <a href="/tags/%E8%AE%BA%E6%96%87/" style="font-size: 10px;">论文</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 10px;">运维</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/p/49582.html">2019 Mac安装cuda+cudnn+pytorch</a>
+          </li>
+        
+          <li>
+            <a href="/p/48009.html">复杂度与NP完全性</a>
+          </li>
+        
+          <li>
+            <a href="/p/55002.html">2019-CS224n-Assignment4</a>
+          </li>
+        
+          <li>
+            <a href="/p/35741.html">2019-CS224n-Assignment3</a>
+          </li>
+        
+          <li>
+            <a href="/p/13983.html">NLP会议介绍</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 jerrycheese<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

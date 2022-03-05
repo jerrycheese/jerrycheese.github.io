@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>LeetCode买股票系列2 | 全栈说</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="上一个系列是对交易次数进行限制，本系列是无限次交易但是有一些其他限制。 问题1：卖出后休息一天原题：Best Time to Buy and Sell Stock with Cooldown 题意：你可以进行任意次交易，但完成一次交易后，接下来的一天不能进行买入&#x2F;卖出操作。 我们先回顾一下上一期 买股票系列 的问题2，它和这个问题就差了一个条件，当时我们用了贪心算法，策略是低买高卖，且">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode买股票系列2">
+<meta property="og:url" content="https://hijerry.cn/p/31115.html">
+<meta property="og:site_name" content="全栈说">
+<meta property="og:description" content="上一个系列是对交易次数进行限制，本系列是无限次交易但是有一些其他限制。 问题1：卖出后休息一天原题：Best Time to Buy and Sell Stock with Cooldown 题意：你可以进行任意次交易，但完成一次交易后，接下来的一天不能进行买入&#x2F;卖出操作。 我们先回顾一下上一期 买股票系列 的问题2，它和这个问题就差了一个条件，当时我们用了贪心算法，策略是低买高卖，且">
+<meta property="og:locale">
+<meta property="article:published_time" content="2017-11-15T16:16:35.000Z">
+<meta property="article:modified_time" content="2017-11-18T14:12:26.000Z">
+<meta property="article:author" content="jerrycheese">
+<meta property="article:tag" content="leetcode">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="全栈说" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">全栈说</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Work 20%</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hijerry.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-11/LeetCode买股票系列2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/p/31115.html" class="article-date">
+  <time class="dt-published" datetime="2017-11-15T16:16:35.000Z" itemprop="datePublished">2017-11-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B%E9%A2%98/">编程题</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      LeetCode买股票系列2
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p> 上一个系列是对交易次数进行限制，本系列是无限次交易但是有一些其他限制。</p>
+<h2 id="问题1：卖出后休息一天"><a href="#问题1：卖出后休息一天" class="headerlink" title="问题1：卖出后休息一天"></a>问题1：卖出后休息一天</h2><p>原题：<a target="_blank" rel="noopener" href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown">Best Time to Buy and Sell Stock with Cooldown</a></p>
+<p>题意：你可以进行任意次交易，但完成一次交易后，接下来的一天不能进行买入&#x2F;卖出操作。</p>
+<p>我们先回顾一下上一期 <a href="/p/52113.html">买股票系列</a> 的问题2，它和这个问题就差了一个条件，当时我们用了贪心算法，策略是<strong>低买高卖</strong>，且经过思考后得到的下述的状态叠加公式</p>
+<p>$ profit  +&#x3D; max(0, prices[i + 1] - prices[i])$ </p>
+<p>直观上理解为，只要今天的股票比昨天高，我就可以<code>挣一个净增值</code>。例如对于序列 $[1,2,3,4]​$</p>
+<ul>
+<li>第2天比第1天多1，我们就在第1天买入，第2天卖出，这样能挣1元</li>
+<li>第3天比第2天多1，我们就在第2天买入，第3天卖出，这样能挣1元</li>
+<li>……</li>
+</ul>
+<p>细看发现，其实这个状态是连续叠加的，所以如果一次交易后必须休息一天，那么这个状态就不连续了。</p>
+<p>现在再看上述的过程，发现 <code>profit +=</code> 这一句代码其实隐含着一个意思，就是<code>局部最优</code>，当前状态下的最优值是从<code>上一个状态的最优值</code>加上<code>本次状态的最佳选择</code>得到的，到这一步其实就已经得到本题的结果了，也就是公式</p>
+<p><code>今天的最优值 = 上一个状态的最优值 + 今天的最佳选择</code> ，上述题目中的<code>上一个状态的最优值</code> 其实就是<code>昨天的最优值</code>，而本题确是<code>上一次交易的最优值</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">maxProfit</span>(<span class="params">self, prices</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        :type prices: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(prices) &lt; <span class="number">2</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        sell, buy, prev_sell, prev_buy = <span class="number">0</span>, -<span class="number">2147483648</span>, <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> price <span class="keyword">in</span> prices:</span><br><span class="line">            prev_buy = buy</span><br><span class="line">            buy = <span class="built_in">max</span>(prev_sell - price, prev_buy)</span><br><span class="line">            prev_sell = sell</span><br><span class="line">            sell = <span class="built_in">max</span>(prev_buy + price, prev_sell)</span><br><span class="line">        <span class="keyword">return</span> sell</span><br><span class="line">        </span><br></pre></td></tr></table></figure>
+
+<p>把买和卖拆开看，buy表示<code>今天买入后最大价值</code>，sell表示<code>今天卖出后最大价值</code>，prev_buy表示<code>今天前买入的最大价值</code>，prev_sell表示<code>今天前卖出的最大价值</code>。</p>
+<h2 id="问题2：交易收费"><a href="#问题2：交易收费" class="headerlink" title="问题2：交易收费"></a>问题2：交易收费</h2><p>原题：<a target="_blank" rel="noopener" href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee">Best Time to Buy and Sell Stock with Transaction Fee</a></p>
+<p>题意：每次交易收费</p>
+<p>还是<code>今天的最优值 = 上一个状态的最优值 + 今天的最佳选择</code> ，把买和卖拆开看，但是卖的时候要收手续费。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">maxProfit</span>(<span class="params">self, prices, fee</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        :type prices: List[int]</span></span><br><span class="line"><span class="string">        :type fee: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        buy, sell, prev_sell = -<span class="number">2147483648</span>, <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> price <span class="keyword">in</span> prices:</span><br><span class="line">            prev_sell = sell</span><br><span class="line">            sell = <span class="built_in">max</span>(prev_sell, buy + price - fee)</span><br><span class="line">            buy = <span class="built_in">max</span>(buy, prev_sell - price)</span><br><span class="line">        <span class="keyword">return</span> sell</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hijerry.cn/p/31115.html" data-id="cl0e36fze000gosct3ah2h56h" data-title="LeetCode买股票系列2" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/p/49382.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          初学者如何查阅自然语言处理（NLP）领域学术资料
+        
+      </div>
+    </a>
+  
+  
+    <a href="/p/52113.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">LeetCode买股票系列</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Web%E5%85%A8%E6%A0%88/">Web全栈</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A0%94/">研</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B/">程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E9%A2%98/">编程题</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AC%E8%BD%BD/">转载</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AF%E4%BB%B6%E6%8A%80%E6%9C%AF/">软件技术</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BP%E7%AE%97%E6%B3%95/" rel="tag">BP算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/" rel="tag">Laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/" rel="tag">NLP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NP%E5%AE%8C%E5%85%A8%E6%80%A7/" rel="tag">NP完全性</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stanford/" rel="tag">Stanford</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tensoflow/" rel="tag">Tensoflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web%E6%80%BB%E7%BB%93/" rel="tag">Web总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/devopps/" rel="tag">devopps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/" rel="tag">mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/medium/" rel="tag">medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/word2vec/" rel="tag">word2vec</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/" rel="tag">zsh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BE%9D%E8%B5%96%E8%A7%A3%E6%9E%90/" rel="tag">依赖解析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%91%E6%8C%87Offer/" rel="tag">剑指Offer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%84%9F%E7%9F%A5%E6%9C%BA/" rel="tag">感知机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A0%E6%A0%87%E7%AD%BE/" rel="tag">无标签</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91/" rel="tag">机器翻译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B1%87%E7%BC%96/" rel="tag">汇编</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E4%B9%8E/" rel="tag">知乎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" rel="tag">神经网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" rel="tag">线性代数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/" rel="tag">线性模型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87/" rel="tag">论文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag">运维</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/BP%E7%AE%97%E6%B3%95/" style="font-size: 10px;">BP算法</a> <a href="/tags/Laravel/" style="font-size: 14px;">Laravel</a> <a href="/tags/NLP/" style="font-size: 18px;">NLP</a> <a href="/tags/NP%E5%AE%8C%E5%85%A8%E6%80%A7/" style="font-size: 10px;">NP完全性</a> <a href="/tags/Stanford/" style="font-size: 10px;">Stanford</a> <a href="/tags/Tensoflow/" style="font-size: 10px;">Tensoflow</a> <a href="/tags/Web%E6%80%BB%E7%BB%93/" style="font-size: 16px;">Web总结</a> <a href="/tags/devopps/" style="font-size: 12px;">devopps</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/leetcode/" style="font-size: 16px;">leetcode</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mac/" style="font-size: 12px;">mac</a> <a href="/tags/medium/" style="font-size: 10px;">medium</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a> <a href="/tags/zsh/" style="font-size: 10px;">zsh</a> <a href="/tags/%E4%BE%9D%E8%B5%96%E8%A7%A3%E6%9E%90/" style="font-size: 10px;">依赖解析</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14px;">前端</a> <a href="/tags/%E5%89%91%E6%8C%87Offer/" style="font-size: 10px;">剑指Offer</a> <a href="/tags/%E6%84%9F%E7%9F%A5%E6%9C%BA/" style="font-size: 10px;">感知机</a> <a href="/tags/%E6%97%A0%E6%A0%87%E7%AD%BE/" style="font-size: 12px;">无标签</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">机器学习</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91/" style="font-size: 10px;">机器翻译</a> <a href="/tags/%E6%B1%87%E7%BC%96/" style="font-size: 12px;">汇编</a> <a href="/tags/%E7%9F%A5%E4%B9%8E/" style="font-size: 10px;">知乎</a> <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">神经网络</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" style="font-size: 10px;">线性代数</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/" style="font-size: 10px;">线性模型</a> <a href="/tags/%E8%AE%BA%E6%96%87/" style="font-size: 10px;">论文</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 10px;">运维</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/p/49582.html">2019 Mac安装cuda+cudnn+pytorch</a>
+          </li>
+        
+          <li>
+            <a href="/p/48009.html">复杂度与NP完全性</a>
+          </li>
+        
+          <li>
+            <a href="/p/55002.html">2019-CS224n-Assignment4</a>
+          </li>
+        
+          <li>
+            <a href="/p/35741.html">2019-CS224n-Assignment3</a>
+          </li>
+        
+          <li>
+            <a href="/p/13983.html">NLP会议介绍</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 jerrycheese<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

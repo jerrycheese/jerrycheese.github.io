@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Exercise 4: Neural Networks Learning | 全栈说</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="序一天两发，是因为这两次的练习内容都是神经网络，比较接近。 回顾第四周的作业，最后使用神经网络进行多分类预测的时候，Ng给出了训练好的Θ，本周的主要内容就是学习如何训练一个神经网络，最终得出Θ。 正向传播：Cost Function参考公式：  K表示分类的数量，$ y^{(i)}$ 表示第 $i$ 个数据集的预测值，这个预测值的可能取值如下：  那么 $y_k^{(i)} &#x3D; {0,1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Exercise 4: Neural Networks Learning">
+<meta property="og:url" content="https://hijerry.cn/p/8039.html">
+<meta property="og:site_name" content="全栈说">
+<meta property="og:description" content="序一天两发，是因为这两次的练习内容都是神经网络，比较接近。 回顾第四周的作业，最后使用神经网络进行多分类预测的时候，Ng给出了训练好的Θ，本周的主要内容就是学习如何训练一个神经网络，最终得出Θ。 正向传播：Cost Function参考公式：  K表示分类的数量，$ y^{(i)}$ 表示第 $i$ 个数据集的预测值，这个预测值的可能取值如下：  那么 $y_k^{(i)} &#x3D; {0,1">
+<meta property="og:locale">
+<meta property="og:image" content="http://os9coobhw.bkt.clouddn.com/feb9940a6bace0d7208e8fab4b8b0beb.jpg">
+<meta property="og:image" content="http://os9coobhw.bkt.clouddn.com/3af571ae818c9d0b6befb6d7c96402f5.jpg">
+<meta property="og:image" content="http://os9coobhw.bkt.clouddn.com/547984006a1cc567d2ecd4e5c674fde9.jpg">
+<meta property="og:image" content="http://os9coobhw.bkt.clouddn.com/2b54b7ba807075b1b882128ad7e6b468.jpg">
+<meta property="og:image" content="http://os9coobhw.bkt.clouddn.com/4ce4b6ce8f6fcf2eafddfe946d1c101e.jpg">
+<meta property="article:published_time" content="2017-11-24T07:13:51.000Z">
+<meta property="article:modified_time" content="2017-11-24T08:47:55.000Z">
+<meta property="article:author" content="jerrycheese">
+<meta property="article:tag" content="机器学习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://os9coobhw.bkt.clouddn.com/feb9940a6bace0d7208e8fab4b8b0beb.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="全栈说" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">全栈说</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Work 20%</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hijerry.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-11/Exercise-4-Neural-Networks-Learning" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/p/8039.html" class="article-date">
+  <time class="dt-published" datetime="2017-11-24T07:13:51.000Z" itemprop="datePublished">2017-11-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%A0%94/">研</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Exercise 4: Neural Networks Learning
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="序"><a href="#序" class="headerlink" title="序"></a>序</h2><p>一天两发，是因为这两次的练习内容都是神经网络，比较接近。</p>
+<p>回顾第四周的作业，最后使用神经网络进行多分类预测的时候，Ng给出了训练好的Θ，本周的主要内容就是学习如何训练一个神经网络，最终得出Θ。</p>
+<h2 id="正向传播：Cost-Function"><a href="#正向传播：Cost-Function" class="headerlink" title="正向传播：Cost Function"></a>正向传播：Cost Function</h2><p>参考公式：</p>
+<p><img src="http://os9coobhw.bkt.clouddn.com/feb9940a6bace0d7208e8fab4b8b0beb.jpg"></p>
+<p>K表示分类的数量，$ y^{(i)}$ 表示第 $i$ 个数据集的预测值，这个预测值的可能取值如下：</p>
+<p><img src="http://os9coobhw.bkt.clouddn.com/3af571ae818c9d0b6befb6d7c96402f5.jpg"></p>
+<p>那么 $y_k^{(i)} &#x3D; {0,1}$ ，正向传播的意思就是从左到右一层一层的计算，它的Cost Function就是每一层之间的逻辑回归Cost累加。</p>
+<h2 id="反向传播：误差计算和梯度"><a href="#反向传播：误差计算和梯度" class="headerlink" title="反向传播：误差计算和梯度"></a>反向传播：误差计算和梯度</h2><p>为求得 $ min_Θ J(Θ)$，使用梯度下降算法，则需要计算下面两个值：</p>
+<ul>
+<li>$J(Θ)$</li>
+<li>$ \frac {∂} {∂ Θ_{i, j}^{(l)}} J(Θ)$</li>
+</ul>
+<p>对于$J(Θ)$ ，用正向传播可以求得，而$ \frac {∂} {∂ Θ_{i, j}^{(l)}} J(Θ)$ 可以使用反向传播来求得，反向传播的计算流程如下。</p>
+<p><img src="http://os9coobhw.bkt.clouddn.com/547984006a1cc567d2ecd4e5c674fde9.jpg"></p>
+<p>$δ_j^{(l)}$ 表示 $Layer_l$ 的第 $j$ 个单元的误差，所以</p>
+<ul>
+<li>$δ_j^{(4)}$ &#x3D; $a_j^{(4)} - y_i$</li>
+</ul>
+<p>而 $δ_j^{(3)}$ 、$δ_j^{(2)}$ 的推导过程比较复杂，这里直接给出计算公式。</p>
+<p>并且 $ \frac {∂} {∂ Θ_{i, j}^{(l)}} J(Θ) &#x3D; a_j^{(l)}δ_i^{(l+1)} $  ，这个证明过程也很繁琐。</p>
+<h2 id="梯度检测"><a href="#梯度检测" class="headerlink" title="梯度检测"></a>梯度检测</h2><p>在计算  $ \frac {∂} {∂ Θ_{i, j}^{(l)}} J(Θ) $ 时，代码上可能会出现一些bug，所以为了检测代码是否写对了，在测试时可以对其计算的梯度进行检测，原理是：</p>
+<p><img src="http://os9coobhw.bkt.clouddn.com/2b54b7ba807075b1b882128ad7e6b468.jpg"></p>
+<p>我们取 $\epsilon$ 是一个很小的值，就能近似的计算偏导数，检查两者的差值就能得到我们的偏导数算法是否写对了。</p>
+<h2 id="作业1：实现正向传播"><a href="#作业1：实现正向传播" class="headerlink" title="作业1：实现正向传播"></a>作业1：实现正向传播</h2><p>由于分类数量是K，所以对于每一组训练数据，都需要计算Cost值</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="params">[J grad]</span> = <span class="title">nnCostFunction</span><span class="params">(nn_params, ...</span></span></span><br><span class="line"><span class="params"><span class="function">                                   input_layer_size, ...</span></span></span><br><span class="line"><span class="params"><span class="function">                                   hidden_layer_size, ...</span></span></span><br><span class="line"><span class="params"><span class="function">                                   num_labels, ...</span></span></span><br><span class="line"><span class="params"><span class="function">                                   X, y, lambda)</span></span></span><br><span class="line"><span class="comment">%NNCOSTFUNCTION Implements the neural network cost function for a two layer</span></span><br><span class="line"><span class="comment">%neural network which performs classification</span></span><br><span class="line"><span class="comment">%   [J grad] = NNCOSTFUNCTON(nn_params, hidden_layer_size, num_labels, ...</span></span><br><span class="line"><span class="comment">%   X, y, lambda) computes the cost and gradient of the neural network. The</span></span><br><span class="line"><span class="comment">%   parameters for the neural network are &quot;unrolled&quot; into the vector</span></span><br><span class="line"><span class="comment">%   nn_params and need to be converted back into the weight matrices. </span></span><br><span class="line"><span class="comment">% </span></span><br><span class="line"><span class="comment">%   The returned parameter grad should be a &quot;unrolled&quot; vector of the</span></span><br><span class="line"><span class="comment">%   partial derivatives of the neural network.</span></span><br><span class="line"><span class="comment">%</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% Reshape nn_params back into the parameters Theta1 and Theta2, the weight matrices</span></span><br><span class="line"><span class="comment">% for our 2 layer neural network</span></span><br><span class="line">Theta1 = <span class="built_in">reshape</span>(nn_params(<span class="number">1</span>:hidden_layer_size * (input_layer_size + <span class="number">1</span>)), ...</span><br><span class="line">                 hidden_layer_size, (input_layer_size + <span class="number">1</span>));</span><br><span class="line"></span><br><span class="line">Theta2 = <span class="built_in">reshape</span>(nn_params((<span class="number">1</span> + (hidden_layer_size * (input_layer_size + <span class="number">1</span>))):<span class="keyword">end</span>), ...</span><br><span class="line">                 num_labels, (hidden_layer_size + <span class="number">1</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">% Setup some useful variables</span></span><br><span class="line">m = <span class="built_in">size</span>(X, <span class="number">1</span>);</span><br><span class="line">         </span><br><span class="line"><span class="comment">% You need to return the following variables correctly </span></span><br><span class="line">J = <span class="number">0</span>;</span><br><span class="line">Theta1_grad = <span class="built_in">zeros</span>(<span class="built_in">size</span>(Theta1));</span><br><span class="line">Theta2_grad = <span class="built_in">zeros</span>(<span class="built_in">size</span>(Theta2));</span><br><span class="line"></span><br><span class="line"><span class="comment">% ====================== YOUR CODE HERE ======================</span></span><br><span class="line"></span><br><span class="line">X = [<span class="built_in">ones</span>(m,<span class="number">1</span>) X];</span><br><span class="line">a1 = X;</span><br><span class="line">a2 = sigmoid(X * Theta1&#x27;);</span><br><span class="line">a2 = [<span class="built_in">ones</span>(<span class="built_in">size</span>(a2, <span class="number">1</span>), <span class="number">1</span>) a2];</span><br><span class="line">a3 = sigmoid(a2 * Theta2&#x27;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span>:m</span><br><span class="line">    yi = <span class="built_in">zeros</span>(num_labels, <span class="number">1</span>);</span><br><span class="line">    yi(y(<span class="built_in">i</span>),<span class="number">1</span>) = <span class="number">1</span>;</span><br><span class="line">    a3i = a3(<span class="built_in">i</span>,:)&#x27;;</span><br><span class="line">    J = J + sum(-yi .* <span class="built_in">log</span>(a3i) - (<span class="number">1</span> - yi) .* <span class="built_in">log</span>(<span class="number">1</span> - a3i));</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">J = <span class="number">1</span>/m * J;</span><br><span class="line">rTheta1 = Theta1(:,<span class="number">2</span>:<span class="built_in">size</span>(Theta1,<span class="number">2</span>));</span><br><span class="line">rTheta2 = Theta2(:,<span class="number">2</span>:<span class="built_in">size</span>(Theta2,<span class="number">2</span>));</span><br><span class="line"></span><br><span class="line">J = J + lambda/(<span class="number">2</span>*m) * (sum(sum(rTheta1 .^ <span class="number">2</span>)) + sum(sum(rTheta2 .^ <span class="number">2</span>)));</span><br><span class="line"></span><br><span class="line"><span class="comment">% -------------------------------------------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% =========================================================================</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% Unroll gradients</span></span><br><span class="line">grad = [Theta1_grad(:) ; Theta2_grad(:)];</span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="作业2：sigmoid的导数"><a href="#作业2：sigmoid的导数" class="headerlink" title="作业2：sigmoid的导数"></a>作业2：sigmoid的导数</h2><p>其实就是对sigmoid函数求导</p>
+<p><img src="http://os9coobhw.bkt.clouddn.com/4ce4b6ce8f6fcf2eafddfe946d1c101e.jpg"></p>
+<h2 id="作业3：反向传播"><a href="#作业3：反向传播" class="headerlink" title="作业3：反向传播"></a>作业3：反向传播</h2><p>其实和正向传播是写在同一个地方的，因为本质上实在计算偏导数。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="params">[J grad]</span> = <span class="title">nnCostFunction</span><span class="params">(nn_params, ...</span></span></span><br><span class="line"><span class="params"><span class="function">                                   input_layer_size, ...</span></span></span><br><span class="line"><span class="params"><span class="function">                                   hidden_layer_size, ...</span></span></span><br><span class="line"><span class="params"><span class="function">                                   num_labels, ...</span></span></span><br><span class="line"><span class="params"><span class="function">                                   X, y, lambda)</span></span></span><br><span class="line"><span class="comment">%NNCOSTFUNCTION Implements the neural network cost function for a two layer</span></span><br><span class="line"><span class="comment">%neural network which performs classification</span></span><br><span class="line"><span class="comment">%   [J grad] = NNCOSTFUNCTON(nn_params, hidden_layer_size, num_labels, ...</span></span><br><span class="line"><span class="comment">%   X, y, lambda) computes the cost and gradient of the neural network. The</span></span><br><span class="line"><span class="comment">%   parameters for the neural network are &quot;unrolled&quot; into the vector</span></span><br><span class="line"><span class="comment">%   nn_params and need to be converted back into the weight matrices. </span></span><br><span class="line"><span class="comment">% </span></span><br><span class="line"><span class="comment">%   The returned parameter grad should be a &quot;unrolled&quot; vector of the</span></span><br><span class="line"><span class="comment">%   partial derivatives of the neural network.</span></span><br><span class="line"><span class="comment">%</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% Reshape nn_params back into the parameters Theta1 and Theta2, the weight matrices</span></span><br><span class="line"><span class="comment">% for our 2 layer neural network</span></span><br><span class="line">Theta1 = <span class="built_in">reshape</span>(nn_params(<span class="number">1</span>:hidden_layer_size * (input_layer_size + <span class="number">1</span>)), ...</span><br><span class="line">                 hidden_layer_size, (input_layer_size + <span class="number">1</span>));</span><br><span class="line"></span><br><span class="line">Theta2 = <span class="built_in">reshape</span>(nn_params((<span class="number">1</span> + (hidden_layer_size * (input_layer_size + <span class="number">1</span>))):<span class="keyword">end</span>), ...</span><br><span class="line">                 num_labels, (hidden_layer_size + <span class="number">1</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">% Setup some useful variables</span></span><br><span class="line">m = <span class="built_in">size</span>(X, <span class="number">1</span>);</span><br><span class="line">         </span><br><span class="line"><span class="comment">% You need to return the following variables correctly </span></span><br><span class="line">J = <span class="number">0</span>;</span><br><span class="line">Theta1_grad = <span class="built_in">zeros</span>(<span class="built_in">size</span>(Theta1));</span><br><span class="line">Theta2_grad = <span class="built_in">zeros</span>(<span class="built_in">size</span>(Theta2));</span><br><span class="line"></span><br><span class="line"><span class="comment">% ====================== YOUR CODE HERE ======================</span></span><br><span class="line">X = [<span class="built_in">ones</span>(m,<span class="number">1</span>) X];</span><br><span class="line">a1 = X;</span><br><span class="line">a2 = sigmoid(X * Theta1&#x27;);</span><br><span class="line">a2 = [<span class="built_in">ones</span>(<span class="built_in">size</span>(a2, <span class="number">1</span>), <span class="number">1</span>) a2];</span><br><span class="line">a3 = sigmoid(a2 * Theta2&#x27;);</span><br><span class="line"></span><br><span class="line">bdelta_2 = <span class="number">0</span>;</span><br><span class="line">bdelta_1 = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span>:m</span><br><span class="line">    yi = <span class="built_in">zeros</span>(num_labels, <span class="number">1</span>);</span><br><span class="line">    yi(y(<span class="built_in">i</span>),<span class="number">1</span>) = <span class="number">1</span>;</span><br><span class="line">    a3i = a3(<span class="built_in">i</span>,:)&#x27;;</span><br><span class="line">    a2i = a2(<span class="built_in">i</span>,:)&#x27;;</span><br><span class="line">    a1i = a1(<span class="built_in">i</span>,:)&#x27;;</span><br><span class="line">    </span><br><span class="line">    delta_3 = (a3i - yi);</span><br><span class="line">    delta_2 = Theta2&#x27; * delta_3;</span><br><span class="line">    delta_2 = delta_2(<span class="number">2</span>:<span class="built_in">size</span>(delta_2,<span class="number">1</span>));</span><br><span class="line">    delta_2 = delta_2 .* sigmoidGradient(Theta1 * a1i);</span><br><span class="line">    </span><br><span class="line">    bdelta_2 = bdelta_2 + delta_3*(a2i)&#x27;;</span><br><span class="line">    bdelta_1 = bdelta_1 + delta_2*(a1i)&#x27;;</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Theta1_grad = <span class="number">1</span>/m * bdelta_1 + [<span class="built_in">zeros</span>(<span class="built_in">size</span>(Theta1, <span class="number">1</span>),<span class="number">1</span>) lambda/m*rTheta1];</span><br><span class="line">Theta2_grad = <span class="number">1</span>/m * bdelta_2 + [<span class="built_in">zeros</span>(<span class="built_in">size</span>(Theta2, <span class="number">1</span>),<span class="number">1</span>) lambda/m*rTheta2];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">% -------------------------------------------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% =========================================================================</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% Unroll gradients</span></span><br><span class="line">grad = [Theta1_grad(:) ; Theta2_grad(:)];</span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>感觉机器学习理解起来可能不难，但是写代码上却需要非常小心，尤其是对偏置单元的处理，做矩阵乘法时要检查size是否匹配，这些都很重要。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hijerry.cn/p/8039.html" data-id="cl0e36fza0007osctghgu68cz" data-title="Exercise 4: Neural Networks Learning" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/p/42787.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          Exercise 5: Regularized Linear Regression and Bias v.s. Variance
+        
+      </div>
+    </a>
+  
+  
+    <a href="/p/18619.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">Exercise 3:Multi-class Classification and Neural Networks</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Web%E5%85%A8%E6%A0%88/">Web全栈</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A0%94/">研</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B/">程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E9%A2%98/">编程题</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AC%E8%BD%BD/">转载</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AF%E4%BB%B6%E6%8A%80%E6%9C%AF/">软件技术</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BP%E7%AE%97%E6%B3%95/" rel="tag">BP算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/" rel="tag">Laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/" rel="tag">NLP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NP%E5%AE%8C%E5%85%A8%E6%80%A7/" rel="tag">NP完全性</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stanford/" rel="tag">Stanford</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tensoflow/" rel="tag">Tensoflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web%E6%80%BB%E7%BB%93/" rel="tag">Web总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/devopps/" rel="tag">devopps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/" rel="tag">mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/medium/" rel="tag">medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/word2vec/" rel="tag">word2vec</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/" rel="tag">zsh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BE%9D%E8%B5%96%E8%A7%A3%E6%9E%90/" rel="tag">依赖解析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%91%E6%8C%87Offer/" rel="tag">剑指Offer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%84%9F%E7%9F%A5%E6%9C%BA/" rel="tag">感知机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A0%E6%A0%87%E7%AD%BE/" rel="tag">无标签</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91/" rel="tag">机器翻译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B1%87%E7%BC%96/" rel="tag">汇编</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E4%B9%8E/" rel="tag">知乎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" rel="tag">神经网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" rel="tag">线性代数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/" rel="tag">线性模型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87/" rel="tag">论文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag">运维</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/BP%E7%AE%97%E6%B3%95/" style="font-size: 10px;">BP算法</a> <a href="/tags/Laravel/" style="font-size: 14px;">Laravel</a> <a href="/tags/NLP/" style="font-size: 18px;">NLP</a> <a href="/tags/NP%E5%AE%8C%E5%85%A8%E6%80%A7/" style="font-size: 10px;">NP完全性</a> <a href="/tags/Stanford/" style="font-size: 10px;">Stanford</a> <a href="/tags/Tensoflow/" style="font-size: 10px;">Tensoflow</a> <a href="/tags/Web%E6%80%BB%E7%BB%93/" style="font-size: 16px;">Web总结</a> <a href="/tags/devopps/" style="font-size: 12px;">devopps</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/leetcode/" style="font-size: 16px;">leetcode</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mac/" style="font-size: 12px;">mac</a> <a href="/tags/medium/" style="font-size: 10px;">medium</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a> <a href="/tags/zsh/" style="font-size: 10px;">zsh</a> <a href="/tags/%E4%BE%9D%E8%B5%96%E8%A7%A3%E6%9E%90/" style="font-size: 10px;">依赖解析</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14px;">前端</a> <a href="/tags/%E5%89%91%E6%8C%87Offer/" style="font-size: 10px;">剑指Offer</a> <a href="/tags/%E6%84%9F%E7%9F%A5%E6%9C%BA/" style="font-size: 10px;">感知机</a> <a href="/tags/%E6%97%A0%E6%A0%87%E7%AD%BE/" style="font-size: 12px;">无标签</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">机器学习</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91/" style="font-size: 10px;">机器翻译</a> <a href="/tags/%E6%B1%87%E7%BC%96/" style="font-size: 12px;">汇编</a> <a href="/tags/%E7%9F%A5%E4%B9%8E/" style="font-size: 10px;">知乎</a> <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">神经网络</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" style="font-size: 10px;">线性代数</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/" style="font-size: 10px;">线性模型</a> <a href="/tags/%E8%AE%BA%E6%96%87/" style="font-size: 10px;">论文</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 10px;">运维</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/p/49582.html">2019 Mac安装cuda+cudnn+pytorch</a>
+          </li>
+        
+          <li>
+            <a href="/p/48009.html">复杂度与NP完全性</a>
+          </li>
+        
+          <li>
+            <a href="/p/55002.html">2019-CS224n-Assignment4</a>
+          </li>
+        
+          <li>
+            <a href="/p/35741.html">2019-CS224n-Assignment3</a>
+          </li>
+        
+          <li>
+            <a href="/p/13983.html">NLP会议介绍</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 jerrycheese<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

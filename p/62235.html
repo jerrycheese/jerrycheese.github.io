@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Week 6:Machine Learning System Design | 全栈说</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="序接Exercise5的内容，他们都是第六周的内容。这一部分主要讲如何设计一个机器学习系统。 垃圾邮件分类器假设你正要去实现一个垃圾邮件分类器，你会怎么做？这是一个二分类问题，我已经学习了线性回归、逻辑回归、神经网络。最快速、准确的方式应该是先确定特征向量，收集数据，再选择一个模型，快速地进行一次测试，画出学习曲线，根据曲线分析现状是高方差还是高偏差，再进行下一步的选择。 那么特征向量怎么选取呢？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Week 6:Machine Learning System Design">
+<meta property="og:url" content="https://hijerry.cn/p/62235.html">
+<meta property="og:site_name" content="全栈说">
+<meta property="og:description" content="序接Exercise5的内容，他们都是第六周的内容。这一部分主要讲如何设计一个机器学习系统。 垃圾邮件分类器假设你正要去实现一个垃圾邮件分类器，你会怎么做？这是一个二分类问题，我已经学习了线性回归、逻辑回归、神经网络。最快速、准确的方式应该是先确定特征向量，收集数据，再选择一个模型，快速地进行一次测试，画出学习曲线，根据曲线分析现状是高方差还是高偏差，再进行下一步的选择。 那么特征向量怎么选取呢？">
+<meta property="og:locale">
+<meta property="article:published_time" content="2017-11-26T16:42:35.000Z">
+<meta property="article:modified_time" content="2017-11-26T17:23:47.000Z">
+<meta property="article:author" content="jerrycheese">
+<meta property="article:tag" content="机器学习">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="全栈说" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">全栈说</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Work 20%</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hijerry.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-11/Week-6-Machine-Learning-System-Design" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/p/62235.html" class="article-date">
+  <time class="dt-published" datetime="2017-11-26T16:42:35.000Z" itemprop="datePublished">2017-11-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%A0%94/">研</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Week 6:Machine Learning System Design
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="序"><a href="#序" class="headerlink" title="序"></a>序</h2><p>接Exercise5的内容，他们都是第六周的内容。这一部分主要讲如何设计一个机器学习系统。</p>
+<h2 id="垃圾邮件分类器"><a href="#垃圾邮件分类器" class="headerlink" title="垃圾邮件分类器"></a>垃圾邮件分类器</h2><p>假设你正要去实现一个垃圾邮件分类器，你会怎么做？这是一个二分类问题，我已经学习了线性回归、逻辑回归、神经网络。最快速、准确的方式应该是先确定特征向量，收集数据，再选择一个模型，快速地进行一次测试，画出学习曲线，根据曲线分析现状是高方差还是高偏差，再进行下一步的选择。</p>
+<p>那么特征向量怎么选取呢？如果是英文，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">From: xxxx@xx.com</span><br><span class="line">To: me@xx.com</span><br><span class="line">Subject: Buy now!!</span><br><span class="line"></span><br><span class="line">Deal of the week! Buy now!</span><br></pre></td></tr></table></figure>
+
+<p>可以考虑建立一个特征向量，选择100个词左右，记录词是否出现过，例如 x &#x3D; [buy, deal, discount, …, now]，对于上面这封邮件，x的值会是 x &#x3D; [1, 1, 0, …, 1]。</p>
+<p>接着就是模型选择，参考Exercise5的模型选择方法即可，那么训练集怎么获取呢？一个简单的方法是把自己的邮箱暴露给个大广告商，这样的话你可能每天都会受到上百封广告邮件，接着就是对模型进行训练了。</p>
+<h2 id="错误分析"><a href="#错误分析" class="headerlink" title="错误分析"></a>错误分析</h2><p>在验证集中你需要手动对错误分类的邮件进行纠错，并且检查哪一类的邮件容易被分类错误，这件事必须手动进行。例如验证集大小为500，其中有100封邮件是垃圾邮件，但是没有被过滤掉，那么你最好检查这100封邮件，手动进行分类。</p>
+<p>现在进行深一步考虑特征向量：</p>
+<ul>
+<li>我们都知道英语是有词根的，例如 discount, discounted, discounts 它们是不是应该看成一个词，即discount呢？</li>
+<li>对于Deal和deal 是否也看成一个词呢？（即不区分大小写）</li>
+<li>对于错误拼写如discount 和 disc0unt，有些聪明人会采取这种方式来躲过垃圾邮件过滤器</li>
+</ul>
+<p>一个好的方法便是，把这些方法都试一遍，看哪一个种的准确率比较高，因为它们比较容易在算法中进行调整。</p>
+<h2 id="偏斜类、查准率、召回率"><a href="#偏斜类、查准率、召回率" class="headerlink" title="偏斜类、查准率、召回率"></a>偏斜类、查准率、召回率</h2><p>偏斜类是指在二分类中，其中某一类的占比很大的情况。例如在癌症预测中，实际上患癌症的概率是很小的，例如只有1%，此时如果你的预测函数直接写成 $ y &#x3D; 0$ 而不经过机器学习算法来计算，你的准确率也许会更高一些，但是我们都知道这个预测函数肯定是错的，显然准确率并不能衡量一个预测函数的好坏。此时就需要引入两个概念：查准率、召回率。</p>
+<p>还是以癌症预测为例，$ y &#x3D; {0, 1}$ 表示未患癌症和患上癌症，预测函数 $h &#x3D; {0, 1}$ 表示预测没患癌症和预测患上了癌症。那么根据两两组合关系可以得到下面的关系：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>y &#x3D; 1</th>
+<th>y &#x3D; 0</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>h &#x3D; 1</td>
+<td>真阳性(True positive)</td>
+<td>假阳性(False positive)</td>
+</tr>
+<tr>
+<td>h &#x3D; 0</td>
+<td>假阴性(False negative)</td>
+<td>真阴性(True negative)</td>
+</tr>
+</tbody></table>
+<p>查准率：预测病人患上了癌症的正确率，P &#x3D; $\frac {真阳性} {真阳性 + 假阳性}$</p>
+<p>召回率：患癌症的病人能查出来的概率，R &#x3D; $\frac {真阳性} {真阳性 + 假阴性}$</p>
+<p>一个好的预测函数，这两个率都要高，也就是 $\frac {2PR} {P + R}$ 要大</p>
+<p>那么对于之前的那个情况，如果预测函数为 $y &#x3D; 0$ ，那么它的召回率 $R &#x3D; 0$，这样的预测函数是很差的。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hijerry.cn/p/62235.html" data-id="cl0e36fzh000mosct01zf0nfi" data-title="Week 6:Machine Learning System Design" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/p/38722.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          Week7: Support Vector Machines
+        
+      </div>
+    </a>
+  
+  
+    <a href="/p/42787.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">Exercise 5: Regularized Linear Regression and Bias v.s. Variance</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Web%E5%85%A8%E6%A0%88/">Web全栈</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A0%94/">研</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B/">程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E9%A2%98/">编程题</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AC%E8%BD%BD/">转载</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AF%E4%BB%B6%E6%8A%80%E6%9C%AF/">软件技术</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BP%E7%AE%97%E6%B3%95/" rel="tag">BP算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/" rel="tag">Laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/" rel="tag">NLP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NP%E5%AE%8C%E5%85%A8%E6%80%A7/" rel="tag">NP完全性</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stanford/" rel="tag">Stanford</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tensoflow/" rel="tag">Tensoflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web%E6%80%BB%E7%BB%93/" rel="tag">Web总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/devopps/" rel="tag">devopps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/" rel="tag">mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/medium/" rel="tag">medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/word2vec/" rel="tag">word2vec</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/" rel="tag">zsh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BE%9D%E8%B5%96%E8%A7%A3%E6%9E%90/" rel="tag">依赖解析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%91%E6%8C%87Offer/" rel="tag">剑指Offer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%84%9F%E7%9F%A5%E6%9C%BA/" rel="tag">感知机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A0%E6%A0%87%E7%AD%BE/" rel="tag">无标签</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91/" rel="tag">机器翻译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B1%87%E7%BC%96/" rel="tag">汇编</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E4%B9%8E/" rel="tag">知乎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" rel="tag">神经网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" rel="tag">线性代数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/" rel="tag">线性模型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87/" rel="tag">论文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag">运维</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/BP%E7%AE%97%E6%B3%95/" style="font-size: 10px;">BP算法</a> <a href="/tags/Laravel/" style="font-size: 14px;">Laravel</a> <a href="/tags/NLP/" style="font-size: 18px;">NLP</a> <a href="/tags/NP%E5%AE%8C%E5%85%A8%E6%80%A7/" style="font-size: 10px;">NP完全性</a> <a href="/tags/Stanford/" style="font-size: 10px;">Stanford</a> <a href="/tags/Tensoflow/" style="font-size: 10px;">Tensoflow</a> <a href="/tags/Web%E6%80%BB%E7%BB%93/" style="font-size: 16px;">Web总结</a> <a href="/tags/devopps/" style="font-size: 12px;">devopps</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/leetcode/" style="font-size: 16px;">leetcode</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mac/" style="font-size: 12px;">mac</a> <a href="/tags/medium/" style="font-size: 10px;">medium</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a> <a href="/tags/zsh/" style="font-size: 10px;">zsh</a> <a href="/tags/%E4%BE%9D%E8%B5%96%E8%A7%A3%E6%9E%90/" style="font-size: 10px;">依赖解析</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14px;">前端</a> <a href="/tags/%E5%89%91%E6%8C%87Offer/" style="font-size: 10px;">剑指Offer</a> <a href="/tags/%E6%84%9F%E7%9F%A5%E6%9C%BA/" style="font-size: 10px;">感知机</a> <a href="/tags/%E6%97%A0%E6%A0%87%E7%AD%BE/" style="font-size: 12px;">无标签</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">机器学习</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91/" style="font-size: 10px;">机器翻译</a> <a href="/tags/%E6%B1%87%E7%BC%96/" style="font-size: 12px;">汇编</a> <a href="/tags/%E7%9F%A5%E4%B9%8E/" style="font-size: 10px;">知乎</a> <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">神经网络</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" style="font-size: 10px;">线性代数</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/" style="font-size: 10px;">线性模型</a> <a href="/tags/%E8%AE%BA%E6%96%87/" style="font-size: 10px;">论文</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 10px;">运维</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/p/49582.html">2019 Mac安装cuda+cudnn+pytorch</a>
+          </li>
+        
+          <li>
+            <a href="/p/48009.html">复杂度与NP完全性</a>
+          </li>
+        
+          <li>
+            <a href="/p/55002.html">2019-CS224n-Assignment4</a>
+          </li>
+        
+          <li>
+            <a href="/p/35741.html">2019-CS224n-Assignment3</a>
+          </li>
+        
+          <li>
+            <a href="/p/13983.html">NLP会议介绍</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 jerrycheese<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

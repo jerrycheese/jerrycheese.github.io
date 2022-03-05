@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>2019-CS224n-Assignment1 | 全栈说</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="去年冬季学习了cs224n的2017课程，做了三个assignments，用的是TensorFlow。今年cs224n再次放课，一共有5个assignments，使用PyTorch，主讲还是Manning，特别喜欢这个老师，讲课生动有趣还挺可爱的哈哈哈~~ Assignment1(点击下载) 的任务是探索词向量。以基于计数的共现矩阵和基于预测的word2vec两种方式，计算词的相似度，研究近义词、">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2019-CS224n-Assignment1">
+<meta property="og:url" content="https://hijerry.cn/p/54554.html">
+<meta property="og:site_name" content="全栈说">
+<meta property="og:description" content="去年冬季学习了cs224n的2017课程，做了三个assignments，用的是TensorFlow。今年cs224n再次放课，一共有5个assignments，使用PyTorch，主讲还是Manning，特别喜欢这个老师，讲课生动有趣还挺可爱的哈哈哈~~ Assignment1(点击下载) 的任务是探索词向量。以基于计数的共现矩阵和基于预测的word2vec两种方式，计算词的相似度，研究近义词、">
+<meta property="og:locale">
+<meta property="og:image" content="http://static.hijerry.cn/blog/20190311/ylKtrBd1tvDh.png?imageslim">
+<meta property="og:image" content="http://static.hijerry.cn/blog/20190312/2SkM4UMa1taV.png?imageslim">
+<meta property="article:published_time" content="2019-03-12T03:14:07.000Z">
+<meta property="article:modified_time" content="2019-03-22T11:56:29.000Z">
+<meta property="article:author" content="jerrycheese">
+<meta property="article:tag" content="NLP">
+<meta property="article:tag" content="Stanford">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://static.hijerry.cn/blog/20190311/ylKtrBd1tvDh.png?imageslim">
+  
+    <link rel="alternate" href="/atom.xml" title="全栈说" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">全栈说</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Work 20%</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hijerry.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-03/2019-CS224-Assignment1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/p/54554.html" class="article-date">
+  <time class="dt-published" datetime="2019-03-12T03:14:07.000Z" itemprop="datePublished">2019-03-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%A0%94/">研</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      2019-CS224n-Assignment1
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>去年冬季学习了cs224n的2017课程，做了三个assignments，用的是TensorFlow。今年cs224n再次放课，一共有5个assignments，使用PyTorch，主讲还是Manning，特别喜欢这个老师，讲课生动有趣还挺可爱的哈哈哈~~</p>
+<p><a target="_blank" rel="noopener" href="http://web.stanford.edu/class/cs224n/assignments/a1.zip">Assignment1</a>(点击下载) 的任务是探索词向量。以基于计数的共现矩阵和基于预测的word2vec两种方式，计算词的相似度，研究近义词、反义词等等性质，从代码层面来理解它们，有更深刻的记忆。</p>
+<p>作业是ipynb文件，所以要用jupyter打开，可以参考chaibubble的<a target="_blank" rel="noopener" href="https://blog.csdn.net/chaipp0607/article/details/72823524">如何打开ipynb文件</a>。</p>
+<p>注意：python版本 &gt;&#x3D; 3.5</p>
+<h2 id="词向量"><a href="#词向量" class="headerlink" title="词向量"></a>词向量</h2><p>词向量是下游NLP任务(如问答、文本生成、翻译等) 的基本组件，词向量的好坏能在很大程度上影响下游任务的性能。这里我们将探索两类词向量：<em>共现矩阵</em> 和 <em>word2vec</em> 。</p>
+<p><strong>术语解释：</strong> “word vectors” 和 “word embeddings” 通常可以互换使用。”embedding” 这个词的内在含义是将词编码到一个底维空间中。”概念上而言，它是指把一个维数为所有词的数量的高维空间嵌入到一个维数低得多的连续向量空间中，每个单词或词组被映射为实数域上的向量。”——<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%AF%8D%E5%B5%8C%E5%85%A5">维基百科</a></p>
+<h2 id="Part-1：基于计数的词向量"><a href="#Part-1：基于计数的词向量" class="headerlink" title="Part 1：基于计数的词向量"></a>Part 1：基于计数的词向量</h2><p>大多数词向量模型都是基于一个观点：</p>
+<p><strong>You shall know a word by the company it keeps (<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/John_Rupert_Firth">Firth, J. R. 1957:11</a>)</strong></p>
+<p>大多数词向量的实现的核心是 <em>相似词</em> ，也就是同义词，因为它们有相似的上下文。这里我们介绍一种策略叫做 <em>共现矩阵</em> (更多信息可以查看 <a target="_blank" rel="noopener" href="http://web.stanford.edu/class/cs124/lec/vectorsemantics.video.pdf">这里</a> 或 <a target="_blank" rel="noopener" href="https://medium.com/data-science-group-iitr/word-embedding-2d05d270b285">这里</a> )</p>
+<p>这部分要实现的是，给定语料库，根据共现矩阵计算词向量，得到语料库中每个词的词向量，流程如下：</p>
+<ul>
+<li>计算语料库的单词集</li>
+<li>计算共现矩阵</li>
+<li>使用SVD降维</li>
+<li>分析词向量</li>
+</ul>
+<h3 id="问题1-1：实现-dicintct-words"><a href="#问题1-1：实现-dicintct-words" class="headerlink" title="问题1.1：实现 dicintct_words"></a>问题1.1：实现 dicintct_words</h3><p>计算语料库的单词数量、单词集</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">distinct_words</span>(<span class="params">corpus</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot; Determine a list of distinct words for the corpus.</span></span><br><span class="line"><span class="string">        Params:</span></span><br><span class="line"><span class="string">            corpus (list of list of strings): corpus of documents</span></span><br><span class="line"><span class="string">        Return:</span></span><br><span class="line"><span class="string">            corpus_words (list of strings): list of distinct words across the corpus, sorted (using python &#x27;sorted&#x27; function)</span></span><br><span class="line"><span class="string">            num_corpus_words (integer): number of distinct words across the corpus</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    corpus_words = []</span><br><span class="line">    num_corpus_words = -<span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># ------------------</span></span><br><span class="line">    <span class="comment"># Write your implementation here.</span></span><br><span class="line">    corpus = [w <span class="keyword">for</span> sent <span class="keyword">in</span> corpus <span class="keyword">for</span> w <span class="keyword">in</span> sent]</span><br><span class="line">    corpus_words = <span class="built_in">list</span>(<span class="built_in">set</span>(corpus))</span><br><span class="line">    corpus_words = <span class="built_in">sorted</span>(corpus_words)</span><br><span class="line">    num_corpus_words = <span class="built_in">len</span>(corpus_words)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># ------------------</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> corpus_words, num_corpus_words</span><br></pre></td></tr></table></figure>
+
+<h3 id="问题1-2：实现compute-co-occurrence-matrix"><a href="#问题1-2：实现compute-co-occurrence-matrix" class="headerlink" title="问题1.2：实现compute_co_occurrence_matrix"></a>问题1.2：实现compute_co_occurrence_matrix</h3><p>计算给定语料库的共现矩阵。具体来说，对于每一个词 <code>w</code>，统计前、后方 <code>window_size</code> 个词的出现次数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">compute_co_occurrence_matrix</span>(<span class="params">corpus, window_size=<span class="number">4</span></span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot; Compute co-occurrence matrix for the given corpus and window_size (default of 4).</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">        Note: Each word in a document should be at the center of a window. Words near edges will have a smaller</span></span><br><span class="line"><span class="string">              number of co-occurring words.</span></span><br><span class="line"><span class="string">              </span></span><br><span class="line"><span class="string">              For example, if we take the document &quot;START All that glitters is not gold END&quot; with window size of 4,</span></span><br><span class="line"><span class="string">              &quot;All&quot; will co-occur with &quot;START&quot;, &quot;that&quot;, &quot;glitters&quot;, &quot;is&quot;, and &quot;not&quot;.</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">        Params:</span></span><br><span class="line"><span class="string">            corpus (list of list of strings): corpus of documents</span></span><br><span class="line"><span class="string">            window_size (int): size of context window</span></span><br><span class="line"><span class="string">        Return:</span></span><br><span class="line"><span class="string">            M (numpy matrix of shape (number of corpus words, number of corpus words)): </span></span><br><span class="line"><span class="string">                Co-occurence matrix of word counts. </span></span><br><span class="line"><span class="string">                The ordering of the words in the rows/columns should be the same as the ordering of the words given by the distinct_words function.</span></span><br><span class="line"><span class="string">            word2Ind (dict): dictionary that maps word to index (i.e. row/column number) for matrix M.</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    words, num_words = distinct_words(corpus)</span><br><span class="line">    M = <span class="literal">None</span></span><br><span class="line">    word2Ind = &#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># ------------------</span></span><br><span class="line">    <span class="comment"># Write your implementation here.</span></span><br><span class="line">    M = np.zeros(shape=(num_words, num_words), dtype=np.int32)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(num_words):</span><br><span class="line">        word2Ind[words[i]] = i</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> sent <span class="keyword">in</span> corpus:</span><br><span class="line">        <span class="keyword">for</span> p <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(sent)):</span><br><span class="line">            ci = word2Ind[sent[p]]</span><br><span class="line">            </span><br><span class="line">            <span class="comment"># preceding</span></span><br><span class="line">            <span class="keyword">for</span> w <span class="keyword">in</span> sent[<span class="built_in">max</span>(<span class="number">0</span>, p - window_size):p]:</span><br><span class="line">                wi = word2Ind[w]</span><br><span class="line">                M[ci][wi] += <span class="number">1</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment"># subsequent</span></span><br><span class="line">            <span class="keyword">for</span> w <span class="keyword">in</span> sent[p + <span class="number">1</span>:p + <span class="number">1</span> + window_size]:</span><br><span class="line">                wi = word2Ind[w]</span><br><span class="line">                M[ci][wi] += <span class="number">1</span></span><br><span class="line">            </span><br><span class="line">    <span class="comment"># ------------------</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> M, word2Ind</span><br></pre></td></tr></table></figure>
+
+<h3 id="问题1-3：实现-reduce-to-k-dim"><a href="#问题1-3：实现-reduce-to-k-dim" class="headerlink" title="问题1.3：实现 reduce_to_k_dim"></a>问题1.3：实现 reduce_to_k_dim</h3><p>这一步是降维。在问题1.2得到的是一个N x N的矩阵（N是单词集的大小），使用scikit-learn实现的SVD（奇异值分解），从这个大矩阵里分解出一个含k个特制的N x k 小矩阵。</p>
+<p><strong>注意</strong>：在numpy、scipy和scikit-learn都提供了一些SVD的实现，但是只有scipy、sklearn有Truncated SVD，并且只有sklearn提供了计算大规模SVD的高效的randomized算法，详情参考<a target="_blank" rel="noopener" href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.TruncatedSVD.html">sklearn.decomposition.TruncatedSVD</a> 。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">reduce_to_k_dim</span>(<span class="params">M, k=<span class="number">2</span></span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot; Reduce a co-occurence count matrix of dimensionality (num_corpus_words, num_corpus_words)</span></span><br><span class="line"><span class="string">        to a matrix of dimensionality (num_corpus_words, k) using the following SVD function from Scikit-Learn:</span></span><br><span class="line"><span class="string">            - http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.TruncatedSVD.html</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">        Params:</span></span><br><span class="line"><span class="string">            M (numpy matrix of shape (number of corpus words, number of corpus words)): co-occurence matrix of word counts</span></span><br><span class="line"><span class="string">            k (int): embedding size of each word after dimension reduction</span></span><br><span class="line"><span class="string">        Return:</span></span><br><span class="line"><span class="string">            M_reduced (numpy matrix of shape (number of corpus words, k)): matrix of k-dimensioal word embeddings.</span></span><br><span class="line"><span class="string">                    In terms of the SVD from math class, this actually returns U * S</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span>    </span><br><span class="line">    n_iters = <span class="number">10</span>     <span class="comment"># Use this parameter in your call to `TruncatedSVD`</span></span><br><span class="line">    M_reduced = <span class="literal">None</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Running Truncated SVD over %i words...&quot;</span> % (M.shape[<span class="number">0</span>]))</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># ------------------</span></span><br><span class="line">    <span class="comment"># Write your implementation here.</span></span><br><span class="line">    svd = TruncatedSVD(n_components=k)</span><br><span class="line">    svd.fit(M.T)</span><br><span class="line">    M_reduced = svd.components_.T</span><br><span class="line"></span><br><span class="line">    <span class="comment"># ------------------</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Done.&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> M_reduced</span><br></pre></td></tr></table></figure>
+
+<h3 id="问题1-4-实现-plot-embeddings"><a href="#问题1-4-实现-plot-embeddings" class="headerlink" title="问题1.4 实现 plot_embeddings"></a>问题1.4 实现 plot_embeddings</h3><p>基于matplotlib，用<code>scatter</code> 画 “×”，用 <code>text</code> 写字</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">plot_embeddings</span>(<span class="params">M_reduced, word2Ind, words</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot; Plot in a scatterplot the embeddings of the words specified in the list &quot;words&quot;.</span></span><br><span class="line"><span class="string">        NOTE: do not plot all the words listed in M_reduced / word2Ind.</span></span><br><span class="line"><span class="string">        Include a label next to each point.</span></span><br><span class="line"><span class="string">        </span></span><br><span class="line"><span class="string">        Params:</span></span><br><span class="line"><span class="string">            M_reduced (numpy matrix of shape (number of unique words in the corpus , k)): matrix of k-dimensioal word embeddings</span></span><br><span class="line"><span class="string">            word2Ind (dict): dictionary that maps word to indices for matrix M</span></span><br><span class="line"><span class="string">            words (list of strings): words whose embeddings we want to visualize</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># ------------------</span></span><br><span class="line">    <span class="comment"># Write your implementation here.</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> w <span class="keyword">in</span> words:</span><br><span class="line">        x = M_reduced[word2Ind[w]][<span class="number">0</span>]</span><br><span class="line">        y = M_reduced[word2Ind[w]][<span class="number">1</span>]</span><br><span class="line">        plt.scatter(x, y, marker=<span class="string">&#x27;x&#x27;</span>)</span><br><span class="line">        plt.text(x, y, w)</span><br><span class="line"></span><br><span class="line">    plt.show()</span><br><span class="line">    <span class="comment"># ------------------</span></span><br></pre></td></tr></table></figure>
+
+<p>效果：</p>
+<p><img src="http://static.hijerry.cn/blog/20190311/ylKtrBd1tvDh.png?imageslim" alt="mark"></p>
+<h3 id="问题1-5：共现打印分析"><a href="#问题1-5：共现打印分析" class="headerlink" title="问题1.5：共现打印分析"></a>问题1.5：共现打印分析</h3><p>将词嵌入到2个维度上，归一化，最终词向量会落到一个单位圆内，在坐标系上寻找相近的词。</p>
+<p><img src="http://static.hijerry.cn/blog/20190312/2SkM4UMa1taV.png?imageslim" alt="mark"></p>
+<h2 id="Part-2：基于预测的词向量"><a href="#Part-2：基于预测的词向量" class="headerlink" title="Part 2：基于预测的词向量"></a>Part 2：基于预测的词向量</h2><p>目前，基于预测的词向量是最流行的，比如word2vec。现在我们来探索word2vec生成的词向量，如果想要深入了解，可以读一读 <a target="_blank" rel="noopener" href="https://papers.nips.cc/paper/5021-distributed-representations-of-words-and-phrases-and-their-compositionality.pdf">原始论文</a> 。</p>
+<p>这一部分主要是使用gensim探索词向量，不是自己实现word2vec，所使用的词向量维度是300，由google发布。</p>
+<p>首先使用SVD降维，将300维降2维，方便打印查看。</p>
+<h3 id="问题2-1：word2vec打印分析"><a href="#问题2-1：word2vec打印分析" class="headerlink" title="问题2.1：word2vec打印分析"></a>问题2.1：word2vec打印分析</h3><p>和问题1.5一样</p>
+<h3 id="问题2-2：一词多义"><a href="#问题2-2：一词多义" class="headerlink" title="问题2.2：一词多义"></a>问题2.2：一词多义</h3><p>找到一个有多个含义的词（比如 “leaves”，”scoop”），这种词的top-10相似词（根据余弦相似度）里有两个词的意思不一样。比如”leaves”（叶子，花瓣）的top-10词里有”vanishes”（消失）和”stalks”（茎秆）。</p>
+<p>这里我找到的词是”column”（列），它的top-10里有”columnist”（专栏作家）和”article”（文章）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ------------------</span></span><br><span class="line"><span class="comment"># Write your polysemous word exploration code here.</span></span><br><span class="line"></span><br><span class="line">wv_from_bin.most_similar(<span class="string">&quot;column&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># ------------------</span></span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[(<span class="string">&#x27;columns&#x27;</span>, <span class="number">0.767943263053894</span>),</span><br><span class="line"> (<span class="string">&#x27;columnist&#x27;</span>, <span class="number">0.6541407108306885</span>),</span><br><span class="line"> (<span class="string">&#x27;article&#x27;</span>, <span class="number">0.651928186416626</span>),</span><br><span class="line"> (<span class="string">&#x27;columnists&#x27;</span>, <span class="number">0.617466926574707</span>),</span><br><span class="line"> (<span class="string">&#x27;syndicated_column&#x27;</span>, <span class="number">0.599014401435852</span>),</span><br><span class="line"> (<span class="string">&#x27;op_ed&#x27;</span>, <span class="number">0.588202714920044</span>),</span><br><span class="line"> (<span class="string">&#x27;Op_Ed&#x27;</span>, <span class="number">0.5801560282707214</span>),</span><br><span class="line"> (<span class="string">&#x27;op_ed_column&#x27;</span>, <span class="number">0.5779396891593933</span>),</span><br><span class="line"> (<span class="string">&#x27;nationally_syndicated_column&#x27;</span>, <span class="number">0.572504997253418</span>),</span><br><span class="line"> (<span class="string">&#x27;colum&#x27;</span>, <span class="number">0.5595961213111877</span>)]</span><br></pre></td></tr></table></figure>
+
+<h3 id="问题2-3：近义词和反义词"><a href="#问题2-3：近义词和反义词" class="headerlink" title="问题2.3：近义词和反义词"></a>问题2.3：近义词和反义词</h3><p>找到三个词(w1, w2, w3)，其中w1和w2是近义词，w1和w3是反义词，但是w1和w3的距离&lt;w1和w2的距离。例如：w1&#x3D;”happy”，w2&#x3D;”cheerful”，w3&#x3D;”sad”</p>
+<p>为什么反义词的相似度反而更大呢（距离越小说明越相似）？因为他们的上下文通常非常一致</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ------------------</span></span><br><span class="line"><span class="comment"># Write your synonym &amp; antonym exploration code here.</span></span><br><span class="line"></span><br><span class="line">w1 = <span class="string">&quot;love&quot;</span></span><br><span class="line">w2 = <span class="string">&quot;like&quot;</span></span><br><span class="line">w3 = <span class="string">&quot;hate&quot;</span></span><br><span class="line">w1_w2_dist = wv_from_bin.distance(w1, w2)</span><br><span class="line">w1_w3_dist = wv_from_bin.distance(w1, w3)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Synonyms &#123;&#125;, &#123;&#125; have cosine distance: &#123;&#125;&quot;</span>.<span class="built_in">format</span>(w1, w2, w1_w2_dist))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Antonyms &#123;&#125;, &#123;&#125; have cosine distance: &#123;&#125;&quot;</span>.<span class="built_in">format</span>(w1, w3, w1_w3_dist))</span><br><span class="line"></span><br><span class="line"><span class="comment"># ------------------</span></span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Synonyms love, like have cosine distance: <span class="number">0.6328612565994263</span></span><br><span class="line">Antonyms love, hate have cosine distance: <span class="number">0.39960432052612305</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="问题2-4：类比"><a href="#问题2-4：类比" class="headerlink" title="问题2.4：类比"></a>问题2.4：类比</h3><p>man 对于 king，相当于woman对于___，这样的问题也可以用word2vec来解决，关于most_similar的详细用法可以参考 <a target="_blank" rel="noopener" href="https://radimrehurek.com/gensim/models/keyedvectors.html#gensim.models.keyedvectors.FastTextKeyedVectors.most_similar">GenSim文档</a>。</p>
+<p>这里我们找另外一组类比</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ------------------</span></span><br><span class="line"><span class="comment"># Write your analogy exploration code here.</span></span><br><span class="line"><span class="comment"># man : him :: woman : her</span></span><br><span class="line">pprint.pprint(wv_from_bin.most_similar(positive=[<span class="string">&#x27;woman&#x27;</span>, <span class="string">&#x27;him&#x27;</span>], negative=[<span class="string">&#x27;man&#x27;</span>]))</span><br><span class="line"></span><br><span class="line"><span class="comment"># ------------------</span></span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[(<span class="string">&#x27;her&#x27;</span>, <span class="number">0.694490909576416</span>),</span><br><span class="line"> (<span class="string">&#x27;she&#x27;</span>, <span class="number">0.6385233402252197</span>),</span><br><span class="line"> (<span class="string">&#x27;me&#x27;</span>, <span class="number">0.628451406955719</span>),</span><br><span class="line"> (<span class="string">&#x27;herself&#x27;</span>, <span class="number">0.6239798665046692</span>),</span><br><span class="line"> (<span class="string">&#x27;them&#x27;</span>, <span class="number">0.5843966007232666</span>),</span><br><span class="line"> (<span class="string">&#x27;She&#x27;</span>, <span class="number">0.5237804651260376</span>),</span><br><span class="line"> (<span class="string">&#x27;myself&#x27;</span>, <span class="number">0.4885627031326294</span>),</span><br><span class="line"> (<span class="string">&#x27;saidshe&#x27;</span>, <span class="number">0.48337966203689575</span>),</span><br><span class="line"> (<span class="string">&#x27;he&#x27;</span>, <span class="number">0.48184287548065186</span>),</span><br><span class="line"> (<span class="string">&#x27;Gail_Quets&#x27;</span>, <span class="number">0.4784894585609436</span>)]</span><br></pre></td></tr></table></figure>
+
+<p>可以看到正确的计算出了”queen”</p>
+<h3 id="问题2-5：错误的类比"><a href="#问题2-5：错误的类比" class="headerlink" title="问题2.5：错误的类比"></a>问题2.5：错误的类比</h3><p>找到一个错误的类比，树：树叶 ：：花：花瓣</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ------------------</span></span><br><span class="line"><span class="comment"># Write your incorrect analogy exploration code here.</span></span><br><span class="line"><span class="comment"># tree : leaf :: flower : petal</span></span><br><span class="line">pprint.pprint(wv_from_bin.most_similar(positive=[<span class="string">&#x27;leaf&#x27;</span>, <span class="string">&#x27;flower&#x27;</span>], negative=[<span class="string">&#x27;tree&#x27;</span>]))</span><br><span class="line"></span><br><span class="line"><span class="comment"># ------------------</span></span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[(<span class="string">&#x27;floral&#x27;</span>, <span class="number">0.5532568693161011</span>),</span><br><span class="line"> (<span class="string">&#x27;marigold&#x27;</span>, <span class="number">0.5291938185691833</span>),</span><br><span class="line"> (<span class="string">&#x27;tulip&#x27;</span>, <span class="number">0.521312952041626</span>),</span><br><span class="line"> (<span class="string">&#x27;rooted_cuttings&#x27;</span>, <span class="number">0.5189826488494873</span>),</span><br><span class="line"> (<span class="string">&#x27;variegation&#x27;</span>, <span class="number">0.5136324763298035</span>),</span><br><span class="line"> (<span class="string">&#x27;Asiatic_lilies&#x27;</span>, <span class="number">0.5132641792297363</span>),</span><br><span class="line"> (<span class="string">&#x27;gerberas&#x27;</span>, <span class="number">0.5106234550476074</span>),</span><br><span class="line"> (<span class="string">&#x27;gerbera_daisies&#x27;</span>, <span class="number">0.5101010203361511</span>),</span><br><span class="line"> (<span class="string">&#x27;Verbena_bonariensis&#x27;</span>, <span class="number">0.5070016980171204</span>),</span><br><span class="line"> (<span class="string">&#x27;violet&#x27;</span>, <span class="number">0.5058108568191528</span>)]</span><br></pre></td></tr></table></figure>
+
+<p>结果输出的里面没有“花瓣”</p>
+<h3 id="问题2-6：偏见分析"><a href="#问题2-6：偏见分析" class="headerlink" title="问题2.6：偏见分析"></a>问题2.6：偏见分析</h3><p>注意偏见是很重要的比如性别歧视、种族歧视等，执行下面代码，分析两个问题：</p>
+<p>(a) 哪个词与“woman”和“boss”最相似，和“man”最不相似?</p>
+<p>(b) 哪个词与“man”和“boss”最相似，和“woman”最不相似?</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Run this cell</span></span><br><span class="line"><span class="comment"># Here `positive` indicates the list of words to be similar to and `negative` indicates the list of words to be</span></span><br><span class="line"><span class="comment"># most dissimilar from.</span></span><br><span class="line">pprint.pprint(wv_from_bin.most_similar(positive=[<span class="string">&#x27;woman&#x27;</span>, <span class="string">&#x27;boss&#x27;</span>], negative=[<span class="string">&#x27;man&#x27;</span>]))</span><br><span class="line"><span class="built_in">print</span>()</span><br><span class="line">pprint.pprint(wv_from_bin.most_similar(positive=[<span class="string">&#x27;man&#x27;</span>, <span class="string">&#x27;boss&#x27;</span>], negative=[<span class="string">&#x27;woman&#x27;</span>]))</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">[(<span class="string">&#x27;bosses&#x27;</span>, <span class="number">0.5522644519805908</span>),</span><br><span class="line"> (<span class="string">&#x27;manageress&#x27;</span>, <span class="number">0.49151360988616943</span>),</span><br><span class="line"> (<span class="string">&#x27;exec&#x27;</span>, <span class="number">0.45940813422203064</span>),</span><br><span class="line"> (<span class="string">&#x27;Manageress&#x27;</span>, <span class="number">0.45598435401916504</span>),</span><br><span class="line"> (<span class="string">&#x27;receptionist&#x27;</span>, <span class="number">0.4474116563796997</span>),</span><br><span class="line"> (<span class="string">&#x27;Jane_Danson&#x27;</span>, <span class="number">0.44480544328689575</span>),</span><br><span class="line"> (<span class="string">&#x27;Fiz_Jennie_McAlpine&#x27;</span>, <span class="number">0.44275766611099243</span>),</span><br><span class="line"> (<span class="string">&#x27;Coronation_Street_actress&#x27;</span>, <span class="number">0.44275566935539246</span>),</span><br><span class="line"> (<span class="string">&#x27;supremo&#x27;</span>, <span class="number">0.4409853219985962</span>),</span><br><span class="line"> (<span class="string">&#x27;coworker&#x27;</span>, <span class="number">0.43986251950263977</span>)]</span><br><span class="line"></span><br><span class="line">[(<span class="string">&#x27;supremo&#x27;</span>, <span class="number">0.6097398400306702</span>),</span><br><span class="line"> (<span class="string">&#x27;MOTHERWELL_boss&#x27;</span>, <span class="number">0.5489562153816223</span>),</span><br><span class="line"> (<span class="string">&#x27;CARETAKER_boss&#x27;</span>, <span class="number">0.5375303626060486</span>),</span><br><span class="line"> (<span class="string">&#x27;Bully_Wee_boss&#x27;</span>, <span class="number">0.5333974361419678</span>),</span><br><span class="line"> (<span class="string">&#x27;YEOVIL_Town_boss&#x27;</span>, <span class="number">0.5321705341339111</span>),</span><br><span class="line"> (<span class="string">&#x27;head_honcho&#x27;</span>, <span class="number">0.5281980037689209</span>),</span><br><span class="line"> (<span class="string">&#x27;manager_Stan_Ternent&#x27;</span>, <span class="number">0.525971531867981</span>),</span><br><span class="line"> (<span class="string">&#x27;Viv_Busby&#x27;</span>, <span class="number">0.5256162881851196</span>),</span><br><span class="line"> (<span class="string">&#x27;striker_Gabby_Agbonlahor&#x27;</span>, <span class="number">0.5250812768936157</span>),</span><br><span class="line"> (<span class="string">&#x27;BARNSLEY_boss&#x27;</span>, <span class="number">0.5238943099975586</span>)]</span><br></pre></td></tr></table></figure>
+
+<p>第一个类比 男人:女人 :: 老板:___，最合适的词应该是”landlady”（老板娘）之类的，但是top-10里只有”manageress”（女经理），”receptionist”（接待员）之类的词。</p>
+<p>第二个类比 女人:男人 :: 老板:___，输出的不知道是些什么东西&#x2F;捂脸</p>
+<h3 id="问题2-7：自行分析偏见"><a href="#问题2-7：自行分析偏见" class="headerlink" title="问题2.7：自行分析偏见"></a>问题2.7：自行分析偏见</h3><p>这里我找的例子是：</p>
+<ul>
+<li>男人:女人 :: 医生:___</li>
+<li>女人:男人 :: 医生:___</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ------------------</span></span><br><span class="line"><span class="comment"># Write your bias exploration code here.</span></span><br><span class="line"></span><br><span class="line">pprint.pprint(wv_from_bin.most_similar(positive=[<span class="string">&#x27;woman&#x27;</span>, <span class="string">&#x27;doctor&#x27;</span>], negative=[<span class="string">&#x27;man&#x27;</span>]))</span><br><span class="line"><span class="built_in">print</span>()</span><br><span class="line">pprint.pprint(wv_from_bin.most_similar(positive=[<span class="string">&#x27;man&#x27;</span>, <span class="string">&#x27;doctor&#x27;</span>], negative=[<span class="string">&#x27;woman&#x27;</span>]))</span><br><span class="line"></span><br><span class="line"><span class="comment"># ------------------</span></span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">[(<span class="string">&#x27;gynecologist&#x27;</span>, <span class="number">0.7093892097473145</span>),</span><br><span class="line"> (<span class="string">&#x27;nurse&#x27;</span>, <span class="number">0.647728681564331</span>),</span><br><span class="line"> (<span class="string">&#x27;doctors&#x27;</span>, <span class="number">0.6471461057662964</span>),</span><br><span class="line"> (<span class="string">&#x27;physician&#x27;</span>, <span class="number">0.64389967918396</span>),</span><br><span class="line"> (<span class="string">&#x27;pediatrician&#x27;</span>, <span class="number">0.6249487996101379</span>),</span><br><span class="line"> (<span class="string">&#x27;nurse_practitioner&#x27;</span>, <span class="number">0.6218312978744507</span>),</span><br><span class="line"> (<span class="string">&#x27;obstetrician&#x27;</span>, <span class="number">0.6072014570236206</span>),</span><br><span class="line"> (<span class="string">&#x27;ob_gyn&#x27;</span>, <span class="number">0.5986712574958801</span>),</span><br><span class="line"> (<span class="string">&#x27;midwife&#x27;</span>, <span class="number">0.5927063226699829</span>),</span><br><span class="line"> (<span class="string">&#x27;dermatologist&#x27;</span>, <span class="number">0.5739566683769226</span>)]</span><br><span class="line"></span><br><span class="line">[(<span class="string">&#x27;physician&#x27;</span>, <span class="number">0.6463665962219238</span>),</span><br><span class="line"> (<span class="string">&#x27;doctors&#x27;</span>, <span class="number">0.5858404040336609</span>),</span><br><span class="line"> (<span class="string">&#x27;surgeon&#x27;</span>, <span class="number">0.5723941326141357</span>),</span><br><span class="line"> (<span class="string">&#x27;dentist&#x27;</span>, <span class="number">0.552364706993103</span>),</span><br><span class="line"> (<span class="string">&#x27;cardiologist&#x27;</span>, <span class="number">0.5413815975189209</span>),</span><br><span class="line"> (<span class="string">&#x27;neurologist&#x27;</span>, <span class="number">0.5271126627922058</span>),</span><br><span class="line"> (<span class="string">&#x27;neurosurgeon&#x27;</span>, <span class="number">0.5249835848808289</span>),</span><br><span class="line"> (<span class="string">&#x27;urologist&#x27;</span>, <span class="number">0.5247740149497986</span>),</span><br><span class="line"> (<span class="string">&#x27;Doctor&#x27;</span>, <span class="number">0.5240625143051147</span>),</span><br><span class="line"> (<span class="string">&#x27;internist&#x27;</span>, <span class="number">0.5183224081993103</span>)]</span><br></pre></td></tr></table></figure>
+
+<p>第一个类比中，我们看到了”nurse”（护士），这是一个有偏见的类比</p>
+<h3 id="问题2-8：思考偏见问题"><a href="#问题2-8：思考偏见问题" class="headerlink" title="问题2.8：思考偏见问题"></a>问题2.8：思考偏见问题</h3><p>什么会导致词向量里的偏见？</p>
+<p>因为数据集中有偏见</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>[1] CS224n: Natural Language Processing with Deep Learning, 2019-03-12. <a target="_blank" rel="noopener" href="http://web.stanford.edu/class/cs224n">http://web.stanford.edu/class/cs224n</a>.</p>
+<p>[2] 计算机系统里的偏见和歧视:除了杀死,还有其他方法, 2019-03-12. <a target="_blank" rel="noopener" href="http://www.sohu.com/a/108071041_114877">http://www.sohu.com/a/108071041_114877</a>.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hijerry.cn/p/54554.html" data-id="cl0e36fzu0028osctg6kh1ce6" data-title="2019-CS224n-Assignment1" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NLP/" rel="tag">NLP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Stanford/" rel="tag">Stanford</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/p/54362.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          2019-CS224n-Assignment2
+        
+      </div>
+    </a>
+  
+  
+    <a href="/p/37831.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">不使用root权限安装zsh和oh-my-zsh</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Web%E5%85%A8%E6%A0%88/">Web全栈</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A0%94/">研</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B/">程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E9%A2%98/">编程题</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AC%E8%BD%BD/">转载</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AF%E4%BB%B6%E6%8A%80%E6%9C%AF/">软件技术</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BP%E7%AE%97%E6%B3%95/" rel="tag">BP算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/" rel="tag">Laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/" rel="tag">NLP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NP%E5%AE%8C%E5%85%A8%E6%80%A7/" rel="tag">NP完全性</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stanford/" rel="tag">Stanford</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tensoflow/" rel="tag">Tensoflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web%E6%80%BB%E7%BB%93/" rel="tag">Web总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/devopps/" rel="tag">devopps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/" rel="tag">mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/medium/" rel="tag">medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/word2vec/" rel="tag">word2vec</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/" rel="tag">zsh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BE%9D%E8%B5%96%E8%A7%A3%E6%9E%90/" rel="tag">依赖解析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%91%E6%8C%87Offer/" rel="tag">剑指Offer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%84%9F%E7%9F%A5%E6%9C%BA/" rel="tag">感知机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A0%E6%A0%87%E7%AD%BE/" rel="tag">无标签</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91/" rel="tag">机器翻译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B1%87%E7%BC%96/" rel="tag">汇编</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E4%B9%8E/" rel="tag">知乎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" rel="tag">神经网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" rel="tag">线性代数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/" rel="tag">线性模型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87/" rel="tag">论文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag">运维</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/BP%E7%AE%97%E6%B3%95/" style="font-size: 10px;">BP算法</a> <a href="/tags/Laravel/" style="font-size: 14px;">Laravel</a> <a href="/tags/NLP/" style="font-size: 18px;">NLP</a> <a href="/tags/NP%E5%AE%8C%E5%85%A8%E6%80%A7/" style="font-size: 10px;">NP完全性</a> <a href="/tags/Stanford/" style="font-size: 10px;">Stanford</a> <a href="/tags/Tensoflow/" style="font-size: 10px;">Tensoflow</a> <a href="/tags/Web%E6%80%BB%E7%BB%93/" style="font-size: 16px;">Web总结</a> <a href="/tags/devopps/" style="font-size: 12px;">devopps</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/leetcode/" style="font-size: 16px;">leetcode</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mac/" style="font-size: 12px;">mac</a> <a href="/tags/medium/" style="font-size: 10px;">medium</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a> <a href="/tags/zsh/" style="font-size: 10px;">zsh</a> <a href="/tags/%E4%BE%9D%E8%B5%96%E8%A7%A3%E6%9E%90/" style="font-size: 10px;">依赖解析</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14px;">前端</a> <a href="/tags/%E5%89%91%E6%8C%87Offer/" style="font-size: 10px;">剑指Offer</a> <a href="/tags/%E6%84%9F%E7%9F%A5%E6%9C%BA/" style="font-size: 10px;">感知机</a> <a href="/tags/%E6%97%A0%E6%A0%87%E7%AD%BE/" style="font-size: 12px;">无标签</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">机器学习</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91/" style="font-size: 10px;">机器翻译</a> <a href="/tags/%E6%B1%87%E7%BC%96/" style="font-size: 12px;">汇编</a> <a href="/tags/%E7%9F%A5%E4%B9%8E/" style="font-size: 10px;">知乎</a> <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">神经网络</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" style="font-size: 10px;">线性代数</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/" style="font-size: 10px;">线性模型</a> <a href="/tags/%E8%AE%BA%E6%96%87/" style="font-size: 10px;">论文</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 10px;">运维</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/p/49582.html">2019 Mac安装cuda+cudnn+pytorch</a>
+          </li>
+        
+          <li>
+            <a href="/p/48009.html">复杂度与NP完全性</a>
+          </li>
+        
+          <li>
+            <a href="/p/55002.html">2019-CS224n-Assignment4</a>
+          </li>
+        
+          <li>
+            <a href="/p/35741.html">2019-CS224n-Assignment3</a>
+          </li>
+        
+          <li>
+            <a href="/p/13983.html">NLP会议介绍</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 jerrycheese<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

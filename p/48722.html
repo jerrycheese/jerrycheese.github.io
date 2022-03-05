@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Exercise2: Logistic Regression | 全栈说</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="序一个月快过去了，总算是学完Coursera上的第三课了，其实我的进度比预期满了一周。这是第二次做Coursera的编程作业，对比大学课程的作业，Coursera的难度应该在中等甚至偏下，对我来说唯一的难度在于适应“新”，有以下几点：  新语言 新工具 新的思考方式  对于一个Software Engineer来说以上都是最基础的技能，即保持学习态度，及时学习新技术、新知识。 第三周的课程内容主要">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Exercise2: Logistic Regression">
+<meta property="og:url" content="https://hijerry.cn/p/48722.html">
+<meta property="og:site_name" content="全栈说">
+<meta property="og:description" content="序一个月快过去了，总算是学完Coursera上的第三课了，其实我的进度比预期满了一周。这是第二次做Coursera的编程作业，对比大学课程的作业，Coursera的难度应该在中等甚至偏下，对我来说唯一的难度在于适应“新”，有以下几点：  新语言 新工具 新的思考方式  对于一个Software Engineer来说以上都是最基础的技能，即保持学习态度，及时学习新技术、新知识。 第三周的课程内容主要">
+<meta property="og:locale">
+<meta property="og:image" content="http://os9coobhw.bkt.clouddn.com/1WFqZHntEead-BJkoDOYOw_2413fbec8ff9fa1f19aaf78265b8a33b_Logistic_function.png">
+<meta property="og:image" content="http://os9coobhw.bkt.clouddn.com/QQ20171110-234015.png">
+<meta property="og:image" content="http://os9coobhw.bkt.clouddn.com/QQ20171110-225636.png">
+<meta property="og:image" content="http://os9coobhw.bkt.clouddn.com/QQ20171110-230636.png">
+<meta property="og:image" content="http://os9coobhw.bkt.clouddn.com/0cOOdKsMEeaCrQqTpeD5ng_2a806eb8d988461f716f4799915ab779_Screenshot-2016-11-15-00.23.30.png">
+<meta property="og:image" content="http://os9coobhw.bkt.clouddn.com/QQ20171110-234540.png">
+<meta property="og:image" content="http://os9coobhw.bkt.clouddn.com/QQ20171110-234417.png">
+<meta property="og:image" content="http://os9coobhw.bkt.clouddn.com/QQ20171110-234423.png">
+<meta property="og:image" content="http://os9coobhw.bkt.clouddn.com/a.png">
+<meta property="og:image" content="http://os9coobhw.bkt.clouddn.com/b.png">
+<meta property="og:image" content="http://os9coobhw.bkt.clouddn.com/d.png">
+<meta property="article:published_time" content="2017-11-10T14:03:24.000Z">
+<meta property="article:modified_time" content="2017-11-11T07:42:16.000Z">
+<meta property="article:author" content="jerrycheese">
+<meta property="article:tag" content="机器学习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://os9coobhw.bkt.clouddn.com/1WFqZHntEead-BJkoDOYOw_2413fbec8ff9fa1f19aaf78265b8a33b_Logistic_function.png">
+  
+    <link rel="alternate" href="/atom.xml" title="全栈说" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">全栈说</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Work 20%</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hijerry.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-11/Exercise2-Logistic-Regression" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/p/48722.html" class="article-date">
+  <time class="dt-published" datetime="2017-11-10T14:03:24.000Z" itemprop="datePublished">2017-11-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%A0%94/">研</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Exercise2: Logistic Regression
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="序"><a href="#序" class="headerlink" title="序"></a>序</h2><p>一个月快过去了，总算是学完Coursera上的第三课了，其实我的进度比预期满了一周。这是第二次做Coursera的编程作业，对比大学课程的作业，Coursera的难度应该在中等甚至偏下，对我来说唯一的难度在于适应“新”，有以下几点：</p>
+<ul>
+<li>新语言</li>
+<li>新工具</li>
+<li>新的思考方式</li>
+</ul>
+<p>对于一个Software Engineer来说以上都是最基础的技能，即保持学习态度，及时学习新技术、新知识。</p>
+<p>第三周的课程内容主要讲分类、<code>逻辑回归</code>，与<code>线性回归</code>相比，也就是把Hypothesis函数用Sigmoid函数来表示，也就是：$设 g(z) &#x3D;  \frac{1} {1 + e ^{-z}}$，$令 z &#x3D; θ^T x$，$则 h_θ(x) &#x3D; g(θ^Tx)$</p>
+<p>为什么要 $设 g(z) &#x3D;  \frac{1} {1 + e ^{-z}}$ 呢，因为它的值域为 $(0, 1)$，定义域为(-∞, +∞) 的单调连续增函数，这意味着可以用<code>换元法</code>把所有函数的值域压缩到$(0, 1)$，它的函数图像如下。</p>
+<p><img src="http://os9coobhw.bkt.clouddn.com/1WFqZHntEead-BJkoDOYOw_2413fbec8ff9fa1f19aaf78265b8a33b_Logistic_function.png"></p>
+<p>这非常适合作为二分类（01分类）函数，我们可以取 $ h_θ(x) &gt;&#x3D; 0.5$ 时 $y &#x3D; 1$ ，$ h_θ(x) &lt; 0.5$ 时 $y &#x3D; 0$ 。</p>
+<p>同时Cost函数和Gradient Descent方程也有些许改变，这种改变是<code>换元法</code>带来的（公式识别失败，用图代替了）</p>
+<p><img src="http://os9coobhw.bkt.clouddn.com/QQ20171110-234015.png"></p>
+<p>它们对应的矩阵形式是</p>
+<p>① $J(θ) &#x3D; \frac {1} {m} (- y ^T log(h) - (1 - y)^T log(1 - h))，h &#x3D; g(Xθ)$</p>
+<p>② $θ &#x3D; θ - \frac {α} {m} X^T (g(Xθ) - y)$</p>
+<p>注意其中$X、y、θ$ 都是矩阵</p>
+<h2 id="作业内容"><a href="#作业内容" class="headerlink" title="作业内容"></a>作业内容</h2><p>标*****的是需要做的，没标的是作业中已经实现</p>
+<h3 id="数据可视化"><a href="#数据可视化" class="headerlink" title="数据可视化"></a>数据可视化</h3><p><img src="http://os9coobhw.bkt.clouddn.com/QQ20171110-225636.png"></p>
+<h3 id="Sigdmoid函数"><a href="#Sigdmoid函数" class="headerlink" title="* Sigdmoid函数"></a>* Sigdmoid函数</h3><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">g</span> = <span class="title">sigmoid</span><span class="params">(z)</span></span></span><br><span class="line"><span class="comment">%SIGMOID Compute sigmoid function</span></span><br><span class="line"><span class="comment">%   g = SIGMOID(z) computes the sigmoid of z.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% You need to return the following variables correctly </span></span><br><span class="line">g = <span class="built_in">zeros</span>(<span class="built_in">size</span>(z));</span><br><span class="line"></span><br><span class="line"><span class="comment">% ====================== YOUR CODE HERE ======================</span></span><br><span class="line"><span class="comment">% Instructions: Compute the sigmoid of each value of z (z can be a matrix,</span></span><br><span class="line"><span class="comment">%               vector or scalar).</span></span><br><span class="line">    </span><br><span class="line">g = <span class="number">1</span> ./ (<span class="number">1</span> + <span class="built_in">exp</span>(-z));</span><br><span class="line"></span><br><span class="line"><span class="comment">% =============================================================</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>传入的参数是一个矩阵，所以需要算出每一个元素的sigmoid函数值，这里用到的<code>./</code>操作符来对每一个元素进行取倒数操作。</p>
+<h3 id="Cost函数和对应的Gradient-Descent方程"><a href="#Cost函数和对应的Gradient-Descent方程" class="headerlink" title="* Cost函数和对应的Gradient Descent方程"></a>* Cost函数和对应的Gradient Descent方程</h3><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="params">[J, grad]</span> = <span class="title">costFunction</span><span class="params">(theta, X, y)</span></span></span><br><span class="line"><span class="comment">%COSTFUNCTION Compute cost and gradient for logistic regression</span></span><br><span class="line"><span class="comment">%   J = COSTFUNCTION(theta, X, y) computes the cost of using theta as the</span></span><br><span class="line"><span class="comment">%   parameter for logistic regression and the gradient of the cost</span></span><br><span class="line"><span class="comment">%   w.r.t. to the parameters.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% Initialize some useful values</span></span><br><span class="line">m = <span class="built_in">length</span>(y); <span class="comment">% number of training examples</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% You need to return the following variables correctly </span></span><br><span class="line">J = <span class="number">0</span>;</span><br><span class="line">grad = <span class="built_in">zeros</span>(<span class="built_in">size</span>(theta));</span><br><span class="line"></span><br><span class="line"><span class="comment">% ====================== YOUR CODE HERE ======================</span></span><br><span class="line"><span class="comment">% Instructions: Compute the cost of a particular choice of theta.</span></span><br><span class="line"><span class="comment">%               You should set J to the cost.</span></span><br><span class="line"><span class="comment">%               Compute the partial derivatives and set grad to the partial</span></span><br><span class="line"><span class="comment">%               derivatives of the cost w.r.t. each parameter in theta</span></span><br><span class="line"><span class="comment">%</span></span><br><span class="line"><span class="comment">% Note: grad should have the same dimensions as theta</span></span><br><span class="line"><span class="comment">%</span></span><br><span class="line"></span><br><span class="line">J = <span class="number">1</span>/m * sum(-y .* <span class="built_in">log</span>(sigmoid(X * theta)) - (<span class="number">1</span> - y) .* <span class="built_in">log</span>(<span class="number">1</span> - sigmoid(X * theta)));</span><br><span class="line"></span><br><span class="line">grad = <span class="number">1</span>/m * (X&#x27; * (sigmoid(X * theta) - y));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">% =============================================================</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>在这个函数中需要同时计算代价和梯度，通过公式①、②不难得到上述两行代码</p>
+<h3 id="Hypothesis函数"><a href="#Hypothesis函数" class="headerlink" title="* Hypothesis函数"></a>* Hypothesis函数</h3><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">p</span> = <span class="title">predict</span><span class="params">(theta, X)</span></span></span><br><span class="line"><span class="comment">%PREDICT Predict whether the label is 0 or 1 using learned logistic </span></span><br><span class="line"><span class="comment">%regression parameters theta</span></span><br><span class="line"><span class="comment">%   p = PREDICT(theta, X) computes the predictions for X using a </span></span><br><span class="line"><span class="comment">%   threshold at 0.5 (i.e., if sigmoid(theta&#x27;*x) &gt;= 0.5, predict 1)</span></span><br><span class="line"></span><br><span class="line">m = <span class="built_in">size</span>(X, <span class="number">1</span>); <span class="comment">% Number of training examples</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% You need to return the following variables correctly</span></span><br><span class="line">p = <span class="built_in">zeros</span>(m, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">% ====================== YOUR CODE HERE ======================</span></span><br><span class="line"><span class="comment">% Instructions: Complete the following code to make predictions using</span></span><br><span class="line"><span class="comment">%               your learned logistic regression parameters. </span></span><br><span class="line"><span class="comment">%               You should set p to a vector of 0&#x27;s and 1&#x27;s</span></span><br><span class="line"><span class="comment">%</span></span><br><span class="line"></span><br><span class="line">s = sigmoid(X * theta);</span><br><span class="line">p = <span class="built_in">floor</span>(s + <span class="number">0.5</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">% =========================================================================</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>预测函数就比较简单的，由$则 h_θ(x) &#x3D; g(θ^Tx)$，$g$ 是Sigmoid函数，可以得到上述两行代码，因为当函数值大于0.5时$y &#x3D; 1$ ，又得到的 $s$ 其实是一个矩阵，所以使用<code>floor(s + 0.5)</code>来进行批量操作。</p>
+<p>完成上述三个函数后，运行<code>ex2</code>函数可以得到一条预测线，如图。</p>
+<p><img src="http://os9coobhw.bkt.clouddn.com/QQ20171110-230636.png"></p>
+<h3 id="正规化"><a href="#正规化" class="headerlink" title="* 正规化"></a>* 正规化</h3><p>正规化是为了防止<code>过拟合</code>，核心是保持 $ x$ 值不变， <code>减小</code> (惩罚) $θ$的值。</p>
+<p>当然还有一种方式防止<code>过拟合</code>的方法是建立一个模型来去除用处不大的特征，保留作用相对较大的特征。</p>
+<p><img src="http://os9coobhw.bkt.clouddn.com/0cOOdKsMEeaCrQqTpeD5ng_2a806eb8d988461f716f4799915ab779_Screenshot-2016-11-15-00.23.30.png"></p>
+<p>上图表示的预测函数，从左到右依次是<code>欠拟合</code>、<code>拟合</code> 也叫<code>刚好拟合</code>、<code>过拟合</code>，欠拟合一般是因为多项式的最高次太小，过拟合一般是因为多项式的最高次幂太大。</p>
+<p>正规化后的代价函数如下，注意尾巴上对 $θ_j$ 的求和是从1开始，也就意味着跳过了 $θ_0$</p>
+<p><img src="http://os9coobhw.bkt.clouddn.com/QQ20171110-234540.png"></p>
+<p>值得注意的是梯度方程不需要对 $θ_0$ 进行正规化，所以方程变成了两部分：</p>
+<p><img src="http://os9coobhw.bkt.clouddn.com/QQ20171110-234417.png"></p>
+<p><img src="http://os9coobhw.bkt.clouddn.com/QQ20171110-234423.png"></p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="params">[J, grad]</span> = <span class="title">costFunctionReg</span><span class="params">(theta, X, y, lambda)</span></span></span><br><span class="line"><span class="comment">%COSTFUNCTIONREG Compute cost and gradient for logistic regression with regularization</span></span><br><span class="line"><span class="comment">%   J = COSTFUNCTIONREG(theta, X, y, lambda) computes the cost of using</span></span><br><span class="line"><span class="comment">%   theta as the parameter for regularized logistic regression and the</span></span><br><span class="line"><span class="comment">%   gradient of the cost w.r.t. to the parameters. </span></span><br><span class="line"></span><br><span class="line"><span class="comment">% Initialize some useful values</span></span><br><span class="line">m = <span class="built_in">length</span>(y); <span class="comment">% number of training examples</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% You need to return the following variables correctly </span></span><br><span class="line">J = <span class="number">0</span>;</span><br><span class="line">grad = <span class="built_in">zeros</span>(<span class="built_in">size</span>(theta));</span><br><span class="line"></span><br><span class="line"><span class="comment">% ====================== YOUR CODE HERE ======================</span></span><br><span class="line"><span class="comment">% Instructions: Compute the cost of a particular choice of theta.</span></span><br><span class="line"><span class="comment">%               You should set J to the cost.</span></span><br><span class="line"><span class="comment">%               Compute the partial derivatives and set grad to the partial</span></span><br><span class="line"><span class="comment">%               derivatives of the cost w.r.t. each parameter in theta</span></span><br><span class="line"></span><br><span class="line">J = <span class="number">1</span>/m * sum(-y .* <span class="built_in">log</span>(sigmoid(X * theta)) - (<span class="number">1</span> - y) .* <span class="built_in">log</span>(<span class="number">1</span> - sigmoid(X * theta)));</span><br><span class="line">J = J + lambda/(<span class="number">2</span>*m) * sum(theta(<span class="number">2</span>:<span class="built_in">size</span>(theta)) .^ <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">grad = <span class="number">1</span>/m * (X&#x27; * (sigmoid(X * theta) - y)) + lambda/m * theta;</span><br><span class="line">grad(<span class="number">1</span>) = grad(<span class="number">1</span>) - lambda/m * theta(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">% =============================================================</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>根据上述的三张图不难写出上述四行代码</p>
+<h3 id="调整λ参数的大小"><a href="#调整λ参数的大小" class="headerlink" title="调整λ参数的大小"></a>调整λ参数的大小</h3><h4 id="λ-x3D-1"><a href="#λ-x3D-1" class="headerlink" title="λ &#x3D; 1"></a>λ &#x3D; 1</h4><p><img src="http://os9coobhw.bkt.clouddn.com/a.png"></p>
+<h4 id="λ-x3D-10"><a href="#λ-x3D-10" class="headerlink" title="λ &#x3D; 10"></a>λ &#x3D; 10</h4><p><img src="http://os9coobhw.bkt.clouddn.com/b.png"></p>
+<h4 id="λ-x3D-0-0001"><a href="#λ-x3D-0-0001" class="headerlink" title="λ &#x3D; 0.0001"></a>λ &#x3D; 0.0001</h4><p><img src="http://os9coobhw.bkt.clouddn.com/d.png"></p>
+<p>可以看出 $λ$ 越小，对训练样本的拟合程度越好，从而导致了整个曲线看起来比较扭曲，没有平滑感；而 $λ$ 越大，对训练样本的拟合程度越差，曲线越光滑。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hijerry.cn/p/48722.html" data-id="cl0e36fzd000bosct107r3gi7" data-title="Exercise2: Logistic Regression" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/p/61075.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          提高你的记忆力：记忆宫殿法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/p/55543.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">Centos7修改docker的Data Space Total大小</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Web%E5%85%A8%E6%A0%88/">Web全栈</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A0%94/">研</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B/">程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E9%A2%98/">编程题</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AC%E8%BD%BD/">转载</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AF%E4%BB%B6%E6%8A%80%E6%9C%AF/">软件技术</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BP%E7%AE%97%E6%B3%95/" rel="tag">BP算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/" rel="tag">Laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/" rel="tag">NLP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NP%E5%AE%8C%E5%85%A8%E6%80%A7/" rel="tag">NP完全性</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stanford/" rel="tag">Stanford</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tensoflow/" rel="tag">Tensoflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web%E6%80%BB%E7%BB%93/" rel="tag">Web总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/devopps/" rel="tag">devopps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/" rel="tag">mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/medium/" rel="tag">medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/word2vec/" rel="tag">word2vec</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/" rel="tag">zsh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BE%9D%E8%B5%96%E8%A7%A3%E6%9E%90/" rel="tag">依赖解析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%91%E6%8C%87Offer/" rel="tag">剑指Offer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%84%9F%E7%9F%A5%E6%9C%BA/" rel="tag">感知机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A0%E6%A0%87%E7%AD%BE/" rel="tag">无标签</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91/" rel="tag">机器翻译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B1%87%E7%BC%96/" rel="tag">汇编</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E4%B9%8E/" rel="tag">知乎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" rel="tag">神经网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" rel="tag">线性代数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/" rel="tag">线性模型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87/" rel="tag">论文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag">运维</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/BP%E7%AE%97%E6%B3%95/" style="font-size: 10px;">BP算法</a> <a href="/tags/Laravel/" style="font-size: 14px;">Laravel</a> <a href="/tags/NLP/" style="font-size: 18px;">NLP</a> <a href="/tags/NP%E5%AE%8C%E5%85%A8%E6%80%A7/" style="font-size: 10px;">NP完全性</a> <a href="/tags/Stanford/" style="font-size: 10px;">Stanford</a> <a href="/tags/Tensoflow/" style="font-size: 10px;">Tensoflow</a> <a href="/tags/Web%E6%80%BB%E7%BB%93/" style="font-size: 16px;">Web总结</a> <a href="/tags/devopps/" style="font-size: 12px;">devopps</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/leetcode/" style="font-size: 16px;">leetcode</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mac/" style="font-size: 12px;">mac</a> <a href="/tags/medium/" style="font-size: 10px;">medium</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a> <a href="/tags/zsh/" style="font-size: 10px;">zsh</a> <a href="/tags/%E4%BE%9D%E8%B5%96%E8%A7%A3%E6%9E%90/" style="font-size: 10px;">依赖解析</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14px;">前端</a> <a href="/tags/%E5%89%91%E6%8C%87Offer/" style="font-size: 10px;">剑指Offer</a> <a href="/tags/%E6%84%9F%E7%9F%A5%E6%9C%BA/" style="font-size: 10px;">感知机</a> <a href="/tags/%E6%97%A0%E6%A0%87%E7%AD%BE/" style="font-size: 12px;">无标签</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">机器学习</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91/" style="font-size: 10px;">机器翻译</a> <a href="/tags/%E6%B1%87%E7%BC%96/" style="font-size: 12px;">汇编</a> <a href="/tags/%E7%9F%A5%E4%B9%8E/" style="font-size: 10px;">知乎</a> <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">神经网络</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" style="font-size: 10px;">线性代数</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/" style="font-size: 10px;">线性模型</a> <a href="/tags/%E8%AE%BA%E6%96%87/" style="font-size: 10px;">论文</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 10px;">运维</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/p/49582.html">2019 Mac安装cuda+cudnn+pytorch</a>
+          </li>
+        
+          <li>
+            <a href="/p/48009.html">复杂度与NP完全性</a>
+          </li>
+        
+          <li>
+            <a href="/p/55002.html">2019-CS224n-Assignment4</a>
+          </li>
+        
+          <li>
+            <a href="/p/35741.html">2019-CS224n-Assignment3</a>
+          </li>
+        
+          <li>
+            <a href="/p/13983.html">NLP会议介绍</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 jerrycheese<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

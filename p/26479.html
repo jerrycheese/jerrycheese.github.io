@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Week8-2:Dimensionality Reduction | 全栈说</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="维数约简假如你负责一项机器学习项目，最开始你需要收集数据集，也许把收集任务下发给各部门后，收集上来的数据特征有上千个，你是全部用呢？还是只用一部分呢？如果只用一部分，应该如何选择呢？ 首先我们肯定是不能全用的，因为特征太多会拖慢训练速度。 我们需要选择其中的一部分特征，但是这些特征又要能保证一些特性，使他能够较好的代表所有特征。 二维转一维假设现在有2个特征 $x_1, x_2$，我们需要将其转成">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Week8-2:Dimensionality Reduction">
+<meta property="og:url" content="https://hijerry.cn/p/26479.html">
+<meta property="og:site_name" content="全栈说">
+<meta property="og:description" content="维数约简假如你负责一项机器学习项目，最开始你需要收集数据集，也许把收集任务下发给各部门后，收集上来的数据特征有上千个，你是全部用呢？还是只用一部分呢？如果只用一部分，应该如何选择呢？ 首先我们肯定是不能全用的，因为特征太多会拖慢训练速度。 我们需要选择其中的一部分特征，但是这些特征又要能保证一些特性，使他能够较好的代表所有特征。 二维转一维假设现在有2个特征 $x_1, x_2$，我们需要将其转成">
+<meta property="og:locale">
+<meta property="og:image" content="http://os9coobhw.bkt.clouddn.com/d7f142726a396bc1d6575feab4c559e6.jpg">
+<meta property="og:image" content="http://os9coobhw.bkt.clouddn.com/70c483f6c36f7fba0ba478bc714f1b43.jpg">
+<meta property="og:image" content="http://os9coobhw.bkt.clouddn.com/30595dab71f2c30226924381c20a469c.jpg">
+<meta property="og:image" content="http://os9coobhw.bkt.clouddn.com/3cf1ffb7aa06f777ac16d4f2a8b2e950.jpg">
+<meta property="og:image" content="http://os9coobhw.bkt.clouddn.com/d18cb6c886ca02e19401bc72a2e1eb2f.jpg">
+<meta property="og:image" content="http://os9coobhw.bkt.clouddn.com/e2accbff5ae2aa621e0afdb997e39551.jpg">
+<meta property="og:image" content="http://os9coobhw.bkt.clouddn.com/a5594a587f3c4e0ae165d3a19862dc05.jpg">
+<meta property="article:published_time" content="2017-11-30T14:35:18.000Z">
+<meta property="article:modified_time" content="2017-11-30T15:22:15.000Z">
+<meta property="article:author" content="jerrycheese">
+<meta property="article:tag" content="机器学习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://os9coobhw.bkt.clouddn.com/d7f142726a396bc1d6575feab4c559e6.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="全栈说" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">全栈说</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Work 20%</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hijerry.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-11/Week8-2-Dimensionality-Reduction" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/p/26479.html" class="article-date">
+  <time class="dt-published" datetime="2017-11-30T14:35:18.000Z" itemprop="datePublished">2017-11-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%A0%94/">研</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Week8-2:Dimensionality Reduction
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="维数约简"><a href="#维数约简" class="headerlink" title="维数约简"></a>维数约简</h2><p>假如你负责一项机器学习项目，最开始你需要收集数据集，也许把收集任务下发给各部门后，收集上来的数据特征有上千个，你是全部用呢？还是只用一部分呢？如果只用一部分，应该如何选择呢？</p>
+<p>首先我们肯定是不能全用的，因为特征太多会拖慢训练速度。</p>
+<p>我们需要选择其中的一部分特征，但是这些特征又要能保证一些特性，使他能够较好的<code>代表</code>所有特征。</p>
+<h3 id="二维转一维"><a href="#二维转一维" class="headerlink" title="二维转一维"></a>二维转一维</h3><p>假设现在有2个特征 $x_1, x_2$，我们需要将其转成一维数据 $y$ ，我们将所有的点 $(x_1, x_2)$ 投影到一条直线上去，那么最后会得到一条数轴上的一些点集，也就是把二维转成一维了。</p>
+<p><img src="http://os9coobhw.bkt.clouddn.com/d7f142726a396bc1d6575feab4c559e6.jpg"></p>
+<h3 id="三维转二维"><a href="#三维转二维" class="headerlink" title="三维转二维"></a>三维转二维</h3><p>我们将所有的三维上的点投影到一个平面上，这个平面用两个向量$z_1, z_2$来表示，那么最后我们将得到一个平面上的点集，这样也就将三维转成二维了。</p>
+<p><img src="http://os9coobhw.bkt.clouddn.com/70c483f6c36f7fba0ba478bc714f1b43.jpg"></p>
+<h2 id="主要成分分析"><a href="#主要成分分析" class="headerlink" title="主要成分分析"></a>主要成分分析</h2><p>又叫PCA，它寻找一条低维的面，使得所有点到该面的距离的平方和最小。如下图中的这条直线，所有点到该直线的距离的平方和最短。</p>
+<p><img src="http://os9coobhw.bkt.clouddn.com/30595dab71f2c30226924381c20a469c.jpg"></p>
+<p>那么其实不用找一条直线，可以发现，只要方向与直线一样，投影的结果是一样的，所以只需要找到一个向量即可。</p>
+<h3 id="处理过程"><a href="#处理过程" class="headerlink" title="处理过程"></a>处理过程</h3><h4 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a>预处理</h4><p>如果给定m个数据 $x^{(1)}, x^{(2)}, .. , x^{(m)}$ ，我们首先对数据进行缩放，像第二周讲的那样，我们先求得每一个特征的平均数$\mu_j &#x3D; \frac 1 m (x_j^{(1)} + x_j^{(2)} … +x_j^{(m)})$  ，用 $x_j^{(i)} - \mu_j$ 替换 $x_j^{(i)}$  。</p>
+<h4 id="计算协方差矩阵"><a href="#计算协方差矩阵" class="headerlink" title="计算协方差矩阵"></a>计算协方差矩阵</h4><p>计算出每一个数据的协方差矩阵</p>
+<p><img src="http://os9coobhw.bkt.clouddn.com/3cf1ffb7aa06f777ac16d4f2a8b2e950.jpg"></p>
+<h4 id="计算特征向量"><a href="#计算特征向量" class="headerlink" title="计算特征向量"></a>计算特征向量</h4><p>再计算协方差矩阵的特征向量，在matlab中，可以使用[U, S, V] &#x3D; svd(Sigma)（Sigma是协方差矩阵）来计算特征向量U，那么这时我们会得到一个 $n \times n$ 的特征向量。</p>
+<p><img src="http://os9coobhw.bkt.clouddn.com/d18cb6c886ca02e19401bc72a2e1eb2f.jpg"></p>
+<p>取前k列作为$U_{reduce}$ 值，用来做降维映射。</p>
+<h4 id="降维"><a href="#降维" class="headerlink" title="降维"></a>降维</h4><p>令向量$z^{(i)} &#x3D; U_{reduce}^T * x^{(i)}$ 就得到了n维的 $x^{(i)}$ 降成k维后的$z^{(i)}$</p>
+<p><img src="http://os9coobhw.bkt.clouddn.com/e2accbff5ae2aa621e0afdb997e39551.jpg"></p>
+<h2 id="k的选取"><a href="#k的选取" class="headerlink" title="k的选取"></a>k的选取</h2><p>现在你有1000个特征，那么到底降成多少个比较合适呢？也许可以是500个，也有可能100个就够了。</p>
+<p>这里有一个方法可以检测降维后，新数据对原始数据特性的保留程度，计算下面公式，你将得到新数据与原始数据之间的差异度。假设计算出来的结果是0.05，那么新数据保留了原始数据95%的特性，一般来说，我们只要保持计算结果小于0.01即可。</p>
+<p><img src="http://os9coobhw.bkt.clouddn.com/a5594a587f3c4e0ae165d3a19862dc05.jpg"></p>
+<p>所以最好的方式是，尝试不同的k值，找到一个比较小的k值，同时新数据保留原始数据99%~90%的特性均可。</p>
+<h2 id="PCA的应用"><a href="#PCA的应用" class="headerlink" title="PCA的应用"></a>PCA的应用</h2><p>PCA常用于：</p>
+<ul>
+<li>压缩数据，节约空间</li>
+<li>加速机器学习过程</li>
+<li>数据可视化（如取k&#x3D;2、k&#x3D;3）</li>
+</ul>
+<p>一种不好的用法是，用PCA来避免<code>过拟合</code>，我们前几周知道，过拟合问题可以通过用正规化参数 $\lambda$ 来处理，虽然PCA可以减少特征数量，但其实它保持了原数据的特性，也就是<code>方差</code>，所以效果不尽人意。</p>
+<p>同时在进行一次机器学习训练过程中，我们也许根本用不到PCA算法，最好的方式还是先不用PCA降维，得到训练结果后，再使用PCA降维重新训练一次，看哪种方式带来的结果比较合乎人意。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hijerry.cn/p/26479.html" data-id="cl0e36fzk000xosctezbge2y8" data-title="Week8-2:Dimensionality Reduction" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/p/30591.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          Week9:Anomaly Detection &amp; Recommender Systems
+        
+      </div>
+    </a>
+  
+  
+    <a href="/p/31473.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">Week8-1: Clustering</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Web%E5%85%A8%E6%A0%88/">Web全栈</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A0%94/">研</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B/">程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E9%A2%98/">编程题</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AC%E8%BD%BD/">转载</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AF%E4%BB%B6%E6%8A%80%E6%9C%AF/">软件技术</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BP%E7%AE%97%E6%B3%95/" rel="tag">BP算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/" rel="tag">Laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/" rel="tag">NLP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NP%E5%AE%8C%E5%85%A8%E6%80%A7/" rel="tag">NP完全性</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stanford/" rel="tag">Stanford</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tensoflow/" rel="tag">Tensoflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web%E6%80%BB%E7%BB%93/" rel="tag">Web总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/devopps/" rel="tag">devopps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/" rel="tag">mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/medium/" rel="tag">medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/word2vec/" rel="tag">word2vec</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/" rel="tag">zsh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BE%9D%E8%B5%96%E8%A7%A3%E6%9E%90/" rel="tag">依赖解析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%91%E6%8C%87Offer/" rel="tag">剑指Offer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%84%9F%E7%9F%A5%E6%9C%BA/" rel="tag">感知机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A0%E6%A0%87%E7%AD%BE/" rel="tag">无标签</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91/" rel="tag">机器翻译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B1%87%E7%BC%96/" rel="tag">汇编</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E4%B9%8E/" rel="tag">知乎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" rel="tag">神经网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" rel="tag">线性代数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/" rel="tag">线性模型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87/" rel="tag">论文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag">运维</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/BP%E7%AE%97%E6%B3%95/" style="font-size: 10px;">BP算法</a> <a href="/tags/Laravel/" style="font-size: 14px;">Laravel</a> <a href="/tags/NLP/" style="font-size: 18px;">NLP</a> <a href="/tags/NP%E5%AE%8C%E5%85%A8%E6%80%A7/" style="font-size: 10px;">NP完全性</a> <a href="/tags/Stanford/" style="font-size: 10px;">Stanford</a> <a href="/tags/Tensoflow/" style="font-size: 10px;">Tensoflow</a> <a href="/tags/Web%E6%80%BB%E7%BB%93/" style="font-size: 16px;">Web总结</a> <a href="/tags/devopps/" style="font-size: 12px;">devopps</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/leetcode/" style="font-size: 16px;">leetcode</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mac/" style="font-size: 12px;">mac</a> <a href="/tags/medium/" style="font-size: 10px;">medium</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a> <a href="/tags/zsh/" style="font-size: 10px;">zsh</a> <a href="/tags/%E4%BE%9D%E8%B5%96%E8%A7%A3%E6%9E%90/" style="font-size: 10px;">依赖解析</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14px;">前端</a> <a href="/tags/%E5%89%91%E6%8C%87Offer/" style="font-size: 10px;">剑指Offer</a> <a href="/tags/%E6%84%9F%E7%9F%A5%E6%9C%BA/" style="font-size: 10px;">感知机</a> <a href="/tags/%E6%97%A0%E6%A0%87%E7%AD%BE/" style="font-size: 12px;">无标签</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">机器学习</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91/" style="font-size: 10px;">机器翻译</a> <a href="/tags/%E6%B1%87%E7%BC%96/" style="font-size: 12px;">汇编</a> <a href="/tags/%E7%9F%A5%E4%B9%8E/" style="font-size: 10px;">知乎</a> <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">神经网络</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" style="font-size: 10px;">线性代数</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/" style="font-size: 10px;">线性模型</a> <a href="/tags/%E8%AE%BA%E6%96%87/" style="font-size: 10px;">论文</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 10px;">运维</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/p/49582.html">2019 Mac安装cuda+cudnn+pytorch</a>
+          </li>
+        
+          <li>
+            <a href="/p/48009.html">复杂度与NP完全性</a>
+          </li>
+        
+          <li>
+            <a href="/p/55002.html">2019-CS224n-Assignment4</a>
+          </li>
+        
+          <li>
+            <a href="/p/35741.html">2019-CS224n-Assignment3</a>
+          </li>
+        
+          <li>
+            <a href="/p/13983.html">NLP会议介绍</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 jerrycheese<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

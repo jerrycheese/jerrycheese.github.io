@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Web总结：资源存储 | 全栈说</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="前言几乎所有的Web站点都需要存储文件资源，如图片、视频等。也有像百度网盘这样的平台专门做云存储，为用户提供了极大的便利。 基础知识HTTP请求报文分为请求头、请求体。请求头中的Content-Type字段，描述了请求体是什么类型的内容，它的字段值也叫做MIME类型，也叫mimetype，在这里进行查询：http:&#x2F;&#x2F;www.w3school.com.cn&#x2F;media&#x2F;media_mimeref.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web总结：资源存储">
+<meta property="og:url" content="https://hijerry.cn/p/17326.html">
+<meta property="og:site_name" content="全栈说">
+<meta property="og:description" content="前言几乎所有的Web站点都需要存储文件资源，如图片、视频等。也有像百度网盘这样的平台专门做云存储，为用户提供了极大的便利。 基础知识HTTP请求报文分为请求头、请求体。请求头中的Content-Type字段，描述了请求体是什么类型的内容，它的字段值也叫做MIME类型，也叫mimetype，在这里进行查询：http:&#x2F;&#x2F;www.w3school.com.cn&#x2F;media&#x2F;media_mimeref.">
+<meta property="og:locale">
+<meta property="og:image" content="http://os9coobhw.bkt.clouddn.com/blog/180723/hgmB4afChE.png?imageslim">
+<meta property="article:published_time" content="2018-07-24T05:25:48.000Z">
+<meta property="article:modified_time" content="2018-08-02T13:20:17.000Z">
+<meta property="article:author" content="jerrycheese">
+<meta property="article:tag" content="Web总结">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://os9coobhw.bkt.clouddn.com/blog/180723/hgmB4afChE.png?imageslim">
+  
+    <link rel="alternate" href="/atom.xml" title="全栈说" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">全栈说</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Work 20%</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hijerry.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-07/Web总结：资源存储" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/p/17326.html" class="article-date">
+  <time class="dt-published" datetime="2018-07-24T05:25:48.000Z" itemprop="datePublished">2018-07-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Web%E5%85%A8%E6%A0%88/">Web全栈</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Web总结：资源存储
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>几乎所有的Web站点都需要存储文件资源，如图片、视频等。也有像百度网盘这样的平台专门做云存储，为用户提供了极大的便利。</p>
+<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><p>HTTP请求报文分为请求头、请求体。请求头中的<code>Content-Type</code>字段，描述了请求体是什么类型的内容，它的字段值也叫做<code>MIME</code>类型，也叫<code>mimetype</code>，在这里进行查询：<a target="_blank" rel="noopener" href="http://www.w3school.com.cn/media/media_mimeref.asp">http://www.w3school.com.cn/media/media_mimeref.asp</a> 。</p>
+<p>有关Content-Type、媒体类型等详细知识可以参考《<a target="_blank" rel="noopener" href="https://book.douban.com/subject/10746113/">HTTP权威指南</a>》，<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1NOprmBS5VYgljxBveB1lfw">PDF版下载</a>（密码：7u67）。</p>
+<p>有关使用HTTP协议上传文件的原理，可以参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/cswuyg/p/3185164.html%E3%80%82">https://www.cnblogs.com/cswuyg/p/3185164.html。</a></p>
+<h2 id="版本1"><a href="#版本1" class="headerlink" title="版本1"></a>版本1</h2><p>理解了上传文件的原理后，我们可以完成一个较为基础的文件保存函数，下面代码是基于Laravel5编写。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 保存上传的文件至服务器，并返回URL</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> Illuminate\Http\UploadedFile $file 上传的文件</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> string 文件在服务器中的URL，失败返回false</span></span><br><span class="line"><span class="comment"> */</span>  </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">storeFile</span>(<span class="params">UploadedFile <span class="variable">$file</span></span>) </span>&#123;</span><br><span class="line">    <span class="variable">$store_path</span> = <span class="string">&#x27;uploads&#x27;</span>;</span><br><span class="line">    <span class="comment">// 文件名称 xxx.yy</span></span><br><span class="line">    <span class="variable">$name</span> = <span class="title function_ invoke__">time</span>();</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$extension</span> = <span class="variable">$file</span>-&gt;<span class="title function_ invoke__">extension</span>()) &#123;</span><br><span class="line">        <span class="variable">$name</span> .= <span class="variable">$extension</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (<span class="title class_">Storage</span>::<span class="title function_ invoke__">putFileAs</span>(<span class="variable">$store_path</span>, <span class="variable">$file</span>, <span class="variable">$name</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;/storage/uploads/&#x27;</span> . <span class="variable">$name</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>storeFile</code> 函数接受一个上传文件实例，保存成功后返回该文件对应的URL，失败返回false。</p>
+<p>做法很简单，把上传的文件都放到一个HTTP可访问的目录下，得到URL，用户访问此URL即可访问上传的资源。</p>
+<ul>
+<li>第10行。获取上传文件的扩展名。</li>
+<li>第13行。保存上传的文件到指定的目录，并指定的文件名。</li>
+</ul>
+<p>但是这种做法有几个缺点甚至有安全漏洞：</p>
+<ul>
+<li>可上传自定义脚本。比如用户可以上传自己编写的PHP文件，这是非常危险的。就算使用Java等编译语言进行后台开发，也应该避免脚本文件的上传。</li>
+<li>文件都放在同一个目录，有的文件系统会有数量限制。可参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/leonwei/article/details/3980179">https://blog.csdn.net/leonwei/article/details/3980179</a></li>
+<li>文件名可能冲突（并发量比较大时）。</li>
+<li>可能有重复文件。比如两个人在不同时间点上传了一样的文件，系统会保存两份。</li>
+</ul>
+<h2 id="版本2：校验和分类"><a href="#版本2：校验和分类" class="headerlink" title="版本2：校验和分类"></a>版本2：校验和分类</h2><p>上代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 保存上传的文件至服务器，并返回URL</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> Illuminate\Http\UploadedFile $file 上传的文件</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> string 文件在服务器中的URL，失败返回false</span></span><br><span class="line"><span class="comment"> */</span>  </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">storeFile</span>(<span class="params">UploadedFile <span class="variable">$file</span></span>) </span>&#123;</span><br><span class="line">    <span class="variable">$time</span> = <span class="title function_ invoke__">time</span>();</span><br><span class="line">    <span class="comment">// 文件名称 xxx.yy</span></span><br><span class="line">    <span class="variable">$name</span> = <span class="variable">$time</span>;</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$extension</span> = <span class="variable">$file</span>-&gt;<span class="title function_ invoke__">extension</span>()) &#123;</span><br><span class="line">        <span class="variable">$name</span> .= <span class="variable">$extension</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 按日期将文件分类</span></span><br><span class="line">    <span class="variable">$store_path</span> = <span class="string">&#x27;uploads&#x27;</span> . DIRECTORY_SEPARATOR . <span class="title function_ invoke__">date</span>(<span class="string">&#x27;Ymd&#x27;</span>, <span class="variable">$time</span>);</span><br><span class="line">    <span class="keyword">if</span> (<span class="title class_">Storage</span>::<span class="title function_ invoke__">putFileAs</span>(<span class="variable">$store_path</span>, <span class="variable">$file</span>, <span class="variable">$name</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;/storage/&#x27;</span> . <span class="title function_ invoke__">str_replace</span>(<span class="string">&#x27;\\&#x27;</span>, <span class="string">&#x27;/&#x27;</span>, <span class="variable">$store_path</span>) . <span class="string">&#x27;/&#x27;</span> . <span class="variable">$name</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 检查上传的文件是否符合要求</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> Illuminate\Http\UploadedFile $file 上传的文件</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> array $rule 含mimetype, max_size(单位B)两个规则</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> int 符合所有要求返回0，不符合mimetype返回1，不符合max_size返回2</span></span><br><span class="line"><span class="comment"> */</span>  </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkFile</span>(<span class="params">UploadedFile <span class="variable">$file</span>, <span class="variable">$rule</span></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (! <span class="variable">$rule</span>) <span class="variable">$rule</span> = [<span class="string">&#x27;mimetype&#x27;</span> =&gt; [], <span class="string">&#x27;max_size&#x27;</span> =&gt; <span class="number">0</span>];</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$rule</span>[<span class="string">&#x27;mimtype&#x27;</span>] &amp;&amp; ! <span class="title function_ invoke__">in_array</span>(<span class="variable">$file</span>-&gt;<span class="title function_ invoke__">getMimeType</span>(), <span class="variable">$rule</span>[<span class="string">&#x27;mimetype&#x27;</span>])) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="variable">$rule</span>[<span class="string">&#x27;max_size&#x27;</span>] &amp;&amp; <span class="variable">$file</span>-&gt;<span class="title function_ invoke__">getSize</span>() &gt; <span class="variable">$rule</span>[<span class="string">&#x27;max_size&#x27;</span>]) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>先调用 <code>checkFile</code> 检查上传文件的mimetype、文件大小是否符合要求，函数返回0表示没有不符合的。再调用 <code>storeFile</code> 保存文件。这样可以尽可能的避免版本1的第一、二个问题。</p>
+<p>比如在上传头像时，可以规定只能上传jpg、bmp等图片格式，而且文件大小不得超过2M。</p>
+<p>下面解释部分代码：</p>
+<ul>
+<li>第14行。<code>DIRECTORY_SEPARATOR</code> 是指当前操作系统的分隔字符，Linux是 <code>/</code>，windows是<code>\</code>。</li>
+<li>第16行。URL的分隔符都是 <code>/</code> 所以需要替换一下。</li>
+</ul>
+<p>文件名生成函数可以替换成 <code>microtime </code> ，这是微秒级别的时间戳，所以就可以避免文件名冲突了（冲突可能性非常非常非常小，所以可以认为不会冲突）。</p>
+<p>此版本仍然不能解决资源重复问题。</p>
+<h2 id="版本3：统一资源存储"><a href="#版本3：统一资源存储" class="headerlink" title="版本3：统一资源存储"></a>版本3：统一资源存储</h2><p>上代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 保存文件和model</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> Illuminate\Http\UploadedFile $file</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> ResourceModel</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">storeFile</span>(<span class="params">UploadedFile <span class="variable">$file</span></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 文件哈希值</span></span><br><span class="line">    <span class="variable language_">$this</span>-&gt;md = <span class="title function_ invoke__">md5_file</span>(<span class="variable">$file</span>-&gt;<span class="title function_ invoke__">getRealPath</span>());</span><br><span class="line">    <span class="comment">// 查找已存在的资源</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$exist_rs</span> = <span class="title class_">ResourceModel</span>::<span class="title function_ invoke__">where</span>(<span class="string">&#x27;md&#x27;</span>, <span class="variable language_">$this</span>-&gt;md)-&gt;<span class="title function_ invoke__">first</span>()) &#123;</span><br><span class="line">        <span class="variable">$exist_rs</span>-&gt;from_db = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable">$exist_rs</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 文件名称    xxx.jpeg</span></span><br><span class="line">    <span class="variable language_">$this</span>-&gt;name = <span class="variable">$file</span>-&gt;<span class="title function_ invoke__">getClientOriginalName</span>();</span><br><span class="line">    <span class="comment">// mimetype  image/jpeg</span></span><br><span class="line">    <span class="variable language_">$this</span>-&gt;mime = <span class="variable">$file</span>-&gt;<span class="title function_ invoke__">getMimeType</span>();</span><br><span class="line">    <span class="comment">// 后缀      jpeg</span></span><br><span class="line">    <span class="variable language_">$this</span>-&gt;suffix = <span class="variable">$file</span>-&gt;<span class="title function_ invoke__">extension</span>();</span><br><span class="line"></span><br><span class="line">    <span class="title class_">DB</span>::<span class="title function_ invoke__">beginTransaction</span>();</span><br><span class="line">    <span class="comment">// 保存数据库</span></span><br><span class="line">    <span class="keyword">if</span> (! <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">save</span>()) &#123;</span><br><span class="line">        <span class="title class_">DB</span>::<span class="title function_ invoke__">rollBack</span>();</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 文件保存路径 data/52/08/06</span></span><br><span class="line">    <span class="variable">$store_path</span> = <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">getStorePath</span>();</span><br><span class="line">    <span class="comment">// 520806eb60722ca0d10c89d3b20b370c</span></span><br><span class="line">    <span class="variable">$store_name</span> = <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">getStoreName</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 保存文件</span></span><br><span class="line">    <span class="keyword">if</span> (! <span class="title class_">Storage</span>::<span class="title function_ invoke__">exists</span>(<span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">getFilename</span>())) &#123;</span><br><span class="line">        <span class="comment">// 如果写入文件失败，则不存入数据库中</span></span><br><span class="line">        <span class="keyword">if</span> (!<span class="title class_">Storage</span>::<span class="title function_ invoke__">putFileAs</span>(<span class="variable">$store_path</span>, <span class="variable">$file</span>, <span class="variable">$store_name</span>)) &#123;</span><br><span class="line">            <span class="title class_">DB</span>::<span class="title function_ invoke__">rollBack</span>();</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title class_">DB</span>::<span class="title function_ invoke__">commit</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">$this</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 显示文件</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> Illuminate\Http\Request $req</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> $md</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> mixed</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">showResource</span>(<span class="params">Request <span class="variable">$req</span>, <span class="variable">$md</span></span>) </span>&#123;</span><br><span class="line">    <span class="variable">$rs</span> = <span class="title class_">ResourceModel</span>::<span class="title function_ invoke__">where</span>(<span class="string">&#x27;md&#x27;</span>, <span class="variable">$md</span>)-&gt;<span class="title function_ invoke__">first</span>();</span><br><span class="line">    <span class="keyword">if</span> (! <span class="variable">$rs</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;resource not found&#x27;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$rs</span>-&gt;refer) <span class="keyword">return</span> <span class="title function_ invoke__">redirect</span>(<span class="variable">$rs</span>-&gt;refer);</span><br><span class="line">        <span class="comment">// uploads/7d/s8/7ds87x...</span></span><br><span class="line">        <span class="variable">$filename</span> = <span class="variable">$rs</span>-&gt;<span class="title function_ invoke__">getFilename</span>();</span><br><span class="line">        <span class="comment">// 获取文件物理路径</span></span><br><span class="line">        <span class="variable">$full_filename</span> = <span class="title function_ invoke__">storage_path</span>(<span class="string">&quot;app/$&#123;filename&#125;&quot;</span>);</span><br><span class="line">        <span class="keyword">if</span> (!<span class="title function_ invoke__">file_exists</span>(<span class="variable">$full_filename</span>)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="title function_ invoke__">response</span>(<span class="string">&#x27;file not found&#x27;</span>, <span class="title class_">Response</span>::HTTP_NOT_FOUND);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_ invoke__">response</span>()-&gt;<span class="title function_ invoke__">file</span>(<span class="variable">$full_filename</span>,[</span><br><span class="line">            <span class="string">&#x27;Content-Type&#x27;</span> =&gt; <span class="variable">$rs</span>-&gt;mime</span><br><span class="line">        ]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>storeFile</code> 方法是 <code>ResourceModel</code> 里的，这里罗列一下 <code>Resource</code> 的表结构：</p>
+<p><img src="http://os9coobhw.bkt.clouddn.com/blog/180723/hgmB4afChE.png?imageslim" alt="mark"></p>
+<p><code>showResource</code> 是controller里的方法，用于处理HTTP请求。</p>
+<p>这个版本的核心思想是，先计算文件的MD5值，同一个文件具有一样的MD5值，不同的文件MD5值不一样。这个MD5值将作为文件名。文件的保存路径是取MD5值的前四位字符，两位分为一组，共两组，分别作为一级目录和二级目录名。</p>
+<p>此版本仍然使用 <code>checkFile</code> 检查文件类型和大小。</p>
+<p>代码解释：</p>
+<ul>
+<li>第8行：计算文件的MD5值。</li>
+<li>第10~13行：找到系统中已经存在的资源，直接返回该资源。这样可以避免资源重复。</li>
+<li>第60行：<code>storage_path</code> 返回文件的物理存储地址。</li>
+<li>第64行：响应资源文件，并指定响应的Content-Type，让浏览器可以正常的显示资源。</li>
+</ul>
+<p>这个版本已经可以满足绝大部分Web系统的需求了。并且还有可提升空间，可拓展性也比较强。</p>
+<p>举个扩展的例子，资源文件越多时，可以通过目录划分来做分布式存储。</p>
+<h2 id="视频资源"><a href="#视频资源" class="headerlink" title="视频资源"></a>视频资源</h2><p>视频资源在存放于Web系统之前，往往要进行调整分辨率、编码格式、加水印之类的操作。对于大视频文件，也应该采取分片存储的方式。</p>
+<p>调整分辨率、编码格式、加水印等，可以使用 <code>ffmpeg</code> 完成。</p>
+<p>文件分片包含两个话题：上传时分片，保存时分片。上传时分片，保存时就比较好操作，直接按片划分保存就行；上传不分片，保存如果要分片的话，只能能采取视频截取的方式（使用ffmpeg）把视频分为几个部分保存，一般来说取前1分钟为第一片，后续每4分钟一片，是比较好的分片方法。</p>
+<p>视频文件分片后，播放时也是要分片播放的，如果采取1:4:4..:4的方法分片，前端需要先加载出第一片1分钟的视频，后面在依次加载4分钟的分片文件。这里解释下为什么第一片1分钟，因为用户一般看1分钟，没兴趣看就溜了，所以为了不浪费流量，第一片就1分钟比较合适。</p>
+<h2 id="分布式和同步"><a href="#分布式和同步" class="headerlink" title="分布式和同步"></a>分布式和同步</h2><p>先看一个需要用到同步的场景，不同学校间共享教学视频，访问时又是自己内网的服务器。要实现这个功能有两个关键点：</p>
+<ol>
+<li>学校的服务器至少有一台能和外部服务器通信。</li>
+<li>采取分布式还是集中式同步。</li>
+</ol>
+<p>集中式同步方案：选一个中心主机，视频都放在中心主机，并且通过文件共享手段，让服务器在读取资源时，直接从中心主机读取。文件共享手段比如NAS、rsync命令、基于xcopy的脚本等。需要注意的是，跨校区的同步速度是比较慢的。</p>
+<p>分布式同步方案：没有中心主机，上传的时候先放在本校服务器，每一个服务器定期向其他服务器询问是否有新资源，和推送资源给其他服务器。这种方案，也可以选一个中心主机，本地服务器在保存完资源后，将视频推送到中心主机，再由中心主机下发到其他学校服务器（类似git机制）。</p>
+<p>他们的核心区别是：集中式，不同服务器从同一台服务器上取视频资源；分布式，服务器从本地取视频资源。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hijerry.cn/p/17326.html" data-id="cl0e36g08003yosct5xn78s1l" data-title="Web总结：资源存储" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web%E6%80%BB%E7%BB%93/" rel="tag">Web总结</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/p/6196.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          Web总结：数据库系统
+        
+      </div>
+    </a>
+  
+  
+    <a href="/p/61701.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">Web总结：用户认证</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Web%E5%85%A8%E6%A0%88/">Web全栈</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A0%94/">研</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B/">程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E9%A2%98/">编程题</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AC%E8%BD%BD/">转载</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AF%E4%BB%B6%E6%8A%80%E6%9C%AF/">软件技术</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BP%E7%AE%97%E6%B3%95/" rel="tag">BP算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/" rel="tag">Laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/" rel="tag">NLP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NP%E5%AE%8C%E5%85%A8%E6%80%A7/" rel="tag">NP完全性</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stanford/" rel="tag">Stanford</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tensoflow/" rel="tag">Tensoflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web%E6%80%BB%E7%BB%93/" rel="tag">Web总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/devopps/" rel="tag">devopps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/" rel="tag">mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/medium/" rel="tag">medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/word2vec/" rel="tag">word2vec</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/" rel="tag">zsh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BE%9D%E8%B5%96%E8%A7%A3%E6%9E%90/" rel="tag">依赖解析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%91%E6%8C%87Offer/" rel="tag">剑指Offer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%84%9F%E7%9F%A5%E6%9C%BA/" rel="tag">感知机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A0%E6%A0%87%E7%AD%BE/" rel="tag">无标签</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91/" rel="tag">机器翻译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B1%87%E7%BC%96/" rel="tag">汇编</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E4%B9%8E/" rel="tag">知乎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" rel="tag">神经网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" rel="tag">线性代数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/" rel="tag">线性模型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87/" rel="tag">论文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag">运维</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/BP%E7%AE%97%E6%B3%95/" style="font-size: 10px;">BP算法</a> <a href="/tags/Laravel/" style="font-size: 14px;">Laravel</a> <a href="/tags/NLP/" style="font-size: 18px;">NLP</a> <a href="/tags/NP%E5%AE%8C%E5%85%A8%E6%80%A7/" style="font-size: 10px;">NP完全性</a> <a href="/tags/Stanford/" style="font-size: 10px;">Stanford</a> <a href="/tags/Tensoflow/" style="font-size: 10px;">Tensoflow</a> <a href="/tags/Web%E6%80%BB%E7%BB%93/" style="font-size: 16px;">Web总结</a> <a href="/tags/devopps/" style="font-size: 12px;">devopps</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/leetcode/" style="font-size: 16px;">leetcode</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mac/" style="font-size: 12px;">mac</a> <a href="/tags/medium/" style="font-size: 10px;">medium</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a> <a href="/tags/zsh/" style="font-size: 10px;">zsh</a> <a href="/tags/%E4%BE%9D%E8%B5%96%E8%A7%A3%E6%9E%90/" style="font-size: 10px;">依赖解析</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14px;">前端</a> <a href="/tags/%E5%89%91%E6%8C%87Offer/" style="font-size: 10px;">剑指Offer</a> <a href="/tags/%E6%84%9F%E7%9F%A5%E6%9C%BA/" style="font-size: 10px;">感知机</a> <a href="/tags/%E6%97%A0%E6%A0%87%E7%AD%BE/" style="font-size: 12px;">无标签</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">机器学习</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91/" style="font-size: 10px;">机器翻译</a> <a href="/tags/%E6%B1%87%E7%BC%96/" style="font-size: 12px;">汇编</a> <a href="/tags/%E7%9F%A5%E4%B9%8E/" style="font-size: 10px;">知乎</a> <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">神经网络</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" style="font-size: 10px;">线性代数</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/" style="font-size: 10px;">线性模型</a> <a href="/tags/%E8%AE%BA%E6%96%87/" style="font-size: 10px;">论文</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 10px;">运维</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/p/49582.html">2019 Mac安装cuda+cudnn+pytorch</a>
+          </li>
+        
+          <li>
+            <a href="/p/48009.html">复杂度与NP完全性</a>
+          </li>
+        
+          <li>
+            <a href="/p/55002.html">2019-CS224n-Assignment4</a>
+          </li>
+        
+          <li>
+            <a href="/p/35741.html">2019-CS224n-Assignment3</a>
+          </li>
+        
+          <li>
+            <a href="/p/13983.html">NLP会议介绍</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 jerrycheese<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

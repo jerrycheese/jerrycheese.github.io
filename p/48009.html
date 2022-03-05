@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>复杂度与NP完全性 | 全栈说</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="无论是处理业务逻辑，还是解决数学问题，程序员的脑海里都必须有对问题的解决方案有准确的、完整的描述，也就是算法。我不讨论算法的各种性质和定义，这次主要是总结算法复杂度几种描述方式以及P、NP和NP完全性。 复杂度时间复杂度算法的时间复杂度可以定性的描述 随着输入规模变大，算法耗时增长的快慢。 插入排序最坏情况是 $O(n^2)​$ ，归并排序最坏情况是 $O(nlogn)​$ ，这表示插入排序随着输">
+<meta property="og:type" content="article">
+<meta property="og:title" content="复杂度与NP完全性">
+<meta property="og:url" content="https://hijerry.cn/p/48009.html">
+<meta property="og:site_name" content="全栈说">
+<meta property="og:description" content="无论是处理业务逻辑，还是解决数学问题，程序员的脑海里都必须有对问题的解决方案有准确的、完整的描述，也就是算法。我不讨论算法的各种性质和定义，这次主要是总结算法复杂度几种描述方式以及P、NP和NP完全性。 复杂度时间复杂度算法的时间复杂度可以定性的描述 随着输入规模变大，算法耗时增长的快慢。 插入排序最坏情况是 $O(n^2)​$ ，归并排序最坏情况是 $O(nlogn)​$ ，这表示插入排序随着输">
+<meta property="og:locale">
+<meta property="article:published_time" content="2019-03-23T03:34:33.000Z">
+<meta property="article:modified_time" content="2019-03-23T09:03:33.000Z">
+<meta property="article:author" content="jerrycheese">
+<meta property="article:tag" content="NP完全性">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="全栈说" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">全栈说</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Work 20%</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hijerry.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-03/复杂度与NP完全性" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/p/48009.html" class="article-date">
+  <time class="dt-published" datetime="2019-03-23T03:34:33.000Z" itemprop="datePublished">2019-03-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      复杂度与NP完全性
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>无论是处理业务逻辑，还是解决数学问题，程序员的脑海里都必须有对问题的解决方案有准确的、完整的描述，也就是算法。我不讨论算法的各种性质和定义，这次主要是总结算法复杂度几种描述方式以及P、NP和NP完全性。</p>
+<h2 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h2><h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><p>算法的时间复杂度可以定性的描述 <strong>随着输入规模变大，算法耗时增长的快慢</strong>。</p>
+<p>插入排序最坏情况是 $O(n^2)​$ ，归并排序最坏情况是 $O(nlogn)​$ ，这表示插入排序随着输入规模的增大，耗时呈 <em>平方级别</em> 的<strong>增长</strong>；而归并排序的耗时呈 <em>nlogn级别</em> 的<strong>增长</strong>，所以这两个函数<em>增长的阶</em>不在同一个级别上。这样的定性分析，我们可以知道当输入规模n很大时（比如n&#x3D;10,000），在两者之间，应该选择归并排序。这里强调的是耗时的增长，<strong>并不说明插入排序比归并排序慢</strong>，当n很小时(比如n&#x3D;15)，插入排序可能比归并排序耗时短。</p>
+<h3 id="渐进记号"><a href="#渐进记号" class="headerlink" title="渐进记号"></a>渐进记号</h3><p>描述算法时间复杂度有五种记号： $\Theta、O、\Omega, o、\omega$ 。这五种记号又叫做 <em>渐进记号</em>，它们本表示函数集合，以 $\Theta​$ （读作：大Theta）为例：</p>
+<p>$\Theta(g(n)) &#x3D; { f(n): 存在正常数 c_1, c_2 和n_0，使得当n \geq n_0 时，有 0 \leq c_1g(n) \leq f(n) \leq c_2g(n)}​$ </p>
+<p>比如我们通过精密的分析得到了插入排序的耗时为 $f(n) &#x3D; 2n^2-n+17​$ ，我们若能找到合适的 $c_1, c_2, n_0​$ 使得 $使得当n \geq n_0 时，有0 \leq c_1g(n) \leq f(n) \leq c_2g(n) ​$，就能证明插入排序的时间复杂度为 $\Theta(n^2)​$ 。</p>
+<p>下面是其余四个记号的描述：</p>
+<p>$O(g(n)) &#x3D; { f(n): 存在正常数 c和n_0，使得当n \geq n_0 时，有 f(n) \leq cg(n)}$ ，渐进上界</p>
+<p>$\Omega(g(n)) &#x3D; { f(n): 存在正常数 c 和n_0，使得当n \geq n_0 时，有 cg(n) \leq f(n) }$，渐进下界</p>
+<p>$o(g(n)) &#x3D; { f(n): 对于任意正常数 c，存在n_0使得当n \geq n_0 时，有 f(n) \leq cg(n) }$，非渐进紧确上界</p>
+<p>$\omega(g(n)) &#x3D; { f(n): 对于任意正常数 c，存在n_0使得当n \geq n_0 时，有 cg(n) \leq f(n) }$，非渐进紧确下界</p>
+<p>记号 $O$ (读作大O) 和 $o$ (读作小o)的区别是：$O$ 可能不紧，因为只需要存在一个正常数 $c$ 即可，例如函数$2n^2 \in O(n^2)$ 是紧确的 ，但 $2n \in O(n^2)$ 却不是。 $o$ 记号表示 <em>非渐进紧确</em> 的上界，所以 $ 2n^2 \notin o(n^2)$ 而 $2n \in o(n^2)$ 。记号 $\Omega$ 和 $\omega$ 的道理是一样的。</p>
+<p>我们可以说插入排序的最坏情况运行时间是 $O(n^2)$ ，而不能说 $\Theta(n^2)$ 。因为若数组已经有序，则插入排序耗时为 $\Theta(n)$ ，显然 $\Theta(n) \in O(n^2)$ ，但 $\Theta(n) \notin \Theta (n^2)$ 。</p>
+<p>我们不能说插入排序的运行时间是 $O(n^2)$ 。如果一个算法的运行时间是 $O(n^2)$ ，这表明存在一个函数 $f(n)$，对于任意大小为n的数据，算法运行时间为 $f(n)$ ，而与数据无关。</p>
+<h3 id="等式分析"><a href="#等式分析" class="headerlink" title="等式分析"></a>等式分析</h3><p>我们可能见过下面的式子 $T(n) &#x3D; 2T(\frac{n}{2}) + \Theta(n)$，记号 $\Theta$ 本表示集合，却出现在了等式的右边。</p>
+<p>当渐进记号出现在等式(或不等式)的一边，这表示一个 <strong>匿名函数</strong>，我们并不关心函数具体是什么。例如 $2n^2+3n+1 &#x3D; 2n^2 + \Theta(n)$，这里的 $\Theta(n)$ 代替了 $3n+1$ 。这样的作坊有助于我们略去等式中无关紧要的细节。</p>
+<p>当渐进记号出现在等式(或不等式)的两边，这表明 <strong>无论等号左边的匿名函数如何选择，总有办法选取等号右边的匿名函数使等式成立</strong>，例如 $2n^2 + \Theta(n) &#x3D; \Theta(n^2)$ 。</p>
+<p>这样以来，即可将其链起来得到：</p>
+<p>$2n^2+3n+1 &#x3D; 2n^2 + \Theta(n)&#x3D;  \Theta(n^2)​$</p>
+<p>最终得到 $2n^2+3n+1&#x3D;  \Theta(n^2) $，这种分析方式直观、简便又高效。</p>
+<h2 id="NP完全性"><a href="#NP完全性" class="headerlink" title="NP完全性"></a>NP完全性</h2><p>P（Polynomial）类问题：能在多项式时间内<strong>被解决</strong>的问题。</p>
+<p>有些问题是能写出算法解决的，无非是加减乘除、逻辑运算，这些都是按照一定步骤进行就能得到结果的，若算法的时间复杂度是 $O(n^k)​$(k为某个常数)，则该问题就输入P类问题。 例如找到一个数组中最大的数，找到点集中距离最短的两个点。</p>
+<p>NP（Non-Deterministic Polynomial）类问题：能在多项式时间内<strong>被验证</strong>的问题。</p>
+<p>有些问题不能写出算法得到最优解，但可以通过 <em>猜算</em> 得到一个解，在猜出一个解之后，需要判断这个解是否为正解，判断是否为正解的算法若在多项式时间内运行完，则该问题就是NP类问题。比如大质数问题，没有算法能计算得到下一个质数是多少，但我们能在多项式时间内判断一个数是不是质数。</p>
+<p>P类问题也叫做 <strong>易解</strong> 问题，而NP类问题又叫 <strong>难解</strong> 问题。显然 $P \subseteq NP$ 。因为能在多项式时间内解决的问题，它的一个解肯定能在多项式时间内验证（跑一次算法得到一个解即可）。P 是否等于 NP 是目前的一个世界难题。</p>
+<p>假设A是一个NP问题，若A与NP中的任何一个问题是一样难的，则A是NP完全问题。目前发现的NPC问题有21个：<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/NP-completeness#NP-complete_problems">Wiki:NP-completeness</a>，所有的NP问题都能规约到这21个问题中的一个。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>[1] <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/NP%E9%97%AE%E9%A2%98/2860567?fr=aladdin">NP问题</a>, 2019-03-23.</p>
+<p>[2] <a target="_blank" rel="noopener" href="https://www.sohu.com/a/251024879_701814">一文读懂什么是P问题、NP问题和NPC问题</a>, 2019-03-23.</p>
+<p>[3] <a target="_blank" rel="noopener" href="https://blog.csdn.net/k346k346/article/details/51026006">P问题、NP问题、NPC问题（NP完全问题）、NPH问题和多项式时间复杂度</a>, 2019-03-23.</p>
+<p>[4]  Thomas H.Cormen et al., 殷建平等译, 算法导论(原书第三版), 机械工业出版社, 2012.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hijerry.cn/p/48009.html" data-id="cl0e36fzx002ooscteue9e9n8" data-title="复杂度与NP完全性" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NP%E5%AE%8C%E5%85%A8%E6%80%A7/" rel="tag">NP完全性</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/p/49582.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          2019 Mac安装cuda+cudnn+pytorch
+        
+      </div>
+    </a>
+  
+  
+    <a href="/p/55002.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">2019-CS224n-Assignment4</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Web%E5%85%A8%E6%A0%88/">Web全栈</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A0%94/">研</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B/">程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E9%A2%98/">编程题</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AC%E8%BD%BD/">转载</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AF%E4%BB%B6%E6%8A%80%E6%9C%AF/">软件技术</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BP%E7%AE%97%E6%B3%95/" rel="tag">BP算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/" rel="tag">Laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/" rel="tag">NLP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NP%E5%AE%8C%E5%85%A8%E6%80%A7/" rel="tag">NP完全性</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stanford/" rel="tag">Stanford</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tensoflow/" rel="tag">Tensoflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web%E6%80%BB%E7%BB%93/" rel="tag">Web总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/devopps/" rel="tag">devopps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/" rel="tag">mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/medium/" rel="tag">medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/word2vec/" rel="tag">word2vec</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/" rel="tag">zsh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BE%9D%E8%B5%96%E8%A7%A3%E6%9E%90/" rel="tag">依赖解析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%91%E6%8C%87Offer/" rel="tag">剑指Offer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%84%9F%E7%9F%A5%E6%9C%BA/" rel="tag">感知机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A0%E6%A0%87%E7%AD%BE/" rel="tag">无标签</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91/" rel="tag">机器翻译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B1%87%E7%BC%96/" rel="tag">汇编</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E4%B9%8E/" rel="tag">知乎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" rel="tag">神经网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" rel="tag">线性代数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/" rel="tag">线性模型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87/" rel="tag">论文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag">运维</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/BP%E7%AE%97%E6%B3%95/" style="font-size: 10px;">BP算法</a> <a href="/tags/Laravel/" style="font-size: 14px;">Laravel</a> <a href="/tags/NLP/" style="font-size: 18px;">NLP</a> <a href="/tags/NP%E5%AE%8C%E5%85%A8%E6%80%A7/" style="font-size: 10px;">NP完全性</a> <a href="/tags/Stanford/" style="font-size: 10px;">Stanford</a> <a href="/tags/Tensoflow/" style="font-size: 10px;">Tensoflow</a> <a href="/tags/Web%E6%80%BB%E7%BB%93/" style="font-size: 16px;">Web总结</a> <a href="/tags/devopps/" style="font-size: 12px;">devopps</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/leetcode/" style="font-size: 16px;">leetcode</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mac/" style="font-size: 12px;">mac</a> <a href="/tags/medium/" style="font-size: 10px;">medium</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a> <a href="/tags/zsh/" style="font-size: 10px;">zsh</a> <a href="/tags/%E4%BE%9D%E8%B5%96%E8%A7%A3%E6%9E%90/" style="font-size: 10px;">依赖解析</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14px;">前端</a> <a href="/tags/%E5%89%91%E6%8C%87Offer/" style="font-size: 10px;">剑指Offer</a> <a href="/tags/%E6%84%9F%E7%9F%A5%E6%9C%BA/" style="font-size: 10px;">感知机</a> <a href="/tags/%E6%97%A0%E6%A0%87%E7%AD%BE/" style="font-size: 12px;">无标签</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">机器学习</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91/" style="font-size: 10px;">机器翻译</a> <a href="/tags/%E6%B1%87%E7%BC%96/" style="font-size: 12px;">汇编</a> <a href="/tags/%E7%9F%A5%E4%B9%8E/" style="font-size: 10px;">知乎</a> <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">神经网络</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" style="font-size: 10px;">线性代数</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/" style="font-size: 10px;">线性模型</a> <a href="/tags/%E8%AE%BA%E6%96%87/" style="font-size: 10px;">论文</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 10px;">运维</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/p/49582.html">2019 Mac安装cuda+cudnn+pytorch</a>
+          </li>
+        
+          <li>
+            <a href="/p/48009.html">复杂度与NP完全性</a>
+          </li>
+        
+          <li>
+            <a href="/p/55002.html">2019-CS224n-Assignment4</a>
+          </li>
+        
+          <li>
+            <a href="/p/35741.html">2019-CS224n-Assignment3</a>
+          </li>
+        
+          <li>
+            <a href="/p/13983.html">NLP会议介绍</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 jerrycheese<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
