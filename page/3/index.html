@@ -1,1422 +1,1243 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
 <head>
-  <meta charset="utf-8">
-  
-  
-  <title>全栈说</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Efficiency 80%">
-<meta property="og:type" content="website">
-<meta property="og:title" content="全栈说">
-<meta property="og:url" content="https://hijerry.cn/page/3/index.html">
-<meta property="og:site_name" content="全栈说">
-<meta property="og:description" content="Efficiency 80%">
-<meta property="og:locale">
-<meta property="article:author" content="jerrycheese">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="全栈说" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+    <meta charset="utf-8">
+    <meta name="keywords" content="全栈说">
+    <meta name="description" content="Efficiency 80%">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
 
-  
-  
-<link rel="stylesheet" href="/css/style.css">
 
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+    <title>全栈说</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
 
-  
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
 <meta name="generator" content="Hexo 6.0.0"></head>
 
+
+
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">全栈说</a>
-      </h1>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">全栈说</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
       
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">Work 20%</a>
-        </h2>
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
       
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">全栈说</div>
+        <div class="logo-desc">
+            
+            Efficiency 80%
+            
+        </div>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
+
+    <ul class="menu-list mobile-menu-list">
         
-          <a class="main-nav-link" href="/">Home</a>
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
         
-      </nav>
-      <nav id="sub-nav">
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
         
-        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hijerry.cn"></form>
-      </div>
-    </div>
-  </div>
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
 </header>
 
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-01/CentOS使用ss" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/p/64326.html" class="article-date">
-  <time class="dt-published" datetime="2018-01-15T05:59:12.000Z" itemprop="datePublished">2018-01-15</time>
-</a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%BD%AF%E4%BB%B6%E6%8A%80%E6%9C%AF/">软件技术</a>
-  </div>
+    <div class="bg-cover pd-header about-cover">
+    <div class="container">
+    <div class="row">
+    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
+        <div class="brand">
+            <div class="title center-align">
+                
+                Work 20%
+                
+            </div>
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/p/64326.html">CentOS使用ss</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="ss客户端"><a href="#ss客户端" class="headerlink" title="ss客户端"></a>ss客户端</h2><p>必要工具：</p>
-<ul>
-<li>python</li>
-<li>pip</li>
-</ul>
-<p>pip的安装方法：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget https://bootstrap.pypa.io/get-pip.py</span><br><span class="line">sudo python get-pip.py</span><br><span class="line">rm get-pip.py</span><br><span class="line">pip --version</span><br></pre></td></tr></table></figure>
-
-<p>我的的pip版本是 <code>9.0.1</code> 的</p>
-<p>下面开始安装ss：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip install shadowsocks</span><br></pre></td></tr></table></figure>
-
-<p>下面配置ss：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/shadowsocks.json</span><br></pre></td></tr></table></figure>
-
-<p>内容如下</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;server&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0.0.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;server_port&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;local_address&quot;</span><span class="punctuation">:</span> <span class="string">&quot;127.0.0.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;local_port&quot;</span><span class="punctuation">:</span> <span class="number">10010</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;password&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;method&quot;</span><span class="punctuation">:</span> <span class="string">&quot;aes-256-cfb&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;timeout&quot;</span><span class="punctuation">:</span> <span class="number">500</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;fastopen&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;workers&quot;</span><span class="punctuation">:</span> <span class="number">1</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>除了<code>server</code>、<code>server_port</code>、<code>password</code>、<code>method</code> 四个主要参数外，还需特别添加<code>local_address</code> 和 <code>local_port</code> 两个配置，用户对内提供代理服务。</p>
-<p>下面启动sslocal，也就是ss的linux客户端</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup sslocal -c /etc/shadowsocks.json /dev/null 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure>
-
-<p>如果你想开机自启动，则：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;nohup sslocal -c /etc/shadowsocks.json /dev/null 2&gt;&amp;1 &amp;&quot; /etc/rc.local</span><br></pre></td></tr></table></figure>
-
-<p>怎么查看是否启动成功呢？运行：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ps aux| grep sslocal</span><br></pre></td></tr></table></figure>
-
-<p>查看是否在运行即可，也可以运行：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo netstat -l|grep 10010</span><br></pre></td></tr></table></figure>
-
-<p>查看10010端口是否已经被监听</p>
-<p>注意，此时的10010端口提供的是<code>socks5</code> 的代理服务，不是http的，所以在<code>/etc/profile</code>文件中配置<code>http_proxy=127.0.0.1:10010</code>是不行的， 在这一层中需要有一个软件将<code>socks5</code>代理转化成<code>http</code>代理，<code>privoxy</code>可以做到这一点。</p>
-<h2 id="proxychains"><a href="#proxychains" class="headerlink" title="proxychains"></a>proxychains</h2><p>你是否觉得<code>git clone</code> 速度太慢？是的，因为git repo在国外，国内也没有比较完美的镜像源。proxychains可以将<code>git clone</code> 用上<code>ss</code> 代理，起到加速作用。</p>
-<p>安装proxychains：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/rofl0r/proxychains-ng.git</span><br><span class="line">cd proxychains-ng</span><br><span class="line">sudo ./configure</span><br><span class="line">sudo make &amp;&amp; sudo make install</span><br><span class="line">cp ./src/proxychains.conf /etc/proxychians.conf</span><br><span class="line">cd .. &amp;&amp; rm -rf proxychains-ng</span><br></pre></td></tr></table></figure>
-
-<p>配置proxychains，让他使用本地sslocal起的代理服务：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/proxychains.conf</span><br></pre></td></tr></table></figure>
-
-<p>找到<code>ProxyList</code> 配置项（应该在文件末尾），添加</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">socks5 127.0.0.1 10010</span><br></pre></td></tr></table></figure>
-
-<p>测试：</p>
-<p>注意，命令是<code>proxychains4</code> ，这里不能使用<code>ping</code> 命令测试，因为ping命令使用的是ICMP报文，不会走代理的。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains4 curl www.google.com</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="privoxy"><a href="#privoxy" class="headerlink" title="privoxy"></a>privoxy</h2><p>你是否觉得每次运行命令都需要加<code>proxychains4</code> 觉得很烦？要是能让服务器的http链接直接上代理就好啦，所以privoxy就是做这个事的，它可以让你的<code>wget</code>、<code>curl</code> 等命令在http请求中使用配置好的代理。</p>
-<p>如果你配置好了阿里云的yum源，那你赚大发了（所以我赚大发了），直接运行：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install privoxy</span><br></pre></td></tr></table></figure>
-
-<p>编辑配置文件：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/privoxy/config</span><br></pre></td></tr></table></figure>
-
-<p>找到<code>listen-address  127.0.0.1:8118</code>  将注释去掉就行（默认应该没有注释啦~）</p>
-<p>找到<code>forward-socks5t   /               </code> 去掉注释就行（改改端口啦）</p>
-<p>运行：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start privoxy</span><br></pre></td></tr></table></figure>
-
-<p>开机自启动：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable privoxy</span><br></pre></td></tr></table></figure>
-
-<p>此时privoxy会在<code>8118</code> 端口处提供http代理服务，包括https，之后只需配置<code>/etc/profile</code>即可</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/profile</span><br></pre></td></tr></table></figure>
-
-<p>添加：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export http_proxy=http://127.0.0.1:8118</span><br><span class="line">export https_proxy=http://127.0.0.1:8118</span><br><span class="line"><span class="meta">#</span><span class="language-bash"><span class="built_in">export</span> ftp_proxy=http://127.0.0.1:8118</span></span><br></pre></td></tr></table></figure>
-
-<p>最后一个ftp代理视自己需要打开吧，之后运行即可完成配置。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
-
-<p>接着使用<code>curl www.google.com</code> 来看看是否配置成功了吧~</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>个人比较喜欢proxychains的方式，按需使用，毕竟ss流量还是比较损哈哈~~</p>
-<p>如果你在使用privoxy，那就要注意流量啦！</p>
-
-      
+            <div class="description center-align">
+                
+                <span id="subtitle"></span>
+                <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+                <script>
+                    var typed = new Typed("#subtitle", {
+                        strings: [ 
+                            
+                                "从来没有真正的绝境, 只有心灵的迷途",
+                            
+                                "Never really desperate, only the lost of the soul",
+                            
+                        ],
+                        startDelay: 300,
+                        typeSpeed: 100,
+                        loop: true,
+                        backSpeed: 50,
+                        showCursor: true
+                    });
+                </script>
+                
+            </div>
+        </div>
     </div>
-    <footer class="article-footer">
-      <a data-url="https://hijerry.cn/p/64326.html" data-id="cl0e36fzz002vosct3mkn69w6" data-title="CentOS使用ss" class="article-share-link">Teilen</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag">运维</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
+</div>
 
 
-
-  
-    <article id="post-01/摩尔投票法的应用和部分情况的证明" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/p/45987.html" class="article-date">
-  <time class="dt-published" datetime="2018-01-13T03:08:24.000Z" itemprop="datePublished">2018-01-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B%E9%A2%98/">编程题</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/p/45987.html">摩尔投票法的应用和部分情况的证明</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="摩尔投票算法"><a href="#摩尔投票算法" class="headerlink" title="摩尔投票算法"></a>摩尔投票算法</h2><p>假设有这样一个场景：票选村长，每人可投一票，我们将候选村长从1开始编号，村民们在票上写上候选村长的编号即可完成投票。那么最后统计的票可形成一个整型数组。那么谁是村长呢？票数过半的那个人。</p>
-<p>摩尔投票算法可以快速的计算出一个数组中出现次数过半的数即<strong>大多数（majority）</strong>，算法核心思想是<code>同加，异减</code>。我们举个例子。</p>
-<p>假设数组是：[1,2,1,1,2,1]。算法步骤如下：</p>
-<ul>
-<li>1。当前大多数是1，得分置1</li>
-<li>2。与当前大多数不同，得分 - 1，<strong>得分为0</strong>，当前大多数 &#x3D; 1</li>
-<li>1。与当前大多数不同，<strong>得分为0，所以设置当前大多数 1 -&gt; 1</strong>，得分置1</li>
-<li>1。与当前大多数相同，得分 + 1，得分为2，当前大多数 &#x3D; 1</li>
-<li>2。与当前大多数不同，得分 - 1 ，得分为1，当前大多数 &#x3D; 1</li>
-<li>1。与当前大多数相同，得分 + 1，得分为2，当前大多数 &#x3D; 1</li>
-</ul>
-<p>这意味着<strong>1</strong>是这个数组中出现次数过半的数。</p>
-<p>可以感受得到，算法会保存一个<strong>当前大多数</strong>，和<strong>得分</strong>，当遇到一个数不是当前大多数时，得分会减一，当减到0时，大多数会发生改变，并且重置得分为1。</p>
-<p>这里需要区分的是，摩尔算法不能用来得到<strong>众数（mode）</strong>，例如数组：[1,1,1,2,2,3,3,4,4]，摩尔算法得出最后的结果应该是4，但4并不是<strong>众数</strong>，可是显然4也不是<strong>大多数</strong>，那是因为，大多数是指出现次数过半的数，而这个数组中没有这样的数，所以摩尔算法是是失效的，对于这种情况采取需要重新投票。</p>
-<h2 id="出现次数超过一半的数"><a href="#出现次数超过一半的数" class="headerlink" title="出现次数超过一半的数"></a>出现次数超过一半的数</h2><p>LeetCode原题：<a target="_blank" rel="noopener" href="https://leetcode.com/problems/majority-element/description/">169. Majority Element</a></p>
-<p>这里要求出现次数大于一半，所以直接套用摩尔投票算法即可得到答案。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">majorityElement</span>(<span class="params">self, nums</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        a, ca = <span class="literal">None</span>, <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> n <span class="keyword">in</span> nums:</span><br><span class="line">            <span class="keyword">if</span>   a == n : ca += <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> ca == <span class="number">0</span>: a, ca = n, <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>        : ca -= <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> a</span><br></pre></td></tr></table></figure>
+<script>
+    // 每天切换 banner 图.  Switch banner image every day.
+    var bannerUrl = "/medias/banner/" + new Date().getDay() + '.jpg';
+    $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
+</script>
 
 
-
-<h2 id="出现次数超过数组1-x2F-3长"><a href="#出现次数超过数组1-x2F-3长" class="headerlink" title="出现次数超过数组1&#x2F;3长"></a>出现次数超过数组1&#x2F;3长</h2><p>LeetCode原题：<a target="_blank" rel="noopener" href="https://leetcode.com/problems/majority-element-ii/description/">229. Majority Element II</a></p>
-<p>还能用摩尔投票法吗？答案当然是要，但是需要变通一下。</p>
-<p>需要注意的是<strong>出现次数超过数组 $\frac 1 3$ 长</strong>的数也许会有多个。</p>
-<p>例如数组长度为8时：[1,1,1,2,2,2,3,3]，数组 $\frac 1 3$ 长&#x3D; $2$ （向下取整），所以1和2都是符合条件的。</p>
-<p>但最多只能是2个，证明如下：</p>
-<h3 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h3><p>设长度为 $n（n &gt; 0）$ 的数组共有 $m$（$ m \ge 3$ ） 种数，它们出现的次数分别为 $a_1, a_2, … a_m（a_i&gt;0,i&#x3D;1,2,…,m）$ ，且有2种数出现次数大于 $ ⌊\frac n 3⌋$ 。不妨令 $a_1 &#x3D; a_2 &#x3D;  c + ⌊\frac n 3⌋  $ 其中 $(c &gt;&#x3D; 1)$。</p>
-<p>由定义得： $ a_1 + a_2 + … + a_m &#x3D; n$ ①</p>
-<p>易得： $n-a_1-a_2-a_3 \ge 0$ ②</p>
-<p>现假设有第3种数，使得 $a_3 &gt;  ⌊\frac n 3⌋ $， 由①得：</p>
-<p>$ n-a_1-a_2-a_3 &#x3D;  n - 2 (c + ⌊\frac n 3⌋) - a_3 &lt;  n - 2c - 3 ⌊\frac n 3⌋ $</p>
-<p>令 $ b &#x3D; n % 3$， 则有 $ ⌊\frac n 3⌋ &#x3D; \frac {n-b} 3 $</p>
-<p>∴ $n-a_1-a_2-a_3 &lt; n - 2c - 3 ⌊\frac n 3⌋ &#x3D; b - 2c  \le 0$ </p>
-<p>故有 $ n - (a_1 + a_2 + a_3) &lt; 0$ ，与②矛盾</p>
-<p>故不存在第3种出现次数大于 $  ⌊\frac n 3⌋  $ 的数</p>
-<h3 id="回到题目"><a href="#回到题目" class="headerlink" title="回到题目"></a>回到题目</h3><p>如果我们在使用摩尔算法时，同时记录两个大多数，会怎么样呢？直觉告诉我，这会得到一个大多数，和一个出现次数仅次于大多数的数，但是这两个数不一定会比数组长的1&#x2F;3大</p>
-<p>所以我们得到它们后，还需要检查它们出现的次数是否符合条件。</p>
-<p>AC代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">majorityElement</span>(<span class="params">self, nums</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        a, b, ca, cb, ans = <span class="literal">None</span>, <span class="literal">None</span>, <span class="number">0</span>, <span class="number">0</span>, []</span><br><span class="line">        <span class="keyword">for</span> n <span class="keyword">in</span> nums:</span><br><span class="line">            <span class="keyword">if</span>   n  == a: ca += <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> n  == b: cb += <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> ca == <span class="number">0</span>: a, ca = n, <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> cb == <span class="number">0</span>: b, cb = n, <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:         ca, cb = ca - <span class="number">1</span>, cb - <span class="number">1</span></span><br><span class="line">        ca, cb = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> n <span class="keyword">in</span> nums:</span><br><span class="line">            <span class="keyword">if</span>   n == a: ca += <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> n == b: cb += <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> ca &gt; <span class="built_in">len</span>(nums)/<span class="number">3</span>:</span><br><span class="line">            ans.append(a)</span><br><span class="line">        <span class="keyword">if</span> cb &gt; <span class="built_in">len</span>(nums)/<span class="number">3</span>:</span><br><span class="line">            ans.append(b)</span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
-
-
-      
     </div>
-    <footer class="article-footer">
-      <a data-url="https://hijerry.cn/p/45987.html" data-id="cl0e36g010036osct9b9h2mz0" data-title="摩尔投票法的应用和部分情况的证明" class="article-share-link">Teilen</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
+</div>
 
 
+<main class="content">
 
-  
-    <article id="post-01/House-Robber系列" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/p/26677.html" class="article-date">
-  <time class="dt-published" datetime="2018-01-11T10:00:37.000Z" itemprop="datePublished">2018-01-11</time>
-</a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B%E9%A2%98/">编程题</a>
-  </div>
 
-  </div>
-  <div class="article-inner">
     
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/p/26677.html">House Robber系列</a>
-    </h1>
-  
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="House-Robber"><a href="#House-Robber" class="headerlink" title="House Robber"></a>House Robber</h2><p>链接：<a target="_blank" rel="noopener" href="https://leetcode.com/problems/house-robber/description/">198. House Robber</a></p>
-<p>题意：</p>
-<p>​    一个专业小偷打算去偷某条街上的房子，每个房子藏有一定量的金钱，不过相邻的房子间装有报警系统，所以如果你偷了两个相邻的房子，报警系统就会被激活，小偷就会被警察带走。现在要求你给小偷安排一个方案，让他能够偷到最多的钱，同时不被警察带走。</p>
-<p>​    其实就是：给定一个非负数整数数组，求一个子序列a，要求序列中的元素在原数组<strong>互不相邻</strong>，求使得sum(a)最大的子序列a。</p>
-<p>分析：</p>
-<p>这个问题具有<strong>最优子结构</strong>性质，所以我们从头到尾遍历一次数组即可，注意：</p>
-<ul>
-<li>每个房子有偷和不偷两个方案</li>
-<li>如果偷了房子i，则房子i+1和房子i-1都不能偷</li>
-</ul>
-<p>所以转移方程为，<code>dp[i]</code> 表示 房子 <code>0~i</code> 所能偷到的最大价值：</p>
-<p><code>dp[i] = max(dp[i - 1] , dp[i - 2] + x[i])</code></p>
-<p>边界是<code>i - 1 &lt; 0</code> 和 <code>i - 2 &lt; 0</code> ，此时的<code>dp</code> 值为0</p>
-<p>AC代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">rob</span>(<span class="params">self, nums</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(nums) == <span class="number">0</span>: </span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        dp = [<span class="number">0</span>] * <span class="built_in">len</span>(nums)</span><br><span class="line">        <span class="keyword">for</span> (i, v) <span class="keyword">in</span> <span class="built_in">enumerate</span>(nums):</span><br><span class="line">            dp[i] = <span class="built_in">max</span>(dp[i - <span class="number">2</span>] + v <span class="keyword">if</span> i - <span class="number">2</span> &gt;= <span class="number">0</span> <span class="keyword">else</span> <span class="number">0</span>, dp[i - <span class="number">1</span>] <span class="keyword">if</span> i - <span class="number">1</span> &gt;= <span class="number">0</span> <span class="keyword">else</span> <span class="number">0</span>, v)</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">max</span>(dp)</span><br></pre></td></tr></table></figure>
+    <!-- 所有文章卡片 -->
+    <article id="articles" class="container articles">
+        <div class="row article-row">
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/p/64326.html">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="CentOS使用ss">
+                            
+                            <span class="card-title">CentOS使用ss</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                ss客户端必要工具：
+
+python
+pip
+
+pip的安装方法：
+1234wget https://bootstrap.pypa.io/get-pip.pysudo python get-pip.pyrm get-pip.pypip --
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2018-01-15
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6%E6%8A%80%E6%9C%AF/" class="post-category">
+                                    软件技术
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/%E8%BF%90%E7%BB%B4/">
+                            <span class="chip bg-color">运维</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/p/45987.html">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="摩尔投票法的应用和部分情况的证明">
+                            
+                            <span class="card-title">摩尔投票法的应用和部分情况的证明</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                摩尔投票算法假设有这样一个场景：票选村长，每人可投一票，我们将候选村长从1开始编号，村民们在票上写上候选村长的编号即可完成投票。那么最后统计的票可形成一个整型数组。那么谁是村长呢？票数过半的那个人。
+摩尔投票算法可以快速的计算出一个数组中出
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2018-01-13
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E7%BC%96%E7%A8%8B%E9%A2%98/" class="post-category">
+                                    编程题
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/leetcode/">
+                            <span class="chip bg-color">leetcode</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/p/26677.html">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="House Robber系列">
+                            
+                            <span class="card-title">House Robber系列</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                House Robber链接：198. House Robber
+题意：
+​    一个专业小偷打算去偷某条街上的房子，每个房子藏有一定量的金钱，不过相邻的房子间装有报警系统，所以如果你偷了两个相邻的房子，报警系统就会被激活，小偷就会被警察
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2018-01-11
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E7%BC%96%E7%A8%8B%E9%A2%98/" class="post-category">
+                                    编程题
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/leetcode/">
+                            <span class="chip bg-color">leetcode</span>
+                        </a>
+                        
+                        <a href="/tags/medium/">
+                            <span class="chip bg-color">medium</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/p/45749.html">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="NLTK之词频">
+                            
+                            <span class="card-title">NLTK之词频</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                FreqDist类官方文档：nltk.probability.FreqDist
+介绍：词的概率分布类，包含一些概率学的方法。
+所在文件：probability.py ，大约在63~427行
+创建定义：__init__(self, sampl
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2017-12-20
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E7%A0%94/" class="post-category">
+                                    研
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/NLP/">
+                            <span class="chip bg-color">NLP</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/p/22281.html">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="NLTK常用操作和语料库">
+                            
+                            <span class="card-title">NLTK常用操作和语料库</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                安装NLTK按照官方步骤：Installing NLTK
+在安装完nltk后，通过下述命令可查看nltk版本：
+12import nltkprint nltk.__doc__
+
+输出：
+123456789The Natural Langua
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2017-12-19
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E7%A0%94/" class="post-category">
+                                    研
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/NLP/">
+                            <span class="chip bg-color">NLP</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/p/47694.html">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="docker模拟多机环境">
+                            
+                            <span class="card-title">docker模拟多机环境</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                Docker基础这里不多说，借助docker官方文档可以学习到大部分内容，而且很详细。
+
+在线阅读：GitBook 或 Github。
+离线阅读。
+pdf 版本 下载
+epub 版本 下载
+
+本次配置中用到的镜像：
+
+nginx:1.12-
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2017-12-05
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6%E6%8A%80%E6%9C%AF/" class="post-category">
+                                    软件技术
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/devopps/">
+                            <span class="chip bg-color">devopps</span>
+                        </a>
+                        
+                        <a href="/tags/docker/">
+                            <span class="chip bg-color">docker</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/p/14526.html">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Week11:Photo OCR &amp; Conclusion">
+                            
+                            <span class="card-title">Week11:Photo OCR &amp; Conclusion</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                OCR问题通俗一点讲就是图像识别中的文字识别。比方说给一张图，请识别图中的文字。
+
+滑动窗口探测法该方法用于识别出图中哪些区域还有所指定的目标物体。
+它选一个特定的尺寸的图片进行二分训练，判断这个尺寸的图片中是否含有要找的目标。
+例如行人探
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2017-12-04
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E7%A0%94/" class="post-category">
+                                    研
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                            <span class="chip bg-color">机器学习</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/p/16629.html">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Week10:Learning with large datasets">
+                            
+                            <span class="card-title">Week10:Learning with large datasets</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                大规模机器学习大规模是指训练集数据很多，比如有1亿组数据。
+大数据有一句话叫做“最后胜利的人不是因为他有好的算法，而是他用有大量数据”，因为随着数据量的增加，机器学习算法的准确度都会变得很高。
+
+批量梯度下降先看梯度下降方程，以线性回归为例
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2017-12-02
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E7%A0%94/" class="post-category">
+                                    研
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                            <span class="chip bg-color">机器学习</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/p/30591.html">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Week9:Anomaly Detection &amp; Recommender Systems">
+                            
+                            <span class="card-title">Week9:Anomaly Detection &amp; Recommender Systems</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                序Coursera的课程还有2周就要结束了，我这周基本上是每天学一周的内容，而下周就要开始正式接触NLP了。
+身边也有一起学习Ng这套课程的人，但是学到一半没到就放弃了，我在学习过程中也问过自己，Ng这套11年的课程放在现在还有价值么？这是
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2017-12-01
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E7%A0%94/" class="post-category">
+                                    研
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                            <span class="chip bg-color">机器学习</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/p/26479.html">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Week8-2:Dimensionality Reduction">
+                            
+                            <span class="card-title">Week8-2:Dimensionality Reduction</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                维数约简假如你负责一项机器学习项目，最开始你需要收集数据集，也许把收集任务下发给各部门后，收集上来的数据特征有上千个，你是全部用呢？还是只用一部分呢？如果只用一部分，应该如何选择呢？
+首先我们肯定是不能全用的，因为特征太多会拖慢训练速度。
+
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2017-11-30
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E7%A0%94/" class="post-category">
+                                    研
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                            <span class="chip bg-color">机器学习</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+        </div>
+    </article>
+
+</main>
 
 
-
-<h2 id="House-Robber-II"><a href="#House-Robber-II" class="headerlink" title="House Robber II"></a>House Robber II</h2><p>链接：<a target="_blank" rel="noopener" href="https://leetcode.com/problems/house-robber-ii/description/">213. House Robber II</a></p>
-<p>题意：</p>
-<p>​    在第一题的基础上，第一间房子和最后一件房子也是连着的，也就是说，房子构成了一个环。</p>
-<p>分析：</p>
-<p>​    构成环后，第一个房子和最后一个房子同时偷的情况是不被允许的，所以我们只能取其中一个。</p>
-<p>​    假设把第一间房子从环上挖掉，就退化到了问题1，求出此时的价值为$V_1$</p>
-<p>​    假设把最后一间房子从环上挖掉，就也退化到了问题1，求出此时的价值为$V_2$ </p>
-<p>​    那么答案就是两者中最大的那个。</p>
-<p>AC代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">rob</span>(<span class="params">self, nums</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        n = <span class="built_in">len</span>(nums)</span><br><span class="line">        <span class="keyword">if</span> n == <span class="number">0</span>: </span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">elif</span> n == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> nums[<span class="number">0</span>]</span><br><span class="line">        no_0, no_n = self.lineRob(nums, <span class="number">1</span>, n), self.lineRob(nums, <span class="number">0</span>, n - <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">max</span>(no_0, no_n)</span><br><span class="line">    </span><br><span class="line">            </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">lineRob</span>(<span class="params">self, nums, left = <span class="number">0</span>, right = <span class="number">0</span></span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        n = <span class="built_in">len</span>(nums)</span><br><span class="line">        <span class="keyword">if</span> n== <span class="number">0</span>: </span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">elif</span> n == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> nums[<span class="number">0</span>]</span><br><span class="line">        dp, left, right = [<span class="number">0</span>] * n, <span class="built_in">max</span>(left, <span class="number">0</span>),  <span class="built_in">min</span>(right, n)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(left, right):</span><br><span class="line">            v = nums[i]</span><br><span class="line">            dp[i] = <span class="built_in">max</span>(dp[i - <span class="number">2</span>] + v <span class="keyword">if</span> i - <span class="number">2</span> &gt;= left <span class="keyword">else</span> <span class="number">0</span>, dp[i - <span class="number">1</span>] <span class="keyword">if</span> i - <span class="number">1</span> &gt;= left <span class="keyword">else</span> <span class="number">0</span>, v)</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">max</span>(dp)</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h2 id="House-Robber-III"><a href="#House-Robber-III" class="headerlink" title="House Robber III"></a>House Robber III</h2><p>链接：<a target="_blank" rel="noopener" href="https://leetcode.com/problems/house-robber-iii/description/">337. House Robber III</a></p>
-<p>题意：</p>
-<p>​    好了，小偷偷完那条街后，来到了一个新地方，他发现这个地方的房子布局是一个二叉树的结构，此时如果父亲和孩子节点同时被偷，报警系统就会被拉响。</p>
-<p>分析：</p>
-<p>​    跟第一题思路类似，每个节点有偷和不偷两种情况，从树底往上计算即可得到根节点的所得的最大值，所以我们需要做<strong>后序遍历</strong>，先计算两个孩子的 <code>dp</code> 值</p>
-<p>AC代码：</p>
-<p>每一个节点有两个状态，偷和不偷，这两个状态都对应有一个最大值，我用<code>left[0]</code> 表示左孩子不偷时，左孩子的最大值，<code>left[1]</code> 表示左孩子被偷时的最大值。那么对于父亲节点来讲：</p>
-<ul>
-<li>如果父亲被偷，则孩子就不能被偷了，此时价值为 <code>left[0] + right[0] + node.val</code></li>
-<li>如果父亲没被偷，则孩子偷不偷无所谓，只要价值最大就行，所以价值为<code>max(left) + max(right)</code></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"># class TreeNode(object):</span></span><br><span class="line"><span class="comment">#     def __init__(self, x):</span></span><br><span class="line"><span class="comment">#         self.val = x</span></span><br><span class="line"><span class="comment">#         self.left = None</span></span><br><span class="line"><span class="comment">#         self.right = None</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">rob</span>(<span class="params">self, root</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        :type root: TreeNode</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        res = self.tryRob(root)</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">max</span>(res)</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">tryRob</span>(<span class="params">self, node</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">isinstance</span>(node, TreeNode):</span><br><span class="line">            <span class="keyword">return</span> [<span class="number">0</span>, <span class="number">0</span>]</span><br><span class="line">        ans = [<span class="number">0</span>, <span class="number">0</span>] <span class="comment"># max value of (0 means not rob this node, 1 means rob this node)</span></span><br><span class="line">        left = self.tryRob(node.left)</span><br><span class="line">        right = self.tryRob(node.right)</span><br><span class="line">        ans[<span class="number">0</span>] = <span class="built_in">max</span>(left) + <span class="built_in">max</span>(right)</span><br><span class="line">        ans[<span class="number">1</span>] = left[<span class="number">0</span>] + right[<span class="number">0</span>] + node.val</span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
-
-
-      
+<div class="container paging">
+    <div class="row">
+        <div class="col s6 m4 l4">
+            
+            <a href="/page/2/"
+               class="left btn-floating btn-large waves-effect waves-light bg-color">
+                <i class="fas fa-angle-left"></i>
+            </a>
+            
+        </div>
+        <div class="page-info col m4 l4 hide-on-small-only">
+            <div class="center-align b-text-gray">3 / 5</div>
+        </div>
+        <div class="col s6 m4 l4">
+            
+            <a href="/page/4/"
+               class="right btn-floating btn-large waves-effect waves-light bg-color">
+                <i class="fas fa-angle-right"></i>
+            </a>
+            
+        </div>
     </div>
-    <footer class="article-footer">
-      <a data-url="https://hijerry.cn/p/26677.html" data-id="cl0e36g00002zoscta9hw2e0r" data-title="House Robber系列" class="article-share-link">Teilen</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/medium/" rel="tag">medium</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
+</div>
 
 
 
-  
-    <article id="post-12/NLTK之词频" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/p/45749.html" class="article-date">
-  <time class="dt-published" datetime="2017-12-20T13:12:53.000Z" itemprop="datePublished">2017-12-20</time>
-</a>
+
+    <footer class="page-footer bg-color">
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%A0%94/">研</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
         
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/p/45749.html">NLTK之词频</a>
-    </h1>
-  
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
 
-      </header>
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
     
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="FreqDist类"><a href="#FreqDist类" class="headerlink" title="FreqDist类"></a>FreqDist类</h2><p>官方文档：<a target="_blank" rel="noopener" href="http://www.nltk.org/api/nltk.html#nltk.probability.FreqDist">nltk.probability.FreqDist</a></p>
-<p>介绍：词的概率分布类，包含一些概率学的方法。</p>
-<p>所在文件：<code>probability.py</code> ，大约在63~427行</p>
-<h3 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h3><p>定义：<code>__init__</code>(self, samples&#x3D;None)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import nltk</span><br><span class="line">from nltk.book import *</span><br><span class="line">fdist = FreqDist(gutenberg.words(&#x27;chesterton-thursday.txt&#x27;))</span><br><span class="line">print fdist</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">&lt;FreqDist with 6807 samples and 69213 outcomes&gt;</span><br></pre></td></tr></table></figure>
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
 
-<p>上面的<code>69213 outcomes</code>是指有<code>69213</code>个词，而<code>6807 samples</code>是指有<code>6807</code>个<strong>不重复</strong>的词。</p>
-<p>通过下述命令可以确认这一点：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">len(wds)</span><br><span class="line">len(set(wds))</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">69213</span><br><span class="line">6807</span><br></pre></td></tr></table></figure>
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
 
-<h3 id="词数量"><a href="#词数量" class="headerlink" title="词数量"></a>词数量</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fdist.N()</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">69213</span><br></pre></td></tr></table></figure>
-
-<h3 id="不重复词的数量-样本数量"><a href="#不重复词的数量-样本数量" class="headerlink" title="不重复词的数量(样本数量)"></a>不重复词的数量(样本数量)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fdist.B()</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">6807</span><br></pre></td></tr></table></figure>
-
-<h3 id="生成副本"><a href="#生成副本" class="headerlink" title="生成副本"></a>生成副本</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">fdist2 = fdist</span><br><span class="line">fdist3 = fdist.copy() #make copy</span><br><span class="line">fdist == fdist2</span><br><span class="line">fdist == fdist3</span><br><span class="line">fdist is fdist2</span><br><span class="line">fdist is fdist3</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">True</span><br><span class="line">True</span><br><span class="line">True</span><br><span class="line">False</span><br></pre></td></tr></table></figure>
-
-<h3 id="词频率"><a href="#词频率" class="headerlink" title="词频率"></a>词频率</h3><p>定义：<code>freq</code>(<em>sample</em>)</p>
-<p>sample是词，返回值∈[0, 1]</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fdist.freq(&#x27;the&#x27;)</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">0.04754887087685839</span><br></pre></td></tr></table></figure>
-
-<p>可见，the的词频是<code>0.0475</code>，也就是<code>4.75%</code></p>
-<h3 id="词频度（出现次数）"><a href="#词频度（出现次数）" class="headerlink" title="词频度（出现次数）"></a>词频度（出现次数）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fdist[&#x27;the&#x27;]</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">3291</span><br></pre></td></tr></table></figure>
-
-<h3 id="词和词频的对"><a href="#词和词频的对" class="headerlink" title="词和词频的对"></a>词和词频的对</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">items = fdist.items()</span><br><span class="line">print items[:5]</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">[(u&#x27;yellow&#x27;, 16), (u&#x27;four&#x27;, 18), (u&#x27;Does&#x27;, 6), (u&#x27;conjuring&#x27;, 2), (u&#x27;marching&#x27;, 4)]</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="只出现一次的词"><a href="#只出现一次的词" class="headerlink" title="只出现一次的词"></a>只出现一次的词</h3><p>会一次性全部返回，下面只展示前5个。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hapaxes = fdist.hapaxes()</span><br><span class="line">print hapaxes[:5]</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">[u&#x27;disturb&#x27;, u&#x27;buttonhole&#x27;, u&#x27;himselves&#x27;, u&#x27;woods&#x27;, u&#x27;wavered&#x27;]</span><br></pre></td></tr></table></figure>
-
-<h3 id="出现次数最多的词"><a href="#出现次数最多的词" class="headerlink" title="出现次数最多的词"></a>出现次数最多的词</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fdist.max()</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">u&#x27;,&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>u是unicode的标志，说明<code>,</code>出现的最多。</p>
-<p>这明显不符合预期，因为<code>,</code>不应该被算作一个词，这会干扰我们分析文本，所以在我们<code>创建</code>FreqDist实例的时候，应该要把<code>词集</code>进行过滤，剔除掉标点符号。</p>
-<h3 id="词频分布介绍"><a href="#词频分布介绍" class="headerlink" title="词频分布介绍"></a>词频分布介绍</h3><p>定义：<code>pformat</code>(<em>maxlen&#x3D;10</em>)</p>
-<p>返回一个可以代表本<code>FreqDist</code>类的字符串，其实就是把高频词和频度列出来了。</p>
-<p><code>maxlen</code> 表示打印多少个高频词</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fdist.pformat()</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">u&#x27;FreqDist(&#123;u\&#x27;,\&#x27;: 3488, u\&#x27;the\&#x27;: 3291, u\&#x27;.\&#x27;: 2717, u\&#x27;a\&#x27;: 1713, u\&#x27;of\&#x27;: 1710, u\&#x27;and\&#x27;: 1568, u\&#x27;&quot;\&#x27;: 1336, u\&#x27;to\&#x27;: 1045, u\&#x27;in\&#x27;: 888, u\&#x27;I\&#x27;: 885, ...&#125;)&#x27;</span><br></pre></td></tr></table></figure>
-
-<h3 id="频率分布图"><a href="#频率分布图" class="headerlink" title="频率分布图"></a>频率分布图</h3><p>定义：<code>plot</code>(*args, **kwargs)</p>
-<p>可以指定的参数有</p>
-<ul>
-<li><code>title</code> 表示图像的标题</li>
-<li><code>cumulative</code> 是否累计频度</li>
-</ul>
-<p>如果第一参数是整数的话，它表示展示词的数量</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fdist.plot(50)</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://os9coobhw.bkt.clouddn.com/04ddb01af2e26c576a78d54df6d3cfae.jpg"></p>
-<p>这样看起来是不是别扭呢，因为曲线肯定会下降（频度越高的词越显示在左边）</p>
-<p>所以有时候我们需要看这些高频词<code>加起来</code>占了多少，所以：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fdist.plot(50, cumulative=True)</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://os9coobhw.bkt.clouddn.com/0c42cc8d75b002af0988674dfe4e1188.jpg"></p>
-<p>可以发现，曲线越到后面越平缓。</p>
-<h3 id="频率分布表"><a href="#频率分布表" class="headerlink" title="频率分布表"></a>频率分布表</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fdist.tabulate(10)</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">   ,  the    .    a   of  and</span><br><span class="line">3488 3291 2717 1713 1710 1568</span><br></pre></td></tr></table></figure>
-
-<p>累计表：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fdist.tabulate(10,cumulative=True)</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">    ,   the     .     a    of   and</span><br><span class="line"> 3488  6779  9496 11209 12919 14487</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="FreqDist的应用"><a href="#FreqDist的应用" class="headerlink" title="FreqDist的应用"></a>FreqDist的应用</h2><p><a href="/p/22281.html">前面</a>已经介绍了<code>Text</code>，结合本次的<code>FreqDist</code>类，我们已经可以做一些基础的NLP研究了。</p>
-<h3 id="理解文本的主题或风格"><a href="#理解文本的主题或风格" class="headerlink" title="理解文本的主题或风格"></a>理解文本的主题或风格</h3><h4 id="高频词"><a href="#高频词" class="headerlink" title="高频词"></a>高频词</h4><p> <code>text1</code> 变量保存的是《白鲸记》<code>Text</code>类实例，<code>高频词</code>是否可以帮助我们理解呢？</p>
-<p>打印出它前50个词的频率分布图可以发现：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fdist1 = text1.vocab()</span><br><span class="line">fdist1.plot(50, cumulative=True)</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://os9coobhw.bkt.clouddn.com/7fd216a35d94e6064fdf2d1df76559e7.jpg"></p>
-<p>相比<code>the</code>、<code>of</code> 这类助词，<code>whale</code>的频率相对靠后，而这个词恰恰是《白鲸记》中比较重要的词，可以体现出文本的主题。</p>
-<h4 id="低频词"><a href="#低频词" class="headerlink" title="低频词"></a>低频词</h4><p>既然高频率词没啥帮助，那只出现一次的词呢？</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">len(fdist1.hapaxes())</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">9002</span><br></pre></td></tr></table></figure>
-
-<p>emmm，貌似低频词太多了，如果不看上下文，我们也很难借助低频词来理解文本主题。</p>
-<h4 id="细粒度的选择词"><a href="#细粒度的选择词" class="headerlink" title="细粒度的选择词"></a>细粒度的选择词</h4><p>或许<code>长词</code>包含的信息比较多，是否有帮助呢？</p>
-<p>我们考虑以下哪些成都大于15的词：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">samples = set(text1)</span><br><span class="line">print [w for w in samples if len(w) &gt; 15]</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">[u&#x27;hermaphroditical&#x27;, u&#x27;subterraneousness&#x27;, u&#x27;uninterpenetratingly&#x27;, </span><br><span class="line">u&#x27;irresistibleness&#x27;, u&#x27;responsibilities&#x27;, u&#x27;comprehensiveness&#x27;, </span><br><span class="line">u&#x27;uncompromisedness&#x27;, u&#x27;superstitiousness&#x27;, u&#x27;uncomfortableness&#x27;, </span><br><span class="line">u&#x27;supernaturalness&#x27;, u&#x27;circumnavigating&#x27;, u&#x27;cannibalistically&#x27;, </span><br><span class="line">u&#x27;circumnavigations&#x27;, u&#x27;indispensableness&#x27;, u&#x27;preternaturalness&#x27;, </span><br><span class="line">u&#x27;apprehensiveness&#x27;, u&#x27;CIRCUMNAVIGATION&#x27;, u&#x27;simultaneousness&#x27;, </span><br><span class="line">u&#x27;undiscriminating&#x27;, u&#x27;characteristically&#x27;, u&#x27;Physiognomically&#x27;, </span><br><span class="line">u&#x27;physiognomically&#x27;, u&#x27;circumnavigation&#x27;, u&#x27;indiscriminately&#x27;]</span><br></pre></td></tr></table></figure>
-
-<p>似乎比<code>低频词</code>的数量要少很多了，可以发现的是，<code>长词</code> 大多也是 <code>低频词</code>，所以从这个角度来说我们忽略了<code>短高频词</code>和大部分<code>低频词</code>，也许寻找那些<code>长高频词</code>会比较有帮助。</p>
-<h4 id="长高频词"><a href="#长高频词" class="headerlink" title="长高频词"></a>长高频词</h4><p>下面将选择出那些长度大于7，且出现的频度也大于7的词：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print [w for w in samples if len(w) &gt; 7 and fdist1[w] &gt; 7]</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">[u&#x27;uncertain&#x27;, u&#x27;bringing&#x27;, u&#x27;substance&#x27;, u&#x27;cannibal&#x27;, u&#x27;therefore&#x27;, u&#x27;violently&#x27;, u&#x27;whalebone&#x27; ...]</span><br></pre></td></tr></table></figure>
-
-<p>其实得到的结果数量还是很多，但我们已经看到了<code>whalebone</code> 这个词，可以大致确定下来《白鲸记》的主题了，所以寻找<code>长高频词</code>可以有效的帮助我们理解文本的主题。</p>
-<h4 id="搭配词"><a href="#搭配词" class="headerlink" title="搭配词"></a>搭配词</h4><p>文中出现的搭配词能非常明确的体现文本的类型。</p>
-<p>下面寻找搭配词：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">text1.collocations()</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">Sperm Whale; Moby Dick; White Whale; old man; Captain Ahab; sperm</span><br><span class="line">whale; Right Whale; Captain Peleg; New Bedford; Cape Horn; cried Ahab;</span><br><span class="line">years ago; lower jaw; never mind; Father Mapple; cried Stubb; chief</span><br><span class="line">mate; white whale; ivory leg; one hand</span><br></pre></td></tr></table></figure>
-
-<p>可以看到第一个词就是<code>Sperm Whale</code> 。</p>
-<h3 id="计算其他东西"><a href="#计算其他东西" class="headerlink" title="计算其他东西"></a>计算其他东西</h3><h4 id="词长分布"><a href="#词长分布" class="headerlink" title="词长分布"></a>词长分布</h4><p>也就是计算每个长度的词出现的次数</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">lens = [len(w) for w in text1]</span><br><span class="line">fdistw = FreqDist(lens)</span><br><span class="line">fdistw.keys()</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20]</span><br></pre></td></tr></table></figure>
-
-<p>可以看到<code>text1</code>中的词，最短长度是1，最长长度是20</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fdistw.plot()</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://os9coobhw.bkt.clouddn.com/f747171406e55481e79c3114983ce4f8.jpg"></p>
-<p>可以发现长度大于8和之后的的词出现的频度已经很小了</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fdistw.max()</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
-
-<p>可以发现，最频繁出现的词长度是3。</p>
-<h2 id="ConditionalFreqDist类"><a href="#ConditionalFreqDist类" class="headerlink" title="ConditionalFreqDist类"></a>ConditionalFreqDist类</h2><p>官方文档：<a target="_blank" rel="noopener" href="http://www.nltk.org/api/nltk.html#nltk.probability.ConditionalFreqDist">nltk.probability.ConditionalFreqDist</a></p>
-<p>介绍：条件频率分布类</p>
-<p>所在文件：<code>probablity.py</code>，大约在1734~2003</p>
-<h3 id="创建-1"><a href="#创建-1" class="headerlink" title="创建"></a>创建</h3><p>定义：<code>__init__</code>(cond_samples&#x3D;None):</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import nltk</span><br><span class="line">from nltk.book import *</span><br><span class="line">from nltk.probability import ConditionalFreqDist</span><br><span class="line">cond_samples = [(len(w), w) for w in text1]</span><br><span class="line">cfdist = ConditionalFreqDist(cond_samples)</span><br><span class="line">print cfdist</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">&lt;ConditionalFreqDist with 19 conditions&gt;</span><br></pre></td></tr></table></figure>
-
-<p><code>cond_samples</code>参数是元组集合，元组是<code>(条件, 词)</code>，上述代码的条件是<code>词长</code>，下面看看效果你就懂了：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cfdist[3]</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">FreqDist(&#123;u&#x27;the&#x27;: 13721, u&#x27;and&#x27;: 6024, u&#x27;his&#x27;: 2459, u&#x27;was&#x27;: 1632, u&#x27;all&#x27;: 1462, u&#x27;for&#x27;: 1414, u&#x27;but&#x27;: 1113, u&#x27;not&#x27;: 1103, u&#x27;him&#x27;: 1058, u&#x27;one&#x27;: 889, ...&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>这列出了所有长度为<code>3</code>的词，这意味着元组的第一个元素<code>条件</code>被作为了<code>cfdist</code>的键，而它值是一个<code>FreqDist</code>对象。</p>
-<h3 id="查看所有条件"><a href="#查看所有条件" class="headerlink" title="查看所有条件"></a>查看所有条件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cfdist.conditions()</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20]</span><br></pre></td></tr></table></figure>
-
-<h3 id="条件频率"><a href="#条件频率" class="headerlink" title="条件频率"></a>条件频率</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cfdist[3].freq(&#x27;but&#x27;)</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">0.02216116122095454</span><br></pre></td></tr></table></figure>
-
-<p>在<code>长度为3</code>的条件下，<code>but</code>出现的频率是<code>0.02216</code></p>
-<h3 id="条件频率分布图"><a href="#条件频率分布图" class="headerlink" title="条件频率分布图"></a>条件频率分布图</h3><p>定义：<code>plot</code>(*args, **kwargs)</p>
-<p>可以指定的参数有</p>
-<ul>
-<li><code>samples</code> <strong>list</strong> 要显示的样本集合</li>
-<li><code>title</code> <strong>str</strong> 标题</li>
-<li><code>conditions</code> <strong>list</strong> 要显示的条件，默认是全部</li>
-</ul>
-<p>为了便于理解，下面把<code>cfdist</code>换成以文本为条件：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">from nltk.corpus import brown</span><br><span class="line">cond_samples = [</span><br><span class="line">  (genre, word)</span><br><span class="line">  for genre in [&#x27;news&#x27;, &#x27;romance&#x27;]</span><br><span class="line">  for word in brown.words(categories=genre)</span><br><span class="line">]</span><br><span class="line">cfdist = ConditionalFreqDist(cond_samples)</span><br><span class="line">print cfdist</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">&lt;ConditionalFreqDist with 2 conditions&gt;</span><br></pre></td></tr></table></figure>
-
-<p>这里我们取了两个文体：<code>news</code> 和 <code>romance</code>，看看两者中<code>情态动词</code>的频率分布吧：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cfdist.plot(samples=[&#x27;would&#x27;, &#x27;will&#x27;, &#x27;could&#x27;, &#x27;can&#x27;, &#x27;might&#x27;, &#x27;may&#x27;, &#x27;should&#x27;])</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://os9coobhw.bkt.clouddn.com/b7d4544aab32b34fa0360d811e978204.jpg"></p>
-<p>哈哈，大致符合预期呢，新闻中的<code>will</code>频率异常的高。</p>
-<h3 id="条件频率分布表"><a href="#条件频率分布表" class="headerlink" title="条件频率分布表"></a>条件频率分布表</h3><p>定义：<code>tabulate</code>(*args, **kwargs)</p>
-<p>可以指定的参数有</p>
-<ul>
-<li><code>samples</code> <strong>list</strong> 要显示的样本集合</li>
-<li><code>title</code> <strong>str</strong> 标题</li>
-<li><code>conditions</code> <strong>list</strong> 要显示的条件，默认是全部</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cfdist.tabulate(samples=[&#x27;would&#x27;, &#x27;will&#x27;, &#x27;could&#x27;, &#x27;can&#x27;, &#x27;might&#x27;, &#x27;may&#x27;, &#x27;should&#x27;])</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">         would   will  could    can  might    may should</span><br><span class="line">   news    244    389     86     93     38     66     59</span><br><span class="line">romance    244     43    193     74     51     11     32</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="ConditionalFreqDist的应用"><a href="#ConditionalFreqDist的应用" class="headerlink" title="ConditionalFreqDist的应用"></a>ConditionalFreqDist的应用</h2><h3 id="用词分析"><a href="#用词分析" class="headerlink" title="用词分析"></a>用词分析</h3><p>之前对比了<code>news</code>、<code>romance</code>两个文体中，情态动词的频率分布，发现了<code>news</code> 的will词用的频率很高。</p>
-<p><img src="http://os9coobhw.bkt.clouddn.com/b7d4544aab32b34fa0360d811e978204.jpg"></p>
-<h3 id="生成随机文本"><a href="#生成随机文本" class="headerlink" title="生成随机文本"></a>生成随机文本</h3><p>如果知道了一个词如<code>living</code>，也知道了<code>living</code>这个词的条件频率分布，那么可以找到最有可能出现在<code>living</code>后面的那个词，这样迭代的进行计算，可以获得一个随机文本。根据上述方法，可以定义一个函数用来生成随机文本：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def random_text(cfdist, word, num=15):</span><br><span class="line">	for i in range(num):</span><br><span class="line">		print word,</span><br><span class="line">		word = cfdist[word].max()</span><br></pre></td></tr></table></figure>
-
-<p>我们导入《创世纪》文本：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from nltk.corpus import genesis</span><br><span class="line">text = genesis.words(&#x27;english-kjv.txt&#x27;)</span><br></pre></td></tr></table></figure>
-
-<p>为创建条件概率分布类，我们需要<code>cond_samples</code>，所以我们可以构造一些<code>双连词</code>，<code>bigrams</code> 可以从<code>数组</code> 生成 <code>双连词</code>：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from nltk import bigrams</span><br><span class="line">cond_samples = bigrams(text)</span><br><span class="line">cfdist = ConditionalFreqDist(cond_samples)</span><br><span class="line">random_text(cfdist, &#x27;living&#x27;)</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">living creature that he said , and the land of the land of the land</span><br></pre></td></tr></table></figure>
-
-<p>可以发现。。效果不怎么好，因为后面无限循环了。。</p>
-<p>我们试试其他词：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">random_text(cfdist, &#x27;I&#x27;)</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">I will not be a son , and the land of the land of the</span><br></pre></td></tr></table></figure>
-
-<p>哈哈，最后还是无限循环了，不过挺有趣的！</p>
-
-      
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
     </div>
-    <footer class="article-footer">
-      <a data-url="https://hijerry.cn/p/45749.html" data-id="cl0e36fzp001oosctgnmj6in7" data-title="NLTK之词频" class="article-share-link">Teilen</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NLP/" rel="tag">NLP</a></li></ul>
+</div>
 
-    </footer>
-  </div>
-  
-</article>
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
 
-
-
-  
-    <article id="post-12/NLTK常用操作和语料库" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/p/22281.html" class="article-date">
-  <time class="dt-published" datetime="2017-12-19T07:29:24.000Z" itemprop="datePublished">2017-12-19</time>
-</a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%A0%94/">研</a>
-  </div>
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/p/22281.html">NLTK常用操作和语料库</a>
-    </h1>
-  
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2022</span>
+            
+            <a href="/about" target="_blank">jerrycheese</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="安装NLTK"><a href="#安装NLTK" class="headerlink" title="安装NLTK"></a>安装NLTK</h2><p>按照官方步骤：<a target="_blank" rel="noopener" href="http://www.nltk.org/install.html">Installing NLTK</a></p>
-<p>在安装完nltk后，通过下述命令可查看nltk版本：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import nltk</span><br><span class="line">print nltk.__doc__</span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">The Natural Language Toolkit (NLTK) is an open source Python library</span><br><span class="line">for Natural Language Processing.  A free online book is available.</span><br><span class="line">(If you use the library for academic research, please cite the book.)</span><br><span class="line"></span><br><span class="line">Steven Bird, Ewan Klein, and Edward Loper (2009).</span><br><span class="line">Natural Language Processing with Python.  O&#x27;Reilly Media Inc.</span><br><span class="line">http://nltk.org/book</span><br><span class="line"></span><br><span class="line">@version: 3.2.5</span><br></pre></td></tr></table></figure>
-
-<p>所以，我的版本是 <code>3.2.5</code></p>
-<h2 id="获取图书集合"><a href="#获取图书集合" class="headerlink" title="获取图书集合"></a>获取图书集合</h2><p>为便于学习，nltk提供了图书集合，通过下述命令下载该集合：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nltk.download()</span><br></pre></td></tr></table></figure>
-
-<p>在出现的界面中选择 <code>book</code> 进行下载，文件大概有100M，这也是《Python自然语言处理》这本书中推荐的图书集合。</p>
-<p><img src="http://os9coobhw.bkt.clouddn.com/57cae6c392c6022993a4dfa52f52a050.jpg"></p>
-<p>下载完成后，回到python解析器，导入刚刚下载的图书集合：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from nltk.book import *</span><br></pre></td></tr></table></figure>
-
-<p>运行 <code>texts()</code> 可以查看书籍列表，<code>sents()</code> 可以查看句子列表。</p>
-<p>查看 <code>book.py</code> 文件可知，该文件导入了下面一些模块</p>
-<ul>
-<li><code>nltk.corpus</code> 中的一些<code>语料库</code></li>
-<li><code>nltk.text</code> 中的<code>Text</code>类</li>
-<li><code>nltk.probability</code> 中的 <code>FreqDist</code> 类</li>
-<li><code>nltk.util</code> 中的 <code>bigrams</code> 模块</li>
-</ul>
-<p>同时通过<code>语料库</code>创建9个 <code>Text</code> 实例，变量为<code>text1~text9</code>。</p>
-<p>而 <code>sent1~sent9</code> 是硬编码的9个句子。</p>
-<h2 id="语料库介绍"><a href="#语料库介绍" class="headerlink" title="语料库介绍"></a>语料库介绍</h2><p>在<code>book.py</code> 文件中，我们可以看到：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from nltk.corpus import (gutenberg, genesis, inaugural,</span><br><span class="line">                         nps_chat, webtext, treebank, wordnet)</span><br></pre></td></tr></table></figure>
-
-<p>所以我们已经引入了语料库了，通过打印可知：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print gutenberg</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">&lt;PlaintextCorpusReader in u&#x27;/Users/jerry/nltk_data/corpora/gutenberg&#x27;&gt;</span><br></pre></td></tr></table></figure>
-
-<p>可见 <code>gutenberg</code> 是一个 <code>PlaintextCorpusReader</code> 类。</p>
-<p>进入到指定的目录可见<code>gutenberg</code> 的所有文本，可见都是<code>txt文档</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">cd /Users/jerry/nltk_data/corpora/gutenberg</span><br><span class="line">ls</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">README                  burgess-busterbrown.txt milton-paradise.txt</span><br><span class="line">austen-emma.txt         carroll-alice.txt       shakespeare-caesar.txt</span><br><span class="line">austen-persuasion.txt   chesterton-ball.txt     shakespeare-hamlet.txt</span><br><span class="line">austen-sense.txt        chesterton-brown.txt    shakespeare-macbeth.txt</span><br><span class="line">bible-kjv.txt           chesterton-thursday.txt whitman-leaves.txt</span><br><span class="line">blake-poems.txt         edgeworth-parents.txt</span><br><span class="line">bryant-stories.txt      melville-moby_dick.txt</span><br></pre></td></tr></table></figure>
-
-<h3 id="古腾堡语料库"><a href="#古腾堡语料库" class="headerlink" title="古腾堡语料库"></a>古腾堡语料库</h3><p><a target="_blank" rel="noopener" href="http://www.gutenberg.org/">古腾堡项目</a> 大约有36000本免费电子图书，NLTK中只包含了其中的一小部分，通过下述命令可以查看语料库中的文件标识符（文件名）：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from nltk.corpus import gutenberg</span><br><span class="line">gutenberg.fileids()</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">[u&#x27;austen-emma.txt&#x27;, u&#x27;austen-persuasion.txt&#x27;, u&#x27;austen-sense.txt&#x27;, u&#x27;bible-kjv.txt&#x27;, u&#x27;blake-poems.txt&#x27;, u&#x27;bryant-stories.txt&#x27;, u&#x27;burgess-busterbrown.txt&#x27;, u&#x27;carroll-alice.txt&#x27;, u&#x27;chesterton-ball.txt&#x27;, u&#x27;chesterton-brown.txt&#x27;, u&#x27;chesterton-thursday.txt&#x27;, u&#x27;edgeworth-parents.txt&#x27;, u&#x27;melville-moby_dick.txt&#x27;, u&#x27;milton-paradise.txt&#x27;, u&#x27;shakespeare-caesar.txt&#x27;, u&#x27;shakespeare-hamlet.txt&#x27;, u&#x27;shakespeare-macbeth.txt&#x27;, u&#x27;whitman-leaves.txt&#x27;]</span><br></pre></td></tr></table></figure>
-
-<h3 id="网络和聊天文本"><a href="#网络和聊天文本" class="headerlink" title="网络和聊天文本"></a>网络和聊天文本</h3><p>古腾堡项目代表的既定文学，考虑到非正式的文本也很重要，所以NLTK中也包含网络小说和论坛、《加勒比海盗》的电影剧本等内容。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from nltk.corpus import webtext</span><br><span class="line">webtext.fileids()</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">[u&#x27;firefox.txt&#x27;, u&#x27;grail.txt&#x27;, u&#x27;overheard.txt&#x27;, u&#x27;pirates.txt&#x27;, u&#x27;singles.txt&#x27;, u&#x27;wine.txt&#x27;]</span><br></pre></td></tr></table></figure>
-
-<p>即时聊天会话语料库，是美国海军研究生院的研究生收集的。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from nltk.corpus import nps_chat</span><br><span class="line">nps_chat.fileids()</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">[u&#x27;10-19-20s_706posts.xml&#x27;, u&#x27;10-19-30s_705posts.xml&#x27;, u&#x27;10-19-40s_686posts.xml&#x27;, u&#x27;10-19-adults_706posts.xml&#x27;, u&#x27;10-24-40s_706posts.xml&#x27;, u&#x27;10-26-teens_706posts.xml&#x27;, u&#x27;11-06-adults_706posts.xml&#x27;, u&#x27;11-08-20s_705posts.xml&#x27;, u&#x27;11-08-40s_706posts.xml&#x27;, u&#x27;11-08-adults_705posts.xml&#x27;, u&#x27;11-08-teens_706posts.xml&#x27;, u&#x27;11-09-20s_706posts.xml&#x27;, u&#x27;11-09-40s_706posts.xml&#x27;, u&#x27;11-09-adults_706posts.xml&#x27;, u&#x27;11-09-teens_706posts.xml&#x27;]</span><br></pre></td></tr></table></figure>
-
-<h3 id="布朗语料库"><a href="#布朗语料库" class="headerlink" title="布朗语料库"></a>布朗语料库</h3><p>布朗语料库是第一个百万词级别的英语电子语料库，这个语料库包含500个不同来源的文本，按文体分类有新闻、社论等，<a target="_blank" rel="noopener" href="http://clu.uni.no/icame/brown/bcm-los.html">完整列表</a>。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from nltk.corpus import brown</span><br><span class="line">brown.categories()</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">[u&#x27;adventure&#x27;, u&#x27;belles_lettres&#x27;, u&#x27;editorial&#x27;, u&#x27;fiction&#x27;, u&#x27;government&#x27;, u&#x27;hobbies&#x27;, u&#x27;humor&#x27;, u&#x27;learned&#x27;, u&#x27;lore&#x27;, u&#x27;mystery&#x27;, u&#x27;news&#x27;, u&#x27;religion&#x27;, u&#x27;reviews&#x27;, u&#x27;romance&#x27;, u&#x27;science_fiction&#x27;]</span><br></pre></td></tr></table></figure>
-
-<p>这里注意的是它是按文体分类的，例如要取得<code>news</code>类别的文本：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print brown.words(categories=&#x27;news&#x27;)</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">[u&#x27;The&#x27;, u&#x27;Fulton&#x27;, u&#x27;County&#x27;, u&#x27;Grand&#x27;, u&#x27;Jury&#x27;, ...]</span><br></pre></td></tr></table></figure>
-
-<p>当前也可以用<code>fileids</code> 方法列出所有<code>文件标识</code>，再用文件标识来获取文本，但最好还是用类别来取得文本。</p>
-<h3 id="自定义语料库"><a href="#自定义语料库" class="headerlink" title="自定义语料库"></a>自定义语料库</h3><p>例如我们在家目录建立一个<code>texts</code> 目录和一个文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd ~ &amp;&amp; mkdir texts &amp;&amp; cd texts</span><br><span class="line">echo &quot;This is a love story&quot; &gt;&gt; lovestory.txt</span><br><span class="line">pwd</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">/Users/jerry/texts</span><br></pre></td></tr></table></figure>
-
-<p>将上面的output放在下面的dir变量中，在python解析器中输入：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from nltk.corpus import PlaintextCorpusReader</span><br><span class="line">dir = &#x27;/Users/jerry/texts&#x27;</span><br><span class="line">my_corpus = PlaintextCorpusReader(dir, &#x27;.*\.txt&#x27;)</span><br><span class="line">print my_corpus.fileids()</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">[&#x27;lovestory.txt&#x27;]</span><br></pre></td></tr></table></figure>
-
-<p>断词：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print my_corpus.words(&#x27;lovestory.txt&#x27;)</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">[u&#x27;This&#x27;, u&#x27;is&#x27;, u&#x27;a&#x27;, u&#x27;love&#x27;, u&#x27;story&#x27;]</span><br></pre></td></tr></table></figure>
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
 
 
 
-<h2 id="PlaintextCorpusReader类"><a href="#PlaintextCorpusReader类" class="headerlink" title="PlaintextCorpusReader类"></a>PlaintextCorpusReader类</h2><p>官方文档：<a target="_blank" rel="noopener" href="http://www.nltk.org/api/nltk.corpus.reader.html#nltk.corpus.reader.plaintext.PlaintextCorpusReader">nltk.corpus.reader.plaintext.PlaintextCorpusReader</a></p>
-<p>介绍：基于文件系统，用来加载纯文本的类</p>
-<p>所在文件：<code>corpus/reader/plaintext.py</code>，大约在23~138行</p>
-<h3 id="断词"><a href="#断词" class="headerlink" title="断词"></a>断词</h3><p>定义：<code>words</code>(<em>fileids&#x3D;None</em>)</p>
-<p>我们可以使用<code>words</code>函数将这些文件分割成<code>tokens</code>(词，此处也叫words)：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">words = gutenberg.words(&#x27;shakespeare-macbeth.txt&#x27;)</span><br><span class="line">print words</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">[u&#x27;[&#x27;, u&#x27;The&#x27;, u&#x27;Tragedie&#x27;, u&#x27;of&#x27;, u&#x27;Macbeth&#x27;, u&#x27;by&#x27;, ...]</span><br></pre></td></tr></table></figure>
-
-<p>标点符号也会被单独分出来</p>
-<h3 id="断句"><a href="#断句" class="headerlink" title="断句"></a>断句</h3><p>定义：<code>sents</code>(<em>fileids&#x3D;None</em>)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sents = gutenberg.sents(&#x27;shakespeare-macbeth.txt&#x27;)</span><br><span class="line">print sents</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">[[u&#x27;[&#x27;, u&#x27;The&#x27;, u&#x27;Tragedie&#x27;, u&#x27;of&#x27;, u&#x27;Macbeth&#x27;, u&#x27;by&#x27;, u&#x27;William&#x27;, u&#x27;Shakespeare&#x27;, u&#x27;1603&#x27;, u&#x27;]&#x27;], [u&#x27;Actus&#x27;, u&#x27;Primus&#x27;, u&#x27;.&#x27;], ...]</span><br></pre></td></tr></table></figure>
-
-<p>可以发现每一句都是一个字符串数组，连起来就是一个句子：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print &#x27; &#x27;.join(sents[0])</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">[ The Tragedie of Macbeth by William Shakespeare 1603 ]</span><br></pre></td></tr></table></figure>
-
-<h3 id="分段"><a href="#分段" class="headerlink" title="分段"></a>分段</h3><p>定义：<code>paras</code>(<em>fileids&#x3D;None</em>)</p>
-<p><code>段</code>是指自然段，一个<code>空白行</code>表示自然段之间的分隔符</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">paras = gutenberg.paras(&#x27;shakespeare-macbeth.txt&#x27;)</span><br><span class="line">print &#x27; &#x27;.join(paras[0][0]) #first para, first sentence</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">[ The Tragedie of Macbeth by William Shakespeare 1603 ]</span><br></pre></td></tr></table></figure>
-
-<h3 id="加载原始文本"><a href="#加载原始文本" class="headerlink" title="加载原始文本"></a>加载原始文本</h3><p>定义：<code>raw</code>(<em>fileids&#x3D;None</em>)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">str = gutenberg.raw(&#x27;shakespeare-macbeth.txt&#x27;)</span><br><span class="line">print str[:100]</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">[The Tragedie of Macbeth by William Shakespeare 1603]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Actus Primus. Scoena Prima.</span><br><span class="line"></span><br><span class="line">Thunder and Lig</span><br></pre></td></tr></table></figure>
+    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
 
 
 
-<h2 id="Text类"><a href="#Text类" class="headerlink" title="Text类"></a>Text类</h2><p>官方文档：<a target="_blank" rel="noopener" href="http://www.nltk.org/api/nltk.html#nltk.text.Text">nltk.text.Text</a></p>
-<p>介绍：token(词)序列的容器，同时提供一些常用的文本分析函数。</p>
-<p>所在文件：<code>text.py</code>，大约在264行~395行</p>
-<h3 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h3><p>定义：<code>__init__</code>(self, tokens, name&#x3D;None)</p>
-<p><code>text1</code> 变量其实是通过下述语句创建的：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">text1 = Text(gutenberg.words(&#x27;melville-moby_dick.txt&#x27;))</span><br><span class="line">print text1</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">&lt;Text: Moby Dick by Herman Melville 1851&gt;</span><br></pre></td></tr></table></figure>
 
-<p>通过打印words方法的结果可知：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print gutenberg.words(&#x27;melville-moby_dick.txt&#x27;)</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">[u&#x27;[&#x27;, u&#x27;Moby&#x27;, u&#x27;Dick&#x27;, u&#x27;by&#x27;, u&#x27;Herman&#x27;, u&#x27;Melville&#x27;, ...]</span><br></pre></td></tr></table></figure>
 
-<p>发现<code>gutenberg</code> 的 <code>words</code> 方法返回的其实是一个<code>字符串数组</code> 。</p>
-<h3 id="查找单词"><a href="#查找单词" class="headerlink" title="查找单词"></a>查找单词</h3><p>定义：<code>concordance</code>(<em>word</em>, <em>width&#x3D;79</em>, <em>lines&#x3D;25</em>)</p>
-<p>参阅： ConcordanceIndex 类</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">text1.concordance(&#x27;monstrous&#x27;, 30, 5)</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">Displaying 5 of 11 matches:</span><br><span class="line">of a most monstrous size . ..</span><br><span class="line">hing that monstrous bulk of t</span><br><span class="line"> array of monstrous clubs and</span><br><span class="line">ered what monstrous cannibal</span><br><span class="line">od ; most monstrous and most</span><br></pre></td></tr></table></figure>
 
-<p>这里我指定了只显示<code>5</code>行，每一行宽度是<code>30</code>。</p>
-<p>细心的你可能发现每行只有29个字符，详细原因看<code>text.py</code>文件的<code>print_concordance</code> 方法即可。</p>
-<h3 id="搭配词"><a href="#搭配词" class="headerlink" title="搭配词"></a>搭配词</h3><p>定义：<code>collocations</code>(<em>num&#x3D;20</em>, <em>window_size&#x3D;2</em>)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">text1.collocations()</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">Sperm Whale; Moby Dick; White Whale; old man; Captain Ahab; sperm</span><br><span class="line">whale; Right Whale; Captain Peleg; New Bedford; Cape Horn; cried Ahab;</span><br><span class="line">years ago; lower jaw; never mind; Father Mapple; cried Stubb; chief</span><br><span class="line">mate; white whale; ivory leg; one hand</span><br></pre></td></tr></table></figure>
 
-<p>可见，该函数是打印出文中由多个词组成的<code>搭配词</code>，如上文的<code>old man</code>、<code>years ago</code>。</p>
-<h3 id="相似词"><a href="#相似词" class="headerlink" title="相似词"></a>相似词</h3><p>定义：<code>similar</code>(<em>word</em>, <em>num&#x3D;20</em>)</p>
-<p>参阅：ContextIndex.similar_word 方法</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">text1.similar(&#x27;monstrous&#x27;, 5)</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">imperial subtly impalpable pitiable curious</span><br></pre></td></tr></table></figure>
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1181062873" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
 
-<p>该方法根据单词在上下文中的用法，返回与给定词相似的词，相似度越高的词排名越靠前。</p>
-<p><code>num</code> 参数表示查找数量，例如上面就只显示了<code>5</code>个。</p>
-<h3 id="相同上下文"><a href="#相同上下文" class="headerlink" title="相同上下文"></a>相同上下文</h3><p>定义：<code>common_contexts</code>(<em>words</em>, <em>num&#x3D;20</em>)</p>
-<p>参阅：ContextIndex.common_contexts 方法</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">text2.common_contexts([&#x27;monstrous&#x27;, &#x27;very&#x27;])</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">a_pretty is_pretty a_lucky am_glad be_glad</span><br></pre></td></tr></table></figure>
 
-<p>给出两个词的共同的上下文。这意味着下划线部分可用<code>monstrous</code> 或 <code>very</code>进行填空，而且<code>a_pretty</code> 这个公共上下文出现的频率最大。</p>
-<h3 id="词分布"><a href="#词分布" class="headerlink" title="词分布"></a>词分布</h3><p>定义：<code>dispersion_plot</code>(<em>words</em>)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">text4.dispersion_plot([&#x27;citizens&#x27;, &#x27;democracy&#x27;, &#x27;freedom&#x27;, &#x27;duties&#x27;, &#x27;America&#x27;])</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://os9coobhw.bkt.clouddn.com/5cf65b8fc8a1643f0d21e53c14021bf4.jpg"></p>
-<p><code>text4</code> 是美国总统就职演说的文本，上述图像打印出了这五个词在演说过程中的分布情况。</p>
-<p>这可以用来研究随时间推移，语言使用上的变化。</p>
-<h3 id="正则表达式匹配单词"><a href="#正则表达式匹配单词" class="headerlink" title="正则表达式匹配单词"></a>正则表达式匹配单词</h3><p>定义：<code>findall</code>(<em>regexp</em>)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">text5.findall(&quot;&lt;.*&gt;&lt;.*&gt;&lt;bro&gt;&quot;)</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">you rule bro; telling you bro; u twizted bro</span><br></pre></td></tr></table></figure>
 
-<h3 id="词出现次数"><a href="#词出现次数" class="headerlink" title="词出现次数"></a>词出现次数</h3><p>定义：<code>count</code>(<em>word</em>)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">text1.count(&#x27;I&#x27;)</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">2124</span><br></pre></td></tr></table></figure>
 
-<h3 id="词索引"><a href="#词索引" class="headerlink" title="词索引"></a>词索引</h3><p>定义：<code>index</code>(<em>word</em>)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">text1.index(&#x27;I&#x27;)</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">37</span><br></pre></td></tr></table></figure>
 
-<h3 id="文本总长度"><a href="#文本总长度" class="headerlink" title="文本总长度"></a>文本总长度</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">len(text1)</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">260819</span><br></pre></td></tr></table></figure>
 
-<h3 id="生成FreqDist类"><a href="#生成FreqDist类" class="headerlink" title="生成FreqDist类"></a>生成FreqDist类</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dist = text1.vocab()</span><br><span class="line">print dist</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">&lt;FreqDist with 19317 samples and 260819 outcomes&gt;</span><br></pre></td></tr></table></figure>
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
 
-<h3 id="打印频率分布图"><a href="#打印频率分布图" class="headerlink" title="打印频率分布图"></a>打印频率分布图</h3><p>定义：<code>plot</code>(*<em>args</em>)</p>
-<p>参阅：nltk.prob.FreqDist.plot 方法</p>
-<p>从定义可以看出，其实就是调用了FreqDist的plot方法</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def plot(self, *args):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        See documentation for FreqDist.plot()</span><br><span class="line">        :seealso: nltk.prob.FreqDist.plot()</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        self.vocab().plot(*args)</span><br></pre></td></tr></table></figure>
-
-      
+</div>
     </div>
-    <footer class="article-footer">
-      <a data-url="https://hijerry.cn/p/22281.html" data-id="cl0e36fzq001sosct8co8aqo5" data-title="NLTK常用操作和语料库" class="article-share-link">Teilen</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NLP/" rel="tag">NLP</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-12/docker模拟多机环境" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/p/47694.html" class="article-date">
-  <time class="dt-published" datetime="2017-12-05T06:53:14.000Z" itemprop="datePublished">2017-12-05</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%BD%AF%E4%BB%B6%E6%8A%80%E6%9C%AF/">软件技术</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/p/47694.html">docker模拟多机环境</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="Docker基础"><a href="#Docker基础" class="headerlink" title="Docker基础"></a>Docker基础</h2><p>这里不多说，借助docker官方文档可以学习到大部分内容，而且很详细。</p>
-<ul>
-<li>在线阅读：<a target="_blank" rel="noopener" href="https://www.gitbook.io/book/yeasy/docker_practice">GitBook</a> 或 <a target="_blank" rel="noopener" href="https://github.com/yeasy/docker_practice/blob/master/SUMMARY.md">Github</a>。</li>
-<li><a target="_blank" rel="noopener" href="https://github.com/yeasy/docker_practice/wiki/%E7%A6%BB%E7%BA%BF%E9%98%85%E8%AF%BB%E5%8A%9F%E8%83%BD%E8%AF%A6%E8%A7%A3">离线阅读</a>。</li>
-<li>pdf 版本 <a target="_blank" rel="noopener" href="https://www.gitbook.com/download/pdf/book/yeasy/docker_practice">下载</a></li>
-<li>epub 版本 <a target="_blank" rel="noopener" href="https://www.gitbook.com/download/epub/book/yeasy/docker_practice">下载</a></li>
-</ul>
-<p>本次配置中用到的镜像：</p>
-<ul>
-<li><p><a target="_blank" rel="noopener" href="https://hub.docker.com/_/nginx/">nginx:1.12-alpine</a>，<a target="_blank" rel="noopener" href="https://github.com/nginxinc/docker-nginx/blob/72ac2226580ee73c170163dbe6e4436373b6ece9/stable/alpine/Dockerfile">Dockerfile</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://hub.docker.com/_/php/">php:7.1-fpm-alpine</a>，<a target="_blank" rel="noopener" href="https://github.com/docker-library/php/blob/25e8a9268e5308b127ef1e07e62ed346c9776490/7.1/alpine3.4/fpm/Dockerfile">Dockerfile</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://hub.docker.com/r/mysql/mysql-server/">mysql&#x2F;mysql-server:5.7.20</a>，<a target="_blank" rel="noopener" href="https://github.com/mysql/mysql-docker/blob/mysql-server/5.7/Dockerfile">Dockerfile</a></p>
-</li>
-</ul>
-<p>并且使用docker-compose来管理容器，它在pdf文档中有介绍，这里不再赘述。</p>
-<h2 id="多机结构"><a href="#多机结构" class="headerlink" title="多机结构"></a>多机结构</h2><p>为了实现一台真机模拟多台机，引入<code>逻辑主机</code>的概念。例如现在只有一台云主机，但是我们又要把<code>测试环境(dev)</code> 和  <code>正式环境(online)</code>分开。</p>
-<p>以下是项目完成后的目录结构，每一个目录对应一个<code>逻辑主机</code> 和独立<code>数据卷</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── dev</span><br><span class="line">│   ├── docker-compose.yml</span><br><span class="line">│   └── php</span><br><span class="line">│       └── Dockerfile</span><br><span class="line">├── online</span><br><span class="line">│   ├── docker-compose.yml</span><br><span class="line">│   └── php</span><br><span class="line">│       └── Dockerfile</span><br><span class="line">└── _self</span><br><span class="line">    └── docker-compose.yml</span><br></pre></td></tr></table></figure>
-
-<p>这里需要做以下说明：</p>
-<ul>
-<li><code>测试环境(dev)</code> 和 <code>正式环境(online)</code> 除了<code>数据卷</code> 不一样，其他配置都一样</li>
-<li><code>_self</code> 目录表示宿主主机，上面有<code>nginx</code></li>
-</ul>
-<h2 id="dev-配置"><a href="#dev-配置" class="headerlink" title="dev 配置"></a>dev 配置</h2><p><code>dev</code> 环境下有php和mysql，两个app都在独立的容器中，两者通过 <code>sock文件</code> 或网络进行通信，以下是dev环境的<code>docker-compose.yml</code> 文件内容：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">php1:</span></span><br><span class="line">    <span class="comment">#build: ./php</span></span><br><span class="line">    <span class="comment">#image: php:7.1-fpm-alpine</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">php-fpm-composer:1.0</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">dev_php1</span></span><br><span class="line">    <span class="attr">expose:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">&quot;9000&quot;</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">&quot;/data-dev/data1/:/data1/&quot;</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">&quot;/data-dev/data2/:/data2/&quot;</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">&quot;/data-dev/data2/php/conf/:/usr/local/etc/&quot;</span></span><br><span class="line">    <span class="attr">links:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">mysql1:server_mysql</span></span><br><span class="line"></span><br><span class="line"><span class="attr">mysql1:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">mysql/mysql-server:5.7.20</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">dev_mysql1</span></span><br><span class="line">    <span class="attr">expose:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">&quot;11308&quot;</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">&quot;/data-dev/data1/:/data1/&quot;</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">&quot;/data-dev/data2/:/data2/&quot;</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">&quot;/data-dev/data2/mysql/conf/:/etc/mysql/&quot;</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">MYSQL_ROOT_PASSWORD=123456789</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="volumes"><a href="#volumes" class="headerlink" title="volumes"></a>volumes</h3><p>先看数据卷。以 <code>dev_php1</code> 容器为例，我们可以看到 <code>宿主</code> 的<code>/data-dev/data1</code> 和 <code>/data-dev/data2</code> 被映射到了php容器的<code>/data1</code> 和 <code>/data2</code> 目录。是的，宿主的<code>/data-dev</code> 目录就是专门为<code>dev</code> 环境划分的逻辑目录。</p>
-<p>再看<code>dev_mysql1</code> 容器，道理和上述一样。</p>
-<h3 id="端口配置"><a href="#端口配置" class="headerlink" title="端口配置"></a>端口配置</h3><p>先看<code>dev_php1</code>，根据 <code>php-fpm</code> 配置文件中监听了<code>9000</code> 端口，所以开放容器的<code>9000</code>端口。</p>
-<p><code>mysql</code> 配置文件中设置的是<code>11308</code> 端口，所以我们开放容器的<code>11308</code> 端口。</p>
-<p>其实在实际使用中，两者也都支持 <code>sock文件</code>方式进行连接。</p>
-<h3 id="自定义的php镜像"><a href="#自定义的php镜像" class="headerlink" title="自定义的php镜像"></a>自定义的php镜像</h3><p>由于官方的php缺少一些扩展，所以我基于该镜像添加了扩展和<code>compose</code>，Dockerfile如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">FROM php:7.1-fpm-alpine</span><br><span class="line">RUN apk add --no-cache \</span><br><span class="line">        libpng-dev \</span><br><span class="line">    &amp;&amp; docker-php-ext-install pdo_mysql gd zip \</span><br><span class="line">    &amp;&amp; php -r &quot;copy(&#x27;https://getcomposer.org/installer&#x27;, &#x27;composer-setup.php&#x27;);&quot; \</span><br><span class="line">    &amp;&amp; php -r &quot;if (hash_file(&#x27;SHA384&#x27;, &#x27;composer-setup.php&#x27;) ===                                                                  &#x27;544e09ee996cdf60ece3804abc52599c22b1f40f4323403c44d44fdfdd586475ca9813a858088ffbc1f233e9b180f061&#x27;) &#123; echo &#x27;Installer verified&#x27;;  &#125; else &#123; echo &#x27;Installer corrupt&#x27;; unlink(&#x27;composer-setup.php&#x27;); &#125; echo PHP_EOL;&quot; \</span><br><span class="line">    &amp;&amp; php composer-setup.php --install-dir=/usr/local/bin --filename=composer \</span><br><span class="line">    &amp;&amp; php -r &quot;unlink(&#x27;composer-setup.php&#x27;);&quot;</span><br></pre></td></tr></table></figure>
-
-<p>为了避免构建多层镜像又保证命令的整洁性，使用 <code>\</code> (表示换行)把要执行的命令分开。</p>
-<p>可以看到我这里添加了<code>pdo_mysql</code> 、<code>gd</code> 、<code>zip</code> 扩展，其中<code>zip</code> 镜像是安装compose必要的，且为了安装<code>gd</code> 扩展，系统必须要先安装<code>libpng-dev</code> 库。</p>
-<p>后面四行命令是安装composer的，安装后放在了<code>/usr/local/bin</code> 目录下，文件名是<code>composer</code>。</p>
-<p>根据这个Dockerfile构建了名为<code>php-fpm-composer:1.0</code> 的镜像。</p>
-<h3 id="其他配置"><a href="#其他配置" class="headerlink" title="其他配置"></a>其他配置</h3><p><code>dev_mysql1</code> 的 <code>MYSQL_ROOT_PASSWORD</code> 表示数据库初始密码，如果数据库初始化过了（数据卷中已有数据）则没效了。</p>
-<h2 id="online配置"><a href="#online配置" class="headerlink" title="online配置"></a>online配置</h2><p><code>online</code> 环境的<code>docker-compose.yml</code> 文件内容如下：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">php1:</span></span><br><span class="line">    <span class="comment">#build: ./php</span></span><br><span class="line">    <span class="comment">#image: php:7.1-fpm-alpine</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">php-fpm-composer:1.0</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">online_php1</span></span><br><span class="line">    <span class="attr">expose:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">&quot;9000&quot;</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">&quot;/data-online/data1/:/data1/&quot;</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">&quot;/data-online/data2/:/data2/&quot;</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">&quot;/data-online/data2/php/conf/:/usr/local/etc/&quot;</span></span><br><span class="line">    <span class="attr">links:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">mysql1:server_mysql</span></span><br><span class="line"></span><br><span class="line"><span class="attr">mysql1:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">mysql/mysql-server:5.7.20</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">online_mysql1</span></span><br><span class="line">    <span class="attr">expose:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">&quot;11308&quot;</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">&quot;/data-online/data1/:/data1/&quot;</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">&quot;/data-online/data2/:/data2/&quot;</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">&quot;/data-online/data2/mysql/conf/:/etc/mysql/&quot;</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">MYSQL_ROOT_PASSWORD=123456789</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="部署步骤"><a href="#部署步骤" class="headerlink" title="部署步骤"></a>部署步骤</h3><p>可以看到<code>online</code> 环境除了<code>逻辑目录</code> 是<code>/data-onlie</code> 以外，其他的配置都和<code>dev</code> 一样，当然容器名是不一样的。</p>
-<p>如果我们已经成功部署了<code>dev</code> 环境，那么只需把<code>/data-dev</code> copy一份为 <code>/data-online</code> 即可完成数据卷的部署，保证online的数据和dev是一样的（主要是php、mysql等app的配置一样）。</p>
-<h2 id="nginx的配置"><a href="#nginx的配置" class="headerlink" title="nginx的配置"></a>nginx的配置</h2><p>本项目采取的方式是<code>nginx</code> 单例，所以nginx必须放在宿主主机上，稍后讨论多例nginx的配置。</p>
-<p>目前已经有了<code>dev</code> 和 <code>online</code> 两个环境，且分别运行了php和m ysql，单例nginx模式的架构如下：</p>
-<p><img src="http://os9coobhw.bkt.clouddn.com/d6c6230a46f5cff94d795f28b21dc5cb.jpg"></p>
-<p><code>圆圈</code> 表示<code>逻辑主机</code>， <code>矩形框</code> 内是英文的表示容器，英文表示容器名称。</p>
-<p><code>宿主环境</code> （nginx）的<code>docker-compose.yml</code> 文件内容如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">nginx1:</span><br><span class="line">    image: nginx:1.12-alpine</span><br><span class="line">    container_name: nginx1</span><br><span class="line">    ports:</span><br><span class="line">        - &quot;80:80&quot;</span><br><span class="line">        - &quot;443:443&quot;</span><br><span class="line">    expose:</span><br><span class="line">        - &#x27;80&#x27;</span><br><span class="line">        - &#x27;443&#x27;</span><br><span class="line">    volumes:</span><br><span class="line">        - &quot;/data/:/data/&quot;</span><br><span class="line">        - &quot;/data1/:/data1/&quot;</span><br><span class="line">        - &quot;/data2/:/data2/&quot;</span><br><span class="line">        - &quot;/data2/nginx/conf/:/etc/nginx/&quot;</span><br><span class="line">        - &quot;/data-dev/:/data-dev/&quot;</span><br><span class="line">        - &quot;/data-online/:/data-online/&quot;</span><br></pre></td></tr></table></figure>
-
-<p>可以看到，为了<code>dev</code>、<code>online</code> 提供服务，需要将两个<code>逻辑主机</code>的<code>数据目录</code> 映射到nginx容器中去，从而达到nginx与宿主主机的文件系统是一样的。</p>
-<h3 id="文件路径"><a href="#文件路径" class="headerlink" title="文件路径"></a>文件路径</h3><p>在进行nginx配置的时候，需要非常注意的是文件路径。</p>
-<p>在<code>dev</code> 逻辑主机中，网站根目录是<code>/data1/sites/html</code>，这个目录对应于宿主主机的<code>/data-dev/data1/sites/html</code> ，那么在nginx中配置的时候，就需要特别注意。</p>
-<p>下面是nginx 为<code>dev</code> 环境提供服务所写的配置信息：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name dev.domain.com;</span><br><span class="line">    root /data-dev/data1/sites/html/;</span><br><span class="line">    index index.html index.htm index.php;</span><br><span class="line"></span><br><span class="line">    access_log  /data2/nginx/logs/dev/html_access.log  main;</span><br><span class="line">    error_log  /data2/nginx/logs/dev/html_error.log  warn;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    # use php-fpm.sock</span><br><span class="line">    location ~ \.php$ &#123;</span><br><span class="line">        fastcgi_pass   unix:/data-dev/data2/socks/php-fpm.sock;</span><br><span class="line">        fastcgi_index  index.php;</span><br><span class="line">        fastcgi_param  SCRIPT_FILENAME  /data1/sites/html$fastcgi_script_name;</span><br><span class="line">        include        fastcgi_params;</span><br><span class="line">    &#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
-<p>由于<code>nginx</code>运行在宿主主机，所以使用的是宿主主机的文件系统：（下面的<code>/data2</code> 是宿主主机上的）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root /data-dev/data1/sites/html/;</span><br><span class="line">access_log  /data2/nginx/logs/dev/html_access.log  main;</span><br><span class="line">error_log  /data2/nginx/logs/dev/html_error.log  warn;</span><br></pre></td></tr></table></figure>
-
-<p>根据web请求流程和CGI原理，所以fastcgi在寻找文件时使用的是 <code>dev</code> 主机的文件系统：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fastcgi_param  SCRIPT_FILENAME  /data1/sites/html$fastcgi_script_name;</span><br></pre></td></tr></table></figure>
-
-<p><strong>注意：不能写成$document_root$fastcgi_script_name，因为$document_root是宿主主机的文件系统</strong></p>
-<h3 id="静态文件测试"><a href="#静态文件测试" class="headerlink" title="静态文件测试"></a>静态文件测试</h3><p>根据上述配置文件，配置好<code>root</code> 路径即可进行静态文件测试。</p>
-<p>现有两个文件，他们在<code>宿主主机</code> 文件系统中的路径如下：</p>
-<figure class="highlight d"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/data-dev/data1/sites/html/index.html</span><br><span class="line">/data-online/data1/sites/html/index.html</span><br></pre></td></tr></table></figure>
-
-<p>可以看到，一个在 <code>dev</code> 中，一个在 <code>online</code> 环境中</p>
-<p>那么在<code>dev</code> 的文件系统中，则是：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/data1/sites/html/index.html</span><br></pre></td></tr></table></figure>
-
-<p>文件内容是：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">This is dev</span><br></pre></td></tr></table></figure>
-
-<p>在<code>online</code> 的文件系统中，则是：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/data1/sites/html/index.html</span><br></pre></td></tr></table></figure>
-
-<p>文件内容是：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">This is online</span><br></pre></td></tr></table></figure>
-
-<p>可以发现，在两个逻辑主机中，他们并不知道宿主主机的存在，也就是宿主主机对于他们来说是<code>透明的</code>。</p>
-<p><code>/etc/hosts</code>配置如下，同步修改<code>nginx</code>的<code>server_name</code>：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1 dev.domain.com</span><br><span class="line">127.0.0.1 online.domain.com</span><br></pre></td></tr></table></figure>
-
-<p>进行测试：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl dev.domain.com</span><br><span class="line">curl online.domain.com</span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">This is dev</span><br><span class="line">This is online</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="php测试"><a href="#php测试" class="headerlink" title="php测试"></a>php测试</h3><p>php的测试主要看nginx是否正确使用了对应环境的<code>php-fpm.sock</code>，如果你是用<code>9000</code>端口通信的，那就看ip是否填对了，方式与静态页面类似，不再赘述。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>详情：<a target="_blank" rel="noopener" href="https://github.com/JerryCheese/docker-architecture">https://github.com/JerryCheese/docker-architecture</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hijerry.cn/p/47694.html" data-id="cl0e36fzt0024oscthkk5czl5" data-title="docker模拟多机环境" class="article-share-link">Teilen</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/devopps/" rel="tag">devopps</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/" rel="tag">docker</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-12/Week11-Photo-OCR-Conclusion" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/p/14526.html" class="article-date">
-  <time class="dt-published" datetime="2017-12-04T10:07:28.000Z" itemprop="datePublished">2017-12-04</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%A0%94/">研</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/p/14526.html">Week11:Photo OCR &amp; Conclusion</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="OCR问题"><a href="#OCR问题" class="headerlink" title="OCR问题"></a>OCR问题</h2><p>通俗一点讲就是图像识别中的文字识别。比方说给一张图，请识别图中的文字。</p>
-<p><img src="http://os9coobhw.bkt.clouddn.com/0a03b9703dbac0c3e3655c6be4baf5fa.jpg"></p>
-<h3 id="滑动窗口探测法"><a href="#滑动窗口探测法" class="headerlink" title="滑动窗口探测法"></a>滑动窗口探测法</h3><p>该方法用于识别出图中哪些区域还有所指定的目标物体。</p>
-<p>它选一个特定的尺寸的图片进行二分训练，判断这个尺寸的图片中是否含有要找的目标。</p>
-<p>例如<code>行人探测</code> 问题，需要找出图片中哪有人，那么可以先选取一个 $82 \times 36$ 大小的小图片作为训练集进行训练。</p>
-<p><img src="http://os9coobhw.bkt.clouddn.com/16f63bb91c673c5af9d2353816e3f003.jpg"></p>
-<p>得到训练模型后，使用一个<code>滑动窗口</code> 在原图上进行搜寻，每次移动的距离叫做<code>step</code> ，<code>step</code> 越小，效果越好。</p>
-<p><img src="http://os9coobhw.bkt.clouddn.com/46447d3ec7780d02b724674357d93726.jpg"></p>
-<h3 id="第一步：文字检测"><a href="#第一步：文字检测" class="headerlink" title="第一步：文字检测"></a>第一步：文字检测</h3><p>要识别图像中的字，得先知道哪些地方可能是字，所以文字检测是用来探测图像中的哪一部分是含有字的。</p>
-<p><img src="http://os9coobhw.bkt.clouddn.com/09e871509309bc73492dafefad80559d.jpg"></p>
-<p>与<code>行人检测</code>一样，我们需要先建立起训练集</p>
-<p><img src="http://os9coobhw.bkt.clouddn.com/6c2ecf0b6d2a8387401474283890f3b7.jpg"></p>
-<p>在原图上我们运行滑动窗口算法，得到左下方的图。<code>白点</code> 越亮则表示该处<code>有文字</code>的概率越大。根据文字的特征，一般文字都是横着的，而且是连着的，所以我们可以通过<code>白点扩散</code>得到右下方的结果，这样就更加接近真实的结果了。</p>
-<p><img src="http://os9coobhw.bkt.clouddn.com/9ff5e4af712c80863f79660e83959076.jpg"></p>
-<h3 id="第二步：断字"><a href="#第二步：断字" class="headerlink" title="第二步：断字"></a>第二步：断字</h3><p>例如现在已经截取到了含有字的那一块图片，那么就要对其进行断句（分词）例如：</p>
-<p><img src="http://os9coobhw.bkt.clouddn.com/12062008c30e73f50dad4c02f58a28da.jpg"></p>
-<p>这个问题用滑动窗口法也可，对于每一小块，我们取图片的对称轴即可以找到字母的间隔，就可以把文字断开了。</p>
-<p><img src="http://os9coobhw.bkt.clouddn.com/ac3ae07619fa081fcffbe14a255d8fdf.jpg"></p>
-<h3 id="第三步：识字"><a href="#第三步：识字" class="headerlink" title="第三步：识字"></a>第三步：识字</h3><p>这一步需要识别每一个独立的语言符号，对英语来说，就是识别出每一个字母：</p>
-<p><img src="http://os9coobhw.bkt.clouddn.com/bf4e0c8148615dc49f793d46bf0b6f0d.jpg"></p>
-<p>这是一个典型的多分类问题。</p>
-<h3 id="合成数据"><a href="#合成数据" class="headerlink" title="合成数据"></a>合成数据</h3><p>获得真实数据是一件很麻烦的事情，需要消耗人力物力，而文字识别这件事儿其实人工合成的数据也能达到训练效果，例如下面两幅图，人也很难区分哪一个是合成的。</p>
-<p><img src="http://os9coobhw.bkt.clouddn.com/14cf06e5270aee8933994e2e9ddccd51.jpg"></p>
-<h4 id="获取大量数据：扭曲、加噪"><a href="#获取大量数据：扭曲、加噪" class="headerlink" title="获取大量数据：扭曲、加噪"></a>获取大量数据：扭曲、加噪</h4><p><code>扭曲</code>是模拟真实数据的一个好方法，例如现在有一个很标准的数字A。</p>
-<p><img src="http://os9coobhw.bkt.clouddn.com/8d61c4f74426d9ff4236a287cca97c09.jpg"></p>
-<p>同时在语音数据上，你或许已经有一个比较标准的数据，声音很清晰，那你可以试着对这断语音加入一些白噪声，看机器学习模型是否还能正确的识别它。</p>
-<h2 id="流水线学习"><a href="#流水线学习" class="headerlink" title="流水线学习"></a>流水线学习</h2><p>从上述OCR问题的解决方案来看，解决OCR问题可以分成三个步骤，而这三个步骤都分别对应一个<code>机器学习问题</code>。</p>
-<p><img src="http://os9coobhw.bkt.clouddn.com/a8462be6b05764b0ff4ec6c42a6e9889.jpg"></p>
-<h3 id="优化分析"><a href="#优化分析" class="headerlink" title="优化分析"></a>优化分析</h3><p>那么有什么指标可以衡量一个OCR系统的好坏呢？答案是准确率，那么要是准确率很低，又该怎么优化呢。</p>
-<p>因为OCR可以被拆成三个机器学习问题，所以我们可以把它们看出三个组件，通过调整每一个组件的准确率，我们可以提升系统整体的准确率。那么我们应该调整三个组件中的哪一个组件呢？</p>
-<p>我们可以画出以下表格，第一行表示当前系统整体的准确率是72%，假设现在我们要来优化这个系统。</p>
-<p>我们可以人工的把第一个组件<code>文字检测</code>的准确率提高到100%，我的意思就是人工纠正那些被模型错误分类的数据，之后我们再次运行系统，得到的系统准确率是89%。</p>
-<p>接着我们把<code>断字</code> 组件的准确率也提高到100%，得到的系统准确率是90%。</p>
-<p>再把<code>识字</code> 组件准确率也提高到100%，那么最后的系统准确率肯定就是100%了。</p>
-<p><img src="http://os9coobhw.bkt.clouddn.com/00f8ff824d56e2a1fbb27adb92be9605.jpg"></p>
-<p>好了，现在可以看到，通过提升<code>文字检测</code>组件，我们可以把系统的整体准确率提高<code>17%</code>，，<code>断字</code>、<code>识字</code> 可以提高<code>1%</code>和<code>10%</code>，可以知道，<code>文字检测</code>的贡献率是三个组件中最大的，所以我们可以把大多数优化的精力用在<code>文字检测</code>这个组件上。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>很感谢Coursera提供的这样一个平台，让百万莘莘学子可以接触到这么多优质的资源，同时也很感谢Ng的这套机器学习课程，帮助大家很快速地踏入了机器学习的大门，教育无疆。</p>
-<p>课程虽然结束，而我的言机器学习之旅也才刚刚开始，接下来的两个月我将花费大量时间研究NLP领域，同时也希望自己能够坚持自己的选择，能够披荆斩棘走向梦想的彼岸。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hijerry.cn/p/14526.html" data-id="cl0e36fzs001xosct1cisan2w" data-title="Week11:Photo OCR &amp; Conclusion" class="article-share-link">Teilen</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-12/Week10-Learning-with-large-datasets" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/p/16629.html" class="article-date">
-  <time class="dt-published" datetime="2017-12-02T15:58:00.000Z" itemprop="datePublished">2017-12-02</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%A0%94/">研</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/p/16629.html">Week10:Learning with large datasets</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="大规模机器学习"><a href="#大规模机器学习" class="headerlink" title="大规模机器学习"></a>大规模机器学习</h2><p>大规模是指训练集数据很多，比如有1亿组数据。</p>
-<h3 id="大数据"><a href="#大数据" class="headerlink" title="大数据"></a>大数据</h3><p>有一句话叫做“最后胜利的人不是因为他有好的算法，而是他用有大量数据”，因为随着数据量的增加，机器学习算法的准确度都会变得很高。</p>
-<p><img src="http://os9coobhw.bkt.clouddn.com/c6f058a60028454eb5e63d040a1ceb7a.jpg"></p>
-<h3 id="批量梯度下降"><a href="#批量梯度下降" class="headerlink" title="批量梯度下降"></a>批量梯度下降</h3><p>先看梯度下降方程，以线性回归为例：</p>
-<p><img src="http://os9coobhw.bkt.clouddn.com/df35b6daa2cf258f2cbb1a26caea8723.jpg"></p>
-<p>这种方式称之为批量梯度下降，一个 $\theta_j$ 都需要遍历所有数据，如果m &#x3D; 100,000,000 ，梯度下降会变得很慢。</p>
-<h3 id=""><a href="#" class="headerlink" title=""></a></h3><h3 id="随机梯度下降"><a href="#随机梯度下降" class="headerlink" title="随机梯度下降"></a>随机梯度下降</h3><p><strong>随机不是指随机的选取一些数据来进行梯度下降。</strong></p>
-<p>随机下降的Cost Function，只计算一组数据，而不是全部数据：</p>
-<p><img src="http://os9coobhw.bkt.clouddn.com/2d43ba2c2c48a96afb1ef6c9bd5b482e.jpg"></p>
-<p>而在进行梯度下降时，遍历所有数据 $x^{(i)}$ 计算 $\theta$：</p>
-<p><img src="http://os9coobhw.bkt.clouddn.com/fc5e3ea2d5ccc6470f832d5267892cb9.jpg"></p>
-<p> 幸运的是，通常并不需要遍历全部数据或是遍历一次即可得到比较理想的 $\theta$ 值。</p>
-<p>其实这种方式是在逐渐适应遇见的$x^{(i)}$，所以并不能保证$\theta$ 是一直下降的，如果把每次计算的cost画在坐标系中，它会是摆动的：</p>
-<p><img src="http://os9coobhw.bkt.clouddn.com/b02082dfe91e4f9eeb1d9fa3b9b976a0.jpg"></p>
-<p><img src="http://os9coobhw.bkt.clouddn.com/830e50abee970d463adbfcf9a5d17265.jpg"></p>
-<p>而且最后会在最优值附加徘徊，但得不到最优值。</p>
-<h3 id="最小批量梯度下降"><a href="#最小批量梯度下降" class="headerlink" title="最小批量梯度下降"></a>最小批量梯度下降</h3><p>获随即下降的启发，我们可以梯度下降时取 $b$ 组数据而不是一个数据，这样可以获得比随机下降更加快的速度，它的过程如下：</p>
-<p><img src="http://os9coobhw.bkt.clouddn.com/6d77c420b2ad5adac3aa9fdbb94030c5.jpg"></p>
-<h2 id="在线学习"><a href="#在线学习" class="headerlink" title="在线学习"></a>在线学习</h2><p>在线学习是指使用源源不断获得的数据进行学习。比如你正在经营一个网上商店，那么你可以持续获得用户操作记录，所以训练集的大小是不固定的，而是每天增长的。随机梯度下降很适合这个场景。</p>
-<h2 id="映射约减和并行计算"><a href="#映射约减和并行计算" class="headerlink" title="映射约减和并行计算"></a>映射约减和并行计算</h2><p>映射约减又叫Map-reduce。假设你现在有5台机器，有4亿的数据量，那么可以把数据拆成四等分，分给4台机器运算，计算结果交个第5台机器，由它来进行汇总。</p>
-<p><img src="http://os9coobhw.bkt.clouddn.com/7433732d09994238a875aae27fd7d0d7.jpg"></p>
-<p>这个道理也适用于多核cpu：</p>
-<p><img src="http://os9coobhw.bkt.clouddn.com/3e76de39fcf60e084bf09579070b065c.jpg"></p>
-<p>现在这种方法集成到了一些框架中，例如Hadoop</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hijerry.cn/p/16629.html" data-id="cl0e36fzr001voscthppgfmzn" data-title="Week10:Learning with large datasets" class="article-share-link">Teilen</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-12/Week9-Anomaly-Detection-Recommender-Systems" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/p/30591.html" class="article-date">
-  <time class="dt-published" datetime="2017-12-01T11:52:56.000Z" itemprop="datePublished">2017-12-01</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%A0%94/">研</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/p/30591.html">Week9:Anomaly Detection &amp; Recommender Systems</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="序"><a href="#序" class="headerlink" title="序"></a>序</h2><p>Coursera的课程还有2周就要结束了，我这周基本上是每天学一周的内容，而下周就要开始正式接触NLP了。</p>
-<p>身边也有一起学习Ng这套课程的人，但是学到一半没到就放弃了，我在学习过程中也问过自己，Ng这套11年的课程放在现在还有价值么？这是多虑的表现。到了Week9我慢慢感觉到了这套课程的魅力所在，首先它可以在很短时间内让你了解机器学习这门学科，我大概也就用了一个月吧；其次它总能用一些简单的例子来让你快速理解问题所在，我觉得机器学习是偏应用。</p>
-<h2 id="异常检测"><a href="#异常检测" class="headerlink" title="异常检测"></a>异常检测</h2><p>这是一个偏斜问题，传统行业像零件生产商，他们在出货前都会做这个工作，也许10000个成品里只有40个是不合格的。假如一家引擎生产商，正在做异常检测的工作，他们规定了两个重要指标（两个特征）来衡量产品的好坏，画在坐标系中可以很清楚的发现所有的点都集中在一个区域，只有一少部分数据会落在边缘地带。</p>
-<p><img src="http://os9coobhw.bkt.clouddn.com/6dab6995fc2ac878e03fd520f9c463ab.jpg"></p>
-<p>对数学笔记敏感的同学也许很快反应过来，这有点像正态分布，是的。</p>
-<p><img src="http://os9coobhw.bkt.clouddn.com/6a6015cdac3904c41f499cc55ca3575b.jpg"></p>
-<h3 id="高斯分布"><a href="#高斯分布" class="headerlink" title="高斯分布"></a>高斯分布</h3><p>又名正态分布，它的方程长这个样子：</p>
-<p><img src="http://os9coobhw.bkt.clouddn.com/a7598e9b09c5385752d1db4c37f5ee5b.jpg"></p>
-<p>如果变量x服从正态分布，则可以记作<img src="http://os9coobhw.bkt.clouddn.com/4f11f58f579cb5599d5b4045d9751904.jpg"></p>
-<ul>
-<li>exp就是e为底的对数</li>
-<li>$\mu$ 是平均数，又叫做位置参数</li>
-<li>$\sigma $ 是标准差，所以 $\sigma^2$ 是方差</li>
-</ul>
-<p>画成图就是这样：</p>
-<p><img src="http://os9coobhw.bkt.clouddn.com/126e56f81718431a442a8930f0e9b1e9.jpg"></p>
-<p>$\mu$ 和 $\sigma$ 对图像的影响是：</p>
-<ul>
-<li>$\mu$ 是对称轴</li>
-<li>$\sigma$ 大则<code>矮胖</code>；小则<code>廋高</code></li>
-</ul>
-<p><img src="http://os9coobhw.bkt.clouddn.com/c7b1319aa29aff107a02cfd250078e07.jpg"></p>
-<p>图像的面积为概率，例如$ 8 &lt;&#x3D; x &lt;&#x3D; 10$ 的概率，就是正态函数在$x ∈ [8, 10]$区间上的积分（面积） 。</p>
-<p>所以可以认为，如果数据x越靠近中心，那么它为正品的概率$p(x)$越高，反之如果x落在了边缘，那么它很可能是异常数据，为了更加精确的描述异常数据，我们可以取一个比较小的值 $\epsilon$ ，当 $p(x) &lt; \epsilon$ 的时候，我们就认为该 $x$  是异常数据，否则就是正常数据。</p>
-<h3 id="异常检测算法"><a href="#异常检测算法" class="headerlink" title="异常检测算法"></a>异常检测算法</h3><p>既然高斯分布可以用来检测异常，那太好了，我们得到了一个有力的工具。我们假设每一个特征是服从正态分布的，那么$x_1, x_2, …, x_n$ 服从<code>各自的</code>正态分布，他们有各自的 $\mu_i, \sigma_i^2$ 。那么给定的数据集 { $x^{(1)},x^{(2)},…x^{(n)}$ } 中，数据$x^{(i)}$ 的概率 $ p(x^{(i)}) &#x3D; p(x_1^{(i)})p(x_2^{(i)})  …  p(x_n^{(i)})$ ，这个值如果小于 $\epsilon$ ，则可以认为数据是异常数据。那么现在要做的就是计算出每一个特征的$\mu_i, \sigma_i^2$ 值，而其实就是计算特征的平均数和方差。</p>
-<p>那么如何衡量一个异常检测算法的好坏呢？当然还是使用<code>查准率</code>和<code>召回率</code>，而不是单纯的使用它的预测准确度，因为异常检测通常是偏斜问题。</p>
-<h3 id="异常检测和监督学习"><a href="#异常检测和监督学习" class="headerlink" title="异常检测和监督学习"></a>异常检测和监督学习</h3><p>它们之间的一些区别</p>
-<table>
-<thead>
-<tr>
-<th>异常检测(0 异常 1正常)</th>
-<th>监督学习 (0 反例 1正例)</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>极少异常，大部分是正常</td>
-<td>正、反的比例相当</td>
-</tr>
-<tr>
-<td>异常情况复杂，很难从正常数据中学习到异常的特征</td>
-<td>足够的正例数据来进行学习</td>
-</tr>
-<tr>
-<td>异常数据可能是我们从未出现过的数据</td>
-<td></td>
-</tr>
-</tbody></table>
-<p>它们不同的应用场景</p>
-<table>
-<thead>
-<tr>
-<th>异常检测</th>
-<th>监督学习</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>诈骗检测</td>
-<td>垃圾邮件分类</td>
-</tr>
-<tr>
-<td>制造业（如零件生产商）</td>
-<td>天气预报</td>
-</tr>
-<tr>
-<td>服务器故障监控</td>
-<td>癌症预测</td>
-</tr>
-</tbody></table>
-<h2 id="推荐系统"><a href="#推荐系统" class="headerlink" title="推荐系统"></a>推荐系统</h2><p>评分是一个收集用户兴趣的好方法，我们假设已经观察到下面一些用户的评分行为：</p>
-<table>
-<thead>
-<tr>
-<th>电影名</th>
-<th>用户1</th>
-<th>用户2</th>
-<th>用户3</th>
-<th>用户4</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>何以笙箫默</td>
-<td>5</td>
-<td>5</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr>
-<td>栀子花开</td>
-<td>5</td>
-<td></td>
-<td></td>
-<td>0</td>
-</tr>
-<tr>
-<td>激战</td>
-<td></td>
-<td>0</td>
-<td>5</td>
-<td></td>
-</tr>
-<tr>
-<td>叶问2</td>
-<td>0</td>
-<td></td>
-<td></td>
-<td>4</td>
-</tr>
-<tr>
-<td>战狼</td>
-<td>0</td>
-<td>0</td>
-<td>5</td>
-<td>5</td>
-</tr>
-</tbody></table>
-<p>评分范围是0-5的整数，留空表示用户没有对其评分，可能是没看过。</p>
-<h3 id="基于内容的推荐"><a href="#基于内容的推荐" class="headerlink" title="基于内容的推荐"></a>基于内容的推荐</h3><p>如果独立的看一个用户i，把<code>电影</code>看成是输入值 $X$，<code>评分</code>看成输出 $Y$，这就是一个线性回归问题，通过学习用户1已经对电影的评分，我们可以预测出用户1对“激战”这部电影的评分。</p>
-<p>我们可以把电影分成两类：爱情片、动作片，所以特征数量是2，那么预测函数为：</p>
-<p>$h(X) &#x3D; \theta_0 + \theta_1x_1 + \theta_2x_2$ ，其中 $x_1$ 理解为表示是这部电影是爱情片的程度，$\theta_1$ 是用户对于爱情片的喜爱程度，可以记用户i的$\theta$ 值为 $\theta^{(i)}$ 。</p>
-<p>所以一个用户评价的越多，他的$\theta$就会越精确，我们就可以更加精确的为其推荐内容。</p>
-<h3 id="协同过滤"><a href="#协同过滤" class="headerlink" title="协同过滤"></a>协同过滤</h3><p>随着电影数量越来越多，我们不好好确定一部电影的“爱情片程度”。协同过滤算法的一个特点是，它可以自动的学习出电影的特征值。怎么学的？通过询问用户，来确定他的 $\theta$ 值，然后再根据用户对电影的评分来求得这部电影的特征值。</p>
-<p>而回想发现，$\theta$ 应该才是要被优化的参数啊！！所以协同过滤算法的另一个特点是它在递归下降时同时优化$x$ 和 $\theta$ 。</p>
-<p>它的Cost Function：</p>
-<p><img src="http://os9coobhw.bkt.clouddn.com/17e24c51a8bb1201de3d9233a01f9073.jpg"></p>
-<p>日中 $r(i, j) &#x3D; 1$ 表示用户 $j$ 对电影 $i$ 评过分（从表格看来，电影的特征是行，用户是列）</p>
-<p>分别对 $x$ 、$\theta$ 进行梯度下降，他们的偏导数为：</p>
-<p><img src="http://os9coobhw.bkt.clouddn.com/b29a2210abc0b42e64917b7e1f74cd53.jpg"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hijerry.cn/p/30591.html" data-id="cl0e36fzt0021osct38ov2w6b" data-title="Week9:Anomaly Detection &amp; Recommender Systems" class="article-share-link">Teilen</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-11/Week8-2-Dimensionality-Reduction" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/p/26479.html" class="article-date">
-  <time class="dt-published" datetime="2017-11-30T14:35:18.000Z" itemprop="datePublished">2017-11-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%A0%94/">研</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/p/26479.html">Week8-2:Dimensionality Reduction</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="维数约简"><a href="#维数约简" class="headerlink" title="维数约简"></a>维数约简</h2><p>假如你负责一项机器学习项目，最开始你需要收集数据集，也许把收集任务下发给各部门后，收集上来的数据特征有上千个，你是全部用呢？还是只用一部分呢？如果只用一部分，应该如何选择呢？</p>
-<p>首先我们肯定是不能全用的，因为特征太多会拖慢训练速度。</p>
-<p>我们需要选择其中的一部分特征，但是这些特征又要能保证一些特性，使他能够较好的<code>代表</code>所有特征。</p>
-<h3 id="二维转一维"><a href="#二维转一维" class="headerlink" title="二维转一维"></a>二维转一维</h3><p>假设现在有2个特征 $x_1, x_2$，我们需要将其转成一维数据 $y$ ，我们将所有的点 $(x_1, x_2)$ 投影到一条直线上去，那么最后会得到一条数轴上的一些点集，也就是把二维转成一维了。</p>
-<p><img src="http://os9coobhw.bkt.clouddn.com/d7f142726a396bc1d6575feab4c559e6.jpg"></p>
-<h3 id="三维转二维"><a href="#三维转二维" class="headerlink" title="三维转二维"></a>三维转二维</h3><p>我们将所有的三维上的点投影到一个平面上，这个平面用两个向量$z_1, z_2$来表示，那么最后我们将得到一个平面上的点集，这样也就将三维转成二维了。</p>
-<p><img src="http://os9coobhw.bkt.clouddn.com/70c483f6c36f7fba0ba478bc714f1b43.jpg"></p>
-<h2 id="主要成分分析"><a href="#主要成分分析" class="headerlink" title="主要成分分析"></a>主要成分分析</h2><p>又叫PCA，它寻找一条低维的面，使得所有点到该面的距离的平方和最小。如下图中的这条直线，所有点到该直线的距离的平方和最短。</p>
-<p><img src="http://os9coobhw.bkt.clouddn.com/30595dab71f2c30226924381c20a469c.jpg"></p>
-<p>那么其实不用找一条直线，可以发现，只要方向与直线一样，投影的结果是一样的，所以只需要找到一个向量即可。</p>
-<h3 id="处理过程"><a href="#处理过程" class="headerlink" title="处理过程"></a>处理过程</h3><h4 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a>预处理</h4><p>如果给定m个数据 $x^{(1)}, x^{(2)}, .. , x^{(m)}$ ，我们首先对数据进行缩放，像第二周讲的那样，我们先求得每一个特征的平均数$\mu_j &#x3D; \frac 1 m (x_j^{(1)} + x_j^{(2)} … +x_j^{(m)})$  ，用 $x_j^{(i)} - \mu_j$ 替换 $x_j^{(i)}$  。</p>
-<h4 id="计算协方差矩阵"><a href="#计算协方差矩阵" class="headerlink" title="计算协方差矩阵"></a>计算协方差矩阵</h4><p>计算出每一个数据的协方差矩阵</p>
-<p><img src="http://os9coobhw.bkt.clouddn.com/3cf1ffb7aa06f777ac16d4f2a8b2e950.jpg"></p>
-<h4 id="计算特征向量"><a href="#计算特征向量" class="headerlink" title="计算特征向量"></a>计算特征向量</h4><p>再计算协方差矩阵的特征向量，在matlab中，可以使用[U, S, V] &#x3D; svd(Sigma)（Sigma是协方差矩阵）来计算特征向量U，那么这时我们会得到一个 $n \times n$ 的特征向量。</p>
-<p><img src="http://os9coobhw.bkt.clouddn.com/d18cb6c886ca02e19401bc72a2e1eb2f.jpg"></p>
-<p>取前k列作为$U_{reduce}$ 值，用来做降维映射。</p>
-<h4 id="降维"><a href="#降维" class="headerlink" title="降维"></a>降维</h4><p>令向量$z^{(i)} &#x3D; U_{reduce}^T * x^{(i)}$ 就得到了n维的 $x^{(i)}$ 降成k维后的$z^{(i)}$</p>
-<p><img src="http://os9coobhw.bkt.clouddn.com/e2accbff5ae2aa621e0afdb997e39551.jpg"></p>
-<h2 id="k的选取"><a href="#k的选取" class="headerlink" title="k的选取"></a>k的选取</h2><p>现在你有1000个特征，那么到底降成多少个比较合适呢？也许可以是500个，也有可能100个就够了。</p>
-<p>这里有一个方法可以检测降维后，新数据对原始数据特性的保留程度，计算下面公式，你将得到新数据与原始数据之间的差异度。假设计算出来的结果是0.05，那么新数据保留了原始数据95%的特性，一般来说，我们只要保持计算结果小于0.01即可。</p>
-<p><img src="http://os9coobhw.bkt.clouddn.com/a5594a587f3c4e0ae165d3a19862dc05.jpg"></p>
-<p>所以最好的方式是，尝试不同的k值，找到一个比较小的k值，同时新数据保留原始数据99%~90%的特性均可。</p>
-<h2 id="PCA的应用"><a href="#PCA的应用" class="headerlink" title="PCA的应用"></a>PCA的应用</h2><p>PCA常用于：</p>
-<ul>
-<li>压缩数据，节约空间</li>
-<li>加速机器学习过程</li>
-<li>数据可视化（如取k&#x3D;2、k&#x3D;3）</li>
-</ul>
-<p>一种不好的用法是，用PCA来避免<code>过拟合</code>，我们前几周知道，过拟合问题可以通过用正规化参数 $\lambda$ 来处理，虽然PCA可以减少特征数量，但其实它保持了原数据的特性，也就是<code>方差</code>，所以效果不尽人意。</p>
-<p>同时在进行一次机器学习训练过程中，我们也许根本用不到PCA算法，最好的方式还是先不用PCA降维，得到训练结果后，再使用PCA降维重新训练一次，看哪种方式带来的结果比较合乎人意。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hijerry.cn/p/26479.html" data-id="cl0e36fzk000xosctezbge2y8" data-title="Week8-2:Dimensionality Reduction" class="article-share-link">Teilen</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo; zurück</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">weiter &raquo;</a>
-  </nav>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Kategorien</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Web%E5%85%A8%E6%A0%88/">Web全栈</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A0%94/">研</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B/">程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E9%A2%98/">编程题</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AC%E8%BD%BD/">转载</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AF%E4%BB%B6%E6%8A%80%E6%9C%AF/">软件技术</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BP%E7%AE%97%E6%B3%95/" rel="tag">BP算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/" rel="tag">Laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/" rel="tag">NLP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NP%E5%AE%8C%E5%85%A8%E6%80%A7/" rel="tag">NP完全性</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stanford/" rel="tag">Stanford</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tensoflow/" rel="tag">Tensoflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web%E6%80%BB%E7%BB%93/" rel="tag">Web总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/devopps/" rel="tag">devopps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/" rel="tag">mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/medium/" rel="tag">medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/word2vec/" rel="tag">word2vec</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/" rel="tag">zsh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BE%9D%E8%B5%96%E8%A7%A3%E6%9E%90/" rel="tag">依赖解析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%91%E6%8C%87Offer/" rel="tag">剑指Offer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%84%9F%E7%9F%A5%E6%9C%BA/" rel="tag">感知机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A0%E6%A0%87%E7%AD%BE/" rel="tag">无标签</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91/" rel="tag">机器翻译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B1%87%E7%BC%96/" rel="tag">汇编</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E4%B9%8E/" rel="tag">知乎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" rel="tag">神经网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" rel="tag">线性代数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/" rel="tag">线性模型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87/" rel="tag">论文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag">运维</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/BP%E7%AE%97%E6%B3%95/" style="font-size: 10px;">BP算法</a> <a href="/tags/Laravel/" style="font-size: 14px;">Laravel</a> <a href="/tags/NLP/" style="font-size: 18px;">NLP</a> <a href="/tags/NP%E5%AE%8C%E5%85%A8%E6%80%A7/" style="font-size: 10px;">NP完全性</a> <a href="/tags/Stanford/" style="font-size: 10px;">Stanford</a> <a href="/tags/Tensoflow/" style="font-size: 10px;">Tensoflow</a> <a href="/tags/Web%E6%80%BB%E7%BB%93/" style="font-size: 16px;">Web总结</a> <a href="/tags/devopps/" style="font-size: 12px;">devopps</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/leetcode/" style="font-size: 16px;">leetcode</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mac/" style="font-size: 12px;">mac</a> <a href="/tags/medium/" style="font-size: 10px;">medium</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a> <a href="/tags/zsh/" style="font-size: 10px;">zsh</a> <a href="/tags/%E4%BE%9D%E8%B5%96%E8%A7%A3%E6%9E%90/" style="font-size: 10px;">依赖解析</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14px;">前端</a> <a href="/tags/%E5%89%91%E6%8C%87Offer/" style="font-size: 10px;">剑指Offer</a> <a href="/tags/%E6%84%9F%E7%9F%A5%E6%9C%BA/" style="font-size: 10px;">感知机</a> <a href="/tags/%E6%97%A0%E6%A0%87%E7%AD%BE/" style="font-size: 12px;">无标签</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">机器学习</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91/" style="font-size: 10px;">机器翻译</a> <a href="/tags/%E6%B1%87%E7%BC%96/" style="font-size: 12px;">汇编</a> <a href="/tags/%E7%9F%A5%E4%B9%8E/" style="font-size: 10px;">知乎</a> <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">神经网络</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" style="font-size: 10px;">线性代数</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/" style="font-size: 10px;">线性模型</a> <a href="/tags/%E8%AE%BA%E6%96%87/" style="font-size: 10px;">论文</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 10px;">运维</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/p/49582.html">2019 Mac安装cuda+cudnn+pytorch</a>
-          </li>
-        
-          <li>
-            <a href="/p/48009.html">复杂度与NP完全性</a>
-          </li>
-        
-          <li>
-            <a href="/p/55002.html">2019-CS224n-Assignment4</a>
-          </li>
-        
-          <li>
-            <a href="/p/35741.html">2019-CS224n-Assignment3</a>
-          </li>
-        
-          <li>
-            <a href="/p/13983.html">NLP会议介绍</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2022 jerrycheese<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
 </footer>
 
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
     </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
     
 
+    
 
-<script src="/js/jquery-3.4.1.min.js"></script>
+    <!-- 雪花特效 -->
+    
 
+    <!-- 鼠标星星特效 -->
+    
 
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
 
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
+    <!-- Baidu Analytics -->
 
+    <!-- Baidu Push -->
 
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
 
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
 
-<script src="/js/script.js"></script>
+    
 
+    
 
+    <!--腾讯兔小巢-->
+    
+    
 
+    
 
+    
 
-  </div>
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
 </body>
+
 </html>

@@ -1,624 +1,1068 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
 <head>
-  <meta charset="utf-8">
-  
-  
-  <title>全栈说</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Efficiency 80%">
-<meta property="og:type" content="website">
-<meta property="og:title" content="全栈说">
-<meta property="og:url" content="https://hijerry.cn/page/5/index.html">
-<meta property="og:site_name" content="全栈说">
-<meta property="og:description" content="Efficiency 80%">
-<meta property="og:locale">
-<meta property="article:author" content="jerrycheese">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="全栈说" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+    <meta charset="utf-8">
+    <meta name="keywords" content="全栈说">
+    <meta name="description" content="Efficiency 80%">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
 
-  
-  
-<link rel="stylesheet" href="/css/style.css">
 
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+    <title>全栈说</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
 
-  
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
 <meta name="generator" content="Hexo 6.0.0"></head>
 
+
+
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">全栈说</a>
-      </h1>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">全栈说</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
       
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">Work 20%</a>
-        </h2>
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
       
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">全栈说</div>
+        <div class="logo-desc">
+            
+            Efficiency 80%
+            
+        </div>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
+
+    <ul class="menu-list mobile-menu-list">
         
-          <a class="main-nav-link" href="/">Home</a>
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
         
-      </nav>
-      <nav id="sub-nav">
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
         
-        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hijerry.cn"></form>
-      </div>
-    </div>
-  </div>
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
 </header>
 
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-11/Exercise2-Logistic-Regression" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/p/48722.html" class="article-date">
-  <time class="dt-published" datetime="2017-11-10T14:03:24.000Z" itemprop="datePublished">2017-11-10</time>
-</a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%A0%94/">研</a>
-  </div>
+    <div class="bg-cover pd-header about-cover">
+    <div class="container">
+    <div class="row">
+    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
+        <div class="brand">
+            <div class="title center-align">
+                
+                Work 20%
+                
+            </div>
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/p/48722.html">Exercise2: Logistic Regression</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="序"><a href="#序" class="headerlink" title="序"></a>序</h2><p>一个月快过去了，总算是学完Coursera上的第三课了，其实我的进度比预期满了一周。这是第二次做Coursera的编程作业，对比大学课程的作业，Coursera的难度应该在中等甚至偏下，对我来说唯一的难度在于适应“新”，有以下几点：</p>
-<ul>
-<li>新语言</li>
-<li>新工具</li>
-<li>新的思考方式</li>
-</ul>
-<p>对于一个Software Engineer来说以上都是最基础的技能，即保持学习态度，及时学习新技术、新知识。</p>
-<p>第三周的课程内容主要讲分类、<code>逻辑回归</code>，与<code>线性回归</code>相比，也就是把Hypothesis函数用Sigmoid函数来表示，也就是：$设 g(z) &#x3D;  \frac{1} {1 + e ^{-z}}$，$令 z &#x3D; θ^T x$，$则 h_θ(x) &#x3D; g(θ^Tx)$</p>
-<p>为什么要 $设 g(z) &#x3D;  \frac{1} {1 + e ^{-z}}$ 呢，因为它的值域为 $(0, 1)$，定义域为(-∞, +∞) 的单调连续增函数，这意味着可以用<code>换元法</code>把所有函数的值域压缩到$(0, 1)$，它的函数图像如下。</p>
-<p><img src="http://os9coobhw.bkt.clouddn.com/1WFqZHntEead-BJkoDOYOw_2413fbec8ff9fa1f19aaf78265b8a33b_Logistic_function.png"></p>
-<p>这非常适合作为二分类（01分类）函数，我们可以取 $ h_θ(x) &gt;&#x3D; 0.5$ 时 $y &#x3D; 1$ ，$ h_θ(x) &lt; 0.5$ 时 $y &#x3D; 0$ 。</p>
-<p>同时Cost函数和Gradient Descent方程也有些许改变，这种改变是<code>换元法</code>带来的（公式识别失败，用图代替了）</p>
-<p><img src="http://os9coobhw.bkt.clouddn.com/QQ20171110-234015.png"></p>
-<p>它们对应的矩阵形式是</p>
-<p>① $J(θ) &#x3D; \frac {1} {m} (- y ^T log(h) - (1 - y)^T log(1 - h))，h &#x3D; g(Xθ)$</p>
-<p>② $θ &#x3D; θ - \frac {α} {m} X^T (g(Xθ) - y)$</p>
-<p>注意其中$X、y、θ$ 都是矩阵</p>
-<h2 id="作业内容"><a href="#作业内容" class="headerlink" title="作业内容"></a>作业内容</h2><p>标*****的是需要做的，没标的是作业中已经实现</p>
-<h3 id="数据可视化"><a href="#数据可视化" class="headerlink" title="数据可视化"></a>数据可视化</h3><p><img src="http://os9coobhw.bkt.clouddn.com/QQ20171110-225636.png"></p>
-<h3 id="Sigdmoid函数"><a href="#Sigdmoid函数" class="headerlink" title="* Sigdmoid函数"></a>* Sigdmoid函数</h3><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">g</span> = <span class="title">sigmoid</span><span class="params">(z)</span></span></span><br><span class="line"><span class="comment">%SIGMOID Compute sigmoid function</span></span><br><span class="line"><span class="comment">%   g = SIGMOID(z) computes the sigmoid of z.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% You need to return the following variables correctly </span></span><br><span class="line">g = <span class="built_in">zeros</span>(<span class="built_in">size</span>(z));</span><br><span class="line"></span><br><span class="line"><span class="comment">% ====================== YOUR CODE HERE ======================</span></span><br><span class="line"><span class="comment">% Instructions: Compute the sigmoid of each value of z (z can be a matrix,</span></span><br><span class="line"><span class="comment">%               vector or scalar).</span></span><br><span class="line">    </span><br><span class="line">g = <span class="number">1</span> ./ (<span class="number">1</span> + <span class="built_in">exp</span>(-z));</span><br><span class="line"></span><br><span class="line"><span class="comment">% =============================================================</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>传入的参数是一个矩阵，所以需要算出每一个元素的sigmoid函数值，这里用到的<code>./</code>操作符来对每一个元素进行取倒数操作。</p>
-<h3 id="Cost函数和对应的Gradient-Descent方程"><a href="#Cost函数和对应的Gradient-Descent方程" class="headerlink" title="* Cost函数和对应的Gradient Descent方程"></a>* Cost函数和对应的Gradient Descent方程</h3><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="params">[J, grad]</span> = <span class="title">costFunction</span><span class="params">(theta, X, y)</span></span></span><br><span class="line"><span class="comment">%COSTFUNCTION Compute cost and gradient for logistic regression</span></span><br><span class="line"><span class="comment">%   J = COSTFUNCTION(theta, X, y) computes the cost of using theta as the</span></span><br><span class="line"><span class="comment">%   parameter for logistic regression and the gradient of the cost</span></span><br><span class="line"><span class="comment">%   w.r.t. to the parameters.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% Initialize some useful values</span></span><br><span class="line">m = <span class="built_in">length</span>(y); <span class="comment">% number of training examples</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% You need to return the following variables correctly </span></span><br><span class="line">J = <span class="number">0</span>;</span><br><span class="line">grad = <span class="built_in">zeros</span>(<span class="built_in">size</span>(theta));</span><br><span class="line"></span><br><span class="line"><span class="comment">% ====================== YOUR CODE HERE ======================</span></span><br><span class="line"><span class="comment">% Instructions: Compute the cost of a particular choice of theta.</span></span><br><span class="line"><span class="comment">%               You should set J to the cost.</span></span><br><span class="line"><span class="comment">%               Compute the partial derivatives and set grad to the partial</span></span><br><span class="line"><span class="comment">%               derivatives of the cost w.r.t. each parameter in theta</span></span><br><span class="line"><span class="comment">%</span></span><br><span class="line"><span class="comment">% Note: grad should have the same dimensions as theta</span></span><br><span class="line"><span class="comment">%</span></span><br><span class="line"></span><br><span class="line">J = <span class="number">1</span>/m * sum(-y .* <span class="built_in">log</span>(sigmoid(X * theta)) - (<span class="number">1</span> - y) .* <span class="built_in">log</span>(<span class="number">1</span> - sigmoid(X * theta)));</span><br><span class="line"></span><br><span class="line">grad = <span class="number">1</span>/m * (X&#x27; * (sigmoid(X * theta) - y));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">% =============================================================</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-
-<p>在这个函数中需要同时计算代价和梯度，通过公式①、②不难得到上述两行代码</p>
-<h3 id="Hypothesis函数"><a href="#Hypothesis函数" class="headerlink" title="* Hypothesis函数"></a>* Hypothesis函数</h3><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">p</span> = <span class="title">predict</span><span class="params">(theta, X)</span></span></span><br><span class="line"><span class="comment">%PREDICT Predict whether the label is 0 or 1 using learned logistic </span></span><br><span class="line"><span class="comment">%regression parameters theta</span></span><br><span class="line"><span class="comment">%   p = PREDICT(theta, X) computes the predictions for X using a </span></span><br><span class="line"><span class="comment">%   threshold at 0.5 (i.e., if sigmoid(theta&#x27;*x) &gt;= 0.5, predict 1)</span></span><br><span class="line"></span><br><span class="line">m = <span class="built_in">size</span>(X, <span class="number">1</span>); <span class="comment">% Number of training examples</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% You need to return the following variables correctly</span></span><br><span class="line">p = <span class="built_in">zeros</span>(m, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">% ====================== YOUR CODE HERE ======================</span></span><br><span class="line"><span class="comment">% Instructions: Complete the following code to make predictions using</span></span><br><span class="line"><span class="comment">%               your learned logistic regression parameters. </span></span><br><span class="line"><span class="comment">%               You should set p to a vector of 0&#x27;s and 1&#x27;s</span></span><br><span class="line"><span class="comment">%</span></span><br><span class="line"></span><br><span class="line">s = sigmoid(X * theta);</span><br><span class="line">p = <span class="built_in">floor</span>(s + <span class="number">0.5</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">% =========================================================================</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-
-<p>预测函数就比较简单的，由$则 h_θ(x) &#x3D; g(θ^Tx)$，$g$ 是Sigmoid函数，可以得到上述两行代码，因为当函数值大于0.5时$y &#x3D; 1$ ，又得到的 $s$ 其实是一个矩阵，所以使用<code>floor(s + 0.5)</code>来进行批量操作。</p>
-<p>完成上述三个函数后，运行<code>ex2</code>函数可以得到一条预测线，如图。</p>
-<p><img src="http://os9coobhw.bkt.clouddn.com/QQ20171110-230636.png"></p>
-<h3 id="正规化"><a href="#正规化" class="headerlink" title="* 正规化"></a>* 正规化</h3><p>正规化是为了防止<code>过拟合</code>，核心是保持 $ x$ 值不变， <code>减小</code> (惩罚) $θ$的值。</p>
-<p>当然还有一种方式防止<code>过拟合</code>的方法是建立一个模型来去除用处不大的特征，保留作用相对较大的特征。</p>
-<p><img src="http://os9coobhw.bkt.clouddn.com/0cOOdKsMEeaCrQqTpeD5ng_2a806eb8d988461f716f4799915ab779_Screenshot-2016-11-15-00.23.30.png"></p>
-<p>上图表示的预测函数，从左到右依次是<code>欠拟合</code>、<code>拟合</code> 也叫<code>刚好拟合</code>、<code>过拟合</code>，欠拟合一般是因为多项式的最高次太小，过拟合一般是因为多项式的最高次幂太大。</p>
-<p>正规化后的代价函数如下，注意尾巴上对 $θ_j$ 的求和是从1开始，也就意味着跳过了 $θ_0$</p>
-<p><img src="http://os9coobhw.bkt.clouddn.com/QQ20171110-234540.png"></p>
-<p>值得注意的是梯度方程不需要对 $θ_0$ 进行正规化，所以方程变成了两部分：</p>
-<p><img src="http://os9coobhw.bkt.clouddn.com/QQ20171110-234417.png"></p>
-<p><img src="http://os9coobhw.bkt.clouddn.com/QQ20171110-234423.png"></p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="params">[J, grad]</span> = <span class="title">costFunctionReg</span><span class="params">(theta, X, y, lambda)</span></span></span><br><span class="line"><span class="comment">%COSTFUNCTIONREG Compute cost and gradient for logistic regression with regularization</span></span><br><span class="line"><span class="comment">%   J = COSTFUNCTIONREG(theta, X, y, lambda) computes the cost of using</span></span><br><span class="line"><span class="comment">%   theta as the parameter for regularized logistic regression and the</span></span><br><span class="line"><span class="comment">%   gradient of the cost w.r.t. to the parameters. </span></span><br><span class="line"></span><br><span class="line"><span class="comment">% Initialize some useful values</span></span><br><span class="line">m = <span class="built_in">length</span>(y); <span class="comment">% number of training examples</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% You need to return the following variables correctly </span></span><br><span class="line">J = <span class="number">0</span>;</span><br><span class="line">grad = <span class="built_in">zeros</span>(<span class="built_in">size</span>(theta));</span><br><span class="line"></span><br><span class="line"><span class="comment">% ====================== YOUR CODE HERE ======================</span></span><br><span class="line"><span class="comment">% Instructions: Compute the cost of a particular choice of theta.</span></span><br><span class="line"><span class="comment">%               You should set J to the cost.</span></span><br><span class="line"><span class="comment">%               Compute the partial derivatives and set grad to the partial</span></span><br><span class="line"><span class="comment">%               derivatives of the cost w.r.t. each parameter in theta</span></span><br><span class="line"></span><br><span class="line">J = <span class="number">1</span>/m * sum(-y .* <span class="built_in">log</span>(sigmoid(X * theta)) - (<span class="number">1</span> - y) .* <span class="built_in">log</span>(<span class="number">1</span> - sigmoid(X * theta)));</span><br><span class="line">J = J + lambda/(<span class="number">2</span>*m) * sum(theta(<span class="number">2</span>:<span class="built_in">size</span>(theta)) .^ <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">grad = <span class="number">1</span>/m * (X&#x27; * (sigmoid(X * theta) - y)) + lambda/m * theta;</span><br><span class="line">grad(<span class="number">1</span>) = grad(<span class="number">1</span>) - lambda/m * theta(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">% =============================================================</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-
-<p>根据上述的三张图不难写出上述四行代码</p>
-<h3 id="调整λ参数的大小"><a href="#调整λ参数的大小" class="headerlink" title="调整λ参数的大小"></a>调整λ参数的大小</h3><h4 id="λ-x3D-1"><a href="#λ-x3D-1" class="headerlink" title="λ &#x3D; 1"></a>λ &#x3D; 1</h4><p><img src="http://os9coobhw.bkt.clouddn.com/a.png"></p>
-<h4 id="λ-x3D-10"><a href="#λ-x3D-10" class="headerlink" title="λ &#x3D; 10"></a>λ &#x3D; 10</h4><p><img src="http://os9coobhw.bkt.clouddn.com/b.png"></p>
-<h4 id="λ-x3D-0-0001"><a href="#λ-x3D-0-0001" class="headerlink" title="λ &#x3D; 0.0001"></a>λ &#x3D; 0.0001</h4><p><img src="http://os9coobhw.bkt.clouddn.com/d.png"></p>
-<p>可以看出 $λ$ 越小，对训练样本的拟合程度越好，从而导致了整个曲线看起来比较扭曲，没有平滑感；而 $λ$ 越大，对训练样本的拟合程度越差，曲线越光滑。</p>
-
-      
+            <div class="description center-align">
+                
+                <span id="subtitle"></span>
+                <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+                <script>
+                    var typed = new Typed("#subtitle", {
+                        strings: [ 
+                            
+                                "从来没有真正的绝境, 只有心灵的迷途",
+                            
+                                "Never really desperate, only the lost of the soul",
+                            
+                        ],
+                        startDelay: 300,
+                        typeSpeed: 100,
+                        loop: true,
+                        backSpeed: 50,
+                        showCursor: true
+                    });
+                </script>
+                
+            </div>
+        </div>
     </div>
-    <footer class="article-footer">
-      <a data-url="https://hijerry.cn/p/48722.html" data-id="cl0e36fzd000bosct107r3gi7" data-title="Exercise2: Logistic Regression" class="article-share-link">Teilen</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
+</div>
 
 
+<script>
+    // 每天切换 banner 图.  Switch banner image every day.
+    var bannerUrl = "/medias/banner/" + new Date().getDay() + '.jpg';
+    $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
+</script>
 
-  
-    <article id="post-11/Centos7修改docker的Data-Space-Total大小" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/p/55543.html" class="article-date">
-  <time class="dt-published" datetime="2017-11-03T08:15:00.000Z" itemprop="datePublished">2017-11-03</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%BD%AF%E4%BB%B6%E6%8A%80%E6%9C%AF/">软件技术</a>
-  </div>
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/p/55543.html">Centos7修改docker的Data Space Total大小</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="记得备份你的容器"><a href="#记得备份你的容器" class="headerlink" title="记得备份你的容器"></a>记得备份你的容器</h3><p>此处就不多做介绍了</p>
-<h3 id="–storage-opts-参数介绍"><a href="#–storage-opts-参数介绍" class="headerlink" title="–storage-opts 参数介绍"></a>–storage-opts 参数介绍</h3><p>devicemapper文档：<a target="_blank" rel="noopener" href="https://github.com/moby/moby/tree/master/daemon/graphdriver/devmapper">https://github.com/moby/moby/tree/master/daemon/graphdriver/devmapper</a><br>docker官方文档：<a target="_blank" rel="noopener" href="https://docs.docker.com/engine/reference/commandline/dockerd/#options-per-storage-driver">https://docs.docker.com/engine/reference/commandline/dockerd/#options-per-storage-driver</a></p>
-<h3 id="修改–storage-opts参数"><a href="#修改–storage-opts参数" class="headerlink" title="修改–storage-opts参数"></a>修改–storage-opts参数</h3><p>停止docker，修改配置，重新加载配置</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl stop docker</span><br><span class="line">sudo vi /lib/systemd/system/docker.service</span><br></pre></td></tr></table></figure>
-<p>找到<code>ExecStart=/usr/bin/dockerd</code><br>在这一行后面加上<br><code>--storage-opt dm.loopdatasize=8G --storage-opt dm.loopmetadatasize=4G --storage-opt dm.basesize=8G</code> </p>
-<p>意思是为，设置devicemapper的data为8G，metadata为4G，镜像的大小不能大于8G</p>
-<p>记得还要抹去现有的空间，<strong>请确保你已经完成了第一步</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo rm -rf /var/lib/docker</span><br><span class="line">sudo mkdir -p /var/lib/docker/devicemapper/devicemapper/</span><br><span class="line">sudo dd if=/dev/zero of=/var/lib/docker/devicemapper/devicemapper/data bs=1M count=0 seek=8192</span><br><span class="line">sudo dd if=/dev/zero of=/var/lib/docker/devicemapper/devicemapper/metadata bs=1M count=0 seek=4096</span><br></pre></td></tr></table></figure>
-
-<p>完成后运行</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl start docker</span><br><span class="line">docker info</span><br></pre></td></tr></table></figure>
-<p>查看是否设置正确，貌似比预设的大了一点点。<br><img src="http://img.blog.csdn.net/20171103161359094?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvVGlueUppYW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="dd"></p>
-
-      
     </div>
-    <footer class="article-footer">
-      <a data-url="https://hijerry.cn/p/55543.html" data-id="cl0e36fz40001oscthwvj97zl" data-title="Centos7修改docker的Data Space Total大小" class="article-share-link">Teilen</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/devopps/" rel="tag">devopps</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
+</div>
 
 
+<main class="content">
 
-  
-    <article id="post-11/Mac下使用命令行或脚本删除文件到废纸篓" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/p/35267.html" class="article-date">
-  <time class="dt-published" datetime="2017-10-10T09:37:00.000Z" itemprop="datePublished">2017-10-10</time>
-</a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%BD%AF%E4%BB%B6%E6%8A%80%E6%9C%AF/">软件技术</a>
-  </div>
 
-  </div>
-  <div class="article-inner">
     
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/p/35267.html">Mac下使用命令行或脚本删除文件到废纸篓</a>
-    </h1>
-  
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>mac删除文件有两种方式：</p>
-<ol>
-<li>使用Finder的<code>移到废纸篓</code>功能</li>
-<li>使用rm命令<br>  第二种方式删除的文件，不能在废纸篓中找到，也就是所谓的<code>彻底删除</code><br>  但是我们在使用terminal的时候，一般都会使用rm删除文件，那要是删错了不就完了？而且我们的mac上本身又自带了废纸篓，为什么不能将两者结合起来呢？于是我做了一些探究</li>
-</ol>
-<h3 id="Mac废纸篓的真实面目"><a href="#Mac废纸篓的真实面目" class="headerlink" title="Mac废纸篓的真实面目"></a>Mac废纸篓的真实面目</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ls ~/.Trash</span><br></pre></td></tr></table></figure>
-<p>你会发现，<code>~/.Trash</code>目录就是废纸篓<br>但是它只是一个普通的目录，只是Finder将删除的文件移动到了这个目录而已，不相信？接着往下看</p>
-<h3 id="x2F-Trash的本质只是文件夹"><a href="#x2F-Trash的本质只是文件夹" class="headerlink" title="~&#x2F;.Trash的本质只是文件夹"></a>~&#x2F;.Trash的本质只是文件夹</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line">echo &quot;666666&quot; &gt;&gt; wantodel.txt</span><br><span class="line">mv wantodel.txt ~/.Trash</span><br></pre></td></tr></table></figure>
-<p>此时打开你的废纸篓一看，里面有一个<code>wantodel.txt</code>文件，但是你无法将它<code>放回原处</code>，而如果你使用Finder的<code>移到废纸篓</code>功能删除的文件却可以<code>放回原处</code></p>
-<h3 id="Finder是如何实现放回原处的呢？"><a href="#Finder是如何实现放回原处的呢？" class="headerlink" title="Finder是如何实现放回原处的呢？"></a>Finder是如何实现放回原处的呢？</h3><p>最有可能是将操作记录到了数据库中。</p>
-<p>不大可能写在log日志中，因为我grep了整个磁盘都没找到相关的文件。</p>
-<h3 id="最好的帮手是Finder"><a href="#最好的帮手是Finder" class="headerlink" title="最好的帮手是Finder"></a>最好的帮手是Finder</h3><p>既然<code>~/.Trash</code>只是普通文件夹，那我们单纯使用linux命令是无法达到目的的了。<br>我们现在已知<code>Finder</code>可以达到预期目的，如果我们能调用或是告诉<code>Finder</code>的我们要做什么，并且它也愿意做，不就可以达到目的了么？<br>在window中有一个<code>消息</code>的概念，意思是一个应用程序A可以对另一个应用程序B发送<code>消息</code>以操作B来完成某项指定的任务，那Mac种是否也有这种或是类似这种的机制呢？<br>答案是AppleScript，是一种脚本语言，可以用来控制Mac上的应用程序。<br>最后附上使用shell通知Finder程序移动文件废纸篓的样例代码</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line">fp=/absolute/path/to/file</span><br><span class="line">osascript &lt;&lt; EOF</span><br><span class="line">tell application &quot;Finder&quot;</span><br><span class="line">    posix path of ((delete posix file &quot;$&#123;fp&#125;&quot;) as unicode text)</span><br><span class="line">end tell</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
-      
+    <!-- 所有文章卡片 -->
+    <article id="articles" class="container articles">
+        <div class="row article-row">
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/p/48722.html">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Exercise2: Logistic Regression">
+                            
+                            <span class="card-title">Exercise2: Logistic Regression</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                序一个月快过去了，总算是学完Coursera上的第三课了，其实我的进度比预期满了一周。这是第二次做Coursera的编程作业，对比大学课程的作业，Coursera的难度应该在中等甚至偏下，对我来说唯一的难度在于适应“新”，有以下几点：
+
+新
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2017-11-10
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E7%A0%94/" class="post-category">
+                                    研
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                            <span class="chip bg-color">机器学习</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/p/55543.html">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Centos7修改docker的Data Space Total大小">
+                            
+                            <span class="card-title">Centos7修改docker的Data Space Total大小</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                记得备份你的容器此处就不多做介绍了
+–storage-opts 参数介绍devicemapper文档：https://github.com/moby/moby/tree/master/daemon/graphdriver/devmapper
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2017-11-03
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6%E6%8A%80%E6%9C%AF/" class="post-category">
+                                    软件技术
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/devopps/">
+                            <span class="chip bg-color">devopps</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/p/35267.html">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Mac下使用命令行或脚本删除文件到废纸篓">
+                            
+                            <span class="card-title">Mac下使用命令行或脚本删除文件到废纸篓</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                mac删除文件有两种方式：
+
+使用Finder的移到废纸篓功能
+使用rm命令  第二种方式删除的文件，不能在废纸篓中找到，也就是所谓的彻底删除  但是我们在使用terminal的时候，一般都会使用rm删除文件，那要是删错了不就完了？而且我们
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2017-10-10
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6%E6%8A%80%E6%9C%AF/" class="post-category">
+                                    软件技术
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/mac/">
+                            <span class="chip bg-color">mac</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/p/49319.html">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="git托管现有代码">
+                            
+                            <span class="card-title">git托管现有代码</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                场景：将现有的文件托管至新的git repo
+用到的命令：
+git clone 复制网络仓库到本地
+git add [file]  加入一个文件&#x2F;目录到版本控制
+git commit 提交修改到仓库(本地)
+git push 推送
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2017-02-13
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6%E6%8A%80%E6%9C%AF/" class="post-category">
+                                    软件技术
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/%E6%97%A0%E6%A0%87%E7%AD%BE/">
+                            <span class="chip bg-color">无标签</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/p/11354.html">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="打开FTP服务器上的文件夹时发生错误,请检查是否有权限访问该文件夹">
+                            
+                            <span class="card-title">打开FTP服务器上的文件夹时发生错误,请检查是否有权限访问该文件夹</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                环境：Wndows2012 R2，
+已完成操作：FTP服务器搭建、防火墙规则允许(或关闭防火墙)、权限已给(Administrator)
+客户端：FileZilla（或ie浏览器、windows资源管理器）
+场景：
+使用windows资源管
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2017-01-02
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6%E6%8A%80%E6%9C%AF/" class="post-category">
+                                    软件技术
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/%E6%97%A0%E6%A0%87%E7%AD%BE/">
+                            <span class="chip bg-color">无标签</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/p/14496.html">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="负数的除2和右移1位">
+                            
+                            <span class="card-title">负数的除2和右移1位</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                令人费解的输出且看如下代码，试问输出是什么。
+1234int F, G, X = -5;F = X / 2;G = X &gt;&gt; 1;Console.WriteLine(&quot;F = &#123;0&#125;, G= &#1
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2016-02-23
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6%E6%8A%80%E6%9C%AF/" class="post-category">
+                                    软件技术
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/%E6%B1%87%E7%BC%96/">
+                            <span class="chip bg-color">汇编</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/p/9879.html">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="汇编实现回文判断">
+                            
+                            <span class="card-title">汇编实现回文判断</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                不多说，直接上代码
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2015-12-13
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6%E6%8A%80%E6%9C%AF/" class="post-category">
+                                    软件技术
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/%E6%B1%87%E7%BC%96/">
+                            <span class="chip bg-color">汇编</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+        </div>
+    </article>
+
+</main>
+
+
+<div class="container paging">
+    <div class="row">
+        <div class="col s6 m4 l4">
+            
+            <a href="/page/4/"
+               class="left btn-floating btn-large waves-effect waves-light bg-color">
+                <i class="fas fa-angle-left"></i>
+            </a>
+            
+        </div>
+        <div class="page-info col m4 l4 hide-on-small-only">
+            <div class="center-align b-text-gray">5 / 5</div>
+        </div>
+        <div class="col s6 m4 l4">
+            
+            <a class="right btn-floating btn-large disabled">
+                <i class="fas fa-angle-right"></i>
+            </a>
+            
+        </div>
     </div>
-    <footer class="article-footer">
-      <a data-url="https://hijerry.cn/p/35267.html" data-id="cl0e36fzg000koscteac8ezup" data-title="Mac下使用命令行或脚本删除文件到废纸篓" class="article-share-link">Teilen</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/" rel="tag">mac</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
+</div>
 
 
 
-  
-    <article id="post-11/git托管现有代码" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/p/49319.html" class="article-date">
-  <time class="dt-published" datetime="2017-02-13T11:49:00.000Z" itemprop="datePublished">2017-02-13</time>
-</a>
+
+    <footer class="page-footer bg-color">
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%BD%AF%E4%BB%B6%E6%8A%80%E6%9C%AF/">软件技术</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
         
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/p/49319.html">git托管现有代码</a>
-    </h1>
-  
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
 
-      </header>
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
     
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>场景：将<strong>现有的文件</strong>托管至<strong>新的git repo</strong></p>
-<p>用到的命令：</p>
-<p>git clone 复制网络仓库到本地</p>
-<p>git add [file]  加入一个文件&#x2F;目录到版本控制</p>
-<p>git commit 提交修改到仓库(本地)</p>
-<p>git push 推送对仓库的修改到网络仓库</p>
-<h3 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h3><p>如果对一个非空目录执行clone命令是会失败的，因为git不允许这样做。</p>
-<p>进入项目目录（非空），运行下面命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd /path/to/dir</span><br><span class="line">git clone &#123;repo_url&#125; tmp</span><br><span class="line">mv tmp/.git .</span><br><span class="line">rmdir tmp</span><br><span class="line">git add .</span><br><span class="line">git commit -m &#x27;current files&#x27;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
 
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
 
-
-<h3 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h3><p><code>.git</code>是一个隐藏的git用于管理本地代码的目录</p>
-<p><code>git clone &#123;repo_url&#125; tmp</code> 其实是把远程repo加载到<code>tmp</code>目录</p>
-<p>将<code>tmp/.git</code> 直接移动到项目的根目录后运行<code>git add .</code> 其实相当于是把项目的文件放到了本地的git repo中</p>
-<p>此时运行<code>git commit </code> 就提交了现有项目文件到本地，<code>git push</code> 就把操作推向了服务器</p>
-<p>操作完成后，你的另外一个同事就可以使用<code>git clone &#123;repo_url&#125;</code> 来加载你的代码</p>
-
-      
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
     </div>
-    <footer class="article-footer">
-      <a data-url="https://hijerry.cn/p/49319.html" data-id="cl0e36fzl0010osctafnodwy0" data-title="git托管现有代码" class="article-share-link">Teilen</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%97%A0%E6%A0%87%E7%AD%BE/" rel="tag">无标签</a></li></ul>
+</div>
 
-    </footer>
-  </div>
-  
-</article>
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
 
-
-
-  
-    <article id="post-11/打开FTP服务器上的文件夹时发生错误-请检查是否有权限访问该文件夹" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/p/11354.html" class="article-date">
-  <time class="dt-published" datetime="2017-01-02T06:13:00.000Z" itemprop="datePublished">2017-01-02</time>
-</a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%BD%AF%E4%BB%B6%E6%8A%80%E6%9C%AF/">软件技术</a>
-  </div>
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/p/11354.html">打开FTP服务器上的文件夹时发生错误,请检查是否有权限访问该文件夹</a>
-    </h1>
-  
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2022</span>
+            
+            <a href="/about" target="_blank">jerrycheese</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>环境：Wndows2012 R2，</p>
-<p>已完成操作：FTP服务器搭建、防火墙规则允许(或关闭防火墙)、权限已给(Administrator)</p>
-<p>客户端：FileZilla（或ie浏览器、windows资源管理器）</p>
-<p>场景：</p>
-<p><strong>使用windows资源管理器连接ftp报错：“打开FTP服务器上的文件夹时发生错误,请检查是否有权限访问该文件夹”</strong></p>
-<p>**使用FileZilla链接时超时 **</p>
-<p>最后解决方法：</p>
-<p>在FileZilla中将FTP模式改为PORT(主动模式)即可</p>
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
 
-      
+
+
+    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1181062873" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
     </div>
-    <footer class="article-footer">
-      <a data-url="https://hijerry.cn/p/11354.html" data-id="cl0e36fzm0018osct1dnbh9fp" data-title="打开FTP服务器上的文件夹时发生错误,请检查是否有权限访问该文件夹" class="article-share-link">Teilen</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%97%A0%E6%A0%87%E7%AD%BE/" rel="tag">无标签</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-11/负数的除2和右移1位" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/p/14496.html" class="article-date">
-  <time class="dt-published" datetime="2016-02-23T10:26:00.000Z" itemprop="datePublished">2016-02-23</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%BD%AF%E4%BB%B6%E6%8A%80%E6%9C%AF/">软件技术</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/p/14496.html">负数的除2和右移1位</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="令人费解的输出"><a href="#令人费解的输出" class="headerlink" title="令人费解的输出"></a>令人费解的输出</h2><p>且看如下代码，试问输出是什么。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int F, G, X = -5;</span><br><span class="line">F = X / 2;</span><br><span class="line">G = X &gt;&gt; 1;</span><br><span class="line">Console.WriteLine(&quot;F = &#123;0&#125;, G= &#123;1&#125;&quot;, F, G);</span><br></pre></td></tr></table></figure>
-
-<p>老师说过“乘2是二进制左移1位”，那除2理所当然应该是右移1位，所以两者结果是一样的。</p>
-<p>然而，输出却是<code>F = -2, G = -3</code> ，在VS2013中，换成在codeblocks中，结果是一样的。</p>
-<h2 id="反汇编"><a href="#反汇编" class="headerlink" title="反汇编"></a>反汇编</h2><p>在VS2013中对上述代码反汇编得到下图</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1flajjjcgflj30cj06mjrv.jpg"></p>
-<p>第一句：<code>F = X / 2</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">00DF39F7  mov         eax,dword ptr [ebp-58h]   ;将X的值移到寄存器eax  </span><br><span class="line">00DF39FA  mov         ecx,2                     ;将值2移到ecx  </span><br><span class="line">00DF39FF  cdq                                   ;将eax高位扩展到edx  </span><br><span class="line">00DF3A00  idiv        eax,ecx                   ;做除法运算  </span><br><span class="line">00DF3A02  mov         dword ptr [ebp-50h],eax   ;移动到内存  </span><br></pre></td></tr></table></figure>
-
-<p>idiv指令是<code>带符号的二进制除法</code> </p>
-<p>第二句：<code>G = X &gt;&gt; 1</code></p>
-<p>逻辑右移，最低位被舍弃</p>
-<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p><strong>除法运算，结果都向0取整；位运算结果向下取整</strong></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hijerry.cn/p/14496.html" data-id="cl0e36fzp001losct6qrw93fq" data-title="负数的除2和右移1位" class="article-share-link">Teilen</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B1%87%E7%BC%96/" rel="tag">汇编</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-11/汇编实现回文判断" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/p/9879.html" class="article-date">
-  <time class="dt-published" datetime="2015-12-13T02:48:00.000Z" itemprop="datePublished">2015-12-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%BD%AF%E4%BB%B6%E6%8A%80%E6%9C%AF/">软件技术</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/p/9879.html">汇编实现回文判断</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>不多说，直接上代码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">DATA    SEGMENT  </span><br><span class="line">Prompt  DB  &#x27;Please enter a string:$&#x27;  </span><br><span class="line">YesStr  DB  13, 10, &#x27;This string is palindrome$&#x27;  </span><br><span class="line">NoStr   DB  13, 10, &#x27;This string is not palindrome$&#x27;  </span><br><span class="line">Input   DB  128, ?, 128 DUP(0)  </span><br><span class="line">DATA    ENDS  </span><br><span class="line">STACK   SEGMENT  </span><br><span class="line">    DB  128 DUP(?)  </span><br><span class="line">STACK   ENDS  </span><br><span class="line">CODE    SEGMENT  </span><br><span class="line">    ASSUME  CS:CODE, DS:DATA, SS:STACK  </span><br><span class="line">MAIN:     </span><br><span class="line">    MOV AX, DATA  </span><br><span class="line">    MOV DS, AX  </span><br><span class="line">    MOV DX, offset Prompt  </span><br><span class="line">    MOV AH, 09H  </span><br><span class="line">    INT 21H  </span><br><span class="line">    ;  </span><br><span class="line">    MOV DX, OFFSET Input  </span><br><span class="line">    MOV AH, 0AH  </span><br><span class="line">    INT 21H  </span><br><span class="line">    ;  </span><br><span class="line">    MOV DI, OFFSET Input  </span><br><span class="line">    MOV SI, OFFSET Input  </span><br><span class="line">      </span><br><span class="line"></span><br><span class="line">    XOR CX, CX  </span><br><span class="line">    MOV CL, [DI+1]  </span><br><span class="line">    ADD DI, 2  </span><br><span class="line">    ADD SI, 2  </span><br><span class="line">    DEC CX  </span><br><span class="line">    ADD DI, CX  </span><br><span class="line">    ;force DI point to the last word of Input  </span><br><span class="line">AGAIN:  </span><br><span class="line">    CMP SI, DI  </span><br><span class="line">    JA  TESSKIP  </span><br><span class="line">    MOV AH, byte ptr [SI]  </span><br><span class="line">    MOV AL, byte ptr [DI]  </span><br><span class="line">    CMP AH, AL  </span><br><span class="line">    JNE NOSKIP  </span><br><span class="line">    INC SI  </span><br><span class="line">    DEC DI  </span><br><span class="line">    JMP AGAIN  </span><br><span class="line">TESSKIP:  </span><br><span class="line">    MOV DX, OFFSET YesStr  </span><br><span class="line">    MOV AH, 09H  </span><br><span class="line">    INT     21H  </span><br><span class="line">    JMP ENDSKPI  </span><br><span class="line">    ;  </span><br><span class="line">  </span><br><span class="line">NOSKIP:  </span><br><span class="line">    MOV DX, OFFSET NoStr  </span><br><span class="line">    MOV AH, 09H  </span><br><span class="line">    INT     21H  </span><br><span class="line">    ;  </span><br><span class="line">ENDSKPI:  </span><br><span class="line">    MOV AH, 4CH  </span><br><span class="line">    INT     21H  </span><br><span class="line">      </span><br><span class="line">CODE    ENDS  </span><br><span class="line">    END MAIN  </span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hijerry.cn/p/9879.html" data-id="cl0e36fzo001gosct47p9g1ra" data-title="汇编实现回文判断" class="article-share-link">Teilen</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B1%87%E7%BC%96/" rel="tag">汇编</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/page/4/">&laquo; zurück</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
-  </nav>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Kategorien</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Web%E5%85%A8%E6%A0%88/">Web全栈</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A0%94/">研</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B/">程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E9%A2%98/">编程题</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AC%E8%BD%BD/">转载</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AF%E4%BB%B6%E6%8A%80%E6%9C%AF/">软件技术</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BP%E7%AE%97%E6%B3%95/" rel="tag">BP算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/" rel="tag">Laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/" rel="tag">NLP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NP%E5%AE%8C%E5%85%A8%E6%80%A7/" rel="tag">NP完全性</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stanford/" rel="tag">Stanford</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tensoflow/" rel="tag">Tensoflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web%E6%80%BB%E7%BB%93/" rel="tag">Web总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/devopps/" rel="tag">devopps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/" rel="tag">mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/medium/" rel="tag">medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/word2vec/" rel="tag">word2vec</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/" rel="tag">zsh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BE%9D%E8%B5%96%E8%A7%A3%E6%9E%90/" rel="tag">依赖解析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%91%E6%8C%87Offer/" rel="tag">剑指Offer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%84%9F%E7%9F%A5%E6%9C%BA/" rel="tag">感知机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A0%E6%A0%87%E7%AD%BE/" rel="tag">无标签</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91/" rel="tag">机器翻译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B1%87%E7%BC%96/" rel="tag">汇编</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E4%B9%8E/" rel="tag">知乎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" rel="tag">神经网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" rel="tag">线性代数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/" rel="tag">线性模型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87/" rel="tag">论文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag">运维</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/BP%E7%AE%97%E6%B3%95/" style="font-size: 10px;">BP算法</a> <a href="/tags/Laravel/" style="font-size: 14px;">Laravel</a> <a href="/tags/NLP/" style="font-size: 18px;">NLP</a> <a href="/tags/NP%E5%AE%8C%E5%85%A8%E6%80%A7/" style="font-size: 10px;">NP完全性</a> <a href="/tags/Stanford/" style="font-size: 10px;">Stanford</a> <a href="/tags/Tensoflow/" style="font-size: 10px;">Tensoflow</a> <a href="/tags/Web%E6%80%BB%E7%BB%93/" style="font-size: 16px;">Web总结</a> <a href="/tags/devopps/" style="font-size: 12px;">devopps</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/leetcode/" style="font-size: 16px;">leetcode</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mac/" style="font-size: 12px;">mac</a> <a href="/tags/medium/" style="font-size: 10px;">medium</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a> <a href="/tags/zsh/" style="font-size: 10px;">zsh</a> <a href="/tags/%E4%BE%9D%E8%B5%96%E8%A7%A3%E6%9E%90/" style="font-size: 10px;">依赖解析</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14px;">前端</a> <a href="/tags/%E5%89%91%E6%8C%87Offer/" style="font-size: 10px;">剑指Offer</a> <a href="/tags/%E6%84%9F%E7%9F%A5%E6%9C%BA/" style="font-size: 10px;">感知机</a> <a href="/tags/%E6%97%A0%E6%A0%87%E7%AD%BE/" style="font-size: 12px;">无标签</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">机器学习</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91/" style="font-size: 10px;">机器翻译</a> <a href="/tags/%E6%B1%87%E7%BC%96/" style="font-size: 12px;">汇编</a> <a href="/tags/%E7%9F%A5%E4%B9%8E/" style="font-size: 10px;">知乎</a> <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">神经网络</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" style="font-size: 10px;">线性代数</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/" style="font-size: 10px;">线性模型</a> <a href="/tags/%E8%AE%BA%E6%96%87/" style="font-size: 10px;">论文</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 10px;">运维</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/p/49582.html">2019 Mac安装cuda+cudnn+pytorch</a>
-          </li>
-        
-          <li>
-            <a href="/p/48009.html">复杂度与NP完全性</a>
-          </li>
-        
-          <li>
-            <a href="/p/55002.html">2019-CS224n-Assignment4</a>
-          </li>
-        
-          <li>
-            <a href="/p/35741.html">2019-CS224n-Assignment3</a>
-          </li>
-        
-          <li>
-            <a href="/p/13983.html">NLP会议介绍</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2022 jerrycheese<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
 </footer>
 
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
     </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
     
 
+    
 
-<script src="/js/jquery-3.4.1.min.js"></script>
+    <!-- 雪花特效 -->
+    
 
+    <!-- 鼠标星星特效 -->
+    
 
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
 
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
+    <!-- Baidu Analytics -->
 
+    <!-- Baidu Push -->
 
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
 
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
 
-<script src="/js/script.js"></script>
+    
 
+    
 
+    <!--腾讯兔小巢-->
+    
+    
 
+    
 
+    
 
-  </div>
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
 </body>
+
 </html>
