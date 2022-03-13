@@ -6,7 +6,10 @@
     <meta charset="utf-8">
     <meta name="keywords" content="负数的除2和右移1位, 全栈说">
     <meta name="description" content="令人费解的输出且看如下代码，试问输出是什么。
-1234int F, G, X = -5;F = X / 2;G = X &amp;gt;&amp;gt; 1;Console.WriteLine(&amp;quot;F = &amp;#123;0&amp;#125;, G= &amp;#1">
+int F, G, X &amp;#x3D; -5;
+F &amp;#x3D; X &amp;#x2F; 2;
+G &amp;#x3D; X &amp;gt;&amp;gt; 1;
+Console.WriteLine(&amp;quot;F &amp;#x3">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -481,14 +484,21 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="令人费解的输出"><a href="#令人费解的输出" class="headerlink" title="令人费解的输出"></a>令人费解的输出</h2><p>且看如下代码，试问输出是什么。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int F, G, X = -5;</span><br><span class="line">F = X / 2;</span><br><span class="line">G = X &gt;&gt; 1;</span><br><span class="line">Console.WriteLine(&quot;F = &#123;0&#125;, G= &#123;1&#125;&quot;, F, G);</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">int F, G, X &#x3D; -5;
+F &#x3D; X &#x2F; 2;
+G &#x3D; X &gt;&gt; 1;
+Console.WriteLine(&quot;F &#x3D; &#123;0&#125;, G&#x3D; &#123;1&#125;&quot;, F, G);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>老师说过“乘2是二进制左移1位”，那除2理所当然应该是右移1位，所以两者结果是一样的。</p>
 <p>然而，输出却是<code>F = -2, G = -3</code> ，在VS2013中，换成在codeblocks中，结果是一样的。</p>
 <h2 id="反汇编"><a href="#反汇编" class="headerlink" title="反汇编"></a>反汇编</h2><p>在VS2013中对上述代码反汇编得到下图</p>
 <p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1flajjjcgflj30cj06mjrv.jpg"></p>
 <p>第一句：<code>F = X / 2</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">00DF39F7  mov         eax,dword ptr [ebp-58h]   ;将X的值移到寄存器eax  </span><br><span class="line">00DF39FA  mov         ecx,2                     ;将值2移到ecx  </span><br><span class="line">00DF39FF  cdq                                   ;将eax高位扩展到edx  </span><br><span class="line">00DF3A00  idiv        eax,ecx                   ;做除法运算  </span><br><span class="line">00DF3A02  mov         dword ptr [ebp-50h],eax   ;移动到内存  </span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">00DF39F7  mov         eax,dword ptr [ebp-58h]   ;将X的值移到寄存器eax  
+00DF39FA  mov         ecx,2                     ;将值2移到ecx  
+00DF39FF  cdq                                   ;将eax高位扩展到edx  
+00DF3A00  idiv        eax,ecx                   ;做除法运算  
+00DF3A02  mov         dword ptr [ebp-50h],eax   ;移动到内存  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>idiv指令是<code>带符号的二进制除法</code> </p>
 <p>第二句：<code>G = X &gt;&gt; 1</code></p>

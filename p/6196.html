@@ -520,7 +520,7 @@
 <li><code>create_time</code> 、 <code>update_time</code> 、<code>delete_time</code> 是Laravel框架所使用的用于记录数据时间的字段，所以没办法设置为了 <code>可以为空</code>。</li>
 </ul>
 <p>看看索引： </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UNIQUE KEY `type` (`type`,`login`)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">UNIQUE KEY &#96;type&#96; (&#96;type&#96;,&#96;login&#96;)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>这主要用于区分不同类型的用户。</p>
 

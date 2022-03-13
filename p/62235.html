@@ -483,7 +483,11 @@
                 <h2 id="序"><a href="#序" class="headerlink" title="序"></a>序</h2><p>接Exercise5的内容，他们都是第六周的内容。这一部分主要讲如何设计一个机器学习系统。</p>
 <h2 id="垃圾邮件分类器"><a href="#垃圾邮件分类器" class="headerlink" title="垃圾邮件分类器"></a>垃圾邮件分类器</h2><p>假设你正要去实现一个垃圾邮件分类器，你会怎么做？这是一个二分类问题，我已经学习了线性回归、逻辑回归、神经网络。最快速、准确的方式应该是先确定特征向量，收集数据，再选择一个模型，快速地进行一次测试，画出学习曲线，根据曲线分析现状是高方差还是高偏差，再进行下一步的选择。</p>
 <p>那么特征向量怎么选取呢？如果是英文，例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">From: xxxx@xx.com</span><br><span class="line">To: me@xx.com</span><br><span class="line">Subject: Buy now!!</span><br><span class="line"></span><br><span class="line">Deal of the week! Buy now!</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">From: xxxx@xx.com
+To: me@xx.com
+Subject: Buy now!!
+
+Deal of the week! Buy now!<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>可以考虑建立一个特征向量，选择100个词左右，记录词是否出现过，例如 x &#x3D; [buy, deal, discount, …, now]，对于上面这封邮件，x的值会是 x &#x3D; [1, 1, 0, …, 1]。</p>
 <p>接着就是模型选择，参考Exercise5的模型选择方法即可，那么训练集怎么获取呢？一个简单的方法是把自己的邮箱暴露给个大广告商，这样的话你可能每天都会受到上百封广告邮件，接着就是对模型进行训练了。</p>

@@ -481,12 +481,12 @@
 <p>于是我在2月底开始重新捡起黑苹果这门技艺，上网搜索才发现，如今的黑苹果教程竟然已经如此详细了，这里推荐<a target="_blank" rel="noopener" href="https://apple.sqlsec.com/">国光黑苹果教程</a>，可以说非常详细了。</p>
 <p>按照国光的教程，我在硬件准备好之后，半天就搞定了黑苹果，几乎没怎么费劲。。。</p>
 <h2 id="硬件配置"><a href="#硬件配置" class="headerlink" title="硬件配置"></a>硬件配置</h2><p>安装黑苹果最重要的三点是：硬件、EFI和折腾的心</p>
-<p>硬件是最为重要的，原则是尽量贴近白苹果的配置。包括：CPU（最为重要）、显卡（剪视频很重要）、主板、硬盘，如果你追求完美想开启wifi和AirDrop，那么无无线网卡也很重要。硬件的选择可以参考下面两个资料：</p>
+<p>硬件是最为重要的，原则是尽量贴近白苹果的配置，选择了对的配置，可以节省非常多的折腾时间。硬件的选择可以参考下面两个资料：</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://apple.sqlsec.com/1-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1-2.html#reloaded">国光黑苹果教程 - 硬件限制</a></li>
 <li><a target="_blank" rel="noopener" href="https://osx.cx/retail.html">黑苹果装机配置</a></li>
 </ul>
-<p>于是我果断把AMD CPU 和 N卡换成了 Intel CPU + A卡。因为N卡溢价我甚至还赚了500多块钱。。</p>
+<p>我把AMD CPU 和 N卡换成了 Intel CPU + A卡。因为N卡溢价我甚至还赚了500多块钱。。</p>
 <p>这里贴一下我最后安装成功的配置：</p>
 <p>MacOS：12.2.1</p>
 <p>显示器：U2790B 4K</p>
@@ -497,6 +497,7 @@
 <p>内存：光威 16GB * 2</p>
 <p>无线网卡：BCM 94360CD （免驱）</p>
 <h2 id="黑苹果情况"><a href="#黑苹果情况" class="headerlink" title="黑苹果情况"></a>黑苹果情况</h2><p><img src="http://static.hijerry.cn/20220313142822.png"></p>
+<p>镜像用的是 <a target="_blank" rel="noopener" href="https://blog.daliansky.net/">黑苹果小兵</a> 12.2.1，花费了1块钱巨资拿到的镜像下载地址。。。</p>
 <h3 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h3><p>因为之前是R5 3600，而AMD需要破解内核。出于稳定考虑，果断换成Intel CPU，这里我出现了几个选择i3 10300、i5 10400、i5 10500，此外还有带不带核显的选择。最后我选择了主频稍高一点的10500，并且带有了核显，主要是怕显卡出坑，先带个核显保底。</p>
 <p>在拿到i5 10500后，我还拿他去打了一把LOL。。。4K分辨率大乱斗<strong>全低</strong>特效团战还勉强能接受，大概30fps左右。</p>
 <h3 id="主板"><a href="#主板" class="headerlink" title="主板"></a>主板</h3><p>因为换成了Intel CPU，所以主板得跟着一起换了，选择了大众B460M，简单点，EFI也好找</p>
@@ -509,6 +510,21 @@
 <p>先是在鱼塘入了一块 <strong>博通 943602CS</strong> WIFI+蓝牙双模。到手之后发现在windows 下正常双开，而在mac下只能有wifi信号，尝试了换mac版本，打<a target="_blank" rel="noopener" href="https://github.com/acidanthera/BrcmPatchRAM/releases">BrcmPatchRAM</a>补丁，搜寻了许多资料，折腾了一天无果，最后和塘主协商退货了。</p>
 <p>之后我反手买了一块 <strong>博通 94360CD</strong> WIFI+蓝牙双模，到货后直接点亮嚯嚯~感觉是02CS有坑，要买的同学得注意一下了</p>
 <p><img src="http://static.hijerry.cn/20220313143101.png"></p>
+<h3 id="检查清单"><a href="#检查清单" class="headerlink" title="检查清单"></a>检查清单</h3><ul>
+<li>最大分辨率显示</li>
+<li>硬件解码</li>
+<li>WiFi</li>
+<li>蓝牙</li>
+<li>隔空投送</li>
+<li>USB3.0 &#x2F; 2.0</li>
+<li>显示器声音</li>
+<li>双显卡</li>
+<li>双系统切换</li>
+</ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/66a54dc2d5d5">黑苹果 EFI B460M + i5 10400&#x2F;10500&#x2F;10600&#x2F;10700</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.daliansky.net/">黑苹果小兵</a></li>
+</ul>
 
                 
             </div>
@@ -535,7 +551,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://hijerry.cn/p/undefined.html">https://hijerry.cn/p/undefined.html</a>
+                    <a href="https://hijerry.cn/p/43141.html">https://hijerry.cn/p/43141.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -753,7 +769,7 @@
                 <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/p/undefined.html">
+                <a href="/p/43141.html">
                     <div class="card-image">
                         
                         

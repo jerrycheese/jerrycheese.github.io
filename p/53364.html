@@ -549,7 +549,7 @@
 <p>$a^{(3)}_1&#x3D;softmax(z^{(3)}_1,z^{(3)})&#x3D;\frac{exp({z^{(3)}_1)}}{g(z^{(3)})}$</p>
 <p>$a^{(3)}_2&#x3D;softmax(z^{(3)}_2,z^{(3)})&#x3D;\frac{exp({z^{(3)}_2})}{g(z^{(3)})}$</p>
 <p>我们令 $\hat{y}_1&#x3D;a^{(3)}_1$ ，$\hat{y}_2&#x3D;a^{(3)}_2$，那么 $\hat{y}&#x3D;[\hat{y}_1, \hat{y}_2]$，同理设 $y&#x3D;[y_1, y_2]$</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">神经网络可以明确的用数学语言表达，它的函数表达式，可以明确的写出来</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">神经网络可以明确的用数学语言表达，它的函数表达式，可以明确的写出来<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>如果真的将这个数学表达式写出来，那么这个数学函数 $network(\cdot)$ 是一个包含 $(3+1) \times 2 + (2+1) \times 2&#x3D;14$ 个参数的函数，函数输入 $x$ 可得到预测值 $\hat{y}$ ，这个表达式会非常长。</p>
 <h2 id="反向传播原理"><a href="#反向传播原理" class="headerlink" title="反向传播原理"></a>反向传播原理</h2><p>我们现在来优化网络中这10个权重参数和4个偏置参数。</p>

@@ -483,14 +483,20 @@
                 <h3 id="记得备份你的容器"><a href="#记得备份你的容器" class="headerlink" title="记得备份你的容器"></a>记得备份你的容器</h3><p>此处就不多做介绍了</p>
 <h3 id="–storage-opts-参数介绍"><a href="#–storage-opts-参数介绍" class="headerlink" title="–storage-opts 参数介绍"></a>–storage-opts 参数介绍</h3><p>devicemapper文档：<a target="_blank" rel="noopener" href="https://github.com/moby/moby/tree/master/daemon/graphdriver/devmapper">https://github.com/moby/moby/tree/master/daemon/graphdriver/devmapper</a><br>docker官方文档：<a target="_blank" rel="noopener" href="https://docs.docker.com/engine/reference/commandline/dockerd/#options-per-storage-driver">https://docs.docker.com/engine/reference/commandline/dockerd/#options-per-storage-driver</a></p>
 <h3 id="修改–storage-opts参数"><a href="#修改–storage-opts参数" class="headerlink" title="修改–storage-opts参数"></a>修改–storage-opts参数</h3><p>停止docker，修改配置，重新加载配置</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl stop docker</span><br><span class="line">sudo vi /lib/systemd/system/docker.service</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">sudo systemctl stop docker
+sudo vi &#x2F;lib&#x2F;systemd&#x2F;system&#x2F;docker.service<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>找到<code>ExecStart=/usr/bin/dockerd</code><br>在这一行后面加上<br><code>--storage-opt dm.loopdatasize=8G --storage-opt dm.loopmetadatasize=4G --storage-opt dm.basesize=8G</code> </p>
 <p>意思是为，设置devicemapper的data为8G，metadata为4G，镜像的大小不能大于8G</p>
 <p>记得还要抹去现有的空间，<strong>请确保你已经完成了第一步</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo rm -rf /var/lib/docker</span><br><span class="line">sudo mkdir -p /var/lib/docker/devicemapper/devicemapper/</span><br><span class="line">sudo dd if=/dev/zero of=/var/lib/docker/devicemapper/devicemapper/data bs=1M count=0 seek=8192</span><br><span class="line">sudo dd if=/dev/zero of=/var/lib/docker/devicemapper/devicemapper/metadata bs=1M count=0 seek=4096</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">sudo rm -rf &#x2F;var&#x2F;lib&#x2F;docker
+sudo mkdir -p &#x2F;var&#x2F;lib&#x2F;docker&#x2F;devicemapper&#x2F;devicemapper&#x2F;
+sudo dd if&#x3D;&#x2F;dev&#x2F;zero of&#x3D;&#x2F;var&#x2F;lib&#x2F;docker&#x2F;devicemapper&#x2F;devicemapper&#x2F;data bs&#x3D;1M count&#x3D;0 seek&#x3D;8192
+sudo dd if&#x3D;&#x2F;dev&#x2F;zero of&#x3D;&#x2F;var&#x2F;lib&#x2F;docker&#x2F;devicemapper&#x2F;devicemapper&#x2F;metadata bs&#x3D;1M count&#x3D;0 seek&#x3D;4096<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>完成后运行</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl start docker</span><br><span class="line">docker info</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">sudo systemctl daemon-reload
+sudo systemctl start docker
+docker info<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>查看是否设置正确，貌似比预设的大了一点点。<br><img src="http://img.blog.csdn.net/20171103161359094?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvVGlueUppYW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="dd"></p>
 
                 

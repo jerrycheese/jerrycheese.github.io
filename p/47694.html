@@ -511,7 +511,17 @@ nginx:1.12-">
 <p>并且使用docker-compose来管理容器，它在pdf文档中有介绍，这里不再赘述。</p>
 <h2 id="多机结构"><a href="#多机结构" class="headerlink" title="多机结构"></a>多机结构</h2><p>为了实现一台真机模拟多台机，引入<code>逻辑主机</code>的概念。例如现在只有一台云主机，但是我们又要把<code>测试环境(dev)</code> 和  <code>正式环境(online)</code>分开。</p>
 <p>以下是项目完成后的目录结构，每一个目录对应一个<code>逻辑主机</code> 和独立<code>数据卷</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── dev</span><br><span class="line">│   ├── docker-compose.yml</span><br><span class="line">│   └── php</span><br><span class="line">│       └── Dockerfile</span><br><span class="line">├── online</span><br><span class="line">│   ├── docker-compose.yml</span><br><span class="line">│   └── php</span><br><span class="line">│       └── Dockerfile</span><br><span class="line">└── _self</span><br><span class="line">    └── docker-compose.yml</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">.
+├── dev
+│   ├── docker-compose.yml
+│   └── php
+│       └── Dockerfile
+├── online
+│   ├── docker-compose.yml
+│   └── php
+│       └── Dockerfile
+└── _self
+    └── docker-compose.yml<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>这里需要做以下说明：</p>
 <ul>
@@ -519,7 +529,31 @@ nginx:1.12-">
 <li><code>_self</code> 目录表示宿主主机，上面有<code>nginx</code></li>
 </ul>
 <h2 id="dev-配置"><a href="#dev-配置" class="headerlink" title="dev 配置"></a>dev 配置</h2><p><code>dev</code> 环境下有php和mysql，两个app都在独立的容器中，两者通过 <code>sock文件</code> 或网络进行通信，以下是dev环境的<code>docker-compose.yml</code> 文件内容：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">php1:</span></span><br><span class="line">    <span class="comment">#build: ./php</span></span><br><span class="line">    <span class="comment">#image: php:7.1-fpm-alpine</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">php-fpm-composer:1.0</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">dev_php1</span></span><br><span class="line">    <span class="attr">expose:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">&quot;9000&quot;</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">&quot;/data-dev/data1/:/data1/&quot;</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">&quot;/data-dev/data2/:/data2/&quot;</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">&quot;/data-dev/data2/php/conf/:/usr/local/etc/&quot;</span></span><br><span class="line">    <span class="attr">links:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">mysql1:server_mysql</span></span><br><span class="line"></span><br><span class="line"><span class="attr">mysql1:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">mysql/mysql-server:5.7.20</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">dev_mysql1</span></span><br><span class="line">    <span class="attr">expose:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">&quot;11308&quot;</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">&quot;/data-dev/data1/:/data1/&quot;</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">&quot;/data-dev/data2/:/data2/&quot;</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">&quot;/data-dev/data2/mysql/conf/:/etc/mysql/&quot;</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">MYSQL_ROOT_PASSWORD=123456789</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">php1</span><span class="token punctuation">:</span>
+    <span class="token comment">#build: ./php</span>
+    <span class="token comment">#image: php:7.1-fpm-alpine</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> php<span class="token punctuation">-</span>fpm<span class="token punctuation">-</span>composer<span class="token punctuation">:</span><span class="token number">1.0</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> dev_php1
+    <span class="token key atrule">expose</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token string">"9000"</span>
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token string">"/data-dev/data1/:/data1/"</span>
+        <span class="token punctuation">-</span> <span class="token string">"/data-dev/data2/:/data2/"</span>
+        <span class="token punctuation">-</span> <span class="token string">"/data-dev/data2/php/conf/:/usr/local/etc/"</span>
+    <span class="token key atrule">links</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> mysql1<span class="token punctuation">:</span>server_mysql
+
+<span class="token key atrule">mysql1</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> mysql/mysql<span class="token punctuation">-</span>server<span class="token punctuation">:</span>5.7.20
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> dev_mysql1
+    <span class="token key atrule">expose</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token string">"11308"</span>
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token string">"/data-dev/data1/:/data1/"</span>
+        <span class="token punctuation">-</span> <span class="token string">"/data-dev/data2/:/data2/"</span>
+        <span class="token punctuation">-</span> <span class="token string">"/data-dev/data2/mysql/conf/:/etc/mysql/"</span>
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> MYSQL_ROOT_PASSWORD=123456789<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
@@ -529,7 +563,14 @@ nginx:1.12-">
 <p><code>mysql</code> 配置文件中设置的是<code>11308</code> 端口，所以我们开放容器的<code>11308</code> 端口。</p>
 <p>其实在实际使用中，两者也都支持 <code>sock文件</code>方式进行连接。</p>
 <h3 id="自定义的php镜像"><a href="#自定义的php镜像" class="headerlink" title="自定义的php镜像"></a>自定义的php镜像</h3><p>由于官方的php缺少一些扩展，所以我基于该镜像添加了扩展和<code>compose</code>，Dockerfile如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">FROM php:7.1-fpm-alpine</span><br><span class="line">RUN apk add --no-cache \</span><br><span class="line">        libpng-dev \</span><br><span class="line">    &amp;&amp; docker-php-ext-install pdo_mysql gd zip \</span><br><span class="line">    &amp;&amp; php -r &quot;copy(&#x27;https://getcomposer.org/installer&#x27;, &#x27;composer-setup.php&#x27;);&quot; \</span><br><span class="line">    &amp;&amp; php -r &quot;if (hash_file(&#x27;SHA384&#x27;, &#x27;composer-setup.php&#x27;) ===                                                                  &#x27;544e09ee996cdf60ece3804abc52599c22b1f40f4323403c44d44fdfdd586475ca9813a858088ffbc1f233e9b180f061&#x27;) &#123; echo &#x27;Installer verified&#x27;;  &#125; else &#123; echo &#x27;Installer corrupt&#x27;; unlink(&#x27;composer-setup.php&#x27;); &#125; echo PHP_EOL;&quot; \</span><br><span class="line">    &amp;&amp; php composer-setup.php --install-dir=/usr/local/bin --filename=composer \</span><br><span class="line">    &amp;&amp; php -r &quot;unlink(&#x27;composer-setup.php&#x27;);&quot;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-Shell" data-language="Shell"><code class="language-Shell">FROM php:7.1-fpm-alpine
+RUN apk add --no-cache \
+        libpng-dev \
+    &amp;&amp; docker-php-ext-install pdo_mysql gd zip \
+    &amp;&amp; php -r &quot;copy(&#39;https:&#x2F;&#x2F;getcomposer.org&#x2F;installer&#39;, &#39;composer-setup.php&#39;);&quot; \
+    &amp;&amp; php -r &quot;if (hash_file(&#39;SHA384&#39;, &#39;composer-setup.php&#39;) &#x3D;&#x3D;&#x3D;                                                                  &#39;544e09ee996cdf60ece3804abc52599c22b1f40f4323403c44d44fdfdd586475ca9813a858088ffbc1f233e9b180f061&#39;) &#123; echo &#39;Installer verified&#39;;  &#125; else &#123; echo &#39;Installer corrupt&#39;; unlink(&#39;composer-setup.php&#39;); &#125; echo PHP_EOL;&quot; \
+    &amp;&amp; php composer-setup.php --install-dir&#x3D;&#x2F;usr&#x2F;local&#x2F;bin --filename&#x3D;composer \
+    &amp;&amp; php -r &quot;unlink(&#39;composer-setup.php&#39;);&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>为了避免构建多层镜像又保证命令的整洁性，使用 <code>\</code> (表示换行)把要执行的命令分开。</p>
 <p>可以看到我这里添加了<code>pdo_mysql</code> 、<code>gd</code> 、<code>zip</code> 扩展，其中<code>zip</code> 镜像是安装compose必要的，且为了安装<code>gd</code> 扩展，系统必须要先安装<code>libpng-dev</code> 库。</p>
@@ -537,7 +578,31 @@ nginx:1.12-">
 <p>根据这个Dockerfile构建了名为<code>php-fpm-composer:1.0</code> 的镜像。</p>
 <h3 id="其他配置"><a href="#其他配置" class="headerlink" title="其他配置"></a>其他配置</h3><p><code>dev_mysql1</code> 的 <code>MYSQL_ROOT_PASSWORD</code> 表示数据库初始密码，如果数据库初始化过了（数据卷中已有数据）则没效了。</p>
 <h2 id="online配置"><a href="#online配置" class="headerlink" title="online配置"></a>online配置</h2><p><code>online</code> 环境的<code>docker-compose.yml</code> 文件内容如下：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">php1:</span></span><br><span class="line">    <span class="comment">#build: ./php</span></span><br><span class="line">    <span class="comment">#image: php:7.1-fpm-alpine</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">php-fpm-composer:1.0</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">online_php1</span></span><br><span class="line">    <span class="attr">expose:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">&quot;9000&quot;</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">&quot;/data-online/data1/:/data1/&quot;</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">&quot;/data-online/data2/:/data2/&quot;</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">&quot;/data-online/data2/php/conf/:/usr/local/etc/&quot;</span></span><br><span class="line">    <span class="attr">links:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">mysql1:server_mysql</span></span><br><span class="line"></span><br><span class="line"><span class="attr">mysql1:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">mysql/mysql-server:5.7.20</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">online_mysql1</span></span><br><span class="line">    <span class="attr">expose:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">&quot;11308&quot;</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">&quot;/data-online/data1/:/data1/&quot;</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">&quot;/data-online/data2/:/data2/&quot;</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">&quot;/data-online/data2/mysql/conf/:/etc/mysql/&quot;</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">MYSQL_ROOT_PASSWORD=123456789</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">php1</span><span class="token punctuation">:</span>
+    <span class="token comment">#build: ./php</span>
+    <span class="token comment">#image: php:7.1-fpm-alpine</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> php<span class="token punctuation">-</span>fpm<span class="token punctuation">-</span>composer<span class="token punctuation">:</span><span class="token number">1.0</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> online_php1
+    <span class="token key atrule">expose</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token string">"9000"</span>
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token string">"/data-online/data1/:/data1/"</span>
+        <span class="token punctuation">-</span> <span class="token string">"/data-online/data2/:/data2/"</span>
+        <span class="token punctuation">-</span> <span class="token string">"/data-online/data2/php/conf/:/usr/local/etc/"</span>
+    <span class="token key atrule">links</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> mysql1<span class="token punctuation">:</span>server_mysql
+
+<span class="token key atrule">mysql1</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> mysql/mysql<span class="token punctuation">-</span>server<span class="token punctuation">:</span>5.7.20
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> online_mysql1
+    <span class="token key atrule">expose</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token string">"11308"</span>
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token string">"/data-online/data1/:/data1/"</span>
+        <span class="token punctuation">-</span> <span class="token string">"/data-online/data2/:/data2/"</span>
+        <span class="token punctuation">-</span> <span class="token string">"/data-online/data2/mysql/conf/:/etc/mysql/"</span>
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> MYSQL_ROOT_PASSWORD=123456789<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
@@ -548,47 +613,85 @@ nginx:1.12-">
 <p><img src="http://os9coobhw.bkt.clouddn.com/d6c6230a46f5cff94d795f28b21dc5cb.jpg"></p>
 <p><code>圆圈</code> 表示<code>逻辑主机</code>， <code>矩形框</code> 内是英文的表示容器，英文表示容器名称。</p>
 <p><code>宿主环境</code> （nginx）的<code>docker-compose.yml</code> 文件内容如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">nginx1:</span><br><span class="line">    image: nginx:1.12-alpine</span><br><span class="line">    container_name: nginx1</span><br><span class="line">    ports:</span><br><span class="line">        - &quot;80:80&quot;</span><br><span class="line">        - &quot;443:443&quot;</span><br><span class="line">    expose:</span><br><span class="line">        - &#x27;80&#x27;</span><br><span class="line">        - &#x27;443&#x27;</span><br><span class="line">    volumes:</span><br><span class="line">        - &quot;/data/:/data/&quot;</span><br><span class="line">        - &quot;/data1/:/data1/&quot;</span><br><span class="line">        - &quot;/data2/:/data2/&quot;</span><br><span class="line">        - &quot;/data2/nginx/conf/:/etc/nginx/&quot;</span><br><span class="line">        - &quot;/data-dev/:/data-dev/&quot;</span><br><span class="line">        - &quot;/data-online/:/data-online/&quot;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">nginx1:
+    image: nginx:1.12-alpine
+    container_name: nginx1
+    ports:
+        - &quot;80:80&quot;
+        - &quot;443:443&quot;
+    expose:
+        - &#39;80&#39;
+        - &#39;443&#39;
+    volumes:
+        - &quot;&#x2F;data&#x2F;:&#x2F;data&#x2F;&quot;
+        - &quot;&#x2F;data1&#x2F;:&#x2F;data1&#x2F;&quot;
+        - &quot;&#x2F;data2&#x2F;:&#x2F;data2&#x2F;&quot;
+        - &quot;&#x2F;data2&#x2F;nginx&#x2F;conf&#x2F;:&#x2F;etc&#x2F;nginx&#x2F;&quot;
+        - &quot;&#x2F;data-dev&#x2F;:&#x2F;data-dev&#x2F;&quot;
+        - &quot;&#x2F;data-online&#x2F;:&#x2F;data-online&#x2F;&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>可以看到，为了<code>dev</code>、<code>online</code> 提供服务，需要将两个<code>逻辑主机</code>的<code>数据目录</code> 映射到nginx容器中去，从而达到nginx与宿主主机的文件系统是一样的。</p>
 <h3 id="文件路径"><a href="#文件路径" class="headerlink" title="文件路径"></a>文件路径</h3><p>在进行nginx配置的时候，需要非常注意的是文件路径。</p>
 <p>在<code>dev</code> 逻辑主机中，网站根目录是<code>/data1/sites/html</code>，这个目录对应于宿主主机的<code>/data-dev/data1/sites/html</code> ，那么在nginx中配置的时候，就需要特别注意。</p>
 <p>下面是nginx 为<code>dev</code> 环境提供服务所写的配置信息：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name dev.domain.com;</span><br><span class="line">    root /data-dev/data1/sites/html/;</span><br><span class="line">    index index.html index.htm index.php;</span><br><span class="line"></span><br><span class="line">    access_log  /data2/nginx/logs/dev/html_access.log  main;</span><br><span class="line">    error_log  /data2/nginx/logs/dev/html_error.log  warn;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    # use php-fpm.sock</span><br><span class="line">    location ~ \.php$ &#123;</span><br><span class="line">        fastcgi_pass   unix:/data-dev/data2/socks/php-fpm.sock;</span><br><span class="line">        fastcgi_index  index.php;</span><br><span class="line">        fastcgi_param  SCRIPT_FILENAME  /data1/sites/html$fastcgi_script_name;</span><br><span class="line">        include        fastcgi_params;</span><br><span class="line">    &#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">...
+    listen 80;
+    server_name dev.domain.com;
+    root &#x2F;data-dev&#x2F;data1&#x2F;sites&#x2F;html&#x2F;;
+    index index.html index.htm index.php;
+
+    access_log  &#x2F;data2&#x2F;nginx&#x2F;logs&#x2F;dev&#x2F;html_access.log  main;
+    error_log  &#x2F;data2&#x2F;nginx&#x2F;logs&#x2F;dev&#x2F;html_error.log  warn;
+
+
+    # use php-fpm.sock
+    location ~ \.php$ &#123;
+        fastcgi_pass   unix:&#x2F;data-dev&#x2F;data2&#x2F;socks&#x2F;php-fpm.sock;
+        fastcgi_index  index.php;
+        fastcgi_param  SCRIPT_FILENAME  &#x2F;data1&#x2F;sites&#x2F;html$fastcgi_script_name;
+        include        fastcgi_params;
+    &#125;
+...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>由于<code>nginx</code>运行在宿主主机，所以使用的是宿主主机的文件系统：（下面的<code>/data2</code> 是宿主主机上的）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root /data-dev/data1/sites/html/;</span><br><span class="line">access_log  /data2/nginx/logs/dev/html_access.log  main;</span><br><span class="line">error_log  /data2/nginx/logs/dev/html_error.log  warn;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">root &#x2F;data-dev&#x2F;data1&#x2F;sites&#x2F;html&#x2F;;
+access_log  &#x2F;data2&#x2F;nginx&#x2F;logs&#x2F;dev&#x2F;html_access.log  main;
+error_log  &#x2F;data2&#x2F;nginx&#x2F;logs&#x2F;dev&#x2F;html_error.log  warn;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>根据web请求流程和CGI原理，所以fastcgi在寻找文件时使用的是 <code>dev</code> 主机的文件系统：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fastcgi_param  SCRIPT_FILENAME  /data1/sites/html$fastcgi_script_name;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">fastcgi_param  SCRIPT_FILENAME  &#x2F;data1&#x2F;sites&#x2F;html$fastcgi_script_name;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><strong>注意：不能写成$document_root$fastcgi_script_name，因为$document_root是宿主主机的文件系统</strong></p>
 <h3 id="静态文件测试"><a href="#静态文件测试" class="headerlink" title="静态文件测试"></a>静态文件测试</h3><p>根据上述配置文件，配置好<code>root</code> 路径即可进行静态文件测试。</p>
 <p>现有两个文件，他们在<code>宿主主机</code> 文件系统中的路径如下：</p>
-<figure class="highlight d"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/data-dev/data1/sites/html/index.html</span><br><span class="line">/data-online/data1/sites/html/index.html</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-d" data-language="d"><code class="language-d"><span class="token operator">/</span>data<span class="token operator">-</span>dev<span class="token operator">/</span>data1<span class="token operator">/</span>sites<span class="token operator">/</span>html<span class="token operator">/</span>index<span class="token punctuation">.</span>html
+<span class="token operator">/</span>data<span class="token operator">-</span>online<span class="token operator">/</span>data1<span class="token operator">/</span>sites<span class="token operator">/</span>html<span class="token operator">/</span>index<span class="token punctuation">.</span>html<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>可以看到，一个在 <code>dev</code> 中，一个在 <code>online</code> 环境中</p>
 <p>那么在<code>dev</code> 的文件系统中，则是：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/data1/sites/html/index.html</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;data1&#x2F;sites&#x2F;html&#x2F;index.html<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>文件内容是：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">This is dev</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">This is dev<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>在<code>online</code> 的文件系统中，则是：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/data1/sites/html/index.html</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;data1&#x2F;sites&#x2F;html&#x2F;index.html<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>文件内容是：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">This is online</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">This is online<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>可以发现，在两个逻辑主机中，他们并不知道宿主主机的存在，也就是宿主主机对于他们来说是<code>透明的</code>。</p>
 <p><code>/etc/hosts</code>配置如下，同步修改<code>nginx</code>的<code>server_name</code>：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1 dev.domain.com</span><br><span class="line">127.0.0.1 online.domain.com</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">127.0.0.1 dev.domain.com
+127.0.0.1 online.domain.com<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>进行测试：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl dev.domain.com</span><br><span class="line">curl online.domain.com</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">curl dev.domain.com
+curl online.domain.com<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>输出：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">This is dev</span><br><span class="line">This is online</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">This is dev
+This is online<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 
 

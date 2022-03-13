@@ -492,7 +492,13 @@ git push 推送">
 <p>git push 推送对仓库的修改到网络仓库</p>
 <h3 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h3><p>如果对一个非空目录执行clone命令是会失败的，因为git不允许这样做。</p>
 <p>进入项目目录（非空），运行下面命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd /path/to/dir</span><br><span class="line">git clone &#123;repo_url&#125; tmp</span><br><span class="line">mv tmp/.git .</span><br><span class="line">rmdir tmp</span><br><span class="line">git add .</span><br><span class="line">git commit -m &#x27;current files&#x27;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">cd &#x2F;path&#x2F;to&#x2F;dir
+git clone &#123;repo_url&#125; tmp
+mv tmp&#x2F;.git .
+rmdir tmp
+git add .
+git commit -m &#39;current files&#39;
+git push<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 

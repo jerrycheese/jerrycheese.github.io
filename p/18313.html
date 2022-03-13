@@ -492,7 +492,20 @@
 <li>幂为奇数，则有 $ (a \times a^{n-1}) % b &#x3D; [(a % b) \times (a^{n-1} % b)] %b $，其中 $ a^{n-1} % b$ 对应到幂为偶数的情况</li>
 </ul>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h3><p>递归写法（会溢出）</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">fastPower</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b, <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> % b;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (n == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> a % b;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (n % <span class="number">2</span> == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> ((a % b) * <span class="built_in">fastPower</span>(a, b, n - <span class="number">1</span>)) % b;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="type">int</span> res = <span class="built_in">fastPower</span>(a, b, n / <span class="number">2</span>);</span><br><span class="line">        <span class="keyword">return</span> (res * res) % b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-Cpp" data-language="Cpp"><code class="language-Cpp">int fastPower(int a, int b, int n) &#123;
+    if (n &#x3D;&#x3D; 0) &#123;
+        return 1 % b;
+    &#125; else if (n &#x3D;&#x3D; 1) &#123;
+        return a % b;
+    &#125;
+
+    if (n % 2 &#x3D;&#x3D; 1) &#123;
+        return ((a % b) * fastPower(a, b, n - 1)) % b;
+    &#125; else &#123;
+        int res &#x3D; fastPower(a, b, n &#x2F; 2);
+        return (res * res) % b;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>溢出点：</p>
 <ul>
@@ -500,12 +513,33 @@
 <li>偶数幂时，在计算<code>(a % b) * fastPower(a, b, n - 1)</code> 时可能超出范围</li>
 </ul>
 <p>改正后：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">fastPower</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b, <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> % b;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (n == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> a % b;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (n % <span class="number">2</span> == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> ((a % b) * (<span class="type">long</span> <span class="type">long</span>)<span class="built_in">fastPower</span>(a, b, n - <span class="number">1</span>)) % b;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="type">long</span> <span class="type">long</span> res = <span class="built_in">fastPower</span>(a, b, n / <span class="number">2</span>) % b;</span><br><span class="line">        <span class="keyword">return</span> (res * res) % b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-Cpp" data-language="Cpp"><code class="language-Cpp">int fastPower(int a, int b, int n) &#123;
+    if (n &#x3D;&#x3D; 0) &#123;
+        return 1 % b;
+    &#125; else if (n &#x3D;&#x3D; 1) &#123;
+        return a % b;
+    &#125;
+    
+    if (n % 2 &#x3D;&#x3D; 1) &#123;
+        return ((a % b) * (long long)fastPower(a, b, n - 1)) % b;
+    &#125; else &#123;
+        long long res &#x3D; fastPower(a, b, n &#x2F; 2) % b;
+        return (res * res) % b;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
 <h3 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h3><p>所有的递归函数都能写成迭代的形式。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">fastPower</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b, <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> r = <span class="number">1</span>, aa=a;</span><br><span class="line">    <span class="keyword">while</span>(n) &#123;</span><br><span class="line">        <span class="keyword">if</span> (n &amp; <span class="number">1</span> == <span class="number">1</span>) r = (r * aa) % b;</span><br><span class="line">        n &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">        aa = (aa * aa) % b;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> r % b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-Cpp" data-language="Cpp"><code class="language-Cpp">int fastPower(int a, int b, int n) &#123;
+    long long r &#x3D; 1, aa&#x3D;a;
+    while(n) &#123;
+        if (n &amp; 1 &#x3D;&#x3D; 1) r &#x3D; (r * aa) % b;
+        n &gt;&gt;&#x3D; 1;
+        aa &#x3D; (aa * aa) % b;
+    &#125;
+    return r % b;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 

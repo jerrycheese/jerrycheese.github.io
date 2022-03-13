@@ -485,7 +485,8 @@ CUDA、cuDNN大致流程参照 2018 MAC安装CUDA、cuDNN（Gaming Box1070）
 <h2 id="CUDA、cuDNN"><a href="#CUDA、cuDNN" class="headerlink" title="CUDA、cuDNN"></a>CUDA、cuDNN</h2><p>大致流程参照 <a target="_blank" rel="noopener" href="https://blog.csdn.net/ignoreyou/article/details/85132738">2018 MAC安装CUDA、cuDNN（Gaming Box1070）</a></p>
 <p>顺序是：GPU Driver、CUDA Driver、CUDA Toolkit、cuDNN</p>
 <p>安装驱动时要注意：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MacOS与NVIDIA GPU Driver的版本要匹配，才能驱动显卡</span><br><span class="line">CUDA Driver与NVIDIA GPU Driver的版本要一致，CUDA才能找到显卡</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">MacOS与NVIDIA GPU Driver的版本要匹配，才能驱动显卡
+CUDA Driver与NVIDIA GPU Driver的版本要一致，CUDA才能找到显卡<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>关键地址：</p>
 <ul>
@@ -502,27 +503,40 @@ CUDA、cuDNN大致流程参照 2018 MAC安装CUDA、cuDNN（Gaming Box1070）
 <li>cuDNN：7.4.2</li>
 </ul>
 <p>版本查看方式：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat $CUDA_HOME/version.txt # CUDA</span><br><span class="line">cat $CUDA_HOME/include/cudnn.h | grep CUDNN_MAJOR -A 2 #cuDNN</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">cat $CUDA_HOME&#x2F;version.txt # CUDA
+cat $CUDA_HOME&#x2F;include&#x2F;cudnn.h | grep CUDNN_MAJOR -A 2 #cuDNN<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <h2 id="Pytorch-with-CUDA"><a href="#Pytorch-with-CUDA" class="headerlink" title="Pytorch with CUDA"></a>Pytorch with CUDA</h2><p><a target="_blank" rel="noopener" href="https://pytorch.org/get-started/locally/">Pytorch官方</a> 说的很清楚：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MacOS Binaries dont support CUDA, install from source if CUDA is needed</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">MacOS Binaries dont support CUDA, install from source if CUDA is needed<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>目前要<code>with CUDA</code>有两个方式：从源码安装、安装第三方pip包</p>
 <h3 id="从源码安装"><a href="#从源码安装" class="headerlink" title="从源码安装"></a>从源码安装</h3><p>参照：<a target="_blank" rel="noopener" href="https://github.com/pytorch/pytorch#from-source">https://github.com/pytorch/pytorch#from-source</a></p>
 <p>这条路我没走通。虽然成功编译了pytorch，但执行<code>import torch</code>时遇到了错误：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ModuleNotFoundError: No module named &#x27;torch._C&#x27;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">ModuleNotFoundError: No module named &#39;torch._C&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>按照google结果，我应该在 <code>torch</code> 目录的以下两个文件复制：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp _C.cpython-37m-darwin.so _C.so</span><br><span class="line">cp _dl.cpython-37m-darwin.so _dl.so</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">cp _C.cpython-37m-darwin.so _C.so
+cp _dl.cpython-37m-darwin.so _dl.so<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>但我的 <code>torch</code> 目录下没有这两个文件</p>
 <h3 id="第三方pip包"><a href="#第三方pip包" class="headerlink" title="第三方pip包"></a>第三方pip包</h3><p>参照：<a target="_blank" rel="noopener" href="https://github.com/TomHeaven/pytorch-osx-build">https://github.com/TomHeaven/pytorch-osx-build</a></p>
 <p>我下载的是：<code>pytorch-1.0-py27-py37-cuda10-cudnn74</code></p>
 <p>这是别人编译好的pip包，下载后用pip安装即可：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install torch-1.0-cp37-cp37m-macosx_10_13_x86_64.whl</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">pip install torch-1.0-cp37-cp37m-macosx_10_13_x86_64.whl<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h4 id="No-module-named-‘torch-C’"><a href="#No-module-named-‘torch-C’" class="headerlink" title="No module named ‘torch._C’"></a>No module named ‘torch._C’</h4><h4 id="Library-not-loaded-rpath-x2F-xxxx-10-0-dylib"><a href="#Library-not-loaded-rpath-x2F-xxxx-10-0-dylib" class="headerlink" title="Library not loaded: @rpath&#x2F;xxxx.10.0.dylib"></a>Library not loaded: @rpath&#x2F;xxxx.10.0.dylib</h4><p>在运行 <code>import torch</code> 时报的错，比如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">  File &quot;/Users/jerry/anaconda3/lib/python3.7/site-packages/torch/__init__.py&quot;, line 84, in &lt;module&gt;</span><br><span class="line">    from torch._C import *</span><br><span class="line">ImportError: dlopen(/Users/jerry/anaconda3/lib/python3.7/site-packages/torch/_C.cpython-37m-darwin.so, 9): Library not loaded: @rpath/libcufft.10.0.dylib</span><br><span class="line">  Referenced from: /Users/jerry/anaconda3/lib/python3.7/site-packages/torch/lib/libtorch_python.dylib</span><br><span class="line">  Reason: image not found</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+  File &quot;&#x2F;Users&#x2F;jerry&#x2F;anaconda3&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;torch&#x2F;__init__.py&quot;, line 84, in &lt;module&gt;
+    from torch._C import *
+ImportError: dlopen(&#x2F;Users&#x2F;jerry&#x2F;anaconda3&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;torch&#x2F;_C.cpython-37m-darwin.so, 9): Library not loaded: @rpath&#x2F;libcufft.10.0.dylib
+  Referenced from: &#x2F;Users&#x2F;jerry&#x2F;anaconda3&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;torch&#x2F;lib&#x2F;libtorch_python.dylib
+  Reason: image not found<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><code>libcufft</code>是cuda的库，这里只是文件名没找到而已，而库文件其实是在 <code>$CUDA_HOME/lib</code>下的，所以手动链接一下就行，下面是对同类错误的库进行统一处理：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo ln -s $CUDA_HOME/lib/libcufft.10.dylib $CUDA_HOME/lib/libcufft.10.0.dylib</span><br><span class="line">sudo ln -s $CUDA_HOME/lib/libcurand.10.dylib $CUDA_HOME/lib/libcurand.10.0.dylib</span><br><span class="line">sudo ln -s $CUDA_HOME/lib/libcublas.10.dylib $CUDA_HOME/lib/libcublas.10.0.dylib</span><br><span class="line">sudo ln -s $CUDA_HOME/lib/libcudart.dylib $CUDA_HOME/lib/libcudart.10.0.dylib</span><br><span class="line">sudo ln -s $CUDA_HOME/lib/libnvrtc.dylib $CUDA_HOME/lib/libnvrtc.10.0.dylib</span><br><span class="line">sudo ln -s $CUDA_HOME/lib/libcusparse.10.dylib $CUDA_HOME/lib/libcusparse.10.0.dylib</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">sudo ln -s $CUDA_HOME&#x2F;lib&#x2F;libcufft.10.dylib $CUDA_HOME&#x2F;lib&#x2F;libcufft.10.0.dylib
+sudo ln -s $CUDA_HOME&#x2F;lib&#x2F;libcurand.10.dylib $CUDA_HOME&#x2F;lib&#x2F;libcurand.10.0.dylib
+sudo ln -s $CUDA_HOME&#x2F;lib&#x2F;libcublas.10.dylib $CUDA_HOME&#x2F;lib&#x2F;libcublas.10.0.dylib
+sudo ln -s $CUDA_HOME&#x2F;lib&#x2F;libcudart.dylib $CUDA_HOME&#x2F;lib&#x2F;libcudart.10.0.dylib
+sudo ln -s $CUDA_HOME&#x2F;lib&#x2F;libnvrtc.dylib $CUDA_HOME&#x2F;lib&#x2F;libnvrtc.10.0.dylib
+sudo ln -s $CUDA_HOME&#x2F;lib&#x2F;libcusparse.10.dylib $CUDA_HOME&#x2F;lib&#x2F;libcusparse.10.0.dylib<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="参考引用"><a href="#参考引用" class="headerlink" title="参考引用"></a>参考引用</h2><p>[1] <a target="_blank" rel="noopener" href="https://blog.csdn.net/ignoreyou/article/details/85132738">2018 MAC安装CUDA、cuDNN（Gaming Box1070）</a>, 2019-04-12. </p>
 
@@ -768,7 +782,7 @@ CUDA、cuDNN大致流程参照 2018 MAC安装CUDA、cuDNN（Gaming Box1070）
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/p/undefined.html">
+                <a href="/p/43141.html">
                     <div class="card-image">
                         
                         

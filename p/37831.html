@@ -500,21 +500,31 @@
 <p>下面是详细过程和遇到的问题及解决方法</p>
 <h2 id="安装zsh"><a href="#安装zsh" class="headerlink" title="安装zsh"></a>安装zsh</h2><p>官方文档：<a target="_blank" rel="noopener" href="http://zsh.sourceforge.net/FAQ/zshfaq01.html">http://zsh.sourceforge.net/FAQ/zshfaq01.html</a></p>
 <p>下载源码：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O zsh.tar.xz https://sourceforge.net/projects/zsh/files/latest/download</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">wget -O zsh.tar.xz https:&#x2F;&#x2F;sourceforge.net&#x2F;projects&#x2F;zsh&#x2F;files&#x2F;latest&#x2F;download<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>解压：（注意，下载下来的文件是xz格式的）</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">xz -d zsh.tar.xz # 会把xz文件解压成tar文件</span><br><span class="line">mkdir zsh        # 建立目录用来保存zsh源码</span><br><span class="line">tar -xvf zsh.tar -C zsh --strip-components 1 # 解压tar文件到zsh目录</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">xz -d zsh.tar.xz # 会把xz文件解压成tar文件
+mkdir zsh        # 建立目录用来保存zsh源码
+tar -xvf zsh.tar -C zsh --strip-components 1 # 解压tar文件到zsh目录<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>编译：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=$HOME  #表示安装到家目录</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">.&#x2F;configure --prefix&#x3D;$HOME  #表示安装到家目录
+make
+make install<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>如果遇到找不到 <code>autoconf</code> 的错误，则需要手动安装。</p>
 <p>编译、安装autoconf到家目录：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">wget http://ftp.gnu.org/gnu/autoconf/autoconf-latest.tar.gz</span><br><span class="line">mkdir autoconf-soruce</span><br><span class="line">tar -zxvf autoconf-latest.tar.gz -C autoconf-soruce/ --strip-components 1</span><br><span class="line">cd autoconf-soruce/</span><br><span class="line">./configure --prefix=$HOME   # 安装到家目录</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">wget http:&#x2F;&#x2F;ftp.gnu.org&#x2F;gnu&#x2F;autoconf&#x2F;autoconf-latest.tar.gz
+mkdir autoconf-soruce
+tar -zxvf autoconf-latest.tar.gz -C autoconf-soruce&#x2F; --strip-components 1
+cd autoconf-soruce&#x2F;
+.&#x2F;configure --prefix&#x3D;$HOME   # 安装到家目录
+make
+make install<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="更新PATH"><a href="#更新PATH" class="headerlink" title="更新PATH"></a>更新PATH</h2><p>这样以来  <code>zsh</code>  安装到 <code>$HOME/bin</code> 下面，并且会自动添加环境变量，但是重新登陆后就找不到了。</p>
 <p>所以记得手动更新 <code>PATH</code> ，我是选择写入 <code>~/.bash_profile</code> 文件。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &#x27;export PATH=&quot;$HOME/bin:$HOME/.local/bin:$PATH&quot;&#x27; &gt;&gt; ~/.bash_profile</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">echo &#39;export PATH&#x3D;&quot;$HOME&#x2F;bin:$HOME&#x2F;.local&#x2F;bin:$PATH&quot;&#39; &gt;&gt; ~&#x2F;.bash_profile<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>这样操作之后就可以在命令行使用 <code>zsh</code> 了，但是不会默认使用 <code>zsh</code> 作为交互程序。</p>
 <p>两条思路：</p>
@@ -523,13 +533,24 @@
 <li>修改启动脚本，自动切换到 <code>zsh</code> （官方推荐的方式）</li>
 </ol>
 <p>我还是选择写入 <code>~/.bash_profile </code>文件：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &#x27;[ -f $HOME/bin/zsh ] &amp;&amp; exec $HOME/bin/zsh -l&#x27; &gt;&gt; ~/.bash_profile</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">echo &#39;[ -f $HOME&#x2F;bin&#x2F;zsh ] &amp;&amp; exec $HOME&#x2F;bin&#x2F;zsh -l&#39; &gt;&gt; ~&#x2F;.bash_profile<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h2 id="安装oh-my-zsh"><a href="#安装oh-my-zsh" class="headerlink" title="安装oh-my-zsh"></a>安装oh-my-zsh</h2><p>一行代码搞定：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">wget https:&#x2F;&#x2F;github.com&#x2F;robbyrussell&#x2F;oh-my-zsh&#x2F;raw&#x2F;master&#x2F;tools&#x2F;install.sh -O - | sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>值得注意的是上述脚本的一段代码：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">TEST_CURRENT_SHELL=$(expr &quot;$SHELL&quot; : &#x27;.*/\(.*\)&#x27;)</span><br><span class="line">if [ &quot;$TEST_CURRENT_SHELL&quot; != &quot;zsh&quot; ]; then</span><br><span class="line">    # If this platform provides a &quot;chsh&quot; command (not Cygwin), do it, man!</span><br><span class="line">    if hash chsh &gt;/dev/null 2&gt;&amp;1; then</span><br><span class="line">        printf &quot;$&#123;BLUE&#125;Time to change your default shell to zsh!$&#123;NORMAL&#125;\n&quot;</span><br><span class="line">        chsh -s $(grep /zsh$ /etc/shells | tail -1)</span><br><span class="line">    # Else, suggest the user do so manually.</span><br><span class="line">    else</span><br><span class="line">        printf &quot;I can&#x27;t change your shell automatically because this system does not have chsh.\n&quot;</span><br><span class="line">        printf &quot;$&#123;BLUE&#125;Please manually change your default shell to zsh!$&#123;NORMAL&#125;\n&quot;</span><br><span class="line">    fi</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">TEST_CURRENT_SHELL&#x3D;$(expr &quot;$SHELL&quot; : &#39;.*&#x2F;\(.*\)&#39;)
+if [ &quot;$TEST_CURRENT_SHELL&quot; !&#x3D; &quot;zsh&quot; ]; then
+    # If this platform provides a &quot;chsh&quot; command (not Cygwin), do it, man!
+    if hash chsh &gt;&#x2F;dev&#x2F;null 2&gt;&amp;1; then
+        printf &quot;$&#123;BLUE&#125;Time to change your default shell to zsh!$&#123;NORMAL&#125;\n&quot;
+        chsh -s $(grep &#x2F;zsh$ &#x2F;etc&#x2F;shells | tail -1)
+    # Else, suggest the user do so manually.
+    else
+        printf &quot;I can&#39;t change your shell automatically because this system does not have chsh.\n&quot;
+        printf &quot;$&#123;BLUE&#125;Please manually change your default shell to zsh!$&#123;NORMAL&#125;\n&quot;
+    fi
+fi<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>干了啥？如果系统默认shell不是zsh的话，会尝试使用 <code>chsh</code> 命令切换到 <code>/etc/shells</code> 列表里的 <code>zsh</code>，如果切换失败就会提示错误。</p>
 <p>有什么影响？如果全局已经有zsh的情况下，这个脚本会主动把默认shell切换成全局的zsh，而不会使用本地的zsh。这对我来说没什么影响。</p>

@@ -6,7 +6,9 @@
     <meta charset="utf-8">
     <meta name="keywords" content="汇编实现回文判断, 全栈说">
     <meta name="description" content="不多说，直接上代码
-12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596">
+DATA    SEGMENT  
+Prompt  DB  &amp;#39;Please enter a string:$&amp;#39;  
+YesStr  DB  13, 10, &amp;#39;This string is pali">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -481,7 +483,67 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>不多说，直接上代码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">DATA    SEGMENT  </span><br><span class="line">Prompt  DB  &#x27;Please enter a string:$&#x27;  </span><br><span class="line">YesStr  DB  13, 10, &#x27;This string is palindrome$&#x27;  </span><br><span class="line">NoStr   DB  13, 10, &#x27;This string is not palindrome$&#x27;  </span><br><span class="line">Input   DB  128, ?, 128 DUP(0)  </span><br><span class="line">DATA    ENDS  </span><br><span class="line">STACK   SEGMENT  </span><br><span class="line">    DB  128 DUP(?)  </span><br><span class="line">STACK   ENDS  </span><br><span class="line">CODE    SEGMENT  </span><br><span class="line">    ASSUME  CS:CODE, DS:DATA, SS:STACK  </span><br><span class="line">MAIN:     </span><br><span class="line">    MOV AX, DATA  </span><br><span class="line">    MOV DS, AX  </span><br><span class="line">    MOV DX, offset Prompt  </span><br><span class="line">    MOV AH, 09H  </span><br><span class="line">    INT 21H  </span><br><span class="line">    ;  </span><br><span class="line">    MOV DX, OFFSET Input  </span><br><span class="line">    MOV AH, 0AH  </span><br><span class="line">    INT 21H  </span><br><span class="line">    ;  </span><br><span class="line">    MOV DI, OFFSET Input  </span><br><span class="line">    MOV SI, OFFSET Input  </span><br><span class="line">      </span><br><span class="line"></span><br><span class="line">    XOR CX, CX  </span><br><span class="line">    MOV CL, [DI+1]  </span><br><span class="line">    ADD DI, 2  </span><br><span class="line">    ADD SI, 2  </span><br><span class="line">    DEC CX  </span><br><span class="line">    ADD DI, CX  </span><br><span class="line">    ;force DI point to the last word of Input  </span><br><span class="line">AGAIN:  </span><br><span class="line">    CMP SI, DI  </span><br><span class="line">    JA  TESSKIP  </span><br><span class="line">    MOV AH, byte ptr [SI]  </span><br><span class="line">    MOV AL, byte ptr [DI]  </span><br><span class="line">    CMP AH, AL  </span><br><span class="line">    JNE NOSKIP  </span><br><span class="line">    INC SI  </span><br><span class="line">    DEC DI  </span><br><span class="line">    JMP AGAIN  </span><br><span class="line">TESSKIP:  </span><br><span class="line">    MOV DX, OFFSET YesStr  </span><br><span class="line">    MOV AH, 09H  </span><br><span class="line">    INT     21H  </span><br><span class="line">    JMP ENDSKPI  </span><br><span class="line">    ;  </span><br><span class="line">  </span><br><span class="line">NOSKIP:  </span><br><span class="line">    MOV DX, OFFSET NoStr  </span><br><span class="line">    MOV AH, 09H  </span><br><span class="line">    INT     21H  </span><br><span class="line">    ;  </span><br><span class="line">ENDSKPI:  </span><br><span class="line">    MOV AH, 4CH  </span><br><span class="line">    INT     21H  </span><br><span class="line">      </span><br><span class="line">CODE    ENDS  </span><br><span class="line">    END MAIN  </span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">DATA    SEGMENT  
+Prompt  DB  &#39;Please enter a string:$&#39;  
+YesStr  DB  13, 10, &#39;This string is palindrome$&#39;  
+NoStr   DB  13, 10, &#39;This string is not palindrome$&#39;  
+Input   DB  128, ?, 128 DUP(0)  
+DATA    ENDS  
+STACK   SEGMENT  
+    DB  128 DUP(?)  
+STACK   ENDS  
+CODE    SEGMENT  
+    ASSUME  CS:CODE, DS:DATA, SS:STACK  
+MAIN:     
+    MOV AX, DATA  
+    MOV DS, AX  
+    MOV DX, offset Prompt  
+    MOV AH, 09H  
+    INT 21H  
+    ;  
+    MOV DX, OFFSET Input  
+    MOV AH, 0AH  
+    INT 21H  
+    ;  
+    MOV DI, OFFSET Input  
+    MOV SI, OFFSET Input  
+      
+
+    XOR CX, CX  
+    MOV CL, [DI+1]  
+    ADD DI, 2  
+    ADD SI, 2  
+    DEC CX  
+    ADD DI, CX  
+    ;force DI point to the last word of Input  
+AGAIN:  
+    CMP SI, DI  
+    JA  TESSKIP  
+    MOV AH, byte ptr [SI]  
+    MOV AL, byte ptr [DI]  
+    CMP AH, AL  
+    JNE NOSKIP  
+    INC SI  
+    DEC DI  
+    JMP AGAIN  
+TESSKIP:  
+    MOV DX, OFFSET YesStr  
+    MOV AH, 09H  
+    INT     21H  
+    JMP ENDSKPI  
+    ;  
+  
+NOSKIP:  
+    MOV DX, OFFSET NoStr  
+    MOV AH, 09H  
+    INT     21H  
+    ;  
+ENDSKPI:  
+    MOV AH, 4CH  
+    INT     21H  
+      
+CODE    ENDS  
+    END MAIN  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
                 

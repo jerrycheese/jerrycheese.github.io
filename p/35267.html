@@ -487,14 +487,22 @@
 <li>使用Finder的<code>移到废纸篓</code>功能</li>
 <li>使用rm命令<br>  第二种方式删除的文件，不能在废纸篓中找到，也就是所谓的<code>彻底删除</code><br>  但是我们在使用terminal的时候，一般都会使用rm删除文件，那要是删错了不就完了？而且我们的mac上本身又自带了废纸篓，为什么不能将两者结合起来呢？于是我做了一些探究</li>
 </ol>
-<h3 id="Mac废纸篓的真实面目"><a href="#Mac废纸篓的真实面目" class="headerlink" title="Mac废纸篓的真实面目"></a>Mac废纸篓的真实面目</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ls ~/.Trash</span><br></pre></td></tr></table></figure>
+<h3 id="Mac废纸篓的真实面目"><a href="#Mac废纸篓的真实面目" class="headerlink" title="Mac废纸篓的真实面目"></a>Mac废纸篓的真实面目</h3><pre class="line-numbers language-none"><code class="language-none">$ ls ~&#x2F;.Trash<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>你会发现，<code>~/.Trash</code>目录就是废纸篓<br>但是它只是一个普通的目录，只是Finder将删除的文件移动到了这个目录而已，不相信？接着往下看</p>
-<h3 id="x2F-Trash的本质只是文件夹"><a href="#x2F-Trash的本质只是文件夹" class="headerlink" title="~&#x2F;.Trash的本质只是文件夹"></a>~&#x2F;.Trash的本质只是文件夹</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line">echo &quot;666666&quot; &gt;&gt; wantodel.txt</span><br><span class="line">mv wantodel.txt ~/.Trash</span><br></pre></td></tr></table></figure>
+<h3 id="x2F-Trash的本质只是文件夹"><a href="#x2F-Trash的本质只是文件夹" class="headerlink" title="~&#x2F;.Trash的本质只是文件夹"></a>~&#x2F;.Trash的本质只是文件夹</h3><pre class="line-numbers language-none"><code class="language-none">cd ~
+echo &quot;666666&quot; &gt;&gt; wantodel.txt
+mv wantodel.txt ~&#x2F;.Trash<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>此时打开你的废纸篓一看，里面有一个<code>wantodel.txt</code>文件，但是你无法将它<code>放回原处</code>，而如果你使用Finder的<code>移到废纸篓</code>功能删除的文件却可以<code>放回原处</code></p>
 <h3 id="Finder是如何实现放回原处的呢？"><a href="#Finder是如何实现放回原处的呢？" class="headerlink" title="Finder是如何实现放回原处的呢？"></a>Finder是如何实现放回原处的呢？</h3><p>最有可能是将操作记录到了数据库中。</p>
 <p>不大可能写在log日志中，因为我grep了整个磁盘都没找到相关的文件。</p>
 <h3 id="最好的帮手是Finder"><a href="#最好的帮手是Finder" class="headerlink" title="最好的帮手是Finder"></a>最好的帮手是Finder</h3><p>既然<code>~/.Trash</code>只是普通文件夹，那我们单纯使用linux命令是无法达到目的的了。<br>我们现在已知<code>Finder</code>可以达到预期目的，如果我们能调用或是告诉<code>Finder</code>的我们要做什么，并且它也愿意做，不就可以达到目的了么？<br>在window中有一个<code>消息</code>的概念，意思是一个应用程序A可以对另一个应用程序B发送<code>消息</code>以操作B来完成某项指定的任务，那Mac种是否也有这种或是类似这种的机制呢？<br>答案是AppleScript，是一种脚本语言，可以用来控制Mac上的应用程序。<br>最后附上使用shell通知Finder程序移动文件废纸篓的样例代码</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line">fp=/absolute/path/to/file</span><br><span class="line">osascript &lt;&lt; EOF</span><br><span class="line">tell application &quot;Finder&quot;</span><br><span class="line">    posix path of ((delete posix file &quot;$&#123;fp&#125;&quot;) as unicode text)</span><br><span class="line">end tell</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">#!&#x2F;bin&#x2F;bash
+fp&#x3D;&#x2F;absolute&#x2F;path&#x2F;to&#x2F;file
+osascript &lt;&lt; EOF
+tell application &quot;Finder&quot;
+    posix path of ((delete posix file &quot;$&#123;fp&#125;&quot;) as unicode text)
+end tell
+EOF<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>

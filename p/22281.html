@@ -7,10 +7,11 @@
     <meta name="keywords" content="NLTK常用操作和语料库, 全栈说">
     <meta name="description" content="安装NLTK按照官方步骤：Installing NLTK
 在安装完nltk后，通过下述命令可查看nltk版本：
-12import nltkprint nltk.__doc__
+import nltk
+print nltk.__doc__
 
 输出：
-123456789The Natural Langua">
+The Natural Language Toolkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -486,19 +487,28 @@
             <div id="articleContent">
                 <h2 id="安装NLTK"><a href="#安装NLTK" class="headerlink" title="安装NLTK"></a>安装NLTK</h2><p>按照官方步骤：<a target="_blank" rel="noopener" href="http://www.nltk.org/install.html">Installing NLTK</a></p>
 <p>在安装完nltk后，通过下述命令可查看nltk版本：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import nltk</span><br><span class="line">print nltk.__doc__</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">import nltk
+print nltk.__doc__<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>输出：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">The Natural Language Toolkit (NLTK) is an open source Python library</span><br><span class="line">for Natural Language Processing.  A free online book is available.</span><br><span class="line">(If you use the library for academic research, please cite the book.)</span><br><span class="line"></span><br><span class="line">Steven Bird, Ewan Klein, and Edward Loper (2009).</span><br><span class="line">Natural Language Processing with Python.  O&#x27;Reilly Media Inc.</span><br><span class="line">http://nltk.org/book</span><br><span class="line"></span><br><span class="line">@version: 3.2.5</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">The Natural Language Toolkit (NLTK) is an open source Python library
+for Natural Language Processing.  A free online book is available.
+(If you use the library for academic research, please cite the book.)
+
+Steven Bird, Ewan Klein, and Edward Loper (2009).
+Natural Language Processing with Python.  O&#39;Reilly Media Inc.
+http:&#x2F;&#x2F;nltk.org&#x2F;book
+
+@version: 3.2.5<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>所以，我的版本是 <code>3.2.5</code></p>
 <h2 id="获取图书集合"><a href="#获取图书集合" class="headerlink" title="获取图书集合"></a>获取图书集合</h2><p>为便于学习，nltk提供了图书集合，通过下述命令下载该集合：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nltk.download()</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">nltk.download()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>在出现的界面中选择 <code>book</code> 进行下载，文件大概有100M，这也是《Python自然语言处理》这本书中推荐的图书集合。</p>
 <p><img src="http://os9coobhw.bkt.clouddn.com/57cae6c392c6022993a4dfa52f52a050.jpg"></p>
 <p>下载完成后，回到python解析器，导入刚刚下载的图书集合：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from nltk.book import *</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">from nltk.book import *<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>运行 <code>texts()</code> 可以查看书籍列表，<code>sents()</code> 可以查看句子列表。</p>
 <p>查看 <code>book.py</code> 文件可知，该文件导入了下面一些模块</p>
@@ -511,39 +521,86 @@
 <p>同时通过<code>语料库</code>创建9个 <code>Text</code> 实例，变量为<code>text1~text9</code>。</p>
 <p>而 <code>sent1~sent9</code> 是硬编码的9个句子。</p>
 <h2 id="语料库介绍"><a href="#语料库介绍" class="headerlink" title="语料库介绍"></a>语料库介绍</h2><p>在<code>book.py</code> 文件中，我们可以看到：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from nltk.corpus import (gutenberg, genesis, inaugural,</span><br><span class="line">                         nps_chat, webtext, treebank, wordnet)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">from nltk.corpus import (gutenberg, genesis, inaugural,
+                         nps_chat, webtext, treebank, wordnet)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>所以我们已经引入了语料库了，通过打印可知：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print gutenberg</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">&lt;PlaintextCorpusReader in u&#x27;/Users/jerry/nltk_data/corpora/gutenberg&#x27;&gt;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">print gutenberg
+
+outputs:
+&lt;PlaintextCorpusReader in u&#39;&#x2F;Users&#x2F;jerry&#x2F;nltk_data&#x2F;corpora&#x2F;gutenberg&#39;&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>可见 <code>gutenberg</code> 是一个 <code>PlaintextCorpusReader</code> 类。</p>
 <p>进入到指定的目录可见<code>gutenberg</code> 的所有文本，可见都是<code>txt文档</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">cd /Users/jerry/nltk_data/corpora/gutenberg</span><br><span class="line">ls</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">README                  burgess-busterbrown.txt milton-paradise.txt</span><br><span class="line">austen-emma.txt         carroll-alice.txt       shakespeare-caesar.txt</span><br><span class="line">austen-persuasion.txt   chesterton-ball.txt     shakespeare-hamlet.txt</span><br><span class="line">austen-sense.txt        chesterton-brown.txt    shakespeare-macbeth.txt</span><br><span class="line">bible-kjv.txt           chesterton-thursday.txt whitman-leaves.txt</span><br><span class="line">blake-poems.txt         edgeworth-parents.txt</span><br><span class="line">bryant-stories.txt      melville-moby_dick.txt</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">cd &#x2F;Users&#x2F;jerry&#x2F;nltk_data&#x2F;corpora&#x2F;gutenberg
+ls
+
+outputs:
+README                  burgess-busterbrown.txt milton-paradise.txt
+austen-emma.txt         carroll-alice.txt       shakespeare-caesar.txt
+austen-persuasion.txt   chesterton-ball.txt     shakespeare-hamlet.txt
+austen-sense.txt        chesterton-brown.txt    shakespeare-macbeth.txt
+bible-kjv.txt           chesterton-thursday.txt whitman-leaves.txt
+blake-poems.txt         edgeworth-parents.txt
+bryant-stories.txt      melville-moby_dick.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="古腾堡语料库"><a href="#古腾堡语料库" class="headerlink" title="古腾堡语料库"></a>古腾堡语料库</h3><p><a target="_blank" rel="noopener" href="http://www.gutenberg.org/">古腾堡项目</a> 大约有36000本免费电子图书，NLTK中只包含了其中的一小部分，通过下述命令可以查看语料库中的文件标识符（文件名）：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from nltk.corpus import gutenberg</span><br><span class="line">gutenberg.fileids()</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">[u&#x27;austen-emma.txt&#x27;, u&#x27;austen-persuasion.txt&#x27;, u&#x27;austen-sense.txt&#x27;, u&#x27;bible-kjv.txt&#x27;, u&#x27;blake-poems.txt&#x27;, u&#x27;bryant-stories.txt&#x27;, u&#x27;burgess-busterbrown.txt&#x27;, u&#x27;carroll-alice.txt&#x27;, u&#x27;chesterton-ball.txt&#x27;, u&#x27;chesterton-brown.txt&#x27;, u&#x27;chesterton-thursday.txt&#x27;, u&#x27;edgeworth-parents.txt&#x27;, u&#x27;melville-moby_dick.txt&#x27;, u&#x27;milton-paradise.txt&#x27;, u&#x27;shakespeare-caesar.txt&#x27;, u&#x27;shakespeare-hamlet.txt&#x27;, u&#x27;shakespeare-macbeth.txt&#x27;, u&#x27;whitman-leaves.txt&#x27;]</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">from nltk.corpus import gutenberg
+gutenberg.fileids()
+
+outputs:
+[u&#39;austen-emma.txt&#39;, u&#39;austen-persuasion.txt&#39;, u&#39;austen-sense.txt&#39;, u&#39;bible-kjv.txt&#39;, u&#39;blake-poems.txt&#39;, u&#39;bryant-stories.txt&#39;, u&#39;burgess-busterbrown.txt&#39;, u&#39;carroll-alice.txt&#39;, u&#39;chesterton-ball.txt&#39;, u&#39;chesterton-brown.txt&#39;, u&#39;chesterton-thursday.txt&#39;, u&#39;edgeworth-parents.txt&#39;, u&#39;melville-moby_dick.txt&#39;, u&#39;milton-paradise.txt&#39;, u&#39;shakespeare-caesar.txt&#39;, u&#39;shakespeare-hamlet.txt&#39;, u&#39;shakespeare-macbeth.txt&#39;, u&#39;whitman-leaves.txt&#39;]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="网络和聊天文本"><a href="#网络和聊天文本" class="headerlink" title="网络和聊天文本"></a>网络和聊天文本</h3><p>古腾堡项目代表的既定文学，考虑到非正式的文本也很重要，所以NLTK中也包含网络小说和论坛、《加勒比海盗》的电影剧本等内容。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from nltk.corpus import webtext</span><br><span class="line">webtext.fileids()</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">[u&#x27;firefox.txt&#x27;, u&#x27;grail.txt&#x27;, u&#x27;overheard.txt&#x27;, u&#x27;pirates.txt&#x27;, u&#x27;singles.txt&#x27;, u&#x27;wine.txt&#x27;]</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">from nltk.corpus import webtext
+webtext.fileids()
+
+outputs:
+[u&#39;firefox.txt&#39;, u&#39;grail.txt&#39;, u&#39;overheard.txt&#39;, u&#39;pirates.txt&#39;, u&#39;singles.txt&#39;, u&#39;wine.txt&#39;]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>即时聊天会话语料库，是美国海军研究生院的研究生收集的。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from nltk.corpus import nps_chat</span><br><span class="line">nps_chat.fileids()</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">[u&#x27;10-19-20s_706posts.xml&#x27;, u&#x27;10-19-30s_705posts.xml&#x27;, u&#x27;10-19-40s_686posts.xml&#x27;, u&#x27;10-19-adults_706posts.xml&#x27;, u&#x27;10-24-40s_706posts.xml&#x27;, u&#x27;10-26-teens_706posts.xml&#x27;, u&#x27;11-06-adults_706posts.xml&#x27;, u&#x27;11-08-20s_705posts.xml&#x27;, u&#x27;11-08-40s_706posts.xml&#x27;, u&#x27;11-08-adults_705posts.xml&#x27;, u&#x27;11-08-teens_706posts.xml&#x27;, u&#x27;11-09-20s_706posts.xml&#x27;, u&#x27;11-09-40s_706posts.xml&#x27;, u&#x27;11-09-adults_706posts.xml&#x27;, u&#x27;11-09-teens_706posts.xml&#x27;]</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">from nltk.corpus import nps_chat
+nps_chat.fileids()
+
+outputs:
+[u&#39;10-19-20s_706posts.xml&#39;, u&#39;10-19-30s_705posts.xml&#39;, u&#39;10-19-40s_686posts.xml&#39;, u&#39;10-19-adults_706posts.xml&#39;, u&#39;10-24-40s_706posts.xml&#39;, u&#39;10-26-teens_706posts.xml&#39;, u&#39;11-06-adults_706posts.xml&#39;, u&#39;11-08-20s_705posts.xml&#39;, u&#39;11-08-40s_706posts.xml&#39;, u&#39;11-08-adults_705posts.xml&#39;, u&#39;11-08-teens_706posts.xml&#39;, u&#39;11-09-20s_706posts.xml&#39;, u&#39;11-09-40s_706posts.xml&#39;, u&#39;11-09-adults_706posts.xml&#39;, u&#39;11-09-teens_706posts.xml&#39;]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="布朗语料库"><a href="#布朗语料库" class="headerlink" title="布朗语料库"></a>布朗语料库</h3><p>布朗语料库是第一个百万词级别的英语电子语料库，这个语料库包含500个不同来源的文本，按文体分类有新闻、社论等，<a target="_blank" rel="noopener" href="http://clu.uni.no/icame/brown/bcm-los.html">完整列表</a>。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from nltk.corpus import brown</span><br><span class="line">brown.categories()</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">[u&#x27;adventure&#x27;, u&#x27;belles_lettres&#x27;, u&#x27;editorial&#x27;, u&#x27;fiction&#x27;, u&#x27;government&#x27;, u&#x27;hobbies&#x27;, u&#x27;humor&#x27;, u&#x27;learned&#x27;, u&#x27;lore&#x27;, u&#x27;mystery&#x27;, u&#x27;news&#x27;, u&#x27;religion&#x27;, u&#x27;reviews&#x27;, u&#x27;romance&#x27;, u&#x27;science_fiction&#x27;]</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">from nltk.corpus import brown
+brown.categories()
+
+outputs:
+[u&#39;adventure&#39;, u&#39;belles_lettres&#39;, u&#39;editorial&#39;, u&#39;fiction&#39;, u&#39;government&#39;, u&#39;hobbies&#39;, u&#39;humor&#39;, u&#39;learned&#39;, u&#39;lore&#39;, u&#39;mystery&#39;, u&#39;news&#39;, u&#39;religion&#39;, u&#39;reviews&#39;, u&#39;romance&#39;, u&#39;science_fiction&#39;]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>这里注意的是它是按文体分类的，例如要取得<code>news</code>类别的文本：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print brown.words(categories=&#x27;news&#x27;)</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">[u&#x27;The&#x27;, u&#x27;Fulton&#x27;, u&#x27;County&#x27;, u&#x27;Grand&#x27;, u&#x27;Jury&#x27;, ...]</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">print brown.words(categories&#x3D;&#39;news&#39;)
+
+outputs:
+[u&#39;The&#39;, u&#39;Fulton&#39;, u&#39;County&#39;, u&#39;Grand&#39;, u&#39;Jury&#39;, ...]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>当前也可以用<code>fileids</code> 方法列出所有<code>文件标识</code>，再用文件标识来获取文本，但最好还是用类别来取得文本。</p>
 <h3 id="自定义语料库"><a href="#自定义语料库" class="headerlink" title="自定义语料库"></a>自定义语料库</h3><p>例如我们在家目录建立一个<code>texts</code> 目录和一个文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd ~ &amp;&amp; mkdir texts &amp;&amp; cd texts</span><br><span class="line">echo &quot;This is a love story&quot; &gt;&gt; lovestory.txt</span><br><span class="line">pwd</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">/Users/jerry/texts</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">cd ~ &amp;&amp; mkdir texts &amp;&amp; cd texts
+echo &quot;This is a love story&quot; &gt;&gt; lovestory.txt
+pwd
+
+outputs:
+&#x2F;Users&#x2F;jerry&#x2F;texts<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>将上面的output放在下面的dir变量中，在python解析器中输入：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from nltk.corpus import PlaintextCorpusReader</span><br><span class="line">dir = &#x27;/Users/jerry/texts&#x27;</span><br><span class="line">my_corpus = PlaintextCorpusReader(dir, &#x27;.*\.txt&#x27;)</span><br><span class="line">print my_corpus.fileids()</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">[&#x27;lovestory.txt&#x27;]</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">from nltk.corpus import PlaintextCorpusReader
+dir &#x3D; &#39;&#x2F;Users&#x2F;jerry&#x2F;texts&#39;
+my_corpus &#x3D; PlaintextCorpusReader(dir, &#39;.*\.txt&#39;)
+print my_corpus.fileids()
+
+outputs:
+[&#39;lovestory.txt&#39;]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>断词：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print my_corpus.words(&#x27;lovestory.txt&#x27;)</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">[u&#x27;This&#x27;, u&#x27;is&#x27;, u&#x27;a&#x27;, u&#x27;love&#x27;, u&#x27;story&#x27;]</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">print my_corpus.words(&#39;lovestory.txt&#39;)
+
+outputs:
+[u&#39;This&#39;, u&#39;is&#39;, u&#39;a&#39;, u&#39;love&#39;, u&#39;story&#39;]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
@@ -552,21 +609,45 @@
 <p>所在文件：<code>corpus/reader/plaintext.py</code>，大约在23~138行</p>
 <h3 id="断词"><a href="#断词" class="headerlink" title="断词"></a>断词</h3><p>定义：<code>words</code>(<em>fileids&#x3D;None</em>)</p>
 <p>我们可以使用<code>words</code>函数将这些文件分割成<code>tokens</code>(词，此处也叫words)：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">words = gutenberg.words(&#x27;shakespeare-macbeth.txt&#x27;)</span><br><span class="line">print words</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">[u&#x27;[&#x27;, u&#x27;The&#x27;, u&#x27;Tragedie&#x27;, u&#x27;of&#x27;, u&#x27;Macbeth&#x27;, u&#x27;by&#x27;, ...]</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">words &#x3D; gutenberg.words(&#39;shakespeare-macbeth.txt&#39;)
+print words
+
+outputs:
+[u&#39;[&#39;, u&#39;The&#39;, u&#39;Tragedie&#39;, u&#39;of&#39;, u&#39;Macbeth&#39;, u&#39;by&#39;, ...]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>标点符号也会被单独分出来</p>
 <h3 id="断句"><a href="#断句" class="headerlink" title="断句"></a>断句</h3><p>定义：<code>sents</code>(<em>fileids&#x3D;None</em>)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sents = gutenberg.sents(&#x27;shakespeare-macbeth.txt&#x27;)</span><br><span class="line">print sents</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">[[u&#x27;[&#x27;, u&#x27;The&#x27;, u&#x27;Tragedie&#x27;, u&#x27;of&#x27;, u&#x27;Macbeth&#x27;, u&#x27;by&#x27;, u&#x27;William&#x27;, u&#x27;Shakespeare&#x27;, u&#x27;1603&#x27;, u&#x27;]&#x27;], [u&#x27;Actus&#x27;, u&#x27;Primus&#x27;, u&#x27;.&#x27;], ...]</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">sents &#x3D; gutenberg.sents(&#39;shakespeare-macbeth.txt&#39;)
+print sents
+
+outputs:
+[[u&#39;[&#39;, u&#39;The&#39;, u&#39;Tragedie&#39;, u&#39;of&#39;, u&#39;Macbeth&#39;, u&#39;by&#39;, u&#39;William&#39;, u&#39;Shakespeare&#39;, u&#39;1603&#39;, u&#39;]&#39;], [u&#39;Actus&#39;, u&#39;Primus&#39;, u&#39;.&#39;], ...]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>可以发现每一句都是一个字符串数组，连起来就是一个句子：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print &#x27; &#x27;.join(sents[0])</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">[ The Tragedie of Macbeth by William Shakespeare 1603 ]</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">print &#39; &#39;.join(sents[0])
+
+outputs:
+[ The Tragedie of Macbeth by William Shakespeare 1603 ]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="分段"><a href="#分段" class="headerlink" title="分段"></a>分段</h3><p>定义：<code>paras</code>(<em>fileids&#x3D;None</em>)</p>
 <p><code>段</code>是指自然段，一个<code>空白行</code>表示自然段之间的分隔符</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">paras = gutenberg.paras(&#x27;shakespeare-macbeth.txt&#x27;)</span><br><span class="line">print &#x27; &#x27;.join(paras[0][0]) #first para, first sentence</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">[ The Tragedie of Macbeth by William Shakespeare 1603 ]</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">paras &#x3D; gutenberg.paras(&#39;shakespeare-macbeth.txt&#39;)
+print &#39; &#39;.join(paras[0][0]) #first para, first sentence
+
+outputs:
+[ The Tragedie of Macbeth by William Shakespeare 1603 ]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="加载原始文本"><a href="#加载原始文本" class="headerlink" title="加载原始文本"></a>加载原始文本</h3><p>定义：<code>raw</code>(<em>fileids&#x3D;None</em>)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">str = gutenberg.raw(&#x27;shakespeare-macbeth.txt&#x27;)</span><br><span class="line">print str[:100]</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">[The Tragedie of Macbeth by William Shakespeare 1603]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Actus Primus. Scoena Prima.</span><br><span class="line"></span><br><span class="line">Thunder and Lig</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">str &#x3D; gutenberg.raw(&#39;shakespeare-macbeth.txt&#39;)
+print str[:100]
+
+outputs:
+[The Tragedie of Macbeth by William Shakespeare 1603]
+
+
+Actus Primus. Scoena Prima.
+
+Thunder and Lig<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
@@ -575,56 +656,104 @@
 <p>所在文件：<code>text.py</code>，大约在264行~395行</p>
 <h3 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h3><p>定义：<code>__init__</code>(self, tokens, name&#x3D;None)</p>
 <p><code>text1</code> 变量其实是通过下述语句创建的：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">text1 = Text(gutenberg.words(&#x27;melville-moby_dick.txt&#x27;))</span><br><span class="line">print text1</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">&lt;Text: Moby Dick by Herman Melville 1851&gt;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">text1 &#x3D; Text(gutenberg.words(&#39;melville-moby_dick.txt&#39;))
+print text1
+
+outputs:
+&lt;Text: Moby Dick by Herman Melville 1851&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>通过打印words方法的结果可知：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print gutenberg.words(&#x27;melville-moby_dick.txt&#x27;)</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">[u&#x27;[&#x27;, u&#x27;Moby&#x27;, u&#x27;Dick&#x27;, u&#x27;by&#x27;, u&#x27;Herman&#x27;, u&#x27;Melville&#x27;, ...]</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">print gutenberg.words(&#39;melville-moby_dick.txt&#39;)
+
+outputs:
+[u&#39;[&#39;, u&#39;Moby&#39;, u&#39;Dick&#39;, u&#39;by&#39;, u&#39;Herman&#39;, u&#39;Melville&#39;, ...]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>发现<code>gutenberg</code> 的 <code>words</code> 方法返回的其实是一个<code>字符串数组</code> 。</p>
 <h3 id="查找单词"><a href="#查找单词" class="headerlink" title="查找单词"></a>查找单词</h3><p>定义：<code>concordance</code>(<em>word</em>, <em>width&#x3D;79</em>, <em>lines&#x3D;25</em>)</p>
 <p>参阅： ConcordanceIndex 类</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">text1.concordance(&#x27;monstrous&#x27;, 30, 5)</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">Displaying 5 of 11 matches:</span><br><span class="line">of a most monstrous size . ..</span><br><span class="line">hing that monstrous bulk of t</span><br><span class="line"> array of monstrous clubs and</span><br><span class="line">ered what monstrous cannibal</span><br><span class="line">od ; most monstrous and most</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">text1.concordance(&#39;monstrous&#39;, 30, 5)
+
+outputs:
+Displaying 5 of 11 matches:
+of a most monstrous size . ..
+hing that monstrous bulk of t
+ array of monstrous clubs and
+ered what monstrous cannibal
+od ; most monstrous and most<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>这里我指定了只显示<code>5</code>行，每一行宽度是<code>30</code>。</p>
 <p>细心的你可能发现每行只有29个字符，详细原因看<code>text.py</code>文件的<code>print_concordance</code> 方法即可。</p>
 <h3 id="搭配词"><a href="#搭配词" class="headerlink" title="搭配词"></a>搭配词</h3><p>定义：<code>collocations</code>(<em>num&#x3D;20</em>, <em>window_size&#x3D;2</em>)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">text1.collocations()</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">Sperm Whale; Moby Dick; White Whale; old man; Captain Ahab; sperm</span><br><span class="line">whale; Right Whale; Captain Peleg; New Bedford; Cape Horn; cried Ahab;</span><br><span class="line">years ago; lower jaw; never mind; Father Mapple; cried Stubb; chief</span><br><span class="line">mate; white whale; ivory leg; one hand</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">text1.collocations()
+
+outputs:
+Sperm Whale; Moby Dick; White Whale; old man; Captain Ahab; sperm
+whale; Right Whale; Captain Peleg; New Bedford; Cape Horn; cried Ahab;
+years ago; lower jaw; never mind; Father Mapple; cried Stubb; chief
+mate; white whale; ivory leg; one hand<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>可见，该函数是打印出文中由多个词组成的<code>搭配词</code>，如上文的<code>old man</code>、<code>years ago</code>。</p>
 <h3 id="相似词"><a href="#相似词" class="headerlink" title="相似词"></a>相似词</h3><p>定义：<code>similar</code>(<em>word</em>, <em>num&#x3D;20</em>)</p>
 <p>参阅：ContextIndex.similar_word 方法</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">text1.similar(&#x27;monstrous&#x27;, 5)</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">imperial subtly impalpable pitiable curious</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">text1.similar(&#39;monstrous&#39;, 5)
+
+outputs:
+imperial subtly impalpable pitiable curious<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>该方法根据单词在上下文中的用法，返回与给定词相似的词，相似度越高的词排名越靠前。</p>
 <p><code>num</code> 参数表示查找数量，例如上面就只显示了<code>5</code>个。</p>
 <h3 id="相同上下文"><a href="#相同上下文" class="headerlink" title="相同上下文"></a>相同上下文</h3><p>定义：<code>common_contexts</code>(<em>words</em>, <em>num&#x3D;20</em>)</p>
 <p>参阅：ContextIndex.common_contexts 方法</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">text2.common_contexts([&#x27;monstrous&#x27;, &#x27;very&#x27;])</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">a_pretty is_pretty a_lucky am_glad be_glad</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">text2.common_contexts([&#39;monstrous&#39;, &#39;very&#39;])
+
+outputs:
+a_pretty is_pretty a_lucky am_glad be_glad<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>给出两个词的共同的上下文。这意味着下划线部分可用<code>monstrous</code> 或 <code>very</code>进行填空，而且<code>a_pretty</code> 这个公共上下文出现的频率最大。</p>
 <h3 id="词分布"><a href="#词分布" class="headerlink" title="词分布"></a>词分布</h3><p>定义：<code>dispersion_plot</code>(<em>words</em>)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">text4.dispersion_plot([&#x27;citizens&#x27;, &#x27;democracy&#x27;, &#x27;freedom&#x27;, &#x27;duties&#x27;, &#x27;America&#x27;])</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">text4.dispersion_plot([&#39;citizens&#39;, &#39;democracy&#39;, &#39;freedom&#39;, &#39;duties&#39;, &#39;America&#39;])<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="http://os9coobhw.bkt.clouddn.com/5cf65b8fc8a1643f0d21e53c14021bf4.jpg"></p>
 <p><code>text4</code> 是美国总统就职演说的文本，上述图像打印出了这五个词在演说过程中的分布情况。</p>
 <p>这可以用来研究随时间推移，语言使用上的变化。</p>
 <h3 id="正则表达式匹配单词"><a href="#正则表达式匹配单词" class="headerlink" title="正则表达式匹配单词"></a>正则表达式匹配单词</h3><p>定义：<code>findall</code>(<em>regexp</em>)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">text5.findall(&quot;&lt;.*&gt;&lt;.*&gt;&lt;bro&gt;&quot;)</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">you rule bro; telling you bro; u twizted bro</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">text5.findall(&quot;&lt;.*&gt;&lt;.*&gt;&lt;bro&gt;&quot;)
+
+outputs:
+you rule bro; telling you bro; u twizted bro<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="词出现次数"><a href="#词出现次数" class="headerlink" title="词出现次数"></a>词出现次数</h3><p>定义：<code>count</code>(<em>word</em>)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">text1.count(&#x27;I&#x27;)</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">2124</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">text1.count(&#39;I&#39;)
+
+outputs:
+2124<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="词索引"><a href="#词索引" class="headerlink" title="词索引"></a>词索引</h3><p>定义：<code>index</code>(<em>word</em>)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">text1.index(&#x27;I&#x27;)</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">37</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">text1.index(&#39;I&#39;)
 
-<h3 id="文本总长度"><a href="#文本总长度" class="headerlink" title="文本总长度"></a>文本总长度</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">len(text1)</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">260819</span><br></pre></td></tr></table></figure>
+outputs:
+37<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="生成FreqDist类"><a href="#生成FreqDist类" class="headerlink" title="生成FreqDist类"></a>生成FreqDist类</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dist = text1.vocab()</span><br><span class="line">print dist</span><br><span class="line"></span><br><span class="line">outputs:</span><br><span class="line">&lt;FreqDist with 19317 samples and 260819 outcomes&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="文本总长度"><a href="#文本总长度" class="headerlink" title="文本总长度"></a>文本总长度</h3><pre class="line-numbers language-none"><code class="language-none">len(text1)
+
+outputs:
+260819<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="生成FreqDist类"><a href="#生成FreqDist类" class="headerlink" title="生成FreqDist类"></a>生成FreqDist类</h3><pre class="line-numbers language-none"><code class="language-none">dist &#x3D; text1.vocab()
+print dist
+
+outputs:
+&lt;FreqDist with 19317 samples and 260819 outcomes&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="打印频率分布图"><a href="#打印频率分布图" class="headerlink" title="打印频率分布图"></a>打印频率分布图</h3><p>定义：<code>plot</code>(*<em>args</em>)</p>
 <p>参阅：nltk.prob.FreqDist.plot 方法</p>
 <p>从定义可以看出，其实就是调用了FreqDist的plot方法</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def plot(self, *args):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        See documentation for FreqDist.plot()</span><br><span class="line">        :seealso: nltk.prob.FreqDist.plot()</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        self.vocab().plot(*args)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">def plot(self, *args):
+        &quot;&quot;&quot;
+        See documentation for FreqDist.plot()
+        :seealso: nltk.prob.FreqDist.plot()
+        &quot;&quot;&quot;
+        self.vocab().plot(*args)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
