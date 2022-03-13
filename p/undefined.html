@@ -4,10 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="2019 Mac安装cuda+cudnn+pytorch, 全栈说">
-    <meta name="description" content="本次主要记录一些自己遇到的问题的解决方案
-CUDA、cuDNN大致流程参照 2018 MAC安装CUDA、cuDNN（Gaming Box1070）
-顺序是：GPU Driver、CUDA Driver、CUDA Toolkit、cuDNN">
+    <meta name="keywords" content="B460M+i10500黑苹果记录, 全栈说">
+    <meta name="description" content="黑苹果缘起最早接触黑苹果还是在上大二的时候，当时我只有一台联想Z50-70笔记本。当时的win10还没有WSL这种nb的玩意儿，我也还在写.NET代码。大二的时候开始流行全栈开发我才慢慢转移到PHP+JS技术栈。
+都说MacOS对于程序员来">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +18,7 @@ CUDA、cuDNN大致流程参照 2018 MAC安装CUDA、cuDNN（Gaming Box1070）
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>2019 Mac安装cuda+cudnn+pytorch | 全栈说</title>
+    <title>B460M+i10500黑苹果记录 | 全栈说</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -311,12 +310,12 @@ CUDA、cuDNN大致流程参照 2018 MAC安装CUDA、cuDNN（Gaming Box1070）
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">2019 Mac安装cuda+cudnn+pytorch</h1>
+                    <h1 class="description center-align post-title">B460M+i10500黑苹果记录</h1>
                 </div>
             </div>
         </div>
@@ -432,23 +431,14 @@ CUDA、cuDNN大致流程参照 2018 MAC安装CUDA、cuDNN（Gaming Box1070）
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/mac/">
-                                <span class="chip bg-color">mac</span>
+                            <a href="/tags/%E6%97%A5%E5%B8%B8/">
+                                <span class="chip bg-color">日常</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/%E7%A8%8B/" class="post-category">
-                                程
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -457,7 +447,7 @@ CUDA、cuDNN大致流程参照 2018 MAC安装CUDA、cuDNN（Gaming Box1070）
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-04-12
+                    2022-03-13
                 </div>
                 
 
@@ -481,50 +471,44 @@ CUDA、cuDNN大致流程参照 2018 MAC安装CUDA、cuDNN（Gaming Box1070）
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>本次主要记录一些自己遇到的问题的解决方案</p>
-<h2 id="CUDA、cuDNN"><a href="#CUDA、cuDNN" class="headerlink" title="CUDA、cuDNN"></a>CUDA、cuDNN</h2><p>大致流程参照 <a target="_blank" rel="noopener" href="https://blog.csdn.net/ignoreyou/article/details/85132738">2018 MAC安装CUDA、cuDNN（Gaming Box1070）</a></p>
-<p>顺序是：GPU Driver、CUDA Driver、CUDA Toolkit、cuDNN</p>
-<p>安装驱动时要注意：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MacOS与NVIDIA GPU Driver的版本要匹配，才能驱动显卡</span><br><span class="line">CUDA Driver与NVIDIA GPU Driver的版本要一致，CUDA才能找到显卡</span><br></pre></td></tr></table></figure>
-
-<p>关键地址：</p>
+                <h2 id="黑苹果缘起"><a href="#黑苹果缘起" class="headerlink" title="黑苹果缘起"></a>黑苹果缘起</h2><p>最早接触黑苹果还是在上大二的时候，当时我只有一台联想Z50-70笔记本。当时的win10还没有WSL这种nb的玩意儿，我也还在写.NET代码。大二的时候开始流行全栈开发我才慢慢转移到PHP+JS技术栈。</p>
+<p>都说MacOS对于程序员来说是生产力系统，而我当时除了Windows系统外，也就接触过一点Linux。抱着对这款神秘系统的好奇，我在大二那个悠闲的暑假开启了我的黑苹果折腾之路。</p>
+<p>当时的黑苹果资料都是网上零碎分布着，没有特别系统化的教程。我在黑苹果贴吧、远景论坛上一边学习黑苹果的知识，一遍倒腾我的电脑，在经过了三天努力之后，我终于安装上了这款神秘的系统。</p>
+<p><img src="http://static.hijerry.cn/IMG20160810225812.jpg" alt="初见MacOS"></p>
+<p>刚开始使用时还有点不太习惯，按win键不能出菜单；重命名居然是用回车键而不是F2；没有任务栏，看不到每个程序的运行情况；安装程序要先挂载再安装等等。。</p>
+<p>在使用了几天后，特别是当我开始用他写代码并进行Server Coding的时候我才体会到它真正的魅力。有unix打底，打开terminal就进入到了程序的世界。在coding之余有原生的微信，QQ音乐这些这些常用软件能完成日常上网冲浪。</p>
+<h2 id="梅开二度"><a href="#梅开二度" class="headerlink" title="梅开二度"></a>梅开二度</h2><p>我的Z50-70早已换下，前年自己组装了一台AMD+N卡的PC，配上WSL，在win下开发效率也是杠杠的。上班之后公司发了Mac电脑，而我在自己PC上也有一些开发需求，于是又萌生了黑苹果的想法。</p>
+<p>于是我在2月底开始重新捡起黑苹果这门技艺，上网搜索才发现，如今的黑苹果教程竟然已经如此详细了，这里推荐<a target="_blank" rel="noopener" href="https://apple.sqlsec.com/">国光黑苹果教程</a>，可以说非常详细了。</p>
+<p>按照国光的教程，我在硬件准备好之后，半天就搞定了黑苹果，几乎没怎么费劲。。。</p>
+<h2 id="硬件配置"><a href="#硬件配置" class="headerlink" title="硬件配置"></a>硬件配置</h2><p>安装黑苹果最重要的三点是：硬件、EFI和折腾的心</p>
+<p>硬件是最为重要的，原则是尽量贴近白苹果的配置。包括：CPU（最为重要）、显卡（剪视频很重要）、主板、硬盘，如果你追求完美想开启wifi和AirDrop，那么无无线网卡也很重要。硬件的选择可以参考下面两个资料：</p>
 <ul>
-<li>MAC - NVIDIA GPU Driver对照表：<a target="_blank" rel="noopener" href="http://www.macvidcards.com/drivers.html">http://www.macvidcards.com/drivers.html</a></li>
-<li>CUDA Driver：<a target="_blank" rel="noopener" href="http://www.nvidia.com/object/mac-driver-archive.html">http://www.nvidia.com/object/mac-driver-archive.html</a></li>
-<li>CUDA Toolkit：<a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-toolkit-archive">https://developer.nvidia.com/cuda-toolkit-archive</a></li>
-<li>cuDNN：<a target="_blank" rel="noopener" href="https://developer.nvidia.com/rdp/cudnn-archive">https://developer.nvidia.com/rdp/cudnn-archive</a></li>
+<li><a target="_blank" rel="noopener" href="https://apple.sqlsec.com/1-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1-2.html#reloaded">国光黑苹果教程 - 硬件限制</a></li>
+<li><a target="_blank" rel="noopener" href="https://osx.cx/retail.html">黑苹果装机配置</a></li>
 </ul>
-<p>我自己安装好后的配置是：</p>
-<ul>
-<li>GPU Driver Version: 387.10.10.10.40.105</li>
-<li>CUDA Driver Version: 418.105</li>
-<li>CUDA：10.1.105</li>
-<li>cuDNN：7.4.2</li>
-</ul>
-<p>版本查看方式：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat $CUDA_HOME/version.txt # CUDA</span><br><span class="line">cat $CUDA_HOME/include/cudnn.h | grep CUDNN_MAJOR -A 2 #cuDNN</span><br></pre></td></tr></table></figure>
-
-<h2 id="Pytorch-with-CUDA"><a href="#Pytorch-with-CUDA" class="headerlink" title="Pytorch with CUDA"></a>Pytorch with CUDA</h2><p><a target="_blank" rel="noopener" href="https://pytorch.org/get-started/locally/">Pytorch官方</a> 说的很清楚：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MacOS Binaries dont support CUDA, install from source if CUDA is needed</span><br></pre></td></tr></table></figure>
-
-<p>目前要<code>with CUDA</code>有两个方式：从源码安装、安装第三方pip包</p>
-<h3 id="从源码安装"><a href="#从源码安装" class="headerlink" title="从源码安装"></a>从源码安装</h3><p>参照：<a target="_blank" rel="noopener" href="https://github.com/pytorch/pytorch#from-source">https://github.com/pytorch/pytorch#from-source</a></p>
-<p>这条路我没走通。虽然成功编译了pytorch，但执行<code>import torch</code>时遇到了错误：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ModuleNotFoundError: No module named &#x27;torch._C&#x27;</span><br></pre></td></tr></table></figure>
-<p>按照google结果，我应该在 <code>torch</code> 目录的以下两个文件复制：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp _C.cpython-37m-darwin.so _C.so</span><br><span class="line">cp _dl.cpython-37m-darwin.so _dl.so</span><br></pre></td></tr></table></figure>
-<p>但我的 <code>torch</code> 目录下没有这两个文件</p>
-<h3 id="第三方pip包"><a href="#第三方pip包" class="headerlink" title="第三方pip包"></a>第三方pip包</h3><p>参照：<a target="_blank" rel="noopener" href="https://github.com/TomHeaven/pytorch-osx-build">https://github.com/TomHeaven/pytorch-osx-build</a></p>
-<p>我下载的是：<code>pytorch-1.0-py27-py37-cuda10-cudnn74</code></p>
-<p>这是别人编译好的pip包，下载后用pip安装即可：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install torch-1.0-cp37-cp37m-macosx_10_13_x86_64.whl</span><br></pre></td></tr></table></figure>
-
-<h4 id="No-module-named-‘torch-C’"><a href="#No-module-named-‘torch-C’" class="headerlink" title="No module named ‘torch._C’"></a>No module named ‘torch._C’</h4><h4 id="Library-not-loaded-rpath-x2F-xxxx-10-0-dylib"><a href="#Library-not-loaded-rpath-x2F-xxxx-10-0-dylib" class="headerlink" title="Library not loaded: @rpath&#x2F;xxxx.10.0.dylib"></a>Library not loaded: @rpath&#x2F;xxxx.10.0.dylib</h4><p>在运行 <code>import torch</code> 时报的错，比如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">  File &quot;/Users/jerry/anaconda3/lib/python3.7/site-packages/torch/__init__.py&quot;, line 84, in &lt;module&gt;</span><br><span class="line">    from torch._C import *</span><br><span class="line">ImportError: dlopen(/Users/jerry/anaconda3/lib/python3.7/site-packages/torch/_C.cpython-37m-darwin.so, 9): Library not loaded: @rpath/libcufft.10.0.dylib</span><br><span class="line">  Referenced from: /Users/jerry/anaconda3/lib/python3.7/site-packages/torch/lib/libtorch_python.dylib</span><br><span class="line">  Reason: image not found</span><br></pre></td></tr></table></figure>
-<p><code>libcufft</code>是cuda的库，这里只是文件名没找到而已，而库文件其实是在 <code>$CUDA_HOME/lib</code>下的，所以手动链接一下就行，下面是对同类错误的库进行统一处理：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo ln -s $CUDA_HOME/lib/libcufft.10.dylib $CUDA_HOME/lib/libcufft.10.0.dylib</span><br><span class="line">sudo ln -s $CUDA_HOME/lib/libcurand.10.dylib $CUDA_HOME/lib/libcurand.10.0.dylib</span><br><span class="line">sudo ln -s $CUDA_HOME/lib/libcublas.10.dylib $CUDA_HOME/lib/libcublas.10.0.dylib</span><br><span class="line">sudo ln -s $CUDA_HOME/lib/libcudart.dylib $CUDA_HOME/lib/libcudart.10.0.dylib</span><br><span class="line">sudo ln -s $CUDA_HOME/lib/libnvrtc.dylib $CUDA_HOME/lib/libnvrtc.10.0.dylib</span><br><span class="line">sudo ln -s $CUDA_HOME/lib/libcusparse.10.dylib $CUDA_HOME/lib/libcusparse.10.0.dylib</span><br></pre></td></tr></table></figure>
-
-<h2 id="参考引用"><a href="#参考引用" class="headerlink" title="参考引用"></a>参考引用</h2><p>[1] <a target="_blank" rel="noopener" href="https://blog.csdn.net/ignoreyou/article/details/85132738">2018 MAC安装CUDA、cuDNN（Gaming Box1070）</a>, 2019-04-12. </p>
+<p>于是我果断把AMD CPU 和 N卡换成了 Intel CPU + A卡。因为N卡溢价我甚至还赚了500多块钱。。</p>
+<p>这里贴一下我最后安装成功的配置：</p>
+<p>MacOS：12.2.1</p>
+<p>显示器：U2790B 4K</p>
+<p>主板：微星 B460m 迫击炮 （非wifi版）</p>
+<p>CPU：Intel(R) Core(TM) i5-10500 CPU @ 3.10GHz，Coffee Lake</p>
+<p>显卡：核显 UHD Graphics 630，独显 蓝宝石 RX460 白金版 4G</p>
+<p>硬盘：三星 970 EVO 500G，M.2 </p>
+<p>内存：光威 16GB * 2</p>
+<p>无线网卡：BCM 94360CD （免驱）</p>
+<h2 id="黑苹果情况"><a href="#黑苹果情况" class="headerlink" title="黑苹果情况"></a>黑苹果情况</h2><p><img src="http://static.hijerry.cn/20220313142822.png"></p>
+<h3 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h3><p>因为之前是R5 3600，而AMD需要破解内核。出于稳定考虑，果断换成Intel CPU，这里我出现了几个选择i3 10300、i5 10400、i5 10500，此外还有带不带核显的选择。最后我选择了主频稍高一点的10500，并且带有了核显，主要是怕显卡出坑，先带个核显保底。</p>
+<p>在拿到i5 10500后，我还拿他去打了一把LOL。。。4K分辨率大乱斗<strong>全低</strong>特效团战还勉强能接受，大概30fps左右。</p>
+<h3 id="主板"><a href="#主板" class="headerlink" title="主板"></a>主板</h3><p>因为换成了Intel CPU，所以主板得跟着一起换了，选择了大众B460M，简单点，EFI也好找</p>
+<h3 id="显卡"><a href="#显卡" class="headerlink" title="显卡"></a>显卡</h3><p>手里的1050Ti最高只能到10.13版本，因为再高MacOS就没有驱动了。于是我把独显卸下来，用核显顶了一下。</p>
+<p>燃鹅发现有些过渡动画会卡顿，这怎么能忍，于是在鱼塘入了一张RX 460显卡，大概率是矿卡吧，但这都不重要，重要的是我的过渡画面不卡顿的。N卡换A卡的溢价让我赚了500多块钱。。。</p>
+<p>RX 460这张卡我也试了下LOL，4K分辨率大乱斗<strong>全高</strong>团战能&gt;60fps，对我来说是够用了。擦我为什么当初要买N卡？？</p>
+<p>这里需要提一句的是，UHD 630 显卡的过渡动画在显示器不缩放的时候是不卡的，也就是按4K分辨率显示。如果我缩放了界面，显卡需要做一次缩放计算，导致会有点卡顿。但是喵的不缩放字也太小了，眼睛疼啊。。。</p>
+<h3 id="WiFi-amp-蓝牙-amp-空投"><a href="#WiFi-amp-蓝牙-amp-空投" class="headerlink" title="WiFi &amp; 蓝牙 &amp; 空投"></a>WiFi &amp; 蓝牙 &amp; 空投</h3><p>一是考虑到可能会把手机照片备份到PC上，所以空投还是得搞一发</p>
+<p>二是考虑到可能要用蓝牙连接键盘鼠标之类的外设，所以蓝牙得来一发</p>
+<p>先是在鱼塘入了一块 <strong>博通 943602CS</strong> WIFI+蓝牙双模。到手之后发现在windows 下正常双开，而在mac下只能有wifi信号，尝试了换mac版本，打<a target="_blank" rel="noopener" href="https://github.com/acidanthera/BrcmPatchRAM/releases">BrcmPatchRAM</a>补丁，搜寻了许多资料，折腾了一天无果，最后和塘主协商退货了。</p>
+<p>之后我反手买了一块 <strong>博通 94360CD</strong> WIFI+蓝牙双模，到货后直接点亮嚯嚯~感觉是02CS有坑，要买的同学得注意一下了</p>
+<p><img src="http://static.hijerry.cn/20220313143101.png"></p>
 
                 
             </div>
@@ -551,7 +535,7 @@ CUDA、cuDNN大致流程参照 2018 MAC安装CUDA、cuDNN（Gaming Box1070）
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://hijerry.cn/p/49582.html">https://hijerry.cn/p/49582.html</a>
+                    <a href="https://hijerry.cn/p/undefined.html">https://hijerry.cn/p/undefined.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -589,8 +573,8 @@ CUDA、cuDNN大致流程参照 2018 MAC安装CUDA、cuDNN（Gaming Box1070）
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/mac/">
-                                    <span class="chip bg-color">mac</span>
+                                <a href="/tags/%E6%97%A5%E5%B8%B8/">
+                                    <span class="chip bg-color">日常</span>
                                 </a>
                             
                         </div>
@@ -764,9 +748,10 @@ CUDA、cuDNN大致流程参照 2018 MAC安装CUDA、cuDNN（Gaming Box1070）
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/p/undefined.html">
                     <div class="card-image">
@@ -784,9 +769,9 @@ CUDA、cuDNN大致流程参照 2018 MAC安装CUDA、cuDNN（Gaming Box1070）
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-03-13
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-13
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -795,6 +780,7 @@ CUDA、cuDNN大致流程参照 2018 MAC安装CUDA、cuDNN（Gaming Box1070）
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -813,13 +799,13 @@ CUDA、cuDNN大致流程参照 2018 MAC安装CUDA、cuDNN（Gaming Box1070）
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/p/48009.html">
+                <a href="/p/49582.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="复杂度与NP完全性">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="2019 Mac安装cuda+cudnn+pytorch">
                         
-                        <span class="card-title">复杂度与NP完全性</span>
+                        <span class="card-title">2019 Mac安装cuda+cudnn+pytorch</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -830,14 +816,14 @@ CUDA、cuDNN大致流程参照 2018 MAC安装CUDA、cuDNN（Gaming Box1070）
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-03-23
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-04-12
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
-                                    算法
+                            <a href="/categories/%E7%A8%8B/" class="post-category">
+                                    程
                                 </a>
                             
                             
@@ -847,12 +833,8 @@ CUDA、cuDNN大致流程参照 2018 MAC安装CUDA、cuDNN（Gaming Box1070）
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/NP%E5%AE%8C%E5%85%A8%E6%80%A7/">
-                        <span class="chip bg-color">NP完全性</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%AE%97%E6%B3%95/">
-                        <span class="chip bg-color">算法</span>
+                    <a href="/tags/mac/">
+                        <span class="chip bg-color">mac</span>
                     </a>
                     
                 </div>
