@@ -476,7 +476,7 @@
 <p>打开chrome开发者工具可以发现，我的http图片被自动转成了https，而我在七牛云对象存储还没开启https访问，于是就报错了。Safari是不会做这种自动转换的，所以safari可以正常访问~</p>
 <p>那我肯定不能忍啊，chrome必须得能看到图片，于是摸索了一下如何开启https。</p>
 <h2 id="域名：源站域名-vs-CDN加速"><a href="#域名：源站域名-vs-CDN加速" class="headerlink" title="域名：源站域名 vs CDN加速"></a>域名：源站域名 vs CDN加速</h2><p>打开七牛云对象存储-&gt;域名管理可以看到，七牛云支持两种方式给对象存储加域名：CDN加速域名、源站域名。详细的区别可以参考官方文档：<a target="_blank" rel="noopener" href="https://developer.qiniu.com/kodo">对象存储</a> &gt; 使用指南 &gt; <a target="_blank" rel="noopener" href="https://developer.qiniu.com/kodo/development_guidelines/8452/kodo-console-guide">控制台指南</a> &gt; <a target="_blank" rel="noopener" href="https://developer.qiniu.com/kodo/development_guidelines/8456/bucket-management">空间管理</a> &gt; <a target="_blank" rel="noopener" href="https://developer.qiniu.com/kodo/8527/kodo-domain-name-management">域名管理</a>。</p>
-<p>![image-20220319144327519](&#x2F;Users&#x2F;jerry&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20220319144327519.png)</p>
+<p><img src="http://static.hijerry.cn/image-20220319144327519.png"></p>
 <p>大致意思就是，源站域名是指请求直接打到对象存储。CDN加速的话，请求会打到边缘节点（而非对象存储），当节点找不到这个图片时，才会请求对象存储。所以理论上CDN域名速度 &gt; 源站域名速度，这也只是理论上而已。大致过程如下图：</p>
 <p><img src="http://static.hijerry.cn/20220319151429.png"></p>
 <p>空间管理页面：<a target="_blank" rel="noopener" href="https://portal.qiniu.com/kodo/bucket">https://portal.qiniu.com/kodo/bucket</a></p>
