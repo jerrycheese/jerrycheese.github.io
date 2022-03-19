@@ -6,7 +6,8 @@
     <meta charset="utf-8">
     <meta name="keywords" content="七牛云图床开启HTTPS的两个方法, 全栈说">
     <meta name="description" content="https下的http图片因为自己一直用的是七牛云来管理博客图片，发现在chrome下用https访问博客时看不到博客里的图片，而使用safari访问https博客却可以正常看到图片。chrome报错如下：
-![image-20220319">
+
+打开chrome开发者工具可以">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -472,7 +473,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="https下的http图片"><a href="#https下的http图片" class="headerlink" title="https下的http图片"></a>https下的http图片</h2><p>因为自己一直用的是七牛云来管理博客图片，发现在chrome下用https访问博客时看不到博客里的图片，而使用safari访问https博客却可以正常看到图片。chrome报错如下：</p>
-<p>![image-20220319143958093](&#x2F;Users&#x2F;jerry&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20220319143958093.png)</p>
+<p><img src="http://static.hijerry.cn/image-20220319143958093.png"></p>
 <p>打开chrome开发者工具可以发现，我的http图片被自动转成了https，而我在七牛云对象存储还没开启https访问，于是就报错了。Safari是不会做这种自动转换的，所以safari可以正常访问~</p>
 <p>那我肯定不能忍啊，chrome必须得能看到图片，于是摸索了一下如何开启https。</p>
 <h2 id="域名：源站域名-vs-CDN加速"><a href="#域名：源站域名-vs-CDN加速" class="headerlink" title="域名：源站域名 vs CDN加速"></a>域名：源站域名 vs CDN加速</h2><p>打开七牛云对象存储-&gt;域名管理可以看到，七牛云支持两种方式给对象存储加域名：CDN加速域名、源站域名。详细的区别可以参考官方文档：<a target="_blank" rel="noopener" href="https://developer.qiniu.com/kodo">对象存储</a> &gt; 使用指南 &gt; <a target="_blank" rel="noopener" href="https://developer.qiniu.com/kodo/development_guidelines/8452/kodo-console-guide">控制台指南</a> &gt; <a target="_blank" rel="noopener" href="https://developer.qiniu.com/kodo/development_guidelines/8456/bucket-management">空间管理</a> &gt; <a target="_blank" rel="noopener" href="https://developer.qiniu.com/kodo/8527/kodo-domain-name-management">域名管理</a>。</p>
