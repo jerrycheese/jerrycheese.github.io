@@ -4,9 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="B460M+i10500黑苹果记录, 全栈说">
-    <meta name="description" content="黑苹果缘起最早接触黑苹果还是在上大二的时候，当时我只有一台联想Z50-70笔记本。当时的win10还没有WSL这种nb的玩意儿，我也还在写.NET代码。大二的时候开始流行全栈开发我才慢慢转移到PHP+JS技术栈。
-都说MacOS对于程序员来">
+    <meta name="keywords" content="七牛云图床开启HTTPS的两个方法, 全栈说">
+    <meta name="description" content="https下的http图片因为自己一直用的是七牛云来管理博客图片，发现在chrome下用https访问博客时看不到博客里的图片，而使用safari访问https博客却可以正常看到图片。chrome报错如下：
+![image-20220319">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>B460M+i10500黑苹果记录 | 全栈说</title>
+    <title>七牛云图床开启HTTPS的两个方法 | 全栈说</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">B460M+i10500黑苹果记录</h1>
+                    <h1 class="description center-align post-title">七牛云图床开启HTTPS的两个方法</h1>
                 </div>
             </div>
         </div>
@@ -447,7 +447,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-03-13
+                    2022-03-19
                 </div>
                 
 
@@ -471,60 +471,51 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="黑苹果缘起"><a href="#黑苹果缘起" class="headerlink" title="黑苹果缘起"></a>黑苹果缘起</h2><p>最早接触黑苹果还是在上大二的时候，当时我只有一台联想Z50-70笔记本。当时的win10还没有WSL这种nb的玩意儿，我也还在写.NET代码。大二的时候开始流行全栈开发我才慢慢转移到PHP+JS技术栈。</p>
-<p>都说MacOS对于程序员来说是生产力系统，而我当时除了Windows系统外，也就接触过一点Linux。抱着对这款神秘系统的好奇，我在大二那个悠闲的暑假开启了我的黑苹果折腾之路。</p>
-<p>当时的黑苹果资料都是网上零碎分布着，没有特别系统化的教程。我在黑苹果贴吧、远景论坛上一边学习黑苹果的知识，一遍倒腾我的电脑，在经过了三天努力之后，我终于安装上了这款神秘的系统。</p>
-<p><img src="http://static.hijerry.cn/IMG20160810225812.jpg" alt="初见MacOS"></p>
-<p>刚开始使用时还有点不太习惯，按win键不能出菜单；重命名居然是用回车键而不是F2；没有任务栏，看不到每个程序的运行情况；安装程序要先挂载再安装等等。。</p>
-<p>在使用了几天后，特别是当我开始用他写代码并进行Server Coding的时候我才体会到它真正的魅力。有unix打底，打开terminal就进入到了程序的世界。在coding之余有原生的微信，QQ音乐这些这些常用软件能完成日常上网冲浪。</p>
-<h2 id="梅开二度"><a href="#梅开二度" class="headerlink" title="梅开二度"></a>梅开二度</h2><p>我的Z50-70早已换下，前年自己组装了一台AMD+N卡的PC，配上WSL，在win下开发效率也是杠杠的。上班之后公司发了Mac电脑，而我在自己PC上也有一些开发需求，于是又萌生了黑苹果的想法。</p>
-<p>于是我在2月底开始重新捡起黑苹果这门技艺，上网搜索才发现，如今的黑苹果教程竟然已经如此详细了，这里推荐<a target="_blank" rel="noopener" href="https://apple.sqlsec.com/">国光黑苹果教程</a>，可以说非常详细了。</p>
-<p>按照国光的教程，我在硬件准备好之后，半天就搞定了黑苹果，几乎没怎么费劲。。。</p>
-<h2 id="硬件配置"><a href="#硬件配置" class="headerlink" title="硬件配置"></a>硬件配置</h2><p>安装黑苹果最重要的三点是：硬件、EFI和折腾的心</p>
-<p>硬件是最为重要的，原则是尽量贴近白苹果的配置，选择了对的配置，可以节省非常多的折腾时间。硬件的选择可以参考下面两个资料：</p>
+                <h2 id="https下的http图片"><a href="#https下的http图片" class="headerlink" title="https下的http图片"></a>https下的http图片</h2><p>因为自己一直用的是七牛云来管理博客图片，发现在chrome下用https访问博客时看不到博客里的图片，而使用safari访问https博客却可以正常看到图片。chrome报错如下：</p>
+<p>![image-20220319143958093](&#x2F;Users&#x2F;jerry&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20220319143958093.png)</p>
+<p>打开chrome开发者工具可以发现，我的http图片被自动转成了https，而我在七牛云对象存储还没开启https访问，于是就报错了。Safari是不会做这种自动转换的，所以safari可以正常访问~</p>
+<p>那我肯定不能忍啊，chrome必须得能看到图片，于是摸索了一下如何开启https。</p>
+<h2 id="域名：源站域名-vs-CDN加速"><a href="#域名：源站域名-vs-CDN加速" class="headerlink" title="域名：源站域名 vs CDN加速"></a>域名：源站域名 vs CDN加速</h2><p>打开七牛云对象存储-&gt;域名管理可以看到，七牛云支持两种方式给对象存储加域名：CDN加速域名、源站域名。详细的区别可以参考官方文档：<a target="_blank" rel="noopener" href="https://developer.qiniu.com/kodo">对象存储</a> &gt; 使用指南 &gt; <a target="_blank" rel="noopener" href="https://developer.qiniu.com/kodo/development_guidelines/8452/kodo-console-guide">控制台指南</a> &gt; <a target="_blank" rel="noopener" href="https://developer.qiniu.com/kodo/development_guidelines/8456/bucket-management">空间管理</a> &gt; <a target="_blank" rel="noopener" href="https://developer.qiniu.com/kodo/8527/kodo-domain-name-management">域名管理</a>。</p>
+<p>![image-20220319144327519](&#x2F;Users&#x2F;jerry&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20220319144327519.png)</p>
+<p>大致意思就是，源站域名是指请求直接打到对象存储。CDN加速的话，请求会打到边缘节点（而非对象存储），当节点找不到这个图片时，才会请求对象存储。所以理论上CDN域名速度 &gt; 源站域名速度，这也只是理论上而已。大致过程如下图：</p>
+<p><img src="http://static.hijerry.cn/20220319151429.png"></p>
+<p>空间管理页面：<a target="_blank" rel="noopener" href="https://portal.qiniu.com/kodo/bucket">https://portal.qiniu.com/kodo/bucket</a></p>
+<p><strong>源站域名</strong>，在上述页面直接点击右侧“配置HTTPS”，上传SSL证书后就可以开启https访问了。</p>
+<p><strong>CDN加速域名</strong>，则需要点击域名标题进入到CDN域名管理页面，再配置SSL证书：</p>
+<p><img src="http://static.hijerry.cn/image-20220319150047301.png"></p>
+<h2 id="配置SSL证书"><a href="#配置SSL证书" class="headerlink" title="配置SSL证书"></a>配置SSL证书</h2><p>无论哪种方式，开启HTTPS都需要申请一个SSL证书才行。</p>
+<p>我的域名是管理在阿里云上的，所以我直接去阿里云申请<a target="_blank" rel="noopener" href="https://yundun.console.aliyun.com/?spm=5176.12818093.ProductAndService--ali--widget-home-product-recent.dre2.409a16d0xv6VDP&p=cas#/certExtend/free">免费的SSL</a></p>
+<p>你还没购买的话，可以点击立即购买，选择免费的证书费用是0元。</p>
+<p><img src="http://static.hijerry.cn/image-20220319151803871.png"></p>
+<p>完事之后可以免费创建20个证书~~</p>
+<p>创建证书的时候，一定要填对域名呀！！</p>
+<p>之后把Apache证书下载到本地，因为我们要把他上传到七牛云上~</p>
+<p><img src="http://static.hijerry.cn/image-20220319151950055.png"></p>
+<p>下载后解压可以得到三个文件：</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">➜  7450261_static.hijerry.cn_apache ll
+total 24
+-rw-rw-r--@ 1 jerry  staff   1.6K  3 19 14:18 7450261_static.hijerry.cn.key
+-rw-rw-r--@ 1 jerry  staff   1.6K  3 19 14:18 7450261_static.hijerry.cn_chain.crt
+-rw-rw-r--@ 1 jerry  staff   2.1K  3 19 14:18 7450261_static.hijerry.cn_public.crt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>打开七牛云的上传证书页面：<a target="_blank" rel="noopener" href="https://portal.qiniu.com/certificate/ssl#cert">https://portal.qiniu.com/certificate/ssl#cert</a></p>
+<p>点击上传原有证书，把解压的xxx.key和xxx.public.crt的内容复制到下面两个框框内</p>
+<p><img src="http://static.hijerry.cn/image-20220319152216307.png"></p>
+<p>然后再去源站域名&#x2F;CDN加速域名开启HTTPS，选中这个证书就可以了~</p>
+<h2 id="费用对比"><a href="#费用对比" class="headerlink" title="费用对比"></a>费用对比</h2><p>图床的费用有如下几个部分，<a target="_blank" rel="noopener" href="https://portal.qiniu.com/financial/price?product=kodo">价格和优惠</a>可以查到。</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://apple.sqlsec.com/1-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1-2.html#reloaded">国光黑苹果教程 - 硬件限制</a></li>
-<li><a target="_blank" rel="noopener" href="https://osx.cx/retail.html">黑苹果装机配置</a></li>
+<li>存储空间。0~10G 免费</li>
+<li>CDN回源流量。0~10G 免费</li>
+<li>外出流量，<strong>0~100TB 0.28元&#x2F;GB</strong></li>
+<li>CDN外出HTTP流量。0~10G 免费</li>
+<li>CDN外出HTTPS流量。<strong>0~100TB 0.28元&#x2F;GB</strong></li>
 </ul>
-<p>我把AMD CPU 和 N卡换成了 Intel CPU + A卡。因为N卡溢价我甚至还赚了500多块钱。。</p>
-<p>这里贴一下我最后安装成功的配置：</p>
-<p>MacOS：12.2.1</p>
-<p>显示器：U2790B 4K</p>
-<p>主板：微星 B460m 迫击炮 （非wifi版）</p>
-<p>CPU：Intel(R) Core(TM) i5-10500 CPU @ 3.10GHz，Coffee Lake</p>
-<p>显卡：核显 UHD Graphics 630，独显 蓝宝石 RX460 白金版 4G</p>
-<p>硬盘：三星 970 EVO 500G，M.2 </p>
-<p>内存：光威 16GB * 2</p>
-<p>无线网卡：BCM 94360CD （免驱）</p>
-<h2 id="黑苹果情况"><a href="#黑苹果情况" class="headerlink" title="黑苹果情况"></a>黑苹果情况</h2><p><img src="http://static.hijerry.cn/20220313142822.png"></p>
-<p>镜像用的是 <a target="_blank" rel="noopener" href="https://blog.daliansky.net/">黑苹果小兵</a> 12.2.1，花费了1块钱巨资拿到的镜像下载地址。。。</p>
-<h3 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h3><p>因为之前是R5 3600，而AMD需要破解内核。出于稳定考虑，果断换成Intel CPU，这里我出现了几个选择i3 10300、i5 10400、i5 10500，此外还有带不带核显的选择。最后我选择了主频稍高一点的10500，并且带有了核显，主要是怕显卡出坑，先带个核显保底。</p>
-<p>在拿到i5 10500后，我还拿他去打了一把LOL。。。4K分辨率大乱斗<strong>全低</strong>特效团战还勉强能接受，大概30fps左右。</p>
-<h3 id="主板"><a href="#主板" class="headerlink" title="主板"></a>主板</h3><p>因为换成了Intel CPU，所以主板得跟着一起换了，选择了大众B460M，简单点，EFI也好找</p>
-<h3 id="显卡"><a href="#显卡" class="headerlink" title="显卡"></a>显卡</h3><p>手里的1050Ti最高只能到10.13版本，因为再高MacOS就没有驱动了。于是我把独显卸下来，用核显顶了一下。</p>
-<p>燃鹅发现有些过渡动画会卡顿，这怎么能忍，于是在鱼塘入了一张RX 460显卡，大概率是矿卡吧，但这都不重要，重要的是我的过渡画面不卡顿的。N卡换A卡的溢价让我赚了500多块钱。。。</p>
-<p>RX 460这张卡我也试了下LOL，4K分辨率大乱斗<strong>全高</strong>团战能&gt;60fps，对我来说是够用了。擦我为什么当初要买N卡？？</p>
-<p>这里需要提一句的是，UHD 630 显卡的过渡动画在显示器不缩放的时候是不卡的，也就是按4K分辨率显示。如果我缩放了界面，显卡需要做一次缩放计算，导致会有点卡顿。但是喵的不缩放字也太小了，眼睛疼啊。。。</p>
-<h3 id="WiFi-amp-蓝牙-amp-空投"><a href="#WiFi-amp-蓝牙-amp-空投" class="headerlink" title="WiFi &amp; 蓝牙 &amp; 空投"></a>WiFi &amp; 蓝牙 &amp; 空投</h3><p>一是考虑到可能会把手机照片备份到PC上，所以空投还是得搞一发</p>
-<p>二是考虑到可能要用蓝牙连接键盘鼠标之类的外设，所以蓝牙得来一发</p>
-<p>先是在鱼塘入了一块 <strong>博通 943602CS</strong> WIFI+蓝牙双模。到手之后发现在windows 下正常双开，而在mac下只能有wifi信号，尝试了换mac版本，打<a target="_blank" rel="noopener" href="https://github.com/acidanthera/BrcmPatchRAM/releases">BrcmPatchRAM</a>补丁，搜寻了许多资料，折腾了一天无果，最后和塘主协商退货了。</p>
-<p>之后我反手买了一块 <strong>博通 94360CD</strong> WIFI+蓝牙双模，到货后直接点亮嚯嚯~感觉是02CS有坑，要买的同学得注意一下了</p>
-<p><img src="http://static.hijerry.cn/20220313143101.png"></p>
-<h3 id="检查清单"><a href="#检查清单" class="headerlink" title="检查清单"></a>检查清单</h3><ul>
-<li>最大分辨率显示</li>
-<li>硬件解码</li>
-<li>WiFi</li>
-<li>蓝牙</li>
-<li>隔空投送</li>
-<li>USB3.0 &#x2F; 2.0</li>
-<li>显示器声音</li>
-<li>双显卡</li>
-<li>双系统切换</li>
+<p>HTTPS方案有两种组合：</p>
+<ul>
+<li>源站域名：存储空间+外出流量</li>
+<li>CDN加速域名：存储空间+CDN回源+CDN外出HTTPS</li>
 </ul>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/66a54dc2d5d5">黑苹果 EFI B460M + i5 10400&#x2F;10500&#x2F;10600&#x2F;10700</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.daliansky.net/">黑苹果小兵</a></li>
-</ul>
+<p>两种组合下，存储0~10G都是免费，而HTTPS流量都需要 <strong>0.28元&#x2F;GB</strong>，焯焯焯</p>
 
                 
             </div>
@@ -551,7 +542,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://hijerry.cn/p/43141.html">https://hijerry.cn/p/43141.html</a>
+                    <a href="https://hijerry.cn/p/64756.html">https://hijerry.cn/p/64756.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -764,9 +755,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/p/64756.html">
                     <div class="card-image">
@@ -784,9 +776,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-03-19
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-19
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -795,6 +787,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -813,13 +806,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/p/49582.html">
+                <a href="/p/43141.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="2019 Mac安装cuda+cudnn+pytorch">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="B460M+i10500黑苹果记录">
                         
-                        <span class="card-title">2019 Mac安装cuda+cudnn+pytorch</span>
+                        <span class="card-title">B460M+i10500黑苹果记录</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -830,16 +823,12 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-04-12
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-13
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E7%A8%8B/" class="post-category">
-                                    程
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            jerrycheese
                             
                         </span>
                     </div>
@@ -847,8 +836,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/mac/">
-                        <span class="chip bg-color">mac</span>
+                    <a href="/tags/%E6%97%A5%E5%B8%B8/">
+                        <span class="chip bg-color">日常</span>
                     </a>
                     
                 </div>
