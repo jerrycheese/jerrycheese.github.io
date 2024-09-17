@@ -1,0 +1,1351 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Web总结：用户认证, 全栈说">
+    <meta name="description" content="前言用户认证就是判断一个用户是否为合法用户的过程。
+目前用户认证大都是基于Cookie、Session实现的。对于HTTP协议还不熟悉的话，可以参考《HTTP权威指南》，PDF版下载（密码：7u67）。
+应用场景注册、登陆几乎是所有Web站">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Web总结：用户认证 | 全栈说</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">全栈说</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">全栈说</div>
+        <div class="logo-desc">
+            
+            Efficiency 80%
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Web总结：用户认证</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Web%E6%80%BB%E7%BB%93/">
+                                <span class="chip bg-color">Web总结</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Web%E5%85%A8%E6%A0%88/" class="post-category">
+                                Web全栈
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2018-07-15
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>用户认证就是判断一个用户是否为合法用户的过程。</p>
+<p>目前用户认证大都是基于Cookie、Session实现的。对于HTTP协议还不熟悉的话，可以参考《<a target="_blank" rel="noopener" href="https://book.douban.com/subject/10746113/">HTTP权威指南</a>》，<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1NOprmBS5VYgljxBveB1lfw">PDF版下载</a>（密码：7u67）。</p>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><p>注册、登陆几乎是所有Web站点都具备的两个功能。</p>
+<p>以商城系统为例，用户输入登录名、密码进行注册、登陆，这样系统内就可以为用户保存如：购物车、订单、商品喜好等个性化信息。</p>
+<p>用户认证的最主要目的是保存个性化信息。</p>
+<p>用户认证是用户授权的基础。以商城系统为例，商家需要先进行用户认证，系统才能判断他是否有某个店铺的管理权。</p>
+<p>API调用和网页浏览一样，也需要用户认证。</p>
+<h2 id="版本1：基于Session"><a href="#版本1：基于Session" class="headerlink" title="版本1：基于Session"></a>版本1：基于Session</h2><p>Session是一种将数据存储在服务器端的会话控制技术，我们可以使用它实现用户认证。</p>
+<p>下面是一个基于Laravel5的PHP版本的用户认证：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token comment">/**
+ * 用户登录
+ * @param string $login 登录名
+ * @param string $password 登录密码
+ * @return UserModel|false
+ */</span>
+<span class="token keyword">function</span> <span class="token function-definition function">userLogin</span><span class="token punctuation">(</span><span class="token variable">$login</span><span class="token punctuation">,</span> <span class="token variable">$password</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token variable">$user</span> <span class="token operator">=</span> <span class="token class-name static-context">UserModel</span><span class="token operator">::</span><span class="token function">where</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'login'</span><span class="token punctuation">,</span> <span class="token variable">$login</span><span class="token punctuation">)</span><span class="token operator">-></span><span class="token function">first</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$user</span> <span class="token operator">&amp;&amp;</span> <span class="token variable">$user</span><span class="token operator">-></span><span class="token function">checkPassword</span><span class="token punctuation">(</span><span class="token variable">$password</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">session</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-></span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'_user'</span><span class="token punctuation">,</span> <span class="token variable">$user</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token variable">$user</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token constant boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">/**
+ * 获取已经登录的用户实例
+ * @return UserModel|null
+ */</span>
+<span class="token keyword">function</span> <span class="token function-definition function">getLoginUser</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token function">session</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-></span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'_user'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><code>userLogin</code>函数接受用户名、密码两个参数进行用户认证工作，认证成功返回<code>用户实例</code>，失败返回<code>false</code>。</p>
+<p><code>getLoginUser</code>函数用于获取已经登录的用户，已登录返回<code>用户实例</code>，未登录返回<code>null</code>（由session()-&gt;get函数返回的）。</p>
+<p>第8行：按<code>$login</code>从数据库中取出匹配的第一个<code>用户实例</code>。</p>
+<p>第9行：判断是否认证成功，<code>checkPassword</code>用于判断<code>$password</code>是否符合<code>$user</code>的密码。</p>
+<p>第10行：将<code>$user</code>存入session中，键为<code>_user</code>。</p>
+<p>第11行：认证成功，返回用户实例<code>$user</code>。</p>
+<p>第13行：认证失败，返回<code>false</code>。</p>
+<p>第22行：从session中取出用户实例。</p>
+<p>这种做法的核心思想是把用户数据直接交由Session保管。</p>
+<p>Session可以基于Cookie或URL实现，不论哪种形式，都需要先由服务器种下<code>session-id</code>（种在Cookie里或是重在URL里），后续请求带上这个session-id，服务器才能实现Session。</p>
+<h2 id="版本2：基于令牌Token"><a href="#版本2：基于令牌Token" class="headerlink" title="版本2：基于令牌Token"></a>版本2：基于令牌Token</h2><p>API请求大多会使用HTTP Client完成，它是不带浏览器的Cookie（除非手动设置）。同时，API请求大都都只有一个请求和一个响应，session-id是来不及种的。</p>
+<p>基于令牌的用户认证，本质是将登录时随机生成的<code>token</code>写在HTTP头或是写在URL上，服务器通过鉴别<code>token</code>来进行用户认证。</p>
+<p>上代码：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token comment">/**
+ * 用户登录
+ * @param string $login 登录名
+ * @param string $password 登录密码
+ * @return UserModel|false
+ */</span>
+<span class="token keyword">function</span> <span class="token function-definition function">userLogin</span><span class="token punctuation">(</span><span class="token variable">$login</span><span class="token punctuation">,</span> <span class="token variable">$password</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token variable">$user</span> <span class="token operator">=</span> <span class="token class-name static-context">UserModel</span><span class="token operator">::</span><span class="token function">where</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'login'</span><span class="token punctuation">,</span> <span class="token variable">$login</span><span class="token punctuation">)</span><span class="token operator">-></span><span class="token function">first</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$user</span> <span class="token operator">&amp;&amp;</span> <span class="token variable">$user</span><span class="token operator">-></span><span class="token function">checkPassword</span><span class="token punctuation">(</span><span class="token variable">$password</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token variable">$token</span> <span class="token operator">=</span> <span class="token variable">$user</span><span class="token operator">-></span><span class="token function">generateAuthToken</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">session</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-></span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'_token'</span><span class="token punctuation">,</span> <span class="token variable">$token</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">cache</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-></span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'user_'</span> <span class="token operator">.</span> <span class="token variable">$token</span><span class="token punctuation">,</span> <span class="token variable">$user</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token variable">$user</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token constant boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">/**
+ * 获取已经登录的用户实例
+ * @return UserModel|null
+ */</span>
+<span class="token keyword">function</span> <span class="token function-definition function">getLoginUser</span><span class="token punctuation">(</span><span class="token variable">$token</span> <span class="token operator">=</span> <span class="token constant">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span> <span class="token variable">$token</span><span class="token punctuation">)</span> <span class="token variable">$token</span> <span class="token operator">=</span> <span class="token function">session</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-></span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'_token'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$cache_key</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'user_'</span> <span class="token operator">.</span> <span class="token variable">$token</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token function">cache</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-></span><span class="token function">get</span><span class="token punctuation">(</span><span class="token variable">$cache_key</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这个版本的<code>userLogin</code>函数，在认证成功后，通过用户实例生成一个<code>token</code>放入session，再把用户实例<code>$user</code>放入缓存系统中（如Redis、Memcache）。<code>token</code>一般都是32位的md5值。</p>
+<p><code>getLoginUser</code> 函数也有所变化，它可以接受指定的<code>$token</code>来获取用户实例，默认情况下它会从session中取出token。</p>
+<p>第10~12行：使用<code>$user</code>生成<code>token</code>，将用户实例存入缓存系统中。</p>
+<p>第24~26行：使用<code>token</code>从缓存系统中获取用户实例。</p>
+<p>的一种可用的用于生成<code>token</code>的方法：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token comment">/**
+ * 生成认证token
+ * @return string 认证token
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">generateAuthToken</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token property">token</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-</span>token<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">token</span> <span class="token operator">=</span> <span class="token function">md5</span><span class="token punctuation">(</span><span class="token function">md5</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token property">id</span> <span class="token operator">.</span> <span class="token function">time</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><code>time()</code>函数返回当前unix时间戳。可以看到，token与<code>用户id</code>和<code>登录时间</code>有关，这可以保证唯一性。</p>
+<p>这样的用户认证下，API请求怎么做呢？</p>
+<p>我们先创建一个接口 <code>/login</code> 用于登录，接口的返回值里，附上登录成功后的 <code>token</code>，HTTP Client将这个token缓存起来，在之后的请求中带上这个token即可。这样以来，用户认证就不是基于Cookie而是基于token了。</p>
+<p>这样的用户认证已经可以满足大部分应用场景了如Cookie失效、API请求和统一认证。但还有一个场景无法满足，那就是多终端数据共享。比如用户在电脑上登录了一次，在手机上登录了一次，系统会生成2个token，这两个token对应的用户实例是不一样的，所以用户在电脑上设置的个性化信息（比如性别，名称）无法共享到手机上。</p>
+<h2 id="版本3：多终端数据共享"><a href="#版本3：多终端数据共享" class="headerlink" title="版本3：多终端数据共享"></a>版本3：多终端数据共享</h2><p>多终端共享需要明确两点：</p>
+<ul>
+<li>各个终端的登录时长互不影响</li>
+<li>各个终端的用户数据一致</li>
+</ul>
+<p>实现多终端数据共享还有其他方法，下面举例一个我在项目中用的方法。</p>
+<p>代码如下：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token comment">/**
+ * 用户登录
+ * @param string $login 登录名
+ * @param string $password 登录密码
+ * @return UserModel|false
+ */</span>
+<span class="token keyword">function</span> <span class="token function-definition function">userLogin</span><span class="token punctuation">(</span><span class="token variable">$login</span><span class="token punctuation">,</span> <span class="token variable">$password</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token variable">$user</span> <span class="token operator">=</span> <span class="token class-name static-context">UserModel</span><span class="token operator">::</span><span class="token function">where</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'login'</span><span class="token punctuation">,</span> <span class="token variable">$login</span><span class="token punctuation">)</span><span class="token operator">-></span><span class="token function">first</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$user</span> <span class="token operator">&amp;&amp;</span> <span class="token variable">$user</span><span class="token operator">-></span><span class="token function">checkPassword</span><span class="token punctuation">(</span><span class="token variable">$password</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token variable">$token</span> <span class="token operator">=</span> <span class="token variable">$user</span><span class="token operator">-></span><span class="token function">generateAuthToken</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">session</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-></span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'_token'</span><span class="token punctuation">,</span> <span class="token variable">$token</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 认证</span>
+        <span class="token function">cache</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-></span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'user_token_'</span> <span class="token operator">.</span> <span class="token variable">$token</span><span class="token punctuation">,</span> <span class="token variable">$user</span><span class="token operator">-></span><span class="token property">id</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 数据</span>
+        <span class="token function">cache</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-></span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'user_'</span> <span class="token operator">.</span> <span class="token variable">$user</span><span class="token operator">-></span><span class="token property">id</span><span class="token punctuation">,</span> <span class="token variable">$user</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token variable">$user</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token constant boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">/**
+ * 获取已经登录的用户实例
+ * @return UserModel|null
+ */</span>
+<span class="token keyword">function</span> <span class="token function-definition function">getLoginUser</span><span class="token punctuation">(</span><span class="token variable">$token</span> <span class="token operator">=</span> <span class="token constant">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span> <span class="token variable">$token</span><span class="token punctuation">)</span> <span class="token variable">$token</span> <span class="token operator">=</span> <span class="token function">session</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-></span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'_token'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$token_cache_key</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'user_token_'</span> <span class="token operator">.</span> <span class="token variable">$token</span><span class="token punctuation">;</span>
+    <span class="token variable">$user_id</span> <span class="token operator">=</span> <span class="token function">cache</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-></span><span class="token function">get</span><span class="token punctuation">(</span><span class="token variable">$token_cache_key</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span> <span class="token variable">$user_id</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token constant">null</span><span class="token punctuation">;</span> <span class="token comment">// token失效，认证过期</span>
+    
+    <span class="token variable">$user_cache_key</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'user_'</span> <span class="token operator">.</span> <span class="token variable">$user_id</span><span class="token punctuation">;</span>
+    <span class="token variable">$user</span> <span class="token operator">=</span> <span class="token function">cache</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-></span><span class="token function">get</span><span class="token punctuation">(</span><span class="token variable">$user_cache_key</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span> <span class="token variable">$user</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 缓存失效，重新缓存</span>
+        <span class="token variable">$user</span> <span class="token operator">=</span> <span class="token class-name static-context">UserModel</span><span class="token operator">::</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token variable">$user_id</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">cache</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-></span><span class="token function">put</span><span class="token punctuation">(</span><span class="token variable">$user_cache_key</span><span class="token punctuation">,</span> <span class="token variable">$user</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> <span class="token variable">$user</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这种认证方式下，<code>token</code>只能解析出<code>user_id</code>，这就好比是一个用户指针，系统再由<code>user_id</code>解析出<code>用户实例</code>。这样可以保证，不同终端拿到不同的token，这些token的过期时间不会相互影响，而不同token可以拿到同一个用户数据，从而实现多终端用户数据共享。</p>
+<p><code>getLoginUser</code>函数，先检查<code>token</code>是否失效，再进一步检查<code>用户实例</code>缓存是否失效。</p>
+<h3 id="账号激活"><a href="#账号激活" class="headerlink" title="账号激活"></a>账号激活</h3><p>多终端数据共享的应用场景也很广泛，比如账号激活，发一份Email邮件，让用户点击链接进行账号激活。在激活操作里，系统需要知道用户想要激活那个账号，一个通常的做法如下：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token comment">/**
+ * 生成用于激活账号的链接
+ * @return string 用于激活的uri
+ */</span>
+<span class="token keyword">function</span> <span class="token function-definition function">generateActivateLink</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token variable">$code</span> <span class="token operator">=</span> <span class="token function">md5</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'activate'</span> <span class="token operator">.</span> <span class="token class-name static-context">Auth</span><span class="token operator">::</span><span class="token function">id</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">.</span> <span class="token function">time</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">cache</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-></span><span class="token function">put</span><span class="token punctuation">(</span><span class="token variable">$code</span><span class="token punctuation">,</span> <span class="token class-name static-context">Auth</span><span class="token operator">::</span><span class="token function">id</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token function">url</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'/user/activate?code='</span> <span class="token operator">.</span> <span class="token variable">$code</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">/**
+ * 激活用户
+ * @param string $code 激活码
+ * @return string 用于激活的uri
+ */</span>
+<span class="token keyword">function</span> <span class="token function-definition function">activateUser</span><span class="token punctuation">(</span><span class="token variable">$code</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token variable">$user_id</span> <span class="token operator">=</span> <span class="token function">cache</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-></span><span class="token function">get</span><span class="token punctuation">(</span><span class="token variable">$code</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span> <span class="token variable">$user_id</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token constant boolean">false</span><span class="token punctuation">;</span>
+    <span class="token comment">// 修改数据库</span>
+    <span class="token variable">$user</span> <span class="token operator">=</span> <span class="token class-name static-context">UserModel</span><span class="token operator">::</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token variable">$user_id</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$user</span><span class="token operator">-></span><span class="token property">status</span> <span class="token operator">=</span> <span class="token class-name static-context">UserModel</span><span class="token operator">::</span><span class="token constant">STATUS_ACTIVATED</span><span class="token punctuation">;</span>
+    <span class="token variable">$user</span><span class="token operator">-></span><span class="token function">save</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 修改缓存</span>
+    <span class="token variable">$user_cache_key</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'user_'</span> <span class="token operator">.</span> <span class="token variable">$user_id</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">cache</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-></span><span class="token function">get</span><span class="token punctuation">(</span><span class="token variable">$user_cache_key</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">cache</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-></span><span class="token function">put</span><span class="token punctuation">(</span><span class="token variable">$user_cache_key</span><span class="token punctuation">,</span> <span class="token variable">$user</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> <span class="token variable">$user</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>可以看到，生成的激活链接中的<code>code</code>其实是缓存键，使用<code>code</code>可以获取到<code>用户id</code>，这样系统就知道了需要激活哪个用户。</p>
+<p>在激活时，系统只需要修改缓存中的用户实例即可，用户不需要重新登录账号以刷新缓存中的数据。</p>
+<p>第8行：<code>url()</code>函数，是laravel中用于生成完整url的函数。</p>
+<p>第21行：修改用户的<code>status</code>字段值为<code>STATUS_ACTIVATED</code>对应的值。</p>
+<p>第22行：保存修改的信息到数据库。</p>
+<h2 id="OAuth和第三方登录认证"><a href="#OAuth和第三方登录认证" class="headerlink" title="OAuth和第三方登录认证"></a>OAuth和第三方登录认证</h2><p>OAuth协议可以让第三方在不知道用户敏感信息的前提下，获取服务器内用户的资源。第三方登录就可以使用OAuth协议来完成，如微信、QQ、微博等社交平台都提供第三方登录接入服务。</p>
+<h3 id="OAuth2-0"><a href="#OAuth2-0" class="headerlink" title="OAuth2.0"></a>OAuth2.0</h3><p>OAuth2.0的授权可以简单分为三步：</p>
+<ol>
+<li>获取用户授权码Code</li>
+<li>获取用户授权令牌Token</li>
+<li>使用授权令牌Token获取用户信息</li>
+</ol>
+<p>第一步，又称用户登录引导页面。在微信登录时，这个页面的域名是在微信下的，用户同意授权后，微信会把授权码Code送到服务器（通过回调URI的形式）。拿到这个Code表示<code>用户同意了授权</code>。</p>
+<p>第二步，在微信登录时，这个token又叫<code>access_token</code>。拿到这个Token表示<code>服务器是合法的</code>。</p>
+<p>第三步，在微信登录时，这一步可以拿到用户的<code>open_id</code>。</p>
+<p>在微信登录中，如果要获取用户基本信息，需要用<code>open_id</code>+<code>access_token</code>才能得到。</p>
+<p>关于OAuth2.0协议更多内容，可以参考这2篇文章：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/hyl8218/p/3584505.html">深入理解OAuth2.0协议</a> ，<a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html">理解OAuth 2.0</a></p>
+<h3 id="如何集成"><a href="#如何集成" class="headerlink" title="如何集成"></a>如何集成</h3><p>一个用户可以”绑定”多个第三方账号，这是一个比较好的处理第三方用户的方式。第三方用户的管理必须重视，如果管理混乱，绑定的信息不能指向同一个用户，就会出现多身份问题，比如用户使用手机登录购买的东西，在使用微信登录时却提示没有购买。</p>
+<p>我介绍一下我的做法，数据库两张表：</p>
+<ul>
+<li><code>user</code>表，记录用户信息。这里有<code>telephone</code>和<code>email</code>等可用于登录的字段</li>
+<li><code>user_third</code>表，记录用户绑定的第三方账号信息。</li>
+</ul>
+<p>登录逻辑如下：</p>
+<ul>
+<li>当用户使用如手机号、邮箱、登录名登录时，在<code>user</code>表里查询信息。</li>
+<li>当用户使用第三方登录时，系统先去<code>user_third</code>里查询信息，如果未找到，则在<code>user</code>表里新建用户，再将第三方账号信息保存到<code>user_third</code>里，最后把新建的用户与第三方账号信息绑定；如果能找到，则返回第三方账号所绑定的<code>user</code>表里的数据。</li>
+</ul>
+<p>这种做法，可以保证用户数据均来自<code>user</code>表，就不会有多身份问题，同时一个用户也可以绑定多个第三方账号，更加便于管理。</p>
+<p>还有一种情况是绑定信息冲突，比如用户第一个账号绑定了手机号和微信账号，过段时间后，他用QQ账号登录时（此时这个QQ号没有对应系统内的用户）系统会创建第二个账号，此时他再去绑定手机号或微信号的时候，会因为<code>user</code>表的<code>telephone</code>字段、<code>user_third</code>表中已有信息，而导致绑定失败。</p>
+<p>处理这种情况常用的方法是<strong>解绑</strong>，用户可以解绑QQ号，再绑定QQ号至第一次创建的账号；也可以选择解绑手机、微信，再将手机、微信绑到第二个账号上。</p>
+<h2 id="单点登录"><a href="#单点登录" class="headerlink" title="单点登录"></a>单点登录</h2><p>单点登录（Single Sign On，SSO）常用于多服务器共存的大型网站，即一次用户认证，即可访问旗下所有网站。</p>
+<p>以<a target="_blank" rel="noopener" href="https://www.douban.com/">豆瓣网</a>为例，它有<a target="_blank" rel="noopener" href="https://book.douban.com/">豆瓣读书</a>、<a target="_blank" rel="noopener" href="https://movie.douban.com/">豆瓣电影</a>子网站，这两个子网站部署在不同服务器上。</p>
+<h3 id="基于Token的认证"><a href="#基于Token的认证" class="headerlink" title="基于Token的认证"></a>基于Token的认证</h3><p>首先，用户数据不能放在Session里，所以基于Token的认证方式很快进入我们的视野，也就是版本2和版本3的认证方式。需要注意的是，不同服务器必须使用<strong>同一个缓存系统</strong>。可以单独起一个服务器用作数据存储。这样一来，系统都可以根据<code>token</code>从缓存系统中解析出<code>用户实例</code>。</p>
+<h3 id="同源：共享Cookie"><a href="#同源：共享Cookie" class="headerlink" title="同源：共享Cookie"></a>同源：共享Cookie</h3><p>仔细的同学会发现，版本3的<code>token</code>是存在Session里的，就算在子网A中登录完了，在子网B的Session中并没有这个<code>token</code>。一个常见的做法是共享Cookie，让子网A的Cookie可以让子网B使用，再将<code>token</code>放在Cookie中，而不是放在Session里。 </p>
+<p>例如豆瓣读书域名为：book.douban.com，豆瓣电影域名为：movie.douban.com，现在要种一个Cookie，使得这两个域名都能使用。因为他们是属于同一个二级域名<code>douban.com</code>下的，所以可以让用户在域名<a target="_blank" rel="noopener" href="http://www.douban.com下登录,把cookie的路径设置为`.douban.com`,即可实现cookie的共享./">www.douban.com下登录，把Cookie的路径设置为`.douban.com`，即可实现Cookie的共享。</a></p>
+<h3 id="跨域：统一认证网站"><a href="#跨域：统一认证网站" class="headerlink" title="跨域：统一认证网站"></a>跨域：统一认证网站</h3><p>如果遇到<a href="http://www.taobao.com和www.douban.com要做统一身份认证怎么办呢？因为没有共同的二级域名，所以将认证系统建于第三个网站中，这个网站也叫统一认证网站（简称认证网）。">www.taobao.com和www.douban.com要做统一身份认证怎么办呢？因为没有共同的二级域名，所以将认证系统建于第三个网站中，这个网站也叫统一认证网站（简称认证网）。</a></p>
+<p><img src="http://os9coobhw.bkt.clouddn.com/blog/180716/GlLg5ij5If.png?imageslim" alt="mark"></p>
+<p>我们先假设一个未登录的用户。</p>
+<ol>
+<li>第一次请求。请求网站A的<code>/home</code>网页，网站A检测出用户未登录，于是使用HTTP重定向，引导用于至认证网的登录页面去。</li>
+<li>第二次请求。这是由浏览器自主发起的，认证网响应出登录页面。</li>
+<li>第三次请求。用户输入账号密码进行登录，服务器认证成功后，种下Cookie，并重定向至网站的A的<code>/home</code>页面，但是带上了<code>token</code>。接收此次响应后，浏览器已有了认证网的Cookie，所以用户在认证网处于登录状态。</li>
+<li>第四次请求。浏览器自主发起的，网站A必须识别出<code>token</code>参数，并保存起来。在响应中，种下网站A的Cookie。此时用户在网站A也处于登录状态。</li>
+</ol>
+<p>我们假设这个已经认证过的用户，去访问网站B。</p>
+<p><img src="http://os9coobhw.bkt.clouddn.com/blog/180716/HBCc4CglCL.png?imageslim" alt="mark"></p>
+<p>可以看到，在引导用户至认证网的登录页面时，因为用户在认证网处于登录状态，所以认证网直接重定向到网站B的<code>/profile</code>页面。</p>
+<p>有朋友会发现，认证网的功能其实可以融合到网站A或网站B中。确实可以这样做，但是不推荐，因为要秉持低耦合的原则，将认证系统独立出来会更加方便使用和管理。</p>
+<p>进一步理解，使用OAuth协议也可以实现单点登录功能，它就是API版本的单点登录。</p>
+<h2 id="令牌管理"><a href="#令牌管理" class="headerlink" title="令牌管理"></a>令牌管理</h2><p>在基于令牌的认证里，<code>token</code>是最为关键的信息，如果有第三方窃取到了用户的token，他就可以冒充用户的进行操作。</p>
+<h3 id="隐藏Token"><a href="#隐藏Token" class="headerlink" title="隐藏Token"></a>隐藏Token</h3><p>啥意思呢？就是把<code>token</code>放在HTTP头里，尽量让用户感觉不到<code>token</code>的存在。比如下面的HTTP头：</p>
+<pre class="line-numbers language-http" data-language="http"><code class="language-http">...
+<span class="token header"><span class="token header-name keyword">X-AUTH-TOKEN</span><span class="token punctuation">:</span> <span class="token header-value">340c6f730612769b71075d4fbbe5d337 </span></span>
+...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>但是如果HTTP包被黑客获取，他仍然能够窃取到<code>token</code>。</p>
+<h3 id="使用HTTPS"><a href="#使用HTTPS" class="headerlink" title="使用HTTPS"></a>使用HTTPS</h3><p>HTTPS会将数据包加密，所以黑客就算截取到数据包到也无法获取<code>token</code>。</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">jerrycheese</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://hijerry.cn/p/61701.html">https://hijerry.cn/p/61701.html</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">jerrycheese</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Web%E6%80%BB%E7%BB%93/">
+                                    <span class="chip bg-color">Web总结</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/p/17326.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Web总结：资源存储">
+                        
+                        <span class="card-title">Web总结：资源存储</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2018-07-24
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Web%E5%85%A8%E6%A0%88/" class="post-category">
+                                    Web全栈
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Web%E6%80%BB%E7%BB%93/">
+                        <span class="chip bg-color">Web总结</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/p/26959.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="使用Tensorflow训练一元线性模型">
+                        
+                        <span class="card-title">使用Tensorflow训练一元线性模型</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2018-06-06
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%A0%94/" class="post-category">
+                                    研
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/">
+                        <span class="chip bg-color">线性模型</span>
+                    </a>
+                    
+                    <a href="/tags/Tensoflow/">
+                        <span class="chip bg-color">Tensoflow</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2024</span>
+            
+            <a href="/about" target="_blank">jerrycheese</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+                <span id="icp"><img src="/medias/icp.png"
+                                    style="vertical-align: text-bottom;"/>
+                <a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备2024300695号-1</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1181062873" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
